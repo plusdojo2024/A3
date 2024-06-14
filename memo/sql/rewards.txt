@@ -1,0 +1,13 @@
+CREATE TABLE rewards (
+  reward_id INTEGER NOT NULL AUTO_INCREMENT,
+  reward VARCHAR(20) NOT NULL,
+  req_point INTEGER(6) NOT NULL,
+  reward_date VARCHAR(32),
+  uid INTEGER NOT NULL,
+  request INTEGER(1),
+  PRIMARY KEY (reward_id),
+  CONSTRAINT fk_rewards_user_id
+  FOREIGN KEY (uid) REFERENCES users (uid)
+  ON DELETE SET NULL ON UPDATE CASCADE
+  /*参照先がDELETEされたらNULL,UPDATEされたらそれを反映する*/
+);
