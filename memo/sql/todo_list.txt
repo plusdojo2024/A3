@@ -1,0 +1,12 @@
+
+CREATE TABLE TODO_LIST(
+    list_id INTEGER NOT NULL,
+    mail VARCHAR,
+    task VARCHAR(20),
+    category VARCHAR,
+    give_point INTEGER(2),
+    list_date VARCHAR(32),
+    memo VARCHAR(200),
+    todo_delete INTEGER,
+    PRIMARY KEY (list_id)
+)
