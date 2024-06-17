@@ -1,0 +1,7 @@
+CREATE TABLE exchange (
+  exchange_id INTEGER NOT NULL,
+  reward_id VARCHAR(20),
+  uid INTEGER,
+  exchange_date VARCHAR(32)
+  PRIMARY KEY (exchange_id)
+);
