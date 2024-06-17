@@ -1,6 +1,8 @@
 package model;
 
-public class Family {
+import java.io.Serializable;
+
+public class Family implements Serializable{
 	private int familyId;
 	private String mail;
 	private String familyPass;

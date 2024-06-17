@@ -25,10 +25,8 @@ public class FileLogic {
 
 		TimeLogic time = new TimeLogic();
 		String now = time.nowCalendar();
-		String url = absoluteBase + now +"-"+ fileName;
-
-
-		return url;
+		String path = absoluteBase + now +"-"+ fileName;
+		return path;
 	}
 	public String setRelativePath (String fileName,int familyId) {
 		String relativeBase = "upload/family_"+familyId+"/";
