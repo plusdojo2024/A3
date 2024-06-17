@@ -4,7 +4,7 @@ CREATE TABLE rewards (
   req_point INTEGER(6) NOT NULL,
   reward_date VARCHAR(32),
   uid INTEGER NOT NULL,
-  request INTEGER(1),
+  request INTEGER(1) DEFAULT 0,
   PRIMARY KEY (reward_id),
   CONSTRAINT fk_rewards_user_id
   FOREIGN KEY (uid) REFERENCES users (uid)

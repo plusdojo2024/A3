@@ -4,17 +4,24 @@ CREATE TABLE TODO (
   list_id INTEGER,
   todo_date VARCHAR(32),
   uid INTEGER,
-  roop INTEGER,
+  roop INTEGER DEFAULT 0,
   start_date VARCHAR,
   end_date VARCHAR,
-  monday INTEGER(1),
-  tuesday INTEGER(1),
-  wednesday INTEGER(1),
-  thursday INTEGER(1),
-  friday INTEGER(1),
-  saturday INTEGER(1),
-  sunday INTEGER(1),
-  to_do_complete INTEGER,
+  monday INTEGER(1) DEFAULT 0,
+  tuesday INTEGER(1) DEFAULT 0,
+  wednesday INTEGER(1) DEFAULT 0,
+  thursday INTEGER(1) DEFAULT 0,
+  friday INTEGER(1) DEFAULT 0,
+  saturday INTEGER(1) DEFAULT 0,
+  sunday INTEGER(1) DEFAULT 0,
+  todo_complete INTEGER DEFAULT 0,
   family_update TIMESTAMP,
-  PRIMARY KEY (todo_id)
+  PRIMARY KEY (todo_id),
+  CONSTRAINT fk_users_list_id
+  FOREIGN KEY (list_id) REFERENCES todo_list (list_id)
+  ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT fk_users_mail
+  FOREIGN KEY (uid) REFERENCES users (uid)
+  ON DELETE SET NULL ON UPDATE CASCADE
+  /*参照先がDELETEされたらNULL,UPDATEされたらそれを反映する*/
 );

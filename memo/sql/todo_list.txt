@@ -7,7 +7,7 @@ CREATE TABLE TODO_LIST(
     give_point INTEGER(2),
     list_date VARCHAR(32),
     memo VARCHAR(200),
-    todo_delete INTEGER,
+    todo_delete INTEGER DEFAULT 0,
     PRIMARY KEY (list_id),
     CONSTRAINT fk_todo_list_mail
     FOREIGN KEY (mail) REFERENCES family (mail)

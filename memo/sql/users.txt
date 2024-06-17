@@ -12,5 +12,9 @@ CREATE TABLE USERS (
   user_date VARCHAR(32),
   delete INTEGER(1) DEFAULT 0,
   user_update TIMESTAMP,
-  PRIMARY KEY (uid)
+  PRIMARY KEY (uid),
+  CONSTRAINT fk_users_mail
+  FOREIGN KEY (mail) REFERENCES users (mail)
+  ON DELETE SET NULL ON UPDATE CASCADE
+  /*参照先がDELETEされたらNULL,UPDATEされたらそれを反映する*/
 );
