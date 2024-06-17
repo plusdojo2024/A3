@@ -11,14 +11,13 @@ import model.Family;
 public class FamilyDAO {
 	public Family search(Family family) {
 		Connection conn = null;
-		Family myIdpw = new Family();
 
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SELECT文を準備する
 			String sql = "SELECT * FROM Idpw WHERE id = ?";
@@ -49,7 +48,7 @@ public class FamilyDAO {
 		}
 
 		// 結果を返す
-		return myIdpw;
+		return family;
 	}
 
 	public int searchId(String mail) {
@@ -61,7 +60,7 @@ public class FamilyDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SELECT文を準備する
 			String sql = "SELECT family_id FROM FAMILY WHERE mail = ?";

@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +17,7 @@ import logic.HashLogic;
 import logic.TimeLogic;
 import model.Family;
 import model.Message;
+import model.Users;
 
 /**
  * Servlet implementation class FamilyRegistServlet
@@ -93,13 +95,34 @@ public class FamilyRegistServlet extends HttpServlet {
 
 				int familyId = fDao.searchId(hashMail);//familyIDを取得
 
-				String url = fC.setAbsolutePass(name, familyId);
+				String absolutePass = fC.setAbsolutePass(name, familyId);
 
-				part.write(url);
+				//フォルダのパスだけ作成
+				File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_"+familyId+"/");
 
+				if (!target.exists()) {//フォルダが存在しなければ作成
+					target.mkdirs();
+				}
+				//ファイル保存
+				part.write(absolutePass);
+
+				//アイコン画像の相対パス作成
 				String relativePath = fC.setRelativePath(name, familyId);
-				request.setAttribute("url", relativePath);//URLセット
-				//request.setAttribute("test", "uploaded/2024-06-14free-electron.jpg");//testセット
+
+				//管理用ユーザー作成
+				Users user = new Users();
+				user.setAdmin(1);
+				user.setColor(color);
+				user.setFamilyId(familyId);
+				user.setIcon(relativePath);
+				user.setHavePoint(0);
+				user.setRole(1);
+				user.setUserDate(time.nowJp());
+
+				//パスワードのハッシュ化
+				hashLogic.randHash(userPass);
+				user.setPw(hashLogic.getPw());//パスワードセット
+				user.setUserSalt(hashLogic.getSalt());//ソルトセット
 
 				try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
 					Thread.sleep(4000); // 4秒(4000ミリ秒)間だけ処理を止める
