@@ -9,7 +9,7 @@ CREATE TABLE TODO_LIST(
     memo VARCHAR(200),
     todo_delete INTEGER,
     PRIMARY KEY (list_id),
-    CONSTRAINT fk_todo_list_family_mail
-    FOREIGN KEY (mail) REFERENCES (mail)
+    CONSTRAINT fk_todo_list_mail
+    FOREIGN KEY (mail) REFERENCES family (mail)
     ON DELETE SET NULL ON UPDATE CASCADE
 )
