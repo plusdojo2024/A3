@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ExchangeServlet
+ * Servlet implementation class ExchangeHistoryServlet
  */
-@WebServlet("/ExchangeServlet")
-public class ExchangeServlet extends HttpServlet {
+@WebServlet("/ExchangeHistoryServlet")
+public class ExchangeHistoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
