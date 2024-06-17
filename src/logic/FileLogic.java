@@ -20,13 +20,26 @@ public class FileLogic {
     }
 
 
-	public String setAbsolutePass(String fileName) {
-		String absolute="";
+	public String setAbsolutePass(String fileName,int familyId) {
+		String absoluteBase = "C:/pleiades/workspace/TestWeb01/WebContent/upload/family_"+familyId+"/";
+
+		TimeLogic time = new TimeLogic();
+		String now = time.nowCalendar();
+		String url = absoluteBase + now +"-"+ fileName;
 
 
-		return absolute;
+		return url;
 	}
+	public String setRelativePath (String fileName,int familyId) {
+		String relativeBase = "upload/family_"+familyId+"/";
 
+		TimeLogic time = new TimeLogic();
+		String now = time.nowCalendar();
+		String url = relativeBase + now +"-"+ fileName;
+
+
+		return url;
+	}
 	public String getAbsolute() {
 		return absolute;
 	}

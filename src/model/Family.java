@@ -1,7 +1,9 @@
 package model;
 
 public class Family {
+	private int familyId;
 	private String mail;
+	private String familyPass;
 	private String familyName;
 	private String familySalt;
 	private String familyDate;
@@ -30,5 +32,17 @@ public class Family {
 	}
 	public void setFamilyDate(String familyDate) {
 		this.familyDate = familyDate;
+	}
+	public int getFamilyId() {
+		return familyId;
+	}
+	public void setFamilyId(int familyId) {
+		this.familyId = familyId;
+	}
+	public String getFamilyPass() {
+		return familyPass;
+	}
+	public void setFamilyPass(String familyPass) {
+		this.familyPass = familyPass;
 	}
 }
