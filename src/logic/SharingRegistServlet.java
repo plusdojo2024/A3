@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import logic.FileController;
-
 /**
  * Servlet implementation class SharingRegistServlet
  */
@@ -45,7 +43,7 @@ public class SharingRegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		FileController fC = new FileController();
+		FileLogic fC = new FileLogic();
 
 		Part part = request.getPart("file");
 

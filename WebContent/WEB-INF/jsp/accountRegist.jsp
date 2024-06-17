@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>アカウント登録画面</title>
 </head>
 <body>
+<h1>アカウント登録</h1>
+
 
 </body>
 </html>
