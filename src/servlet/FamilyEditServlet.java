@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class RegistServlet
+ * Servlet implementation class FamilyEditServlet
  */
-@WebServlet("/RegistServlet")
-public class RegistServlet extends HttpServlet {
+@WebServlet("/FamilyEditServlet")
+public class FamilyEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
