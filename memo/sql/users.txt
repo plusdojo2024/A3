@@ -1,6 +1,6 @@
 CREATE TABLE USERS (
   uid INTEGER NOT NULL AUTO_INCREMENT,
-  mail VARCHAR(64) NOT NULL,
+  family_id INTEGER,
   name VARCHAR(64) NOT NULL,
   pw VARCHAR(64) NOT NULL,
   user_salt VARCHAR(64) NOT NULL,
@@ -13,8 +13,8 @@ CREATE TABLE USERS (
   delete INTEGER(1) DEFAULT 0,
   user_update TIMESTAMP,
   PRIMARY KEY (uid),
-  CONSTRAINT fk_users_mail
-  FOREIGN KEY (mail) REFERENCES users (mail)
+  CONSTRAINT fk_users_family_id
+  FOREIGN KEY (family_id) REFERENCES users (family_id)
   ON DELETE SET NULL ON UPDATE CASCADE
   /*参照先がDELETEされたらNULL,UPDATEされたらそれを反映する*/
 );
