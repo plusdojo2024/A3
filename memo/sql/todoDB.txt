@@ -17,10 +17,10 @@ CREATE TABLE TODO (
   todo_complete INTEGER DEFAULT 0,
   family_update TIMESTAMP,
   PRIMARY KEY (todo_id),
-  CONSTRAINT fk_users_list_id
+  CONSTRAINT fk_todo_list_id
   FOREIGN KEY (list_id) REFERENCES todo_list (list_id)
   ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT fk_todo_mail
+  CONSTRAINT fk_todo_user_id
   FOREIGN KEY (uid) REFERENCES users (uid)
   ON DELETE SET NULL ON UPDATE CASCADE
   /*参照先がDELETEされたらNULL,UPDATEされたらそれを反映する*/

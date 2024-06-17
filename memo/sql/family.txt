@@ -8,5 +8,5 @@ CREATE TABLE FAMILY (
   family_salt VARCHAR(64),
   family_date VARCHAR(32),
   family_update TIMESTAMP,
-  PRIMARY KEY (mail)
+  PRIMARY KEY (family_id,mail)
 );

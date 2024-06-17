@@ -1,7 +1,7 @@
 
 CREATE TABLE TODO_LIST(
     list_id INTEGER NOT NULL AUTO_INCREMENT,
-    mail VARCHAR,
+    family_id VARCHAR,
     task VARCHAR(20) UNIQUE,
     category VARCHAR,
     give_point INTEGER(2),
@@ -10,6 +10,6 @@ CREATE TABLE TODO_LIST(
     todo_delete INTEGER DEFAULT 0,
     PRIMARY KEY (list_id),
     CONSTRAINT fk_todo_list_mail
-    FOREIGN KEY (mail) REFERENCES family (mail)
+    FOREIGN KEY (family_id) REFERENCES family (family_id)
     ON DELETE SET NULL ON UPDATE CASCADE
 )
