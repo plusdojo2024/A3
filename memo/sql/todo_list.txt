@@ -1,6 +1,6 @@
 
 CREATE TABLE TODO_LIST(
-    list_id INTEGER NOT NULL,
+    list_id INTEGER NOT NULL AUTO_INCREMENT,
     mail VARCHAR,
     task VARCHAR(20) UNIQUE,
     category VARCHAR,
