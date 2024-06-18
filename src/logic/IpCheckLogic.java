@@ -1,5 +1,5 @@
 package logic;
-/*
+
 import java.util.List;
 
 import model.UserIp;
@@ -63,4 +63,4 @@ public class IpCheckLogic {
 		return count;
 	}
 }
-*/
+

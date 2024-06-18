@@ -68,6 +68,7 @@ public class HashLogic {
 	}
 
 	//ユーザーが入力したパスワードにDBから取り出したソルトをかけてハッシュ化
+	//そのまま比較して一致したらTrueを返す
 	public boolean checkHash(String password, String dbPass, String salt) {
 		String hash = "";
 		boolean result = false;
@@ -101,8 +102,9 @@ public class HashLogic {
 		try {
 			String strSalt = "Ka0Ge69f2HmogE";
 
+			password = password+strSalt;
+
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			md.update(strSalt.getBytes());
 			md.update(password.getBytes());
 
 			byte[] hashBytes = md.digest();

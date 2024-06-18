@@ -53,7 +53,7 @@ public class FamilyRegistServlet extends HttpServlet {
 		String color = request.getParameter("color");
 
 		HashLogic hashLogic = new HashLogic();
-		String hashMail = hashLogic.getHash(mail);
+		String hashMail = hashLogic.getHash(mail);//固定のソルト値でハッシュ化
 
 		FamilyDAO fDao = new FamilyDAO();
 		//家族(メールアドレス)が既に登録されているかチェック
@@ -120,13 +120,15 @@ public class FamilyRegistServlet extends HttpServlet {
 				user.setHavePoint(0);
 				user.setRole(1);
 				user.setUserDate(time.nowJp());
-				user.setName(userName);
+
 				user.setColor(color);
 
 				//パスワードのハッシュ化
 				hashLogic.randHash(userPass);
 				user.setPw(hashLogic.getPw());//パスワードセット
 				user.setUserSalt(hashLogic.getSalt());//ソルトセット
+
+				user.setName(hashLogic.getHash(userName));
 
 				UsersDAO uDao = new UsersDAO();
 
@@ -140,7 +142,7 @@ public class FamilyRegistServlet extends HttpServlet {
 					Message msg = new Message();
 					msg.setTitle("アカウント作成に成功しました。");
 					msg.setMessage("ログインページからログインしてください。");
-					// 新規家族作成ページにフォワードする
+					// ログインページにフォワードする
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 					dispatcher.forward(request, response);
 				} else {

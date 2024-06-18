@@ -32,7 +32,7 @@
 				</label></td>
 			<tr>
 			<tr>
-				<td><label>家族PASS<br> <input type="password"
+				<td><label>家族パスワード<br> <input type="password"
 						name="family_pass">
 				</label></td>
 			<tr>

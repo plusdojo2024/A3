@@ -9,8 +9,12 @@ import java.sql.SQLException;
 import model.Family;
 
 public class FamilyDAO {
-	public Family search(Family family) {
+
+	//メールアドレスを引数にして家族のパスワードとソルトを返す
+	public Family search(String mail) {
 		Connection conn = null;
+
+		Family family = new Family();
 
 		try {
 			// JDBCドライバを読み込む
@@ -20,18 +24,18 @@ public class FamilyDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SELECT文を準備する
-			String sql = "SELECT * FROM Idpw WHERE id = ?";
+			String sql = "SELECT * FROM family WHERE mail = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setInt(1, family.getFamilyId());
+			pStmt.setString(1, mail);
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
-/*
-			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
+
+			// メールアドレスに一致するパスワードとsaltを持ってくる
 			rs.next();
-			myIdpw.setPw(rs.getString("pw"));
-			myIdpw.setStrSalt(rs.getString("salt"));
-*/
+			family.setFamilyPass(rs.getString("family_pass"));
+			family.setFamilySalt(rs.getString("family_salt"));
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -47,7 +51,7 @@ public class FamilyDAO {
 			}
 		}
 
-		// 結果を返す
+		// パスワードとソルトを入れたfamilyを返す
 		return family;
 	}
 
@@ -92,7 +96,7 @@ public class FamilyDAO {
 
 	public boolean familyCheck(String mail) {
 		Connection conn = null;
-		boolean idResult = false;
+		boolean result = false;
 
 		try {
 			// JDBCドライバを読み込む
@@ -112,14 +116,14 @@ public class FamilyDAO {
 			// メールアドレスが一致する家族がいたかどうかをチェックする
 			rs.next();
 			if (rs.getInt("COUNT(*)") == 1) {
-				idResult = true;
+				result = true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			idResult = false;
+			result = false;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			idResult = false;
+			result = false;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -127,13 +131,13 @@ public class FamilyDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					idResult = false;
+					result = false;
 				}
 			}
 		}
 
 		// 結果を返す
-		return idResult;
+		return result;
 	}
 
 	public boolean insert(Family family) {
