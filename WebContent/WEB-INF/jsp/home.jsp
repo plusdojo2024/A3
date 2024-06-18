@@ -9,5 +9,6 @@
 </head>
 <body>
 <h1>ホーム画面</h1>
+<a href="/A3//NoteServlet">引継ぎノート</a>
 </body>
 </html>

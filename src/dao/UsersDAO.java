@@ -23,7 +23,7 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SELECT文を準備する
-			String sql = "SELECT * FROM users WHERE family_id = ? AND name = ?";
+			String sql = "SELECT * FROM users WHERE family_id = ? AND name = ? AND delete = 0";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1, familyId);
 			pStmt.setString(2, name);
@@ -76,7 +76,7 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM users WHERE family_id = ? AND name = ?";
+			String sql = "SELECT COUNT(*) FROM users WHERE family_id = ? AND name = ? AND delete = 0";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1, familyId);
 			pStmt.setString(2, name);

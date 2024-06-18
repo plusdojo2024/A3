@@ -44,5 +44,6 @@
 
 		</table>
 	</form>
+	<a href="/A3//FamilyRegistServlet">新規アカウント作成</a>
 </body>
 </html>
