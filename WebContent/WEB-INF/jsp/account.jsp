@@ -12,6 +12,6 @@
  <h1>アカウント管理画面</h1>
  <button id="family_regist">家族登録</button>　<button id="user_edit">個人情報変更</button><br><br>
  <button id="family_edit">家族情報変更</button>　<button id="user_delete">アカウント削除</button>
-
+<script src="js/account.js"></script>
 </body>
 </html>
