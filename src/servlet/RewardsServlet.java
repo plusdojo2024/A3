@@ -31,7 +31,6 @@ public class RewardsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 
-		//文字化け防止
 		request.setCharacterEncoding("UTF-8");
 
 
