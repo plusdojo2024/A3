@@ -1,7 +1,7 @@
 <!--家族登録-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +9,7 @@
 <title>ログインページ</title>
 </head>
 <body>
-	<form id="create_form" method="post"
-		action="/A3//LoginServlet">
+	<form id="create_form" method="post" action="/A3//LoginServlet">
 		<table>
 
 			<tr>
@@ -37,9 +36,10 @@
 			<tr>
 				<td><input type="submit" name="submit" value="ログイン"> <span
 					id="error_message"></span>
-					<p class="error"><c:out value="${message.title}" />  <c:out value="${message.message}" /></p>
-					</td>
-
+					<p class="error">
+						<c:out value="${message.title}" />
+						<c:out value="${message.message}" />
+					</p></td>
 			</tr>
 
 		</table>
