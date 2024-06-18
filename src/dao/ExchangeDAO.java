@@ -21,8 +21,9 @@ public class ExchangeDAO
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
-
-			String sql = "SELECT * FROM exchange WHERE user_id = ?";
+			//usersテーブルとエクスチェンジテーブルを結合
+			//自分の家族IDを家族IDで検索
+			String sql = "";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1, exchange.getExchangeId());
 
@@ -68,8 +69,9 @@ public class ExchangeDAO
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-			// SELECT文を準備する
-			String sql = "insert into family(reward_id,uid,exchange_date)values(?,?,?)";
+			//usersテーブルとエクスチェンジテーブルを結合し、自分の家族IDを家族IDで検索
+
+			String sql = "insert into (reward,uid,exchange_date)values(?,?,?)";//sql修正が必要
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
