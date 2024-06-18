@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>アカウント管理画面</title>
 </head>
 <body>
+<h1>アカウント管理</h1>
+
 
 </body>
 </html>
