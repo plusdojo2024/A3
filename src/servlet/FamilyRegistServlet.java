@@ -38,6 +38,7 @@ public class FamilyRegistServlet extends HttpServlet {
 		// 新規家族作成ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyRegist.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -67,6 +68,7 @@ public class FamilyRegistServlet extends HttpServlet {
 			// 新規家族作成ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyRegist.jsp");
 			dispatcher.forward(request, response);
+			return;
 		} else {//メールアドレスが未登録
 				//家族情報をBeanに格納
 			Family family = new Family();
@@ -87,15 +89,15 @@ public class FamilyRegistServlet extends HttpServlet {
 			TimeLogic time = new TimeLogic();
 			family.setFamilyDate(time.nowJp());//家族アカウント作成日時
 			if (fDao.insert(family)) {//アカウント作成成功
-				FileLogic fC = new FileLogic();
+				FileLogic fL = new FileLogic();
 
 				Part part = request.getPart("icon");//アイコン画像取得
 
-				String name = fC.getFileName(part);//ファイル名取得
+				String name = fL.getFileName(part);//ファイル名取得
 
 				int familyId = fDao.searchId(hashMail);//familyIDを取得
 
-				String absolutePass = fC.setAbsolutePass(name, familyId);//絶対パス
+				String absolutePass = fL.setAbsolutePass(name, familyId);//絶対パス
 
 				//フォルダのパスだけ作成
 				File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
@@ -109,7 +111,7 @@ public class FamilyRegistServlet extends HttpServlet {
 				}
 
 				//アイコン画像の相対パス作成
-				String relativePath = fC.setRelativePath(name, familyId);
+				String relativePath = fL.setRelativePath(name, familyId);
 
 				//管理用ユーザー作成
 				Users user = new Users();
@@ -142,6 +144,8 @@ public class FamilyRegistServlet extends HttpServlet {
 					Message msg = new Message();
 					msg.setTitle("アカウント作成に成功しました。");
 					msg.setMessage("ログインページからログインしてください。");
+
+					request.setAttribute("message", msg);
 					// ログインページにフォワードする
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 					dispatcher.forward(request, response);
@@ -155,6 +159,7 @@ public class FamilyRegistServlet extends HttpServlet {
 					// 新規家族作成ページにフォワードする
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyRegist.jsp");
 					dispatcher.forward(request, response);
+					return;
 				}
 
 			} else {

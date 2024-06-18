@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form id="create_form" method="post"
-		action="/A3//FamilyRegistServlet" enctype="multipart/form-data">
+		action="/A3//LoginServlet">
 		<table>
 
 			<tr>

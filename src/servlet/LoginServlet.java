@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.FamilyDAO;
 import dao.UsersDAO;
@@ -151,14 +152,53 @@ public class LoginServlet extends HttpServlet {
 				//一致したら家族内の個人認証へ移行
 
 				String hashName = hashLogic.getHash(userName);
+				int familyId = fDao.searchId(hashMail);
 
 				//一致する名前がいるかチェック
-				if (uDao.userCheck(hashMail, hashName)) {
+				if (uDao.userCheck(familyId, hashName)) {
 					//家族内に一致する名前がいる
+					Users dbUser = new Users();
 					Users myUser = new Users();
 
+
+					dbUser = uDao.loginSearch(familyId, hashName);
+					String salt = dbUser.getUserSalt();
+					String dbPass = dbUser.getPw();
+
+					//パスワード・名前・メールアドレスのハッシュ化前の値を入れる
+					myUser.setFamilyId(dbUser.getFamilyId());
 					myUser.setName(userName);
+					myUser.setUid(dbUser.getUid());
 					myUser.setPw(pw);
+					myUser.setMail(mail);
+
+					//パスワードチェック
+					if(hashLogic.checkHash(pw, dbPass, salt)) {
+						//ログイン成功
+
+						// セッションスコープにユーザー情報を保存する
+						HttpSession session = request.getSession();
+						//いろいろハッシュ化されたDB内と同じデータを保存
+						session.setAttribute("dbUser", dbUser);
+
+						//いろいろハッシュ化される前の値を保存
+						session.setAttribute("user", myUser);
+
+						response.sendRedirect("/A3//HomeServlet");
+						return;
+					}else {
+						//パスワードが一致しない
+						Message msg = new Message();
+						msg.setTitle("ログイン失敗！");
+						msg.setMessage("個人パスワードが一致しません");
+						// リクエストスコープに、タイトル、メッセージを格納する
+						request.setAttribute("message", msg);
+
+						// ログインページにフォワードする
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+						dispatcher.forward(request, response);
+						return;
+					}
 
 				} else {
 					//一致する名前がいない

@@ -15,6 +15,7 @@ public class Users implements Serializable{
 	private int admin;
 	private String userDate;
 	private int delete;
+	private String mail;
 	public int getUid() {
 		return uid;
 	}
@@ -86,5 +87,11 @@ public class Users implements Serializable{
 	}
 	public void setDelete(int delete) {
 		this.delete = delete;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 }

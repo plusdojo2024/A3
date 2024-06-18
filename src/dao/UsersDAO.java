@@ -10,7 +10,7 @@ import model.Users;
 
 public class UsersDAO {
 
-	public Users loginSearch(String mail,String name) {
+	public Users loginSearch(int familyId,String name) {
 		Connection conn = null;
 
 		Users user = new Users();
@@ -23,9 +23,9 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SELECT文を準備する
-			String sql = "SELECT * FROM users WHERE mail = ? AND name = ?";
+			String sql = "SELECT * FROM users WHERE family_id = ? AND name = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, mail);
+			pStmt.setInt(1, familyId);
 			pStmt.setString(2, name);
 
 			// SELECT文を実行し、結果表を取得する
@@ -42,6 +42,8 @@ public class UsersDAO {
 			user.setHavePoint(rs.getInt("have_point"));
 			user.setIcon(rs.getString("icon"));
 			user.setDelete(rs.getInt("delete"));
+			user.setName(rs.getString("name"));
+			user.setUid(rs.getInt("uid"));
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,7 +64,7 @@ public class UsersDAO {
 		return user;
 	}
 
-	public boolean userCheck(String mail,String name) {
+	public boolean userCheck(int familyId,String name) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -74,9 +76,9 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM users WHERE mail = ? AND name = ?";
+			String sql = "SELECT COUNT(*) FROM users WHERE family_id = ? AND name = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, mail);
+			pStmt.setInt(1, familyId);
 			pStmt.setString(2, name);
 
 			// SELECT文を実行し、結果表を取得する
