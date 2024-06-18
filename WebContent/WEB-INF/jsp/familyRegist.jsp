@@ -11,12 +11,12 @@
 <body>
 	<h2>新規登録</h2>
 	<form id="create_form" method="post"
-		action="/A3//FamilyRegistServlet">
+		action="/A3//FamilyRegistServlet" enctype="multipart/form-data">
 		<table>
 
 			<tr>
 				<td><label>アイコン画像<br> <input type="file"
-						name="icon">
+						name="icon" >
 				</label></td>
 				<td><label>家族名<br> <input type="text"
 						name="family_name">

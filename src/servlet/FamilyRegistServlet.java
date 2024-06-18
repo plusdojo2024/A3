@@ -24,8 +24,9 @@ import model.Users;
 /**
  * Servlet implementation class FamilyRegistServlet
  */
-@MultipartConfig(location = "C:/pleiades/workspace/TestWeb01/WebContent/tmp", maxFileSize = 1024 * 1024 * 10)
+
 @WebServlet("/FamilyRegistServlet")
+@MultipartConfig(location = "C:/pleiades/workspace/A3/WebContent/tmp", maxFileSize = 1024 * 1024 * 10)
 public class FamilyRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -94,16 +95,18 @@ public class FamilyRegistServlet extends HttpServlet {
 
 				int familyId = fDao.searchId(hashMail);//familyIDを取得
 
-				String absolutePass = fC.setAbsolutePass(name, familyId);
+				String absolutePass = fC.setAbsolutePass(name, familyId);//絶対パス
 
 				//フォルダのパスだけ作成
 				File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
 
 				if (!target.exists()) {//フォルダが存在しなければ作成
 					target.mkdirs();
+					//ファイル保存
+					part.write(absolutePass);
+				} else {
+					part.write(absolutePass);
 				}
-				//ファイル保存
-				part.write(absolutePass);
 
 				//アイコン画像の相対パス作成
 				String relativePath = fC.setRelativePath(name, familyId);
@@ -117,6 +120,8 @@ public class FamilyRegistServlet extends HttpServlet {
 				user.setHavePoint(0);
 				user.setRole(1);
 				user.setUserDate(time.nowJp());
+				user.setName(userName);
+				user.setColor(color);
 
 				//パスワードのハッシュ化
 				hashLogic.randHash(userPass);
@@ -127,28 +132,28 @@ public class FamilyRegistServlet extends HttpServlet {
 
 				if (uDao.insert(user)) {
 					System.out.println("成功！");
+					try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
+						Thread.sleep(2000); // 4秒(4000ミリ秒)間だけ処理を止める
+					} catch (InterruptedException e) {
+					}
+
+					Message msg = new Message();
+					msg.setTitle("アカウント作成に成功しました。");
+					msg.setMessage("ログインページからログインしてください。");
+					// 新規家族作成ページにフォワードする
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+					dispatcher.forward(request, response);
 				} else {
 					Message msg = new Message();
 					msg.setTitle("アカウント作成失敗！");
 					msg.setMessage("代表者アカウントの作成に失敗しました");
 
+					request.setAttribute("message", msg);
+
 					// 新規家族作成ページにフォワードする
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyRegist.jsp");
 					dispatcher.forward(request, response);
 				}
-
-				try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
-					Thread.sleep(4000); // 4秒(4000ミリ秒)間だけ処理を止める
-				} catch (InterruptedException e) {
-				}
-				System.out.println(familyId);
-				System.out.println(familyPass);
-				System.out.println(familyName);
-				System.out.println(userName);
-				System.out.println(mail);
-				System.out.println(userPass);
-				System.out.println(color);
-				System.out.println("");
 
 			} else {
 				Message msg = new Message();

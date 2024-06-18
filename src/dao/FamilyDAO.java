@@ -148,7 +148,7 @@ public class FamilyDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO FAMILY(mail,family_name,family_pass,family_salt,family_date) values(?,?,?,?,?)";
+			String sql = "INSERT INTO FAMILY(mail,family_name,family_pass,family_salt,family_date,family_update) values(?,?,?,?,?,now())";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
