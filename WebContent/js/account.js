@@ -1,0 +1,1 @@
+let regist = document.getElementById('regist');
