@@ -1,7 +1,7 @@
 CREATE TABLE exchange (
   exchange_id INTEGER NOT NULL AUTO_INCREMENT,
   reward VARCHAR(20),
-  uid INTEGER,
+  uid INTEGER NOT NULL AUTO_INCREMENT,
   exchange_date VARCHAR(32),
   PRIMARY KEY (exchange_id),
   CONSTRAINT fk_exchange_user_id
