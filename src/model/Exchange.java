@@ -1,6 +1,8 @@
 package model;
 
-public class Exchange
+import java.io.Serializable;
+
+public class Exchange implements Serializable
 {
 	private int exchangeId;//識別番号
 	private String reward;//ご褒美名

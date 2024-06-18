@@ -1,5 +1,7 @@
 package model;
 
-public class Rewards {
+import java.io.Serializable;
+
+public class Rewards implements Serializable{
 
 }

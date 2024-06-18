@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import dao.FamilyDAO;
+import dao.UsersDAO;
 import logic.FileLogic;
 import logic.HashLogic;
 import logic.TimeLogic;
@@ -22,6 +24,7 @@ import model.Users;
 /**
  * Servlet implementation class FamilyRegistServlet
  */
+@MultipartConfig(location = "C:/pleiades/workspace/TestWeb01/WebContent/tmp", maxFileSize = 1024 * 1024 * 10)
 @WebServlet("/FamilyRegistServlet")
 public class FamilyRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +39,6 @@ public class FamilyRegistServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -49,26 +51,23 @@ public class FamilyRegistServlet extends HttpServlet {
 		String userPass = request.getParameter("user_pass");
 		String color = request.getParameter("color");
 
-
-
-
 		HashLogic hashLogic = new HashLogic();
 		String hashMail = hashLogic.getHash(mail);
 
 		FamilyDAO fDao = new FamilyDAO();
 		//家族(メールアドレス)が既に登録されているかチェック
-		if(fDao.familyCheck(hashMail)) {//既に登録されている
+		if (fDao.familyCheck(hashMail)) {//既に登録されている
 			Message msg = new Message();
 			msg.setTitle("アカウント登録失敗！");
 			msg.setMessage("このメールアドレスは既に使用されています");
 
-			request.setAttribute("message",msg);
+			request.setAttribute("message", msg);
 
 			// 新規家族作成ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyRegist.jsp");
 			dispatcher.forward(request, response);
-		}else {//メールアドレスが未登録
-			//家族情報をBeanに格納
+		} else {//メールアドレスが未登録
+				//家族情報をBeanに格納
 			Family family = new Family();
 			//メアドは既にハッシュ化してあるのでそのまま格納
 			family.setMail(hashMail);
@@ -84,9 +83,9 @@ public class FamilyRegistServlet extends HttpServlet {
 
 			family.setFamilyName(familyName);//家族名格納
 
-			TimeLogic time= new TimeLogic();
+			TimeLogic time = new TimeLogic();
 			family.setFamilyDate(time.nowJp());//家族アカウント作成日時
-			if(fDao.insert(family)) {//アカウント作成成功
+			if (fDao.insert(family)) {//アカウント作成成功
 				FileLogic fC = new FileLogic();
 
 				Part part = request.getPart("icon");//アイコン画像取得
@@ -98,7 +97,7 @@ public class FamilyRegistServlet extends HttpServlet {
 				String absolutePass = fC.setAbsolutePass(name, familyId);
 
 				//フォルダのパスだけ作成
-				File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_"+familyId+"/");
+				File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
 
 				if (!target.exists()) {//フォルダが存在しなければ作成
 					target.mkdirs();
@@ -124,6 +123,20 @@ public class FamilyRegistServlet extends HttpServlet {
 				user.setPw(hashLogic.getPw());//パスワードセット
 				user.setUserSalt(hashLogic.getSalt());//ソルトセット
 
+				UsersDAO uDao = new UsersDAO();
+
+				if (uDao.insert(user)) {
+					System.out.println("成功！");
+				} else {
+					Message msg = new Message();
+					msg.setTitle("アカウント作成失敗！");
+					msg.setMessage("代表者アカウントの作成に失敗しました");
+
+					// 新規家族作成ページにフォワードする
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyRegist.jsp");
+					dispatcher.forward(request, response);
+				}
+
 				try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
 					Thread.sleep(4000); // 4秒(4000ミリ秒)間だけ処理を止める
 				} catch (InterruptedException e) {
@@ -137,23 +150,19 @@ public class FamilyRegistServlet extends HttpServlet {
 				System.out.println(color);
 				System.out.println("");
 
-			}else {
+			} else {
 				Message msg = new Message();
 				msg.setTitle("アカウント作成失敗！");
 				msg.setTitle("予期せぬ問題が発生し、アカウント作成に失敗しました。");
 
-				request.setAttribute("message",msg);
+				request.setAttribute("message", msg);
 
 				// 新規家族作成ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyRegist.jsp");
 				dispatcher.forward(request, response);
 			}
 
-
-
 		}
-
-
 
 	}
 

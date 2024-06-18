@@ -1,5 +1,7 @@
 package model;
 
-public class Notes {
+import java.io.Serializable;
+
+public class Notes implements Serializable{
 
 }

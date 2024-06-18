@@ -1,6 +1,8 @@
 package model;
 
-public class TodoList {
+import java.io.Serializable;
+
+public class TodoList implements Serializable{
 	private int list_id;
 	private int family_id;
 	private String task;

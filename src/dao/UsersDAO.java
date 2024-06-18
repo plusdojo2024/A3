@@ -20,11 +20,19 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO Users(family_id,name,pw,user_salt,,color,have_point,icon,admin,user_date) values(?,?,?,?)";
+			String sql = "INSERT INTO Users(family_id,name,pw,user_salt,color,have_point,icon,admin,user_date) values(?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			//pStmt.setString(1, Users.getMail());
+			pStmt.setInt(1, user.getFamilyId());
+			pStmt.setString(2, user.getName());
+			pStmt.setString(3, user.getPw());
+			pStmt.setString(4, user.getUserSalt());
+			pStmt.setString(5, user.getColor());
+			pStmt.setInt(6, user.getHavePoint());
+			pStmt.setString(7, user.getIcon());
+			pStmt.setInt(8, user.getAdmin());
+			pStmt.setString(9, user.getUserDate());
 
 
 
