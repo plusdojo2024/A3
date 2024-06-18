@@ -1,0 +1,96 @@
+/* -----------------------
+タイトルのボックス
+-------------------------*/ 
+.title_box 
+{
+    background-color: white;
+    color: green;
+    width: 30%;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin: 0 10px;
+}
+/* -----------------------
+入力項目のボックス
+-------------------------*/ 
+.main_box 
+{
+    background-color: #7dcd85;
+    color: white;
+    width: 30%;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin: 0 0;
+}
+/* -----------------------
+担当者のボックス
+-------------------------*/ 
+.icon_box 
+{
+    background-color: #7dcd85;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin: 0 0;
+}
+/* -----------------------
+要録ボタンのボックス
+-------------------------*/ 
+.submit_box 
+{
+    background-color: #7dcd85;
+    color: white;
+    width: 130px;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin: 0 0;
+}
+
+/* -----------------------
+削除のボックス
+-------------------------*/ 
+.delete_box 
+{
+    background-color: #ff896f;
+    color: white;
+    width: 130px;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin: 0 0;
+}
+
+
+
+
+
+
+
+
+
+

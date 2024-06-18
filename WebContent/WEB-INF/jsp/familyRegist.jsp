@@ -1,6 +1,7 @@
 <!--家族登録-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,15 @@
 <body>
 	<h2>新規登録</h2>
 	<form id="create_form" method="post"
-		action="/simpleBC/AddAccountServlet">
+		action="/A3//FamilyRegistServlet" enctype="multipart/form-data">
 		<table>
 
 			<tr>
 				<td><label>アイコン画像<br> <input type="file"
-						name="icon">
+						name="icon" >
 				</label></td>
 				<td><label>家族名<br> <input type="text"
-						name="family_id">
+						name="family_name">
 				</label></td>
 
 			</tr>
@@ -31,7 +32,7 @@
 				</label></td>
 			<tr>
 			<tr>
-				<td><label>家族PASS<br> <input type="password"
+				<td><label>家族パスワード<br> <input type="password"
 						name="family_pass">
 				</label></td>
 			<tr>
@@ -47,7 +48,10 @@
 			<tr>
 			<tr>
 				<td><input type="submit" name="submit" value="新規作成"> <span
-					id="error_message"></span></td>
+					id="error_message"></span>
+					<p class="error"><c:out value="${message.title}" />  <c:out value="${message.message}" /></p>
+					</td>
+
 			</tr>
 
 		</table>
