@@ -22,7 +22,7 @@ public class ExchangeDAO
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-			String sql = "SELECT * FROM exchange WHERE exchange_id = ?";
+			String sql = "SELECT * FROM exchange WHERE user_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1, exchange.getExchangeId());
 
@@ -55,7 +55,7 @@ public class ExchangeDAO
 		return exchange;
 	}
 
-	public Exchange insert(Exchange exchange)
+	public boolean insert(Exchange exchange)
 	{
 		Connection conn = null;
 		boolean result = false;
@@ -106,7 +106,7 @@ public class ExchangeDAO
                 }
             }
         }
-		return exchange;
+		return result;
 	}
 
 }
