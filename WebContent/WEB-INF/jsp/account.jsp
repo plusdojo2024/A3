@@ -1,6 +1,7 @@
 <!-- アカウント管理-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,8 @@
 </head>
 <body>
  <h1>アカウント管理画面</h1>
- <button id="family_regist">家族登録</button>　<button id="user_edit">個人情報変更</button><br><br>
- <button id="family_edit">家族情報変更</button>　<button id="user_delete">アカウント削除</button>
+ <c:if test="${user.role==1}"> <button id="family_regist">家族登録</button></c:if>　<button id="user_edit">個人情報変更</button><br><br>
+ <c:if test="${user.role==1}"><button id="family_edit">家族情報変更</button></c:if>　<c:if test="${user.role==1}"><button id="user_delete">アカウント削除</button></c:if>
 <script src="js/account.js"></script>
 </body>
 </html>

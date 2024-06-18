@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>家族情報変更</title>
 </head>
 <body>
-
+<h1>家族情報変更</h1>
 </body>
 </html>
