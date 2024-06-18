@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+    <ul>
+        <li class="plus">+</li>
+        <li class="list">
+            <a href="home.html">
+                <span class="menu">home</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="position.html">
+                <span class="menu">position</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="shape.html">
+                <span class="menu">shape</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="">
+                <span class="menu">move</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="">
+                <span class="menu">other</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<main class="main">
+    <h1 class="title">-SHAPE-</h1>
+    <br><br><br><br><br>
+    <span class="text">
+    <h2>まる</h2>
+    <div class="circle"></div>
+    <div class="code">
+        <pre class="prettyprint lang-html linenums">
+            .circle{ 
+                height: 100px;
+                width: 100px;
+                clip-path: circle(50% at 50% 50%);
+            }
+        </pre>
+        </div>
+        <h2>三角</h2>
+        <div class="triangle"></div>
+        <div class="code">
+            <pre class="prettyprint lang-html linenums">
+                .circle{ 
+                    height: 100px;
+                    width: 100px;
+                    clip-path: circle(50% at 50% 50%);
+                }
+            </pre>
+            </div>
+            <h2>十字</h2>
+            <div class="cross"></div>
+            <div class="code">
+                <pre class="prettyprint lang-html linenums">
+                    .circle{ 
+                        height: 100px;
+                        width: 100px;
+                        clip-path: circle(50% at 50% 50%);
+                    }
+                </pre>
+                </div>
+                <h2>変な三角(ほぼ背景用)</h2>
+                <div class="corner"></div>
+                <div class="code">
+                    <pre class="prettyprint lang-html linenums">
+                        .circle{
+                            height: 100px;
+                            width: 100px;
+                            clip-path: polygon(100% 0, 0 0, 0 50%);
+}
+                    </pre>
+                    </div>
+                    <h2>矢印左</h2>
+                    <div class="leftarrow"></div>
+                    <div class="code">
+                        <pre class="prettyprint lang-html linenums">
+                            .circle{ 
+                                height: 100px;
+                                width: 100px;
+                                clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+                            }
+                        </pre>
+                        </div>
+                        <h2>矢印右</h2>
+                        <div class="rightarrow"></div>
+                        <div class="code">
+                            <pre class="prettyprint lang-html linenums">
+                                .circle{ 
+                                    height: 100px;
+                                    width: 100px;
+                                    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+                                }
+                            </pre>
+                            </div>
+</span>
+</main>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=doxy"></script>

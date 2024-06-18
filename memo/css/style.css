@@ -1,0 +1,254 @@
+*{
+    margin:0;
+    padding:0;
+    /* border:1px solid */
+}
+body{
+    height:100vh;
+}
+header{
+    position: absolute;
+}
+.nav{
+    height: 100vh;
+    width: 80px;
+    position: relative;
+    background-color: coral;
+    overflow-x: hidden;
+    transition: 0.5s;
+    position: fixed;
+    z-index:1;
+}
+.nav ul{
+    position: absolute;
+    top:30%;;
+    left:10px;
+    width:100%;
+    padding-left: 10px;;
+}
+.list{
+    list-style:none;
+    display:block;
+    width:100%;
+    position:relative;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.nav ul li a{
+    text-decoration: none;
+    color:white;
+    display: block;
+    width:100%;
+    position: relative;
+    font-size:1.5rem;
+    display: flex;
+}
+.menu{
+    padding-left: 50px;
+    height: 60px;
+    line-height:60px;
+    opacity: 0;
+    transition: 0.2s;
+}
+.list:hover{
+    background-color:darkkhaki
+}
+.nav:hover{
+    width:300px;
+}
+.nav:hover .menu{
+    opacity: 1;
+}
+.plus{
+    list-style:none;
+    color: white;
+    font-size:4rem;
+    position: absolute;
+    top:-80%;
+    left:0px;
+    transition: 0.5s;
+}
+.nav:hover .plus{
+    opacity: 0;
+    left:60px;
+}
+
+main{
+    position:relative;
+    top:20px;
+    text-align: center;
+}
+.title{
+    color: black;
+    position: relative;
+    display: block;
+    
+}
+
+.text{
+    color:black;
+    position: relative;}
+
+    /* position */
+
+    .relativebox{
+        position: relative;
+        height:100px;
+        width:100px;
+        background-color: aqua;
+        left:50%;
+        transform: translate3d(-50%);
+    }
+    .relativebox2{
+        position: relative;
+        height:100px;
+        width:100px;
+        background-color: aqua;
+        top:10px;
+        left:50%;
+    }
+    .relativebox3{
+        position: relative;
+        height:100px;
+        width:100px;
+        background-color:blueviolet;
+        top:50px;
+        left:50%;
+    }
+    .relative3child{
+        position: relative;
+        height:100px;
+        width:100px;
+        background-color:aqua;
+        top:50px;
+        left:70px;
+    }
+
+    
+    .ss1{
+        height: 200px;
+        width: 300px;
+    }
+    .code{
+        position: relative;
+        left:50%;
+        transform: translate(-50%);
+        width:500px;
+        height: auto;
+    }
+.box{
+    background-color: aqua;
+    height: 100px;
+    width: 200px;
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);
+}
+.box2{
+    background-color:blueviolet;
+    height: 50px;
+    width: 100px;
+    position: absolute;
+}
+
+.box3{
+    background-color:blueviolet;
+    height: 50px;
+    width: 100px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.box4{
+    display: flex;
+    background-color: aqua;
+    height: 100px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;    
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);
+}
+.box5{
+    background-color:blueviolet;
+    height: 50px;
+    width: 80px;
+}
+.box6{
+    background-color:brown;
+    height: 50px;
+    width: 80px;
+}
+
+.circle{
+    background-color:blueviolet;
+
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);    
+    height: 100px;
+    width: 100px;
+    clip-path: circle(50% at 50% 50%);
+}
+.triangle{
+    background-color:blueviolet;
+
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);    
+    height: 100px;
+    width: 100px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.cross{
+    background-color:blueviolet;
+
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);    
+    height: 100px;
+    width: 100px;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+
+}
+.corner{
+    background-color:blueviolet;
+
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);    
+    height: 100px;
+    width: 100px;
+    clip-path: polygon(100% 0, 0 0, 0 50%);
+}
+.leftarrow{
+    background-color:blueviolet;
+
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);    
+    height: 100px;
+    width: 100px;
+    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+}
+.rightarrow{
+    background-color:blueviolet;
+
+    position: relative;
+    top:-50%;
+    left:50%;
+    transform: translate(-50%);    
+    height: 100px;
+    width: 100px;
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}

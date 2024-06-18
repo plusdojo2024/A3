@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+    <ul>
+        <li class="plus">+</li>
+        <li class="list">
+            <a href="home.html">
+                <span class="menu">home</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="position.html">
+                <span class="menu">position</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="shape.html">
+                <span class="menu">shape</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="">
+                <span class="menu">move</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="">
+                <span class="menu">other</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<main class="main">
+    <h1 class="title">-POSITION-</h1>
+    <br><br><br><br><br>
+    <span class="text">
+        <h1>positionではそれぞれの要素の位置を変えることができる</h1>
+        <h3>基本的にはcssで設定してhtmlにある要素の位置関係を変化させる</h3>
+        <h3>top.bottom.left.rightなどを用いてどこに移動させるかを決めることができる。</h3><br>
+        <h3>"&lt;div class=box&gt;&lt;/div&gt;"に対する処理</h3>
+        <h2>position:relative;</h2>
+        <h3>position:relativeは今の位置からの絶対的な位置を決める</h3>
+        <h3>現状の上から10px、左から20px動かす場合</h3>
+<div class="code">
+<pre class="prettyprint lang-html linenums">
+    .box{
+        position: relative;
+    top: 10px;
+    left: 20px;
+}
+</pre>
+</div>
+<h3>横列の真ん中に動かす場合</h3>
+
+<div class="code">
+    <pre class="prettyprint lang-html linenums">
+        .box{
+            position: relative;
+            left:50%;
+            transform: translate(-50%);
+        }
+    </pre>
+    </div>
+    <h2>position:absolute;</h2>
+    <h3>position:relativeは親要素に対する相対的な位置を決める</h3>
+    <h3>親要素に対しての自分の位置を設定(親にpositionを指定していないと動かない)</h3>
+    <h3>何も設定していない場合</h3>
+<div class="box">
+    <div class="box2"></div>
+</div>
+<div class="code">
+    <pre class="prettyprint lang-html linenums">
+        .box{
+            background-color: aqua;
+            height: 100px;
+            width: 200px;
+            position: relative;
+            top:-50%;
+            left:50%;
+            transform: translate(-50%);
+        }
+        .box2{
+            background-color:blueviolet;
+            height: 50px;
+            width: 100px;
+            position: absolute;
+        }
+    </pre>
+    </div>
+    <h3>真ん中に設定する場合(.boxの設定は同じ)</h3>
+    <div class="box">
+        <div class="box3"></div>
+    </div>
+    <div class="code">
+        <pre class="prettyprint lang-html linenums">
+            .box3{
+                background-color:blueviolet;
+                height: 50px;
+                width: 100px;
+                position: absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+            }
+        </pre>
+        </div>        
+        <h2>display:flex;</h2>
+        <h3>よくわからないけど使うと子要素が横並びになるしなんか打ち込めば真ん中になる</h3>
+        <h3>真ん中にする場合</h3>
+        <div class="box4">
+            <div class="box5"></div>
+        </div>
+        <div class="code">
+            <pre class="prettyprint lang-html linenums">
+                .box4{
+                    display: flex;
+                    background-color: aqua;
+                    height: 100px;
+                    width: 200px;
+                    justify-content: center;
+                    align-items: center;    
+                    position: relative;
+                    top:-50%;
+                    left:50%;
+                    transform: translate(-50%);
+                }
+                .box5{
+                    background-color:blueviolet;
+                    height: 50px;
+                    width: 80px;
+                }
+            </pre>
+            </div>   
+            <h3>使うと子要素が横並びになる</h3>
+        <div class="box4">
+            <div class="box5"></div>
+            <div class="box6"></div></div>
+            <div class="code">
+                <pre class="prettyprint lang-html linenums">
+                    .box4{
+                        display: flex;
+                        background-color: aqua;
+                        height: 100px;
+                        width: 200px;
+                        justify-content: center;
+                        align-items: center;    
+                        position: relative;
+                        top:-50%;
+                        left:50%;
+                        transform: translate(-50%);
+                    }
+                    .box5{
+                        background-color:blueviolet;
+                        height: 50px;
+                        width: 80px;
+                    }
+                    .box6{
+                        background-color:brown;
+                        height: 50px;
+                        width: 80px;
+                    }
+                </pre>
+                </div>  
+</span>
+
+    
+</main>
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=doxy"></script>
