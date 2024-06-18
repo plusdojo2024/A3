@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +30,20 @@ public class RewardsEditServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+
+		request.setCharacterEncoding("UTF-8");
+
+		String reward = request.getParameter("reward");
+		String point = request.getParameter("point");
+		String name = request.getParameter("name");
+
+        request.setAttribute("reward", reward);
+        request.setAttribute("point", point);
+        request.setAttribute("name", name);
+
+
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsEdit.jsp");
+	dispatcher.forward(request, response);
 	}
 
 }
