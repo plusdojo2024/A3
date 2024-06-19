@@ -1,7 +1,7 @@
 <!--個人情報変更-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,54 +10,57 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/accountEdit.css">
 
-    <div class="nav">
-        <div class="left_icons">
-        <c:set var="icon" value="${myUser.icon}"></c:set>
-            <div class="green_box"><img src="${icon}" id="user_icon"></div>
-            <div class="green_box"><c:out value="${myUser.havePoint}" /></div>
-        </div>
+<div class="nav">
+	<div class="left_icons">
+		<c:set var="icon" value="${myUser.icon}"></c:set>
+		<div class="green_box">
+			<img src="${icon}" id="user_icon">
+		</div>
+		<div class="green_box">
+			<c:out value="${myUser.havePoint}" />
+		</div>
+	</div>
 
-        <div class="home_logo">
-            <a href="home.png"></a>
-            <a href="/A3/HomeServlet">F&M</a>
-        </div>
+	<div class="home_logo">
+		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
+	</div>
 
-        <div class="right_buttons">
-            <button class="account-management"><a href="/A3/AccountServlet">アカウント管理</a></button>
-            <button class="logout"><a href="/A3/LogoutServlet">ログアウト</a></button>
-        </div>
+	<div class="right_buttons">
+		<button class="account-management">
+			<a href="/A3/AccountServlet">アカウント管理</a>
+		</button>
+		<button class="logout">
+			<a href="/A3/LogoutServlet">ログアウト</a>
+		</button>
+	</div>
 
-    </div>
+</div>
 </head>
 <body>
-<br><br><br>
+	<br>
+	<br>
+	<br>
 	<h2>個人情報変更</h2>
 
-	<form id="create_form" method="post" action="/A3//AccountEditServlet"
+	<form id="create_form" method="post" action="/A3/AccountEditServlet"
 		enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td>
-				<label>個人名<br> <input type="text"
-						name="user_name">
+				<td><c:set var="name" value="${myUser.name}">
+					</c:set> <label>個人名<br> <input type="text" name="user_name"
+						value="${name}">
 				</label></td>
 			<tr>
 			<tr>
-				<td>
-
-				<label>個人パスワード<br> <input type="password"
+				<td><label>個人パスワード<br> <input type="password"
 						name="user_pass" id="pass"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
-
 			<tr>
-				<td>
-
-				<label>個人パスワード確認<br> <input type="password"
+				<td><label>個人パスワード確認<br> <input type="password"
 						id="pass_check"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
-
 			<tr>
 				<td><label>アイコン画像<br> <input type="file"
 						name="icon">
@@ -65,8 +68,9 @@
 
 			</tr>
 			<tr>
+				<c:set var="color" value="${myUser.color}"></c:set>
 				<td><label>個人カラー<br> <input type="color"
-						name="color">
+						name="color" value="${color}">
 				</label></td>
 			<tr>
 			<tr>

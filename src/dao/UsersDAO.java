@@ -175,7 +175,7 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "UPDATE users SET name = ?,color = ?,icon = ?, ,pw = ?,user_salt = ? , user_update = now() WHERE uid = ?";
+			String sql = "UPDATE users SET name = ?,color = ?,icon = ?, pw = ?,user_salt = ? , user_update = now() WHERE uid = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -260,5 +260,46 @@ public class UsersDAO {
 		}
 
 		return user;
+	}
+
+	public boolean delete(int uid) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "DELETE FROM users WHERE uid = ?";
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1,uid);
+
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
 	}
 }

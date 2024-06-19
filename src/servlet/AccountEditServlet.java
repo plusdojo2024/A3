@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,6 @@ import javax.servlet.http.Part;
 import dao.UsersDAO;
 import logic.FileLogic;
 import logic.HashLogic;
-import logic.TimeLogic;
 import model.Message;
 import model.Users;
 
@@ -23,6 +23,7 @@ import model.Users;
  * Servlet implementation class AccountEditServlet
  */
 @WebServlet("/AccountEditServlet")
+@MultipartConfig(location = "C:/pleiades/workspace/A3/WebContent/tmp", maxFileSize = 1024 * 1024 * 10)
 public class AccountEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,7 +53,10 @@ public class AccountEditServlet extends HttpServlet {
 		String userPass = request.getParameter("user_pass");
 		String color = request.getParameter("color");
 
-		TimeLogic time = new TimeLogic();
+		//System.out.println("name"+userName);
+		//System.out.println("pass"+userPass);
+		//System.out.println("color"+color);
+
 
 		//セッションスコープからログイン中のユーザー情報を持ってくる
 		HttpSession session = request.getSession();
@@ -68,11 +72,13 @@ public class AccountEditServlet extends HttpServlet {
 		Users updateUser = new Users();
 
 
-		if(userPass==null) {//パスワードが送られて来なかったら
+		if(userPass==null || userPass.equals("")) {//パスワードが送られて来なかったら
+			System.out.println("ない");
 			//元々ある値をそのままセット
 			updateUser.setPw(dbUser.getPw());
 			updateUser.setUserSalt(dbUser.getUserSalt());
 		}else {//パスワードが送られてきていたら
+			System.out.println("ある");
 			//ハッシュ化してハッシュ値とソルトをセット
 			HashLogic hLogic = new HashLogic();
 			hLogic.randHash(userPass);
@@ -89,30 +95,35 @@ public class AccountEditServlet extends HttpServlet {
 		FileLogic fL = new FileLogic();
 
 		Part part = request.getPart("icon");//アイコン画像取得
+		//System.out.println("画像"+part.getSize());
+		if(part.getSize()!=0) {
+			String name = fL.getFileName(part);//ファイル名取得
 
-		String name = fL.getFileName(part);//ファイル名取得
+			int familyId = user.getFamilyId();
 
-		int familyId = user.getFamilyId();
+			String absolutePass = fL.setAbsolutePass(name, familyId);//絶対パス
 
-		String absolutePass = fL.setAbsolutePass(name, familyId);//絶対パス
+			//フォルダのパスだけ作成
+			File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
 
-		//フォルダのパスだけ作成
-		File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
+			if (!target.exists()) {//フォルダが存在しなければ作成
+				target.mkdirs();
+				//ファイル保存
+				part.write(absolutePass);
+			} else {
+				part.write(absolutePass);
+			}
 
-		if (!target.exists()) {//フォルダが存在しなければ作成
-			target.mkdirs();
-			//ファイル保存
-			part.write(absolutePass);
-		} else {
-			part.write(absolutePass);
+			//アイコン画像の相対パス作成
+			String relativePath = fL.setRelativePath(name, familyId);
+
+			updateUser.setIcon(relativePath);
+		}else {
+			updateUser.setIcon(dbUser.getIcon());
 		}
 
-		//アイコン画像の相対パス作成
-		String relativePath = fL.setRelativePath(name, familyId);
-
-		updateUser.setIcon(relativePath);
-
 		UsersDAO uDao = new UsersDAO();
+		updateUser.setUid(dbUser.getUid());
 		Message msg = new Message();
 		if (uDao.update(updateUser)) {
 			System.out.println("成功しました。");

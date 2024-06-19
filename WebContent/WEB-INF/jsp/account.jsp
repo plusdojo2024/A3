@@ -44,6 +44,7 @@
 	<c:if test="${myUser.role==1}">
 		<button id="user_delete">アカウント削除</button>
 	</c:if>
+	<c:out value="${message.message}" />
 	<script src="js/account.js"></script>
 </body>
 </html>
