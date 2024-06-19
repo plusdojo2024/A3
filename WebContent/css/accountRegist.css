@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+
+.role_image{
+	width: 100%;
+	background-color: #ffffff;
+}
+button{
+	width: 10%;
+	margin:auto;
+	background-color: #ffffff;
+}

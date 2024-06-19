@@ -151,17 +151,16 @@ public class LoginServlet extends HttpServlet {
 			if (hashLogic.checkHash(familyPass, family.getFamilyPass(), family.getFamilySalt())) {
 				//一致したら家族内の個人認証へ移行
 
-				String hashName = hashLogic.getHash(userName);
 				int familyId = fDao.searchId(hashMail);
 
 				//一致する名前がいるかチェック
-				if (uDao.userCheck(familyId, hashName)) {
+				if (uDao.userCheck(familyId, userName)) {
 					//家族内に一致する名前がいる
 					Users dbUser = new Users();
 					Users myUser = new Users();
 
 
-					dbUser = uDao.loginSearch(familyId, hashName);
+					dbUser = uDao.loginSearch(familyId, userName);
 					String salt = dbUser.getUserSalt();
 					String dbPass = dbUser.getPw();
 

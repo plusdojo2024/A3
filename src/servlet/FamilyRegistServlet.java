@@ -130,14 +130,14 @@ public class FamilyRegistServlet extends HttpServlet {
 				user.setPw(hashLogic.getPw());//パスワードセット
 				user.setUserSalt(hashLogic.getSalt());//ソルトセット
 
-				user.setName(hashLogic.getHash(userName));
+				user.setName(userName);
 
 				UsersDAO uDao = new UsersDAO();
 
 				if (uDao.insert(user)) {
 					System.out.println("成功！");
 					try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
-						Thread.sleep(2000); // 4秒(4000ミリ秒)間だけ処理を止める
+						Thread.sleep(2000); // 2秒(2000ミリ秒)間だけ処理を止める
 					} catch (InterruptedException e) {
 					}
 
