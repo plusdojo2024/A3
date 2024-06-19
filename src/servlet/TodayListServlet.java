@@ -34,7 +34,7 @@ public class TodayListServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// メニューページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoList.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todayList.jsp");
 		dispatcher.forward(request, response);
 	}
 
