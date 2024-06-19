@@ -1,6 +1,7 @@
 <!-- アカウント削除-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,14 @@
 </head>
 <body>
 <h1>家族削除</h1>
+<c:forEach var="e" items="${familyList}">
+<form method="post" action="/A3/AccountDeleteServlet">
+<c:set var="name" value="${e.name}" ></c:set>
+<c:set var="uid" value="${e.uid}" ></c:set>
+<input type="submit" name = "user_name" value="${name}">
+<input type="hidden" name="uid" value="${uid}">
+</form>
+</c:forEach>
 
 </body>
 </html>
