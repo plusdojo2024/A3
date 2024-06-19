@@ -15,7 +15,7 @@
 
         <div class="home_logo">
             <a href="home.png"></a>
-            <a href="home.html">F&M</a>
+            <a href="/A3/HomeServlet">F&M</a>
         </div>
 
         <div class="right_buttons">
