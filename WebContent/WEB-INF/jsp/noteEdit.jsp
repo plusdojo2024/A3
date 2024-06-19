@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>履歴</title>
 </head>
 <body>
+<h2>履歴</h2>
+
 
 </body>
 </html>

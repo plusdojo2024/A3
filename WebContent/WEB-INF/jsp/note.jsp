@@ -31,8 +31,8 @@
 			</tr>
 
 			<tr>
-				<td><input type="submit" name="submit" value="登録"> <span
-					id="error_message"></span>
+				<td><a href="/A3/NoteEditServlet"><input type="submit" name="submit" value="登録"> <span
+					id="error_message"></span></a>
 					<p class="error"><c:out value="${message.title}" />  <c:out value="${message.message}" /></p>
 					</td>
 
