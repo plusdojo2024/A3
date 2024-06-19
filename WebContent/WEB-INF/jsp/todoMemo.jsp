@@ -32,7 +32,7 @@
 <h1>項目詳細</h1>
 <c:forEach var="e" items="${todolist}">
 	<c:out value="${e.category}" />
-	<c:out value="${e.give_point}" />
+	<c:out value="${e.givePoint}" />
 	<c:out value="${e.memo}" />
 </c:forEach>
 </main>

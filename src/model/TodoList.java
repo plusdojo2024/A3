@@ -3,42 +3,42 @@ package model;
 import java.io.Serializable;
 
 public class TodoList implements Serializable{
-	private int list_id;
-	private int family_id;
+	private int listId;
+	private int familyId;
 	private String task;
 	private String category;
-	private int give_point;
-	private String list_date;
+	private int givePoint;
+	private String listDate;
 	private String memo;
-	private int todo_delete;
+	private int todoDelete;
 
-	public TodoList(int list_id, int family_id, String task, String category, int give_point, String list_date,
-			String memo, int todo_delete) {
+	public TodoList(int listId, int familyId, String task, String category, int givePoint, String listDate, String memo,
+			int todoDelete) {
 		super();
-		this.list_id = list_id;
-		this.family_id = family_id;
+		this.listId = listId;
+		this.familyId = familyId;
 		this.task = task;
 		this.category = category;
-		this.give_point = give_point;
-		this.list_date = list_date;
+		this.givePoint = givePoint;
+		this.listDate = listDate;
 		this.memo = memo;
-		this.todo_delete = todo_delete;
+		this.todoDelete = todoDelete;
 	}
 
-	public int getList_id() {
-		return list_id;
+	public int getListId() {
+		return listId;
 	}
 
-	public void setList_id(int list_id) {
-		this.list_id = list_id;
+	public void setListId(int listId) {
+		this.listId = listId;
 	}
 
-	public int getFamily_id() {
-		return family_id;
+	public int getFamilyId() {
+		return familyId;
 	}
 
-	public void setFamily_id(int family_id) {
-		this.family_id = family_id;
+	public void setFamilyId(int familyId) {
+		this.familyId = familyId;
 	}
 
 	public String getTask() {
@@ -57,20 +57,20 @@ public class TodoList implements Serializable{
 		this.category = category;
 	}
 
-	public int getGive_point() {
-		return give_point;
+	public int getGivePoint() {
+		return givePoint;
 	}
 
-	public void setGive_point(int give_point) {
-		this.give_point = give_point;
+	public void setGivePoint(int givePoint) {
+		this.givePoint = givePoint;
 	}
 
-	public String getList_date() {
-		return list_date;
+	public String getListDate() {
+		return listDate;
 	}
 
-	public void setList_date(String list_date) {
-		this.list_date = list_date;
+	public void setListDate(String listDate) {
+		this.listDate = listDate;
 	}
 
 	public String getMemo() {
@@ -81,12 +81,13 @@ public class TodoList implements Serializable{
 		this.memo = memo;
 	}
 
-	public int getTodo_delete() {
-		return todo_delete;
+	public int getTodoDelete() {
+		return todoDelete;
 	}
 
-	public void setTodo_delete(int todo_delete) {
-		this.todo_delete = todo_delete;
+	public void setTodoDelete(int todoDelete) {
+		this.todoDelete = todoDelete;
 	}
+
 
 }
