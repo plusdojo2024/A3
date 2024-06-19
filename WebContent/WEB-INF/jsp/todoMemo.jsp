@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>項目詳細 | F&amp;M</title>
-<link rel="stylesheet" href="css/main.css">
+<%--<link rel="stylesheet" href="css/main.css">--%>
 </head>
 <body>
 <header>
@@ -31,9 +31,9 @@
 <main>
 <h1>項目詳細</h1>
 <c:forEach var="e" items="${todolist}">
-	<p>${e.category}a</p>
-	<p>${e.give_point}</p>
-	<p>${e.memo}</p>
+	<c:out value="${e.category}" />
+	<c:out value="${e.give_point}" />
+	<c:out value="${e.memo}" />
 </c:forEach>
 </main>
 </body>

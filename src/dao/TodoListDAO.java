@@ -68,7 +68,7 @@ public class TodoListDAO {
 
 
 			// SQL文を準備する
-			String sql = "SELECT (select (task, category, give_point, memo) from TODO_LIST where family_id=? AND task=? order by list_id;)";
+			String sql = "SELECT * FROM TODO_LIST WHERE family_id=? AND task=? ORDER BY list_id";
 			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
 			pStmt.setInt(0, tl.getFamily_id());
 			pStmt.setString(1, tl.getTask());
