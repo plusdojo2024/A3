@@ -10,5 +10,6 @@
 </head>
 <body>
 <p><a href="/A3/TodoMemoServlet?name=掃除機をかける">掃除機</a>
+<p><a href="/A3/TodoRegistServlet">登録</a>
 </body>
 </html>

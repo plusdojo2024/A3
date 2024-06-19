@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import dao.TodoListDAO;
 import logic.TimeLogic;
-import model.Family;
 import model.TodoList;
+import model.Users;
 
 /**
  * Servlet implementation class TodoRegistServlet
@@ -27,11 +27,11 @@ public class TodoRegistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		//HttpSession session = request.getSession();
-		//if (session.getAttribute("uid") == null) {
-		//	response.sendRedirect("/A3/LoginServlet");
-		//	return;
-		//}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("uid") == null) {
+			response.sendRedirect("/A3/LoginServlet");
+			return;
+		}
 
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoRegist.jsp");
@@ -43,18 +43,19 @@ public class TodoRegistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//if (session.getAttribute("uid") == null) {
-		//	response.sendRedirect("/A3/LoginServlet");
-		//	return;
-		//}
+		if (session.getAttribute("uid") == null) {
+			response.sendRedirect("/A3/LoginServlet");
+			return;
+		}
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		Family f = new Family();
-		f.setFamilyId(1);
-		session.setAttribute("familyId", f);
-		Family family = (Family)session.getAttribute("familyId");
-		int familyId = family.getFamilyId();
+//		Family f = new Family();
+//		f.setFamilyId(1);
+//		session.setAttribute("familyId", f);
+//		Family family = (Family)session.getAttribute("familyId");
+		Users user = (Users)session.getAttribute("familyId");
+		int familyId = user.getFamilyId();
 		String task = request.getParameter("task");
 		String category = request.getParameter("category");
 		int givePoint = Integer.parseInt(request.getParameter("givePoint"));
@@ -67,6 +68,8 @@ public class TodoRegistServlet extends HttpServlet {
 		String date = time.nowNomalDay();
 		if(tlDao.regist(date, new TodoList(0, familyId, task, category, givePoint, listDate, memo, todoDelete))) {
 			request.setAttribute("message", "家事を登録しました");
+		}else {
+			request.setAttribute("message", "登録に失敗しました");
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoRegist.jsp");
