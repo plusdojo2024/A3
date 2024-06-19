@@ -5,9 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ご褒美　編集・削除</title>
 </head>
 <body>
-
+<h1>ご褒美　編集・削除</h1>
+<form method="post" action="/A3/rewardsEditServlet">
+※<input type="text" name="reward" value="${rewards}"><br>
+※<input type="text" name="point" value="${point}"><br>
+※<input type="text" name="name" value="${name}"><br>
+<input type="submit" name="regist" value="登録"><br>
+</form>
 </body>
 </html>
