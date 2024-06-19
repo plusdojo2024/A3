@@ -31,15 +31,7 @@ public class RewardsEditServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 
-		request.setCharacterEncoding("UTF-8");
 
-		String reward = request.getParameter("reward");
-		String point = request.getParameter("point");
-		String name = request.getParameter("name");
-
-        request.setAttribute("reward", reward);
-        request.setAttribute("point", point);
-        request.setAttribute("name", name);
 
 
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsEdit.jsp");
