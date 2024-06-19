@@ -10,7 +10,7 @@
 
 <body>
 <h1>ご褒美登録</h1>
-<form method="post" action="/A3/rewardsRegistServlet">
+<form method="post" action="/A3/RewardsRegistServlet">
 ※<input type="text" name="reward" value="ご褒美"><br>
 ※<input type="text" name="point" value="付与ポイント"><br>
 ※<input type="text" name="name" value="担当者"><br>
