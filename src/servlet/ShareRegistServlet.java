@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.TodoDAO;
 import model.Todo;
+import model.Users;
 /**
  * Servlet implementation class ShareRegistServlet
  */
@@ -29,11 +31,11 @@ public class ShareRegistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//List<Users> users = todoDAO.getAllusers();
-		//List<Todo> todos = todoDAO.getAlltodos();
+		List<Users> users = todoDAO.getAllusers();
+		List<Todo> todos = todoDAO.getAlltodos();
 
-		//request.setAttribute("users", users);
-		//request.setAttribute("todos", todos);
+		request.setAttribute("users", users);
+		request.setAttribute("todos", todos);
 
 		// 検索ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
