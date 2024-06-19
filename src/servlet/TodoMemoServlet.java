@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.TodoListDAO;
-import model.Family;
 import model.TodoList;
+import model.Users;
 
 /**
  * Servlet implementation class TodoMemoServlet
@@ -33,14 +33,17 @@ public class TodoMemoServlet extends HttpServlet {
 		//}
 
 		//aタグURLから項目名を取り出す
-		String task = request.getParameter("name");
+
+
 		//request.setAttribute("ArrayList<TodoList>", atask);
 		request.setCharacterEncoding("UTF-8");
-		Family f = new Family();
-		f.setFamilyId(1);
-		session.setAttribute("familyId", f);
-		Family family = (Family)session.getAttribute("familyId");
-		int familyId = family.getFamilyId();
+		String task = request.getParameter("name");
+		System.out.println(task);//デバッグ用
+		//Family f = new Family();
+		//f.setFamilyId(1);
+		//session.setAttribute("familyId", f);
+		Users user = (Users)session.getAttribute("user");
+		int familyId = user.getFamilyId();
 
 		TodoListDAO tlDao = new TodoListDAO();
 		List<TodoList> todolist = tlDao.select(familyId, task);

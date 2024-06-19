@@ -54,7 +54,7 @@
 	}
 	</script>
 	</select><br>
-	<textarea>${memo}</textarea>
+	<textarea name="memo">${memo}</textarea>
 	<input type="submit" name="regist" value="登録">
 
 	</form>

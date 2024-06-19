@@ -64,7 +64,7 @@ public class TodoListDAO {
 			Class.forName("org.h2.Driver"); //運転手を雇っている
 
 			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", " ");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 
 			// SQL文を準備する
