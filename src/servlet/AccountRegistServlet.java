@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import dao.UsersDAO;
 import logic.FileLogic;
+import logic.HashLogic;
+import logic.TimeLogic;
+import model.Message;
 import model.Users;
 
 /**
@@ -53,6 +57,11 @@ public class AccountRegistServlet extends HttpServlet {
 			role=1;
 		}
 
+		HashLogic hLogic = new HashLogic();
+		hLogic.randHash(userPass);
+
+		TimeLogic time = new TimeLogic();
+
 		//セッションスコープからログイン中のユーザー情報を持ってくる
 		HttpSession session = request.getSession();
 
@@ -63,6 +72,19 @@ public class AccountRegistServlet extends HttpServlet {
 		//データベースに入ってる個人情報は全部入ってる。
 		//ユーザー名・メアド・パスワードはハッシュ化されてる
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+
+		Users addUser = new Users();
+
+		addUser.setAdmin(0);
+		addUser.setColor(color);
+		addUser.setRole(role);
+		addUser.setFamilyId(user.getFamilyId());
+		addUser.setHavePoint(0);
+		addUser.setName(userName);
+		addUser.setPw(hLogic.getPw());
+		addUser.setUserSalt(hLogic.getSalt());
+		addUser.setDelete(0);
+		addUser.setUserDate(time.nowJp());
 
 		FileLogic fL = new FileLogic();
 
@@ -87,6 +109,30 @@ public class AccountRegistServlet extends HttpServlet {
 
 		//アイコン画像の相対パス作成
 		String relativePath = fL.setRelativePath(name, familyId);
+
+		addUser.setIcon(relativePath);
+
+		UsersDAO uDao = new UsersDAO();
+		Message msg = new Message();
+		if(uDao.insert(addUser)) {
+			System.out.println("成功しました。");
+
+			msg.setMessage("アカウントを作成しました。");
+
+			session.setAttribute("message", msg);
+			session.setAttribute("user", user);
+			// アカウント登録ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
+			dispatcher.forward(request, response);
+		}else {
+			System.out.println("失敗しました。");
+			msg.setMessage("アカウントの作成に失敗しました。");
+			session.setAttribute("message", msg);
+			session.setAttribute("user", user);
+			// アカウント登録ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
+			dispatcher.forward(request, response);
+		}
 
 	}
 

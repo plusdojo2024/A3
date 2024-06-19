@@ -12,7 +12,7 @@
 <body>
 <h1>家族登録</h1>
 <form id="create_form" method="post"
-		action="/A3//FamilyRegistServlet" enctype="multipart/form-data">
+		action="/A3//AccountRegistServlet" enctype="multipart/form-data">
 		<table>
 		<tr>
 				<td><label>個人名<br> <input type="text"
@@ -28,7 +28,7 @@
 				<td colspan="2"> <button type="button"
 						id="parent"><img src="images/parent.png"  class="role_image" id="parent_image"></button>
 				 <button type="button"
-						id="child"><img src="images/children.png"  class="role_image" id="children_image"></button></td>
+						id="child"><img src="images/children.png"  class="role_image" id="child_image"></button></td>
 				 <td><input type="hidden"
 						name="role" value="0" id="role"></td>
 			<tr>
@@ -48,7 +48,14 @@
 
 			<tr>
 				<td><input type="submit" name="submit" value="新規登録"> <span
-					id="error_message"></span>
+					id="error_message"> </span>
+
+					<p class="error">
+						<c:out value="${message.title}" />
+						<c:out value="${message.message}" />
+					</p>
+
+
 					</td>
 
 			</tr>
