@@ -10,7 +10,7 @@ import model.Users;
 
 public class UsersDAO {
 
-	public Users loginSearch(int familyId,String name) {
+	public Users loginSearch(int familyId, String name) {
 		Connection conn = null;
 
 		Users user = new Users();
@@ -64,7 +64,7 @@ public class UsersDAO {
 		return user;
 	}
 
-	public boolean userCheck(int familyId,String name) {
+	public boolean userCheck(int familyId, String name) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -139,7 +139,52 @@ public class UsersDAO {
 			pStmt.setInt(9, user.getRole());
 			pStmt.setString(10, user.getUserDate());
 
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
+		// 結果を返す
+		return result;
+	}
+
+	//ユーザー更新
+	public boolean update(Users user) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "UPDATE users SET name = ?,color = ?,icon = ?, ,pw = ?,user_salt = ? , user_update = now() WHERE uid = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1, user.getName());
+			pStmt.setString(2, user.getColor());
+			pStmt.setString(3, user.getIcon());
+			pStmt.setString(4, user.getPw());
+			pStmt.setString(5, user.getUserSalt());
+			pStmt.setInt(6, user.getUid());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -162,5 +207,58 @@ public class UsersDAO {
 
 		// 結果を返す
 		return result;
+	}
+
+	//uidでユーザーを検索して日付と削除フラッグ以外を全て持ってくる
+	public Users getUser(int uid) {
+		Connection conn = null;
+
+		Users user = new Users();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SELECT文を準備する
+			String sql = "SELECT * FROM users WHERE uid = ? AND delete = 0";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1,uid);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// メールアドレスに一致するユーザー情報を持ってくる
+			rs.next();
+			user.setFamilyId(rs.getInt("family_id"));
+			user.setPw(rs.getString("pw"));
+			user.setUserSalt(rs.getString("user_salt"));
+			user.setColor(rs.getString("color"));
+			user.setAdmin(rs.getInt("admin"));
+			user.setRole(rs.getInt("role"));
+			user.setHavePoint(rs.getInt("have_point"));
+			user.setIcon(rs.getString("icon"));
+			user.setDelete(rs.getInt("delete"));
+			user.setName(rs.getString("name"));
+			user.setUid(rs.getInt("uid"));
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return user;
 	}
 }
