@@ -12,6 +12,11 @@ public class TodoList implements Serializable{
 	private String memo;
 	private int todoDelete;
 
+	//引数なしコンストラクタ
+	public TodoList() {
+
+	}
+
 	public TodoList(int listId, int familyId, String task, String category, int givePoint, String listDate, String memo,
 			int todoDelete) {
 		super();

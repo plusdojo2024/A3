@@ -77,15 +77,15 @@ public class TodoListDAO {
 			ResultSet rs = pStmt.executeQuery();
 
 			while (rs.next()) {
-				TodoList record = new TodoList(
-				rs.getInt("listId"),
-				rs.getInt("familyId"),
-				rs.getString("task"),
-				rs.getString("category"),
-				rs.getInt("givePoint"),
-				rs.getString("listDate"),
-				rs.getString("memo"),
-				rs.getInt("todoDelete"));
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
 
 				todolist.add(record);
 			}
