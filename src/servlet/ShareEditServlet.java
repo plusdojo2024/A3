@@ -34,7 +34,6 @@ public class ShareEditServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		int uid = Integer.parseInt(request.getParameter("uid"));

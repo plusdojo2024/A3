@@ -1,7 +1,18 @@
+body
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+
+
+
 /* -----------------------
 タイトルのボックス
--------------------------*/ 
-.title_box 
+-------------------------*/
+.title_box
 {
     background-color: white;
     color: green;
@@ -17,8 +28,8 @@
 }
 /* -----------------------
 入力項目のボックス
--------------------------*/ 
-.main_box 
+-------------------------*/
+.main_box
 {
     background-color: #7dcd85;
     color: white;
@@ -34,8 +45,8 @@
 }
 /* -----------------------
 担当者のボックス
--------------------------*/ 
-.icon_box 
+-------------------------*/
+.icon_box
 {
     background-color: #7dcd85;
     color: white;
@@ -51,8 +62,8 @@
 }
 /* -----------------------
 要録ボタンのボックス
--------------------------*/ 
-.submit_box 
+-------------------------*/
+.submit_box
 {
     background-color: #7dcd85;
     color: white;
@@ -69,8 +80,8 @@
 
 /* -----------------------
 削除のボックス
--------------------------*/ 
-.delete_box 
+-------------------------*/
+.delete_box
 {
     background-color: #ff896f;
     color: white;
