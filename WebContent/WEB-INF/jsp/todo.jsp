@@ -9,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p><a href="/A3/TodoMemoServlet?name=皿洗い">掃除機</a>
+<p><a href="/A3/TodoMemoServlet?name=掃除機をかける">掃除機</a>
 </body>
 </html>
