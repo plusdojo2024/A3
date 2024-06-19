@@ -50,12 +50,9 @@ public class TodoRegistServlet extends HttpServlet {
 
 		//リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-//		Family f = new Family();
-//		f.setFamilyId(1);
-//		session.setAttribute("familyId", f);
-//		Family family = (Family)session.getAttribute("familyId");
-		Users user = (Users)session.getAttribute("familyId");
-		int familyId = user.getFamilyId();
+		Users user = (Users)session.getAttribute("user");
+		int familyID = user.getFamilyId();
+		int familyId = Integer.parseInt(request.getParameter("familyId"));
 		String task = request.getParameter("task");
 		String category = request.getParameter("category");
 		int givePoint = Integer.parseInt(request.getParameter("givePoint"));
@@ -66,7 +63,7 @@ public class TodoRegistServlet extends HttpServlet {
 		TodoListDAO tlDao = new TodoListDAO();
 		TimeLogic time = new TimeLogic();
 		String date = time.nowNomalDay();
-		if(tlDao.regist(date, new TodoList(0, familyId, task, category, givePoint, listDate, memo, todoDelete))) {
+		if(tlDao.regist(date, familyID, new TodoList(0, familyId, task, category, givePoint, listDate, memo, todoDelete))) {
 			request.setAttribute("message", "家事を登録しました");
 		}else {
 			request.setAttribute("message", "登録に失敗しました");

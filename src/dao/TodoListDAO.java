@@ -11,7 +11,7 @@ import java.util.List;
 import model.TodoList;
 
 public class TodoListDAO {
-	public boolean regist(String date, TodoList tl) {
+	public boolean regist(String date, int familyID, TodoList tl) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -22,7 +22,7 @@ public class TodoListDAO {
 			String sql = "INSERT INTO TODO_LIST VALUES(NULL, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			pStmt.setInt(1, tl.getFamilyId());
+			pStmt.setInt(1, familyID);
 			pStmt.setString(2, tl.getTask());
 			pStmt.setString(3, tl.getCategory());
 			pStmt.setInt(4, tl.getGivePoint());
