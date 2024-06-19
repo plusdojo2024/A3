@@ -9,18 +9,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.TodoDAO;
+import model.Todo;
 /**
  * Servlet implementation class ShareRegistServlet
  */
 @WebServlet("/ShareRegistServlet")
 public class ShareRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private TodoDAO todoDAO;
 
+	public ShareRegistServlet()
+	{
+		super();
+		todoDAO = new TodoDAO();
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//List<Users> users = todoDAO.getAllusers();
+		//List<Todo> todos = todoDAO.getAlltodos();
+
+		//request.setAttribute("users", users);
+		//request.setAttribute("todos", todos);
 
 		// 検索ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
@@ -50,9 +63,14 @@ public class ShareRegistServlet extends HttpServlet {
 		int sunday = Integer.parseInt(request.getParameter("sunday"));
 
 
+		Todo todo = new Todo();
+
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
 		dispatcher.forward(request, response);
+
+
+
 
 	}
 

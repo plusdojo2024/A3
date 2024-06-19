@@ -5,9 +5,9 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Green Rounded Square</title>
-    <link rel="stylesheet" href="/A3/WebContent/WEB-INF/jsp/css/main.css">
-    <link rel="stylesheet" href="/A3/WebContent/WEB-INF/jsp/css/shareRegist.css">
+    <title>家事分担登録</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/shareRegist.css">
 
     <div class="nav">
         <div class="left_icons">
@@ -27,6 +27,7 @@
     </div>
 </head>
 <body>
+	<form action="ShareRegistServlet" method="post">
     <br>
     <br>
     <br>
@@ -36,7 +37,10 @@
 
     <div class= "main_box"><input type="text" name="task" size="20" maxlength="20" value="項目"></div>
 
-    <div class= "icon_box">担当者</div>
+    <div >
+    	<label for="uid">担当者</label>
+    	<input type="" id="uid" name="uid" required>
+    </div>
 
     <div class= "main_box">繰り返し<select name="repeat" value="繰り返し">
         <option>繰り返さない</option>
