@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,33 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.TodoDAO;
-import model.Todo;
-import model.Users;
+import logic.TimeLogic;
 /**
  * Servlet implementation class ShareRegistServlet
  */
 @WebServlet("/ShareRegistServlet")
 public class ShareRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private TodoDAO todoDAO;
-
-	public ShareRegistServlet()
-	{
-		super();
-		todoDAO = new TodoDAO();
-	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Users> users = todoDAO.getAllusers();
-		List<Todo> todos = todoDAO.getAlltodos();
 
-		request.setAttribute("users", users);
-		request.setAttribute("todos", todos);
-
-		// 検索ページにフォワードする
+		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -65,12 +51,28 @@ public class ShareRegistServlet extends HttpServlet {
 		int sunday = Integer.parseInt(request.getParameter("sunday"));
 
 
-		Todo todo = new Todo();
+
+
+
+		TodoDAO tdDao = new TodoDAO();
+		TimeLogic time = new TimeLogic();
+
+		//日付の取得
+		String date = time.nowNomalDay();
+
+		Object todoDate;
+		if(tdDao.regist(date, listId, new Todo(0,todoDate,uid,loop,startDate,endDate,monday,tuesday,wednesday,thursday,friday,saturday,sunday)))
+		{
+			request.setAttribute("msg", "登録しました");
+		}
+		else
+		{
+			request.setAttribute("msg", "登録に失敗しました");
+		}
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
 		dispatcher.forward(request, response);
-
 
 
 
