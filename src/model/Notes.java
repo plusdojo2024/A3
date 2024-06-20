@@ -3,18 +3,18 @@ package model;
 import java.io.Serializable;
 
 public class Notes implements Serializable{
-	private String title;
-	private String memo;
-	private int noteID;  //
-	private int familyID;  //
-	private String note;  //
-	private String noteDate;  //
-	private String imageOne;  //
-	private String imageTwo;  //
-	private String noteUpdate;  //
+	private String title;//タイトル
+	private String memo;//メモ
+	private int noteID;  //メモID
+	private int familyID;  //家族ID
+	private String noteDate;  //ノート日付
+	private String imageOne;  //写真１
+	private String imageTwo;  //写真２
+	private String noteUpdate;  //ノート変更
 
 
 
+	//getter,setter
 	public String getTitle() {
 		return title;
 	}
@@ -64,10 +64,5 @@ public class Notes implements Serializable{
 	public void setNoteDate(String noteDate) {
 		this.noteDate = noteDate;
 	}
-	public String getNote() {
-		return note;
-	}
-	public void setNote(String note) {
-		this.note = note;
-	}
+
 }
