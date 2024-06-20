@@ -34,7 +34,6 @@ public class AccountServlet extends HttpServlet {
 		//アイコン画像は家族ごとにパスが変わるので未設定
 		request.setAttribute("myUser", dbUser);
 
-
 		// アカウント管理ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
 		dispatcher.forward(request, response);

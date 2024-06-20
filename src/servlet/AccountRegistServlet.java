@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import model.Users;
  * Servlet implementation class AccountRegistServlet
  */
 @WebServlet("/AccountRegistServlet")
+@MultipartConfig(location = "C:/pleiades/workspace/A3/WebContent/tmp", maxFileSize = 1024 * 1024 * 10)
 public class AccountRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -60,6 +62,8 @@ public class AccountRegistServlet extends HttpServlet {
 		String userPass = request.getParameter("user_pass");
 		String color = request.getParameter("color");
 
+		System.out.println(strRole);
+		System.out.println(userName);
 		//ロールが文字列で送られてくるのでintに修正
 		int role = 0;
 		if (strRole.equals("0")) {

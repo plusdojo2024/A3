@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import dao.NotesDAO;
 import logic.FileLogic;
+import logic.TimeLogic;
 import model.Users;
 
 
@@ -44,7 +46,9 @@ public class NoteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
 		String memo = request.getParameter("memo");
-
+		NotesDAO nDao = new NotesDAO();
+		TimeLogic time = new TimeLogic();
+		String date = time.nowNomalDay();
 		FileLogic fL = new FileLogic();
 
 
@@ -70,7 +74,7 @@ public class NoteServlet extends HttpServlet {
 	}
 	//画像の相対パス作成
 	String relativePath = fL.setRelativePath(name, user.getFamilyId());
-	}
 
+}
 
 }
