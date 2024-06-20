@@ -27,12 +27,10 @@ public class TodoMemoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		//if (session.getAttribute("uid") == null) {
-		//	response.sendRedirect("/A3/LoginServlet");
-		//	return;
-		//}
-
-		//aタグURLから項目名を取り出す
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("/A3/LoginServlet");
+			return;
+		}
 
 
 		//request.setAttribute("ArrayList<TodoList>", atask);
@@ -43,6 +41,8 @@ public class TodoMemoServlet extends HttpServlet {
 		//f.setFamilyId(1);
 		//session.setAttribute("familyId", f);
 		Users user = (Users)session.getAttribute("user");
+		Users dbUser = (Users) session.getAttribute("dbUser");
+		request.setAttribute("myUser", dbUser);
 		int familyId = user.getFamilyId();
 
 		TodoListDAO tlDao = new TodoListDAO();

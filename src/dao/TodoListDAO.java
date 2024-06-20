@@ -112,4 +112,110 @@ public class TodoListDAO {
 		}
 		return todolist;
 	}
+
+	public List<TodoList> view(int familyId) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public boolean update(int familyId, TodoList tl) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+
+			// SQL文を準備する
+			String sql = "UPDATE TODO_LIST SET task=?, category=?, give_point=?, memo=? WHERE family_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1, tl.getTask());
+			pStmt.setString(2, tl.getCategory());
+			pStmt.setInt(3, tl.getGivePoint());
+			pStmt.setString(4, tl.getMemo());
+			pStmt.setInt(5, familyId);
+
+			// SQL文を実行する
+				if (pStmt.executeUpdate() == 1) {
+					result = true;
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			// 結果を返す
+			return result;
+		}
 }

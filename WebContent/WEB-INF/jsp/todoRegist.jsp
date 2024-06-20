@@ -36,14 +36,14 @@
 	<sup style="color: red;">*</sup>
 	<select name="category" required>
 	<option value="">カテゴリーを選択してください</option>
-	<option value="laundry">洗濯</option>
-	<option value="garbage">ごみ捨て</option>
-	<option value="cleaning">掃除</option>
-	<option value="cooking">料理</option>
-	<option value="shopping">買い物</option>
-	<option value="refill">日用品の補充</option>
-	<option value="child_rearing">子育て</option>
-	<option value="others">その他</option>
+	<option value="洗濯">洗濯</option>
+	<option value="ごみ捨て">ごみ捨て</option>
+	<option value="掃除">掃除</option>
+	<option value="料理">料理</option>
+	<option value="買い物">買い物</option>
+	<option value="日用品の補充">日用品の補充</option>
+	<option value="子育て">子育て</option>
+	<option value="その他">その他</option>
 	</select><br>
 	<sup style="color: red;">*</sup>
 	<select name="give_point">

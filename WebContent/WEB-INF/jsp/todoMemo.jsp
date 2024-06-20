@@ -5,20 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>項目詳細 | F&amp;M</title>
-<%--<link rel="stylesheet" href="css/main.css">--%>
-</head>
-<body>
-<header>
+    <meta charset="UTF-8">
+    <title>タイトル各自変更してください</title>
+    <link rel="stylesheet" href="css/main.css">
+
     <div class="nav">
         <div class="left_icons">
-            <div class="green_box">父</div>
-            <div class="green_box">ポイント</div>
+        <c:set var="icon" value="${myUser.icon}"></c:set>
+            <div class="green_box"><img src="${icon}" id="user_icon"></div>
+            <div class="green_box"><c:out value="${myUser.havePoint}" /></div>
         </div>
 
         <div class="home_logo">
-            <a href="home.html">F&amp;M</a>
+            <a href="/A3/HomeServlet">F&M</a>
         </div>
 
         <div class="right_buttons">
@@ -27,13 +26,27 @@
         </div>
 
     </div>
-</header>
+</head>
+<body>
 <main>
 <h1>項目詳細</h1>
 <c:forEach var="e" items="${todolist}">
-	<c:out value="${e.category}" />
-	<c:out value="${e.givePoint}" />
+	<c:out value="${e.category}" /><br>
+	<c:out value="${e.givePoint}" /><br>
 	<c:out value="${e.memo}" />
+
+	<input type="text" name="task" value="${e.task}">
+	<select name="category" required>
+	<option value="">カテゴリーを選択してください</option>
+	<option value="洗濯">洗濯</option>
+	<option value="ごみ捨て">ごみ捨て</option>
+	<option value="掃除">掃除</option>
+	<option value="料理">料理</option>
+	<option value="買い物">買い物</option>
+	<option value="日用品の補充">日用品の補充</option>
+	<option value="子育て">子育て</option>
+	<option value="その他">その他</option>
+	</select><br>
 </c:forEach>
 </main>
 </body>
