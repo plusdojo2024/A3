@@ -145,7 +145,7 @@ public class LoginServlet extends HttpServlet {
 
 			//メールアドレスを元にソルト値とパスワードを持ってきて比較
 
-			family = fDao.search(hashMail);//DB内のパスワードとソルトを格納
+			family = fDao.searchByMail(hashMail);//DB内のパスワードとソルトを格納
 
 			//DBから持ってきたパスワードと今回入力されたパスワードを比較
 			if (hashLogic.checkHash(familyPass, family.getFamilyPass(), family.getFamilySalt())) {
@@ -170,6 +170,10 @@ public class LoginServlet extends HttpServlet {
 					myUser.setUid(dbUser.getUid());
 					myUser.setPw(pw);
 					myUser.setMail(mail);
+					myUser.setFamilyPass(familyPass);
+
+					String familyName = fDao.getFamilyName(familyId);
+					myUser.setFamilyName(familyName);
 
 					//パスワードチェック
 					if(hashLogic.checkHash(pw, dbPass, salt)) {

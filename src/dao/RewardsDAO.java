@@ -62,18 +62,18 @@ public class RewardsDAO {
 			//rsの中身をArrayListに移し替える
 			while (rs.next()) {
 				//空のBeans
-				Rewards u = new Rewards();
+				Rewards r = new Rewards();
 
 				//セッターを使って、中にデータベースから取ってきた値を入れていく
-				u.setRewardId(rs.getInt("REWARD_ID"));
-				u.setReward(rs.getString("REWARD"));
-				u.setReqPoint(rs.getInt("REQ_POINT"));
-				u.setRewardDate(rs.getString("REWARD_DATE"));
-				u.setUid(rs.getInt("UID"));
-				u.setRequest(rs.getInt("REQUEST"));
+				r.setRewardId(rs.getInt("REWARD_ID"));
+			    r.setReward(rs.getString("REWARD"));
+				r.setReqPoint(rs.getInt("REQ_POINT"));
+				r.setRewardDate(rs.getString("REWARD_DATE"));
+				r.setUid(rs.getInt("UID"));
+				r.setRequest(rs.getInt("REQUEST"));
 
 				//全部の値が入ったらArrayListに入れる
-				list.add(u);
+				list.add(r);
 			}
 		}
 		catch (SQLException e) {
@@ -103,7 +103,7 @@ public class RewardsDAO {
 
 
 	//入力された人のデータをrewardsに追加するメソッド-----------------------
-	public int insert(int rewardId, String reward, int reqPoint, String rewardDate, int uid, int request) {
+	public int insert( String reward, int reqPoint,  int uid) {
 
 		Connection conn = null;
 		int result = 0;
@@ -117,7 +117,7 @@ public class RewardsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// ２．SQL文を準備する
-			String sql = "INSERT INTO REWARDS (REWARD, REQ_POINT, REWARD_DATE, REQUEST) VALUES (?, ?, ?, ?);";
+			String sql = "INSERT INTO REWARDS (REWARD, REQ_POINT,UID) VALUES (?, ?, ?);";
 
 			//１と２の情報をpStmtに入れる
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -125,8 +125,8 @@ public class RewardsDAO {
 			//SQL文を完成させる
 			pStmt.setString(1, reward);
 			pStmt.setInt(2, reqPoint);
-			pStmt.setString(3, rewardDate);
-			pStmt.setInt(4, request);
+			pStmt.setInt(3, uid);
+
 
 			// SQL文を実行する（insertは登録した件数が返ってくる）
 			result = pStmt.executeUpdate();

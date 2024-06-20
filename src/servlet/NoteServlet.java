@@ -68,7 +68,7 @@ public class NoteServlet extends HttpServlet {
 	} else {
 		part.write(absolutePass);
 	}
-	//アイコン画像の相対パス作成
+	//画像の相対パス作成
 	String relativePath = fL.setRelativePath(name, user.getFamilyId());
 	}
 

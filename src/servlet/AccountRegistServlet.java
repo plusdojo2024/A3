@@ -83,6 +83,15 @@ public class AccountRegistServlet extends HttpServlet {
 		//データベースに入ってる個人情報は全部入ってる。
 		//ユーザー名・メアド・パスワードはハッシュ化されてる
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		UsersDAO uDao = new UsersDAO();
+
+		if(uDao.userCheck(dbUser.getFamilyId(), userName)) {
+			System.out.println("既にいる");
+			request.setAttribute("myUser", dbUser);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountRegist.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 		Users addUser = new Users();
 
@@ -117,13 +126,18 @@ public class AccountRegistServlet extends HttpServlet {
 		} else {
 			part.write(absolutePass);
 		}
+		try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
+			Thread.sleep(2000); // 2秒(2000ミリ秒)間だけ処理を止める
+		} catch (InterruptedException e) {
+		}
+		part.delete();
 
 		//アイコン画像の相対パス作成
 		String relativePath = fL.setRelativePath(name, familyId);
 
 		addUser.setIcon(relativePath);
 
-		UsersDAO uDao = new UsersDAO();
+
 		Message msg = new Message();
 		if (uDao.insert(addUser)) {
 			System.out.println("成功しました。");
@@ -144,7 +158,5 @@ public class AccountRegistServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
 			dispatcher.forward(request, response);
 		}
-
 	}
-
 }
