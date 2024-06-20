@@ -20,17 +20,20 @@
 
 
 		var calendar = new FullCalendar.Calendar(calendarEl, {
-<c:forEach var="e" items="${eventList}">
 			events : [
+<c:forEach var="e" items="${eventList}">
+<c:if test="${e!=null}">
+
 
 				{
 					<c:if test="${e.loop==0}">daysOfWeek : [ '4', ],</c:if>
 					title : '${e.title}：${e.name}',
-					<c:if test="${e.loop==0}">start : '${e.date}',</c:if>
-					<c:if test="${e.loop==1}">startRecur : '${e.start}',</c:if>
-					<c:if test="${e.loop==1}">endRecur : '${e.end}',</c:if>
+					<c:if test="${e.loop==0}">start : "${e.date}",</c:if>
+					<c:if test="${e.loop==1}">startRecur : "${e.start}",</c:if>
+					<c:if test="${e.loop==1}">endRecur : "${e.end}",</c:if>
 					color : '${e.color}',
 				},
+				</c:if>
 </c:forEach>
 				 ],
 			locale : 'ja',
@@ -38,7 +41,7 @@
 			headerToolbar : {
 				left : 'prev,next today',
 				center : 'title',
-				right : 'dayGridMonth,timeGridWeek,timeGridDay'
+				right : 'dayGridMonth,timeGridWeek'
 			},
 			dateClick : function(info) {
 				alert('clicked ' + info.dateStr);
@@ -80,6 +83,5 @@
 
 
 	<div id='calendar'></div>
-	<script src="index.js"></script>
 </body>
 </html>
