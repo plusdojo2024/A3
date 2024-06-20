@@ -2,7 +2,7 @@ CREATE TABLE rewards (
   reward_id INTEGER NOT NULL AUTO_INCREMENT,
   reward VARCHAR(20) NOT NULL,
   req_point INTEGER(6) NOT NULL,
-  reward_date VARCHAR(32) DEFAULT CURRENT_TIMESTAMP,
+  reward_date VARCHAR(32),
   uid INTEGER NOT NULL AUTO_INCREMENT,
   request INTEGER(1) DEFAULT 0,
   PRIMARY KEY (reward_id),
