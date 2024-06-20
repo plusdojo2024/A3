@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Todo implements Serializable
 {
+	private int todoId;
+	private String todoDate;
 	private int uid;
     private int listId;
     private String loop;
@@ -16,6 +18,12 @@ public class Todo implements Serializable
     private int friday;
     private int saturday;
     private int sunday;
+
+    public Todo()
+    {
+
+    }
+
 	public int getUid() {
 		return uid;
 	}
@@ -87,5 +95,17 @@ public class Todo implements Serializable
 	}
 	public void setSunday(int sunday) {
 		this.sunday = sunday;
+	}
+	public int getTodoId() {
+		return todoId;
+	}
+	public void setTodoId(int todoId) {
+		this.todoId = todoId;
+	}
+	public String getTodoDate() {
+		return todoDate;
+	}
+	public void setTodoDate(String todoDate) {
+		this.todoDate = todoDate;
 	}
 }
