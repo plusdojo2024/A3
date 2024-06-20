@@ -318,7 +318,7 @@ public class UsersDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 			// SQL文を準備する
 			String sql;
-			sql = "SELECT * FROM users WHERE family_id = ?";
+			sql = "SELECT * FROM users WHERE family_id = ? AND delete=0";
 
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);

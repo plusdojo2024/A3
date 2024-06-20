@@ -117,6 +117,11 @@ public class AccountRegistServlet extends HttpServlet {
 		} else {
 			part.write(absolutePass);
 		}
+		try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
+			Thread.sleep(2000); // 2秒(2000ミリ秒)間だけ処理を止める
+		} catch (InterruptedException e) {
+		}
+		part.delete();
 
 		//アイコン画像の相対パス作成
 		String relativePath = fL.setRelativePath(name, familyId);
@@ -144,7 +149,5 @@ public class AccountRegistServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
 			dispatcher.forward(request, response);
 		}
-
 	}
-
 }

@@ -10,8 +10,47 @@ import model.Family;
 
 public class FamilyDAO {
 
+	public String getFamilyName(int familyId) {
+		Connection conn = null;
+		String familyName = "";
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SELECT文を準備する
+			String sql = "SELECT family_name FROM FAMILY WHERE family_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, familyId);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			rs.next();
+			familyName = rs.getString("family_name");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return familyName;
+	}
+
 	//メールアドレスを引数にして家族のパスワードとソルトを返す
-	public Family search(String mail) {
+	public Family searchByMail(String mail) {
 		Connection conn = null;
 
 		Family family = new Family();
@@ -55,9 +94,54 @@ public class FamilyDAO {
 		return family;
 	}
 
+	//familyIdを引数にして家族のパスワードとソルトを返す
+	public Family getPassById(int familyId) {
+		Connection conn = null;
+
+		Family family = new Family();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SELECT文を準備する
+			String sql = "SELECT * FROM family WHERE family_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, familyId);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// メールアドレスに一致するパスワードとsaltを持ってくる
+			rs.next();
+			family.setFamilyPass(rs.getString("family_pass"));
+			family.setFamilySalt(rs.getString("family_salt"));
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// パスワードとソルトを入れたfamilyを返す
+		return family;
+	}
+
 	public int searchId(String mail) {
 		Connection conn = null;
-		int id=0;
+		int id = 0;
 
 		try {
 			// JDBCドライバを読み込む
@@ -162,8 +246,6 @@ public class FamilyDAO {
 			pStmt.setString(4, family.getFamilySalt());
 			pStmt.setString(5, family.getFamilyDate());
 
-
-
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -187,8 +269,93 @@ public class FamilyDAO {
 		return result;
 	}
 
+	public boolean familyUpdate(Family family) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SELECT文を準備する
+			String sql = "UPDATE family SET mail = ?, family_name = ?, family_pass = ?, family_salt = ?, family_update = now() WHERE family_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
+			pStmt.setString(1, family.getMail());
+			pStmt.setString(2, family.getFamilyName());
+			pStmt.setString(3, family.getFamilyPass());
+			pStmt.setString(4, family.getFamilySalt());
+			pStmt.setInt(5, family.getFamilyId());
 
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					result = false;
+				}
+			}
+		}
+		// 結果を返す
+		return result;
+	}
+	public boolean familyDelete(int familyId) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SELECT文を準備する
+			String sql = "DELETE FROM family WHERE family_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setInt(1, familyId);
+
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					result = false;
+				}
+			}
+		}
+		// 結果を返す
+		return result;
+	}
 
 }

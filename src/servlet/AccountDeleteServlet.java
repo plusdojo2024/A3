@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.FamilyDAO;
 import dao.UsersDAO;
-import model.Message;
 import model.Users;
 
 /**
@@ -51,33 +51,39 @@ public class AccountDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//セッションスコープからログイン中のユーザー情報を持ってくる
-				HttpSession session = request.getSession();
-				Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		HttpSession session = request.getSession();
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
 		String strUid = request.getParameter("uid");
+		String strAdmin = request.getParameter("admin");
 
+		int admin = Integer.parseInt(strAdmin);//intに変換
 		int uid = Integer.parseInt(strUid);//intに変換
 
+		if (admin == 1) {
+			FamilyDAO fDao = new FamilyDAO();
+			if(fDao.familyDelete(dbUser.getFamilyId())) {
+				System.out.println("家族削除成功！");
+				// ログインページにリダイレクトする
+				response.sendRedirect("/A3/LoginServlet");
+			}else {
+				System.out.println("家族削除失敗！");
+				// アカウント削除ページにリダイレクトする
+				response.sendRedirect("/A3/AccountDeleteServlet");
+			}
+		} else {
+			UsersDAO uDao = new UsersDAO();
+			if (uDao.delete(uid)) {
+				System.out.println("成功しました");
 
-		UsersDAO uDao = new UsersDAO();
-		if(uDao.delete(uid)) {
-			System.out.println("成功しました");
-			Message msg = new Message();
-			msg.setMessage("アカウントを削除しました。");
-			request.setAttribute("message",msg);
-			request.setAttribute("myUser", dbUser);
-			// アカウント削除ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountDelete.jsp");
-			dispatcher.forward(request, response);
-		}else {
-			System.out.println("失敗しました");
-			Message msg = new Message();
-			msg.setMessage("失敗しました。");
-			request.setAttribute("message",msg);
-			request.setAttribute("myUser", dbUser);
-			// アカウント削除ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountDelete.jsp");
-			dispatcher.forward(request, response);
+				// アカウント削除ページにリダイレクトする
+				response.sendRedirect("/A3/AccountDeleteServlet");
+			} else {
+				System.out.println("失敗しました");
+
+				// アカウント削除ページにリダイレクトする
+				response.sendRedirect("/A3/AccountDeleteServlet");
+			}
 		}
 
 	}

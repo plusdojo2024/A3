@@ -110,6 +110,7 @@ public class FamilyRegistServlet extends HttpServlet {
 					part.write(absolutePass);
 				}
 
+
 				//アイコン画像の相対パス作成
 				String relativePath = fL.setRelativePath(name, familyId);
 
@@ -140,6 +141,7 @@ public class FamilyRegistServlet extends HttpServlet {
 						Thread.sleep(2000); // 2秒(2000ミリ秒)間だけ処理を止める
 					} catch (InterruptedException e) {
 					}
+					part.delete();
 
 					Message msg = new Message();
 					msg.setTitle("アカウント作成に成功しました。");
@@ -151,6 +153,7 @@ public class FamilyRegistServlet extends HttpServlet {
 					dispatcher.forward(request, response);
 				} else {
 					Message msg = new Message();
+					part.delete();
 					msg.setTitle("アカウント作成失敗！");
 					msg.setMessage("代表者アカウントの作成に失敗しました");
 

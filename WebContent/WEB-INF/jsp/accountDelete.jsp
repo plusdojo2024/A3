@@ -14,8 +14,10 @@
 <form method="post" action="/A3/AccountDeleteServlet">
 <c:set var="name" value="${e.name}" ></c:set>
 <c:set var="uid" value="${e.uid}" ></c:set>
+<c:set var="admin" value="${e.admin}" ></c:set>
 <input type="submit" name = "user_name" value="${name}">
 <input type="hidden" name="uid" value="${uid}">
+<input type="hidden" name="admin" value="${admin}">
 </form>
 </c:forEach>
 

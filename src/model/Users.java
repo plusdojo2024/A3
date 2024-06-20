@@ -5,7 +5,9 @@ import java.io.Serializable;
 public class Users implements Serializable{
 	private int uid;
 	private int familyId;
+	private String familyName;
 	private String name;
+	private String familyPass;
 	private String pw;
 	private String userSalt;
 	private int role;
@@ -93,5 +95,17 @@ public class Users implements Serializable{
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	public String getFamilyName() {
+		return familyName;
+	}
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+	public String getFamilyPass() {
+		return familyPass;
+	}
+	public void setFamilyPass(String familyPass) {
+		this.familyPass = familyPass;
 	}
 }
