@@ -1,24 +1,24 @@
 <!--当日のリスト-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>当日やることリスト | F&amp;M</title>
-<link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-<header>
+    <meta charset="UTF-8">
+    <title>当日のやることリスト</title>
+    <link rel="stylesheet" href="css/main.css">
+
     <div class="nav">
         <div class="left_icons">
-            <div class="green_box">父</div>
-            <div class="green_box">ポイント</div>
+        <c:set var="icon" value="${myUser.icon}" />
+            <div class="green_box"><img src="${icon}" id="user_icon"></div>
+            <div class="green_box"><c:out value="${myUser.havePoint}" /></div>
         </div>
 
         <div class="home_logo">
-            <a href="home.png"></a>
-            <a href="/A3/HomeServlet">F&amp;M</a>
+            <a href="/A3/HomeServlet">F&M</a>
         </div>
 
         <div class="right_buttons">
@@ -27,40 +27,55 @@
         </div>
 
     </div>
-</header>
+</head>
+<body>
 
-<h2>当日やることリスト</h2>
+<br><br><br><br>
+<h1>当日のリスト</h1>
+<br>
+<div class="table-container">
+	<h2>やることリスト</h2>
 	<table>
+		<%-- <c:forEach> --%>
 		<tr>
-			<th>1.</th>
-			<th>${todayList}</th>
-			<th><input type="checkbox" name="checkbox" value="1"></th>
+			<td>${numberToday}</td>
+			<td>${todayList}</td>
+			<td><input type="checkbox" name="checkbox" value="${numberToday}"></td>
 		</tr>
-		<tr>
-			<th>2.</th>
-			<th>${todayList}</th>
-			<th><input type="checkbox" name="checkbox" value="2"></th>
-		</tr>
+		<%-- </c:forEach> --%>
 	</table>
 
+	<h2>前日忘れたこと</h2>
 	<table>
+		<%-- <c:forEach> --%>
 		<tr>
-			<th>1.</th>
-			<th>${yesterdayList}</th>
+			<td>${numberYesterday}</td>
+			<td>${yesterdayList}</td>
 		</tr>
-		<tr>
-			<th>2,</th>
-			<th>${yesterdayList}</th>
-		</tr>
-	</table>
+		<%-- </c:forEach> --%>
+</table>
+</div>
 
 <h2>前日の引継ぎノート</h2>
-<p>${notesContent}</p>
+<%-- <c:choose> --%>
+<%--	<c:when test="${notes}=null"> --%>
+		<p>前日の引継ぎノートのデータはありません。<p>
+<%--	</c:when>  --%>
+<%--	<c:when test="${notes}!=null"> --%>
+		<button name="notes">${notes}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</button>
+<%--	</c:when>  --%>
+<%-- </c:choose> --%>
 
 <h2>ご褒美リクエスト</h2>
-<p>${rewardsContent}</p>
+<%-- <c:choose> --%>
+<%--	<c:when test="${rewards}=null"> --%>
+		<p>リクエストされているご褒美はありません</p>
+<%--	</c:when>  --%>
 
-<button type = "button"><a href="/A3/HomeServlet"><img src="/images/batu.png"></a></button>
+<%--	<c:when test="${rewards}!=null"> --%>
+		<button name="rewards">${rewards}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</button>
+<%--	</c:when>  --%>
+<%-- </c:choose> --%>
 
 </body>
 </html>
