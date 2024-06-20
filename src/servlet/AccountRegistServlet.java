@@ -83,6 +83,15 @@ public class AccountRegistServlet extends HttpServlet {
 		//データベースに入ってる個人情報は全部入ってる。
 		//ユーザー名・メアド・パスワードはハッシュ化されてる
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		UsersDAO uDao = new UsersDAO();
+
+		if(uDao.userCheck(dbUser.getFamilyId(), userName)) {
+			System.out.println("既にいる");
+			request.setAttribute("myUser", dbUser);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountRegist.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 		Users addUser = new Users();
 
@@ -128,7 +137,7 @@ public class AccountRegistServlet extends HttpServlet {
 
 		addUser.setIcon(relativePath);
 
-		UsersDAO uDao = new UsersDAO();
+
 		Message msg = new Message();
 		if (uDao.insert(addUser)) {
 			System.out.println("成功しました。");
