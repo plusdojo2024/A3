@@ -18,7 +18,7 @@
 		<c:forEach var="e" items="${ud}" >
 			<option value="${u.uId}">${u.name}</option>
 		</c:forEach>
-	</select>
+	</select><br>
 	<input type="submit" name="regist" placeholder="登録"><br>
 </form>
 </body>
