@@ -33,10 +33,15 @@ public class TodoEditServlet extends HttpServlet {
 			return;
 		}
 
-		TodoListDAO tlDao = new TodoListDAO();
+		request.setCharacterEncoding("UTF-8");
 		Users user = (Users)session.getAttribute("user");
+		Users dbUser = (Users) session.getAttribute("dbUser");
+		request.setAttribute("myUser", dbUser);
+
+		TodoListDAO tlDao = new TodoListDAO();
+//		Users user = (Users)session.getAttribute("user");
 		int familyID = user.getFamilyId();
-		String task = request.getParameter("task");
+		String task = request.getParameter("name");
 		List<TodoList> todolist = tlDao.select(familyID, task);
 		request.setAttribute("todolist", todolist);
 
@@ -55,30 +60,30 @@ public class TodoEditServlet extends HttpServlet {
 			return;
 		}
 
-//		int listId = Integer.parseInt(request.getParameter("list_id"));
-//		int familyId = Integer.parseInt(request.getParameter("family_id"));
-//		String task = request.getParameter("task");
-//		String category = request.getParameter("category");
-//		int givePoint = Integer.parseInt(request.getParameter("give_point"));
-//		String listDate = request.getParameter("listDate");
-//		String memo = request.getParameter("memo");
-//		int todoDelete = 0;
-//
-//		TodoListDAO tlDao = new TodoListDAO();
-//		Users user = (Users)session.getAttribute("user");
-//		int familyID = user.getFamilyId();
-//
-//		if (request.getParameter("submit").equals("更新")) {
-//			if (tlDao.update(familyID, new TodoList(listId, familyId, task, category, givePoint, listDate, memo, todoDelete))) {
-//				request.setAttribute("message", "更新しました。");
-//			} else {
-//				request.setAttribute("message", "更新に失敗しました。");
-//			}
-//		}
-//
-//		// 結果ページにフォワードする
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoEdit.jsp");
-//		dispatcher.forward(request, response);
+		int listId = Integer.parseInt(request.getParameter("list_id"));
+		int familyId = Integer.parseInt(request.getParameter("family_id"));
+		String task = request.getParameter("task");
+		String category = request.getParameter("category");
+		int givePoint = Integer.parseInt(request.getParameter("give_point"));
+		String listDate = request.getParameter("listDate");
+		String memo = request.getParameter("memo");
+		int todoDelete = 0;
+
+		TodoListDAO tlDao = new TodoListDAO();
+		Users user = (Users)session.getAttribute("user");
+		int familyID = user.getFamilyId();
+
+		if (request.getParameter("submit").equals("更新")) {
+			if (tlDao.update(familyID, new TodoList(listId, familyId, task, category, givePoint, listDate, memo, todoDelete))) {
+				request.setAttribute("message", "更新しました。");
+			} else {
+				request.setAttribute("message", "更新に失敗しました。");
+			}
+		}
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoEdit.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
