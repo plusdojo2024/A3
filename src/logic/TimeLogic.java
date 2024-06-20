@@ -17,22 +17,24 @@ public class TimeLogic {
 	}
 
 	//フォーマットを日本語の年月日に直して時刻を切り落として返す
-		public String nowJpDay() {
+	public String nowJpDay() {
 
-			LocalDateTime now = LocalDateTime.now();//現在時刻取得
-			//日本語フォーマットを指定
-			DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
-			String date = now.format(f);
+		LocalDateTime now = LocalDateTime.now();//現在時刻取得
+		//日本語フォーマットを指定
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
+		String date = now.format(f);
 
-			return date;
-		}
+
+		return date;
+	}
+
 
 	//カレンダーで使用されているフォーマットで現在時刻を返す
 	public String nowCalendar() {
 
 		LocalDateTime now = LocalDateTime.now();//現在時刻取得
 		//フォーマットを指定
-		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");//2020-06-06
 		String date = now.format(f);
 
 		return date;
@@ -42,7 +44,7 @@ public class TimeLogic {
 	public String nowNomalDay() {
 		LocalDateTime now = LocalDateTime.now();//現在時刻取得
 		//フォーマットを指定
-		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy/MM/dd");//2024/06/20
 		String date = now.format(f);
 
 		return date;

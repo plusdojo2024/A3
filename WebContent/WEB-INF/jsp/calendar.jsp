@@ -6,7 +6,9 @@
 
 <head>
 <meta charset='utf-8' />
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link rel="stylesheet" href="css/calendar.css">
 <title>テストcalendar</title>
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
@@ -15,23 +17,22 @@
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
 
+
+
 		var calendar = new FullCalendar.Calendar(calendarEl, {
-			events : [ {
-				daysOfWeek : [ '4', ],
-				title : '${task.title}：${task.name}',
-				startRecur : '${task.date}',
-				endRecur : '2024-06-29',
-				color : '#C2E1C2',
-			}, {
-				daysOfWeek : [ '2' ],
-				title : '${taskB.title}：${taskB.name}',
-				startRecur : '${taskB.date}',
-				endRecur : '2024-06-29',
-			}, {
-				title : 'event3',
-				start : '2024-06-29',
-				end : '2024-06-29',
-			} ],
+<c:forEach var="e" items="${eventList}">
+			events : [
+
+				{
+					<c:if test="${e.loop==0}">daysOfWeek : [ '4', ],</c:if>
+					title : '${e.title}：${e.name}',
+					<c:if test="${e.loop==0}">start : '${e.date}',</c:if>
+					<c:if test="${e.loop==1}">startRecur : '${e.start}',</c:if>
+					<c:if test="${e.loop==1}">endRecur : '${e.end}',</c:if>
+					color : '${e.color}',
+				},
+</c:forEach>
+				 ],
 			locale : 'ja',
 			selectable : true,
 			headerToolbar : {
@@ -70,6 +71,7 @@
 
 			}
 		});
+
 		calendar.render();
 	});
 </script>
