@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/accountRegist.css">
 <link rel="stylesheet" href="css/main.css">
-<!--
+<
 <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${myUser.icon}" />
@@ -33,11 +33,12 @@
 		</button>
 	</div>
 </div>
--->
+
 <title>家族登録画面</title>
 
 </head>
 <body>
+<br><br><br><br>
 	<h1>家族登録</h1>
 	<form id="create_form" method="post" action="/A3//AccountRegistServlet"
 		enctype="multipart/form-data">

@@ -8,30 +8,8 @@
     <meta charset="UTF-8">
     <title>アルバム</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/album.css">
 
-<style>
-    .accordion {
-        background-color: #f9f9f9;
-        color: #333;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
-        transition: 0.4s;
-        border-bottom: 1px solid #ccc;
-    }
-
-    .panel {
-        padding: 0 18px;
-        display: none;
-        background-color: white;
-        overflow: hidden;
-        border-bottom: 1px solid #ccc;
-    }
-</style>
 
     <div class="nav">
         <div class="left_icons">
@@ -50,9 +28,9 @@
         </div>
 
     </div>
+    <div></div>
 </head>
 <body>
-<br><br><br><br>
 <h1>アルバム</h1>
 <%-- <c:forEach> --%>
 	<div class="accordion" onclick="toggleAccordion('accordion1')">xxxx年xx月xx日</div>

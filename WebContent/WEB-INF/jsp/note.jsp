@@ -52,8 +52,9 @@
 			</tr>
 
 			<tr>
-				<td><a href="/A3/NoteEditServlet"><input type="submit" name="submit" value="登録"> <span
-					id="error_message"></span></a>
+				<td colspan="2">
+				<input type="submit" name="submit" value="登録"> <a href="/A3/NoteEditServlet">履歴・編集</a><span
+					id="error_message"></span>
 					</td>
 
 			</tr>

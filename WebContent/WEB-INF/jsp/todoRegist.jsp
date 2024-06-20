@@ -10,14 +10,16 @@
 </head>
 <body>
 <header>
+
     <div class="nav">
         <div class="left_icons">
-            <div class="green_box">父</div>
-            <div class="green_box">ポイント</div>
+        <c:set var="icon" value="${myUser.icon}" />
+            <div class="green_box"><img src="${icon}" id="user_icon"></div>
+            <div class="green_box"><c:out value="${myUser.havePoint}" /></div>
         </div>
 
         <div class="home_logo">
-            <a href="home.html">F&amp;M</a>
+            <a href="/A3/HomeServlet">F&M</a>
         </div>
 
         <div class="right_buttons">
