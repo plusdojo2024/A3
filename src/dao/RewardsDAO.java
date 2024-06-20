@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import logic.TimeLogic;
 import model.Rewards;
 
 //import model.Rewards.java;
@@ -117,15 +118,20 @@ public class RewardsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// ２．SQL文を準備する
-			String sql = "INSERT INTO REWARDS (REWARD, REQ_POINT,UID) VALUES (?, ?, ?);";
+			String sql = "INSERT INTO REWARDS (REWARD, REQ_POINT,UID, reward_date) VALUES (?, ?, ?);";
 
 			//１と２の情報をpStmtに入れる
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//現在の日付を取ってくる
+			TimeLogic tl = new TimeLogic();
+			String now = tl.nowJpDay();
 
 			//SQL文を完成させる
 			pStmt.setString(1, reward);
 			pStmt.setInt(2, reqPoint);
 			pStmt.setInt(3, uid);
+			pStmt.setString(4, now);
 
 
 			// SQL文を実行する（insertは登録した件数が返ってくる）
