@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
+import logic.TimeLogic;
 import model.Users;
 
 /**
@@ -25,6 +26,7 @@ public class NoteEditServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
 		Users user = (Users)session.getAttribute("user");
@@ -32,6 +34,8 @@ public class NoteEditServlet extends HttpServlet {
 		List<Users> ud = usersdao.selectFamily(user.getFamilyId());
 		System.out.println(ud.get(0).getName());
 		request.setAttribute("ud", ud);
+		TimeLogic time = new TimeLogic();
+		String date = time.nowNomalDay();
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/noteEdit.jsp");
@@ -45,11 +49,13 @@ public class NoteEditServlet extends HttpServlet {
 		doGet(request, response);
 
 		request.setCharacterEncoding("UTF-8");
+		String nd =request.getParameter("noteDate");
 		String title = request.getParameter("title");
 		String memo = request.getParameter("memo");
 
         request.setAttribute("title", title);
         request.setAttribute("memo", memo);
+        request.setAttribute("nd", nd);
 
 
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/noteEdit.jsp");
