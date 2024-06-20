@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.TodoListDAO;
 import logic.TimeLogic;
-import model.TodoList;
 import model.Users;
 
 /**
@@ -49,7 +47,7 @@ public class TodayListServlet extends HttpServlet {
 		TimeLogic time= new TimeLogic();//インスタンス化
 		String date = time.nowJp();//日本語の日付文字列格納
 		//今日のやることリストのデータを持ってくる----------------
-		List<TodoList> todoList = tDAO.selectNow(user.getUid(), date, 0);
+//		List<TodoList> todoList = tDAO.selectNow(user.getUid(), date, 0);
 
 		//昨日の日付を取得
 		LocalDateTime now = LocalDateTime.now();
@@ -58,14 +56,18 @@ public class TodayListServlet extends HttpServlet {
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH時mm分ss秒");
 		String date2 = yesterday.format(f);
 		//昨日のやっていないやることリストのデータを持ってくる----------------
-		List<TodoList> todoListAfter = tDAO.selectNow(user.getUid(), date2, 0);
+//		List<TodoList> todoListAfter = tDAO.selectNow(user.getUid(), date2, 0);
+
+		//引継ぎノートのdaoをインスタンス化
+
+		//リクエスト中のdaoをインスタンス化
 
 
 
 
 		//取得してきた値をリクエストに保存
-		request.setAttribute("todoList", todoList);
-		request.setAttribute("todoListAfter", todoListAfter);
+//		request.setAttribute("todoList", todoList);
+//		request.setAttribute("todoListAfter", todoListAfter);
 
 		// 今日やることリストページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todayList.jsp");
