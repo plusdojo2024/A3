@@ -32,7 +32,6 @@
 				 <td><input type="hidden"
 						name="role" value="0" id="role"></td>
 			<tr>
-
 			<tr>
 				<td><label>アイコン画像<br> <input type="file"
 						name="icon" >
@@ -44,8 +43,6 @@
 						name="color">
 				</label></td>
 			<tr>
-
-
 			<tr>
 				<td><input type="submit" name="submit" value="新規登録"> <span
 					id="error_message"> </span>
@@ -54,12 +51,8 @@
 						<c:out value="${message.title}" />
 						<c:out value="${message.message}" />
 					</p>
-
-
 					</td>
-
 			</tr>
-
 		</table>
 	</form>
 	<script src="js/accountRegist.js"></script>

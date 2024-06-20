@@ -24,12 +24,16 @@ public class AccountServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		//Users user = (Users) session.getAttribute("dbUser");
-		Users user = new Users();//単体テスト用
+		Users user = (Users) session.getAttribute("dbUser");
 
-		user.setRole(1);//単体テスト用
 
-		request.setAttribute("user", user);
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+
+		//Users dbUser = new Users();
+		//dbUser.setHavePoint(50);//単体テスト用
+		//アイコン画像は家族ごとにパスが変わるので未設定
+		request.setAttribute("myUser", dbUser);
+
 
 		// アカウント管理ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");

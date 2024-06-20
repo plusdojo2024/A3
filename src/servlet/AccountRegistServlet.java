@@ -31,6 +31,17 @@ public class AccountRegistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		Users user = (Users) session.getAttribute("dbUser");
+
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+
+		//Users dbUser = new Users();
+		//dbUser.setHavePoint(50);//単体テスト用
+		//アイコン画像は家族ごとにパスが変わるので未設定
+		request.setAttribute("myUser", dbUser);
 		// アカウント登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountRegist.jsp");
 		dispatcher.forward(request, response);
@@ -50,11 +61,11 @@ public class AccountRegistServlet extends HttpServlet {
 		String color = request.getParameter("color");
 
 		//ロールが文字列で送られてくるのでintに修正
-		int role=0;
-		if(strRole.equals("0")) {
-			role=0;
-		}else {
-			role=1;
+		int role = 0;
+		if (strRole.equals("0")) {
+			role = 0;
+		} else {
+			role = 1;
 		}
 
 		HashLogic hLogic = new HashLogic();
@@ -114,7 +125,7 @@ public class AccountRegistServlet extends HttpServlet {
 
 		UsersDAO uDao = new UsersDAO();
 		Message msg = new Message();
-		if(uDao.insert(addUser)) {
+		if (uDao.insert(addUser)) {
 			System.out.println("成功しました。");
 
 			msg.setMessage("アカウントを作成しました。");
@@ -124,7 +135,7 @@ public class AccountRegistServlet extends HttpServlet {
 			// アカウント登録ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
 			dispatcher.forward(request, response);
-		}else {
+		} else {
 			System.out.println("失敗しました。");
 			msg.setMessage("アカウントの作成に失敗しました。");
 			session.setAttribute("message", msg);

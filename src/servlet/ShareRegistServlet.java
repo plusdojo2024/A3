@@ -59,7 +59,7 @@ public class ShareRegistServlet extends HttpServlet {
 
 		//日付の取得
 		String date = time.nowNomalDay();
-
+/*
 		Object todoDate;
 		if(tdDao.regist(date, listId, new Todo(0,todoDate,uid,loop,startDate,endDate,monday,tuesday,wednesday,thursday,friday,saturday,sunday)))
 		{
@@ -69,6 +69,7 @@ public class ShareRegistServlet extends HttpServlet {
 		{
 			request.setAttribute("msg", "登録に失敗しました");
 		}
+		*/
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");

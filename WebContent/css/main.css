@@ -131,3 +131,8 @@ body
     font-size: 14px;
     margin: 0 10px;
 }
+
+/*アイコン画像を親要素に合わせる*/
+#user_icon{
+	width:100%;
+}
