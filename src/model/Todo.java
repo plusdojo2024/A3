@@ -8,7 +8,7 @@ public class Todo implements Serializable
 	private String todoDate;
 	private int uid;
     private int listId;
-    private String loop;
+    private int loop;
     private String startDate;
     private String endDate;
     private int monday;
@@ -19,10 +19,28 @@ public class Todo implements Serializable
     private int saturday;
     private int sunday;
 
-    public Todo()
+    public Todo(int todoId, int listId, String todoDate, int uid, int loop, String startDate, String endDate,
+    	int monday, int tuesday, int wednesday, int thursday, int friday,int saturday, int sunday)
     {
-
+    	this.todoId = todoId;
+    	this.listId = listId;
+    	this.todoDate = todoDate;
+    	this.loop = loop;
+    	this.startDate = startDate;
+    	this.endDate = endDate;
+    	this.monday = monday;
+    	this.tuesday = tuesday;
+    	this.wednesday = wednesday;
+    	this.thursday = thursday;
+    	this.friday = friday;
+    	this.saturday = saturday;
+    	this.sunday = sunday;
     }
+
+	public Todo()
+	{
+
+	}
 
 	public int getUid() {
 		return uid;
@@ -36,10 +54,10 @@ public class Todo implements Serializable
 	public void setListId(int listId) {
 		this.listId = listId;
 	}
-	public String getLoop() {
+	public int getLoop() {
 		return loop;
 	}
-	public void setLoop(String loop) {
+	public void setLoop(int loop) {
 		this.loop = loop;
 	}
 	public String getStartDate() {

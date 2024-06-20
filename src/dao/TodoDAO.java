@@ -29,7 +29,7 @@ public class TodoDAO
 			pStmt.setInt(1, listId);
 			pStmt.setString(2, date);
 			pStmt.setInt(3, todo.getUid());
-			pStmt.setString(4, todo.getLoop());
+			pStmt.setInt(4, todo.getLoop());
 			pStmt.setString(5, todo.getStartDate());
 			pStmt.setString(6, todo.getEndDate());
 			pStmt.setInt(7, todo.getMonday());
@@ -87,11 +87,11 @@ public class TodoDAO
 			{
 				Todo t = new Todo();
 
-				t.setTodoId(rs.getInt("Todo_id"));
+				t.setTodoId(rs.getInt("todo_id"));
 				t.setListId(rs.getInt("list_id"));
 				t.setTodoDate(rs.getString("todo_date"));
 				t.setUid(rs.getInt("uid"));
-				t.setLoop(rs.getString("loop"));
+				t.setLoop(rs.getInt("loop"));
 				t.setStartDate(rs.getString("start_date"));
 				t.setEndDate(rs.getString("end_date"));
 				t.setMonday(rs.getInt("monday"));
