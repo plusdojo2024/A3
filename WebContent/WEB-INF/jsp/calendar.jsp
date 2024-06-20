@@ -26,14 +26,11 @@
 
 
 				{
-					<c:if test="${e.loop==0}">daysOfWeek : [ '4', ],</c:if>
-					title : '${e.title}：${e.name}',
-					<c:if test="${e.loop==0}">start : "${e.date}",</c:if>
-					<c:if test="${e.loop==1}">startRecur : "${e.start}",</c:if>
-					<c:if test="${e.loop==1}">endRecur : "${e.end}",</c:if>
+					title : '${e.task}：${e.name}',
+					start : "${e.date}",
 					color : '${e.color}',
 				},
-				</c:if>
+</c:if>
 </c:forEach>
 				 ],
 			locale : 'ja',
@@ -45,7 +42,7 @@
 			},
 			dateClick : function(info) {
 				alert('clicked ' + info.dateStr);
-				var url = "/TestWeb01/SharingRegistServlet?date="
+				var url = "/A3/ShareRegistServlet?date="
 						+ info.dateStr;
 				window.location.href = url; // 通常の遷移
 			},
@@ -53,7 +50,7 @@
 
 				//var url = "/TestWeb01/ShareUpdateDeleteServlet?event="+info.event.title+"&date="+info.event.start;
 				const form = document.createElement('form');
-				form.action = '/TestWeb01/ShareUpdateDeleteServlet';
+				form.action = '/A3/ShareEditServlet';
 				form.method = 'post';
 				const data1 = document.createElement('input');
 				data1.value = info.event.title;

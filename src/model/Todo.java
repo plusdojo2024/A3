@@ -18,6 +18,9 @@ public class Todo implements Serializable
     private int friday;
     private int saturday;
     private int sunday;
+    private String task;
+    private String name;
+    private String color;
 
     public Todo(int todoId, int listId, String todoDate, int uid, int loop, String startDate, String endDate,
     	int monday, int tuesday, int wednesday, int thursday, int friday,int saturday, int sunday)
@@ -125,5 +128,29 @@ public class Todo implements Serializable
 	}
 	public void setTodoDate(String todoDate) {
 		this.todoDate = todoDate;
+	}
+
+	public String getTask() {
+		return task;
+	}
+
+	public void setTask(String task) {
+		this.task = task;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 }

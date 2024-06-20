@@ -2,10 +2,13 @@ package model;
 
 import java.io.Serializable;
 
-public class Calendar implements Serializable{
+//標準ライブラリのCalendarと被らないように命名規則外し
+public class CalendarBean implements Serializable{
 	private String name;
 	private String task;
 	private String date;
+	private String color;
+	private int uid;
 
 	public String getName() {
 		return name;
@@ -29,5 +32,13 @@ public class Calendar implements Serializable{
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 }

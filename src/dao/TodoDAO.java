@@ -6,18 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Todo;
+import model.Users;
 
-public class TodoDAO
-{
-	public boolean regist(String date, int listId, Todo todo)
-	{
+public class TodoDAO {
+	public boolean regist(String date, int listId, Todo todo) {
 		Connection conn = null;
 		boolean result = false;
 
-		try
-		{
+		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
@@ -43,31 +42,27 @@ public class TodoDAO
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
-				}
-				catch (SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 		return result;
 	}
-	public ArrayList<Todo> select(int uid)
-	{
+
+	public ArrayList<Todo> select(int uid) {
 		Connection conn = null;
 		ArrayList<Todo> list = new ArrayList<Todo>();
-		try
-		{
+		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver"); //運転手を雇っている
 
@@ -83,8 +78,7 @@ public class TodoDAO
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
-			while(rs.next())
-			{
+			while (rs.next()) {
 				Todo t = new Todo();
 
 				t.setTodoId(rs.getInt("todo_id"));
@@ -104,24 +98,73 @@ public class TodoDAO
 
 				list.add(t);
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
-				}
-				catch (SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 		return list;
+	}
+
+	//カレンダーに表示する用
+	//テーブル3つ結合するの面倒いからゴリ押し
+	public List<Todo> getCalendarData() {
+		Connection conn = null;
+		ArrayList<Todo> calendarList = new ArrayList<Todo>();
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				Todo t = new Todo();
+
+				t.setTodoId(rs.getInt("todo_id"));
+				t.setListId(rs.getInt("list_id"));
+				t.setTodoDate(rs.getString("todo_date"));
+				t.setUid(rs.getInt("uid"));
+				UsersDAO uDao = new UsersDAO();
+				uDao.getUser(t.getUid());
+				Users user = new Users();
+				t.setName(user.getName());
+				t.setColor(user.getColor());
+				TodoListDAO tlDao = new TodoListDAO();
+				t.setTask(tlDao.getTaskByListId(t.getListId()));
+
+				calendarList.add(t);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return calendarList;
 	}
 }

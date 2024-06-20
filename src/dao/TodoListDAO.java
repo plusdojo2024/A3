@@ -33,20 +33,16 @@ public class TodoListDAO {
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
-				}
-				catch (SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
@@ -65,7 +61,6 @@ public class TodoListDAO {
 
 			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
-
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND TASK=? ORDER BY LIST_ID";
@@ -89,22 +84,18 @@ public class TodoListDAO {
 
 				todolist.add(record);
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			todolist = null;
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			todolist = null;
-		}
-		finally {
+		} finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
-				}
-				catch (SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
 					todolist = null;
 				}
@@ -123,7 +114,6 @@ public class TodoListDAO {
 
 			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
-
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? ORDER BY LIST_ID";
@@ -146,22 +136,18 @@ public class TodoListDAO {
 
 				todoview.add(record);
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			todoview = null;
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			todoview = null;
-		}
-		finally {
+		} finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
-				}
-				catch (SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
 					todoview = null;
 				}
@@ -193,31 +179,27 @@ public class TodoListDAO {
 			pStmt.setInt(5, familyId);
 
 			// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
-			// 結果を返す
-			return result;
 		}
+
+		// 結果を返す
+		return result;
+	}
 
 	//日付とflgをもらうことで、その日のやることを取得できる。
 	public List<TodoList> selectNow(int uId, String date, int flg) {
@@ -230,7 +212,6 @@ public class TodoListDAO {
 
 			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
-
 
 			// SQL文を準備する
 			String sql = "SELECT * FROM TODO_LIST WHERE uId=? AND LIST_DATE=? AND TODO_COMPLETE=? ORDER BY LIST_ID";
@@ -255,27 +236,66 @@ public class TodoListDAO {
 
 				todolist.add(record);
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			todolist = null;
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			todolist = null;
-		}
-		finally {
+		} finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
-				}
-				catch (SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
 					todolist = null;
 				}
 			}
 		}
 		return todolist;
+	}
+
+	//listIdを引数にしてtaskだけを返す
+	public String getTaskByListId(int listId) {
+		Connection conn = null;
+		ArrayList<TodoList> todolist = new ArrayList<TodoList>();
+		String task = "";
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT task FROM TODO_LIST WHERE list_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, listId);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			rs.next();
+			task = rs.getString("task");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todolist = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todolist = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todolist = null;
+				}
+			}
+		}
+
+		return task;
 	}
 }
