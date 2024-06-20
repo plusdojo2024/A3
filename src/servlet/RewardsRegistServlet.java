@@ -27,9 +27,9 @@ public class RewardsRegistServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Users user = (Users)session.getAttribute("user");
+
 		UsersDAO usersdao = new UsersDAO();
 		List<Users> ud = usersdao.selectFamily(user.getFamilyId());
-		System.out.println(ud.get(0).getName());
 		request.setAttribute("ud", ud);
 
 
