@@ -50,6 +50,8 @@ public class ShareRegistServlet extends HttpServlet {
 		int saturday = Integer.parseInt(request.getParameter("saturday"));
 		int sunday = Integer.parseInt(request.getParameter("sunday"));
 
+		String selectDate = request.getParameter("select_date");
+
 
 
 

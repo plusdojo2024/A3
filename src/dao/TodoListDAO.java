@@ -259,7 +259,6 @@ public class TodoListDAO {
 	//listIdを引数にしてtaskだけを返す
 	public String getTaskByListId(int listId) {
 		Connection conn = null;
-		ArrayList<TodoList> todolist = new ArrayList<TodoList>();
 		String task = "";
 
 		try {
@@ -280,10 +279,8 @@ public class TodoListDAO {
 			task = rs.getString("task");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			todolist = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			todolist = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -291,7 +288,6 @@ public class TodoListDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					todolist = null;
 				}
 			}
 		}

@@ -60,7 +60,7 @@
 
 				const data2 = document.createElement('input');
 				data2.value = info.event.start;
-				data2.name = "date";
+				data2.name = "select_date";
 				data2.type = "hidden";
 				form.appendChild(data2);
 
