@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+textarea {
+  width: 200px;  /* 幅を固定 */
+  height: 100px; /* 高さを固定 */
+  resize: none;  /* リサイズを無効にする */
+}
+#main{
+	margin:0 auto;
+}

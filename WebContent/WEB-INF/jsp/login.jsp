@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>ログインページ</title>
 </head>
+<link rel="stylesheet" href="css/main.css">
 <body>
 	<form id="create_form" method="post" action="/A3//LoginServlet">
 		<table>

@@ -28,6 +28,7 @@
     </div>
 </head>
 <body>
+<br><br><br><br>
 <%--<p><a href="/A3/TodoMemoServlet?name=掃除機をかける">掃除機</a>--%>
 <%--<p><a href="/A3/TodoMemoServlet?name=皿洗い">皿洗い</a>--%>
 <%--<p><a href="/A3/TodoMemoServlet?name=${task}">掃除機</a>--%>

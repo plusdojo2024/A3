@@ -27,6 +27,7 @@
 <title>ホーム画面</title>
 </head>
 <body>
+<br><br><br><br><br>
 <h1>ホーム画面</h1>
 <a href="/A3/TodoServlet">やることリスト</a>
 <a href="/A3/NoteServlet">引継ぎノート</a>
