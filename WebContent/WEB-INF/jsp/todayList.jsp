@@ -38,8 +38,7 @@
 	<table>
 		<%-- <c:forEach> --%>
 		<tr>
-			<td>${numberToday}</td>
-			<td>${todayList}</td>
+			<td>${todoList}</td>
 			<td><input type="checkbox" name="checkbox" value="${numberToday}"></td>
 		</tr>
 		<%-- </c:forEach> --%>
@@ -49,8 +48,7 @@
 	<table>
 		<%-- <c:forEach> --%>
 		<tr>
-			<td>${numberYesterday}</td>
-			<td>${yesterdayList}</td>
+			<td>${todoListAfter}</td>
 		</tr>
 		<%-- </c:forEach> --%>
 </table>
