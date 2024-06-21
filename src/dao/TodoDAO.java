@@ -12,7 +12,7 @@ import model.Todo;
 import model.Users;
 
 public class TodoDAO {
-	public boolean regist(String date, int listId, Todo todo) {
+	public boolean registOneDay(Todo todo) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -20,28 +20,70 @@ public class TodoDAO {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-			String sql = "INSERT INTO TODO (list_id, todo_date, uid, loop, start_date, end_date, "
-					+ "monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES "
-					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO TODO (list_id, todo_date, uid, start_date, end_date) VALUES "
+					+ "(?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			pStmt.setInt(1, listId);
-			pStmt.setString(2, date);
+			pStmt.setInt(1, todo.getListId());
+			pStmt.setString(2, todo.getTodoDate());
 			pStmt.setInt(3, todo.getUid());
-			pStmt.setInt(4, todo.getLoop());
-			pStmt.setString(5, todo.getStartDate());
-			pStmt.setString(6, todo.getEndDate());
-			pStmt.setInt(7, todo.getMonday());
-			pStmt.setInt(8, todo.getTuesday());
-			pStmt.setInt(9, todo.getWednesday());
-			pStmt.setInt(10, todo.getThursday());
-			pStmt.setInt(11, todo.getFriday());
-			pStmt.setInt(12, todo.getSaturday());
-			pStmt.setInt(13, todo.getSunday());
+			pStmt.setString(4, todo.getTodoDate());
+			pStmt.setString(5, todo.getTodoDate());
 
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+
+	public boolean registLoop(List<Todo> todoList) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			String sql = "INSERT INTO TODO (list_id, todo_date, uid, loop, "
+					+ "monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES "
+					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			int count=0;
+			for (Todo todo : todoList) {
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				pStmt.setInt(1, todo.getListId());
+				pStmt.setString(2, todo.getTodoDate());
+				pStmt.setInt(3, todo.getUid());
+				pStmt.setInt(4, todo.getLoop());
+				pStmt.setInt(5, todo.getMonday());
+				pStmt.setInt(6, todo.getTuesday());
+				pStmt.setInt(7, todo.getWednesday());
+				pStmt.setInt(8, todo.getThursday());
+				pStmt.setInt(9, todo.getFriday());
+				pStmt.setInt(10, todo.getSaturday());
+				pStmt.setInt(11, todo.getSunday());
+				pStmt.executeUpdate();
+				count++;
+			}
+			if(count==todoList.size()) {
+				result=true;
+			}
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -142,8 +184,9 @@ public class TodoDAO {
 				t.setTodoDate(rs.getString("todo_date"));
 				t.setUid(rs.getInt("uid"));
 				UsersDAO uDao = new UsersDAO();
-				uDao.getUser(t.getUid());
+
 				Users user = new Users();
+				user=uDao.getUser(t.getUid());
 				t.setName(user.getName());
 				t.setColor(user.getColor());
 				TodoListDAO tlDao = new TodoListDAO();

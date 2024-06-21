@@ -46,7 +46,7 @@
 		<div class="main_box">
 			<label for="task">項目</label> <select id="task" name="task" required>
 				<c:forEach var="task" items="${taskList}">
-					<option value="${task.task}">${task.task}</option>
+					<option value="${task.listId}">${task.task}</option>
 				</c:forEach>
 			</select>
 		</div>
@@ -60,10 +60,10 @@
 		</div>
 
 		<div class="main_box">
-			繰り返し<select name="repeat" value="繰り返し"
+			繰り返し<select name="loop"
 				onchange="enableNextDropdown('day')">
-				<option>繰り返さない</option>
-				<option>繰り返す</option>
+				<option value="0">繰り返さない</option>
+				<option value="1">繰り返す</option>
 			</select>
 		</div>
 
@@ -86,12 +86,11 @@
 			 <label for="sunday">日曜日</label>
 		<input type="checkbox" id="sunday" name="week[]" value="1"><br>
 
-
-
 		<div class="main_box">
 		<c:set var="set_today" value = "${today}" />
+		<input type ="hidden" name="select_date" value="${set_today}">
 		<c:set var="set_end" value = "${endDay}" />
-			いつまで<input type="date"  min="${set_today}" max="${set_end}">
+			いつまで<input type="date"  name=end_date min="${set_today}" max="${set_end}">
 		</div>
 
 		<div class="submit_box">

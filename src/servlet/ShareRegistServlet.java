@@ -59,10 +59,9 @@ public class ShareRegistServlet extends HttpServlet {
 		UsersDAO uDao = new UsersDAO();
 		TodoListDAO tLDao = new TodoListDAO();
 
-		List<Users>userList = uDao.selectFamily(user.getFamilyId());
+		List<Users> userList = uDao.selectFamily(user.getFamilyId());
 
 		List<TodoList> taskList = tLDao.view(user.getFamilyId());
-
 
 		request.setAttribute("taskList", taskList);
 		request.setAttribute("userList", userList);
@@ -84,40 +83,58 @@ public class ShareRegistServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		int uid = Integer.parseInt(request.getParameter("uid"));
-		String name = request.getParameter(request.getParameter("name"));
-		int listId = Integer.parseInt(request.getParameter("list_id"));
-		String loop = request.getParameter(request.getParameter("loop"));
-		String startDate = request.getParameter("startDate");
-		String endDate = request.getParameter("endDate");
-		int monday = Integer.parseInt(request.getParameter("monday"));
-		int tuesday = Integer.parseInt(request.getParameter("tuesday"));
-		int wednesday = Integer.parseInt(request.getParameter("wednesday"));
-		int thursday = Integer.parseInt(request.getParameter("thursday"));
-		int friday = Integer.parseInt(request.getParameter("friday"));
-		int saturday = Integer.parseInt(request.getParameter("saturday"));
-		int sunday = Integer.parseInt(request.getParameter("sunday"));
+		String strListId = request.getParameter("task");
 		String selectDate = request.getParameter("select_date");
+		String loop = request.getParameter("loop");
+
+		int listId = Integer.parseInt(strListId);
 
 		TodoDAO tdDao = new TodoDAO();
-		TimeLogic time = new TimeLogic();
-
-		//日付の取得
-		String date = time.nowNomalDay();
-
-		Todo newTodo = new Todo(0, uid, loop, sunday, sunday, startDate, endDate, monday, tuesday, wednesday, thursday,
-				friday, saturday, sunday);
-
-		boolean isRegistered = tdDao.regist(date, 1, newTodo);
-
-		if (isRegistered) {
-			request.setAttribute("msg", "登録しました");
+		Todo todo = new Todo();
+		if (loop.equals("0")) {
+			todo.setLoop(0);
+			todo.setUid(uid);
+			todo.setTodoDate(selectDate);
+			todo.setListId(listId);
+			if (tdDao.registOneDay(todo)) {
+				System.out.println("成功しました。");
+				// Calendarにフォワードする
+				response.sendRedirect("/A3/CalendarServlet");
+			} else {
+				System.out.println("失敗しました。");
+				// Calendarにフォワードする
+				response.sendRedirect("/A3/CalendarServlet");
+			}
 		} else {
-			request.setAttribute("msg", "登録に失敗しました");
-		}
+			String endDate = request.getParameter("end_date");
+			String strWeek[] = request.getParameterValues("week[]");
 
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
-		dispatcher.forward(request, response);
+			//strWeekと同じ要素数のint型配列宣言
+			int[] week = new int[strWeek.length];
+
+			//Stringの配列をintに変換
+			for (int i = 0; i < strWeek.length; i++) {
+				week[i] = Integer.parseInt(strWeek[i]);
+			}
+
+			TimeLogic tLogic = new TimeLogic();
+
+			List<Todo> todoList = tLogic.createTodo(selectDate, endDate, week, uid, listId);
+
+			System.out.println(todoList.size());
+			for(Todo test:todoList) {
+				System.out.println(test.getListId());
+			}
+			if(tdDao.registLoop(todoList)) {
+				System.out.println("成功しました。");
+			}else {
+				System.out.println("失敗しました。");
+			}
+
+			// Calendarにフォワードする
+			response.sendRedirect("/A3/CalendarServlet");
+
+		}
 
 	}
 

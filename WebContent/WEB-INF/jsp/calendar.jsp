@@ -50,7 +50,7 @@
 
 				{
 					title : '${e.task}：${e.name}',
-					start : "${e.date}",
+					start : "${e.todoDate}",
 					color : '${e.color}',
 				},
 </c:if>

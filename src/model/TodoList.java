@@ -14,7 +14,6 @@ public class TodoList implements Serializable{
 
 	//引数なしコンストラクタ
 	public TodoList() {
-
 	}
 
 	public TodoList(int listId, int familyId, String task, String category, int givePoint, String listDate, String memo,
