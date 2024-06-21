@@ -46,7 +46,7 @@
     	<label for="uid">担当者</label>
     	<select id="uid" name="uid" required>
     		<c:forEach var="user" items="${userList}">
-    			<option value="${user.uid}">${uset.name}</option>
+    			<option value="${user.uid}">${user.name}</option>
     		</c:forEach>
     	</select>
     </div>
@@ -58,19 +58,19 @@
 
     <div class= "main_box" >曜日</div>
 
-    <lablel for="monday">月曜日</lablel>
+    <label for="monday">月曜日</label>
     <input type="checkbox" id="monday" name="monday" value="1"><br>
-    <lablel for="tuesday">火曜日</lablel>
+    <label for="tuesday">火曜日</label>
     <input type="checkbox" id="tuesday" name="tuesday" value="1"><br>
-    <lablel for="wednesday">水曜日</lablel>
+    <label for="wednesday">水曜日</label>
     <input type="checkbox" id="wednesday" name="wednesday" value="1"><br>
-    <lablel for="thuresday">木曜日</lablel>
+    <label for="thuresday">木曜日</label>
     <input type="checkbox" id="thuresday" name="thuresday" value="1"><br>
-    <lablel for="friday">金曜日</lablel>
+    <label for="friday">金曜日</label>
     <input type="checkbox" id="friday" name="friday" value="1"><br>
-    <lablel for="saturday">土曜日</lablel>
+    <label for="saturday">土曜日</label>
     <input type="checkbox" id="saturday" name="saturday" value="1"><br>
-    <lablel for="sunday">日曜日</lablel>
+    <label for="sunday">日曜日</label>
     <input type="checkbox" id="sunday" name="sunday" value="1"><br>
 
 
