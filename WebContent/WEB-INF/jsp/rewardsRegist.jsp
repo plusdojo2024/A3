@@ -35,10 +35,10 @@
 	※<input type="text" name="point" placeholder="付与ポイント"><br>
 	<select name="name">
 		<c:forEach var="e" items="${ud}" >
-			<option value="${u.uId}">${u.name}</option>
+			<option value="${e.uid}">${e.name}</option>
 		</c:forEach>
 	</select><br>
-	<input type="submit" name="regist" placeholder="登録"><br>
+	<input type="submit" name="regist" value="登録"><br>
 </form>
 </body>
 
