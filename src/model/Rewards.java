@@ -10,6 +10,7 @@ public class Rewards implements Serializable{
 	private String rewardDate;  //日付
 	private int uid;  //個人ID
 	private int request;  //リクエスト中
+	private String name;
 
 	//空のコンストラクタ
 	public Rewards() {
@@ -18,17 +19,26 @@ public class Rewards implements Serializable{
 
 	//コンストラクタ
 
-	public Rewards(int rewardId, String reward, int reqPoint, String rewardDate, int uid, int request) {
+	public Rewards(int rewardId, String reward, int reqPoint, String rewardDate, int uid, int request,String name) {
 		this.rewardId = rewardId;
 		this.reward = reward;
 		this.reqPoint = reqPoint;
 		this.rewardDate = rewardDate;
 		this.uid = uid;
 		this.request = request;
+		this.name=name;
 	}
 
 
 	//getter,setter
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public int getRewardId() {
 		return rewardId;
