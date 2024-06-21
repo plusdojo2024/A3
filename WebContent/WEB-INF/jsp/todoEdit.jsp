@@ -35,6 +35,10 @@
 </head>
 <body>
 <main>
+<br>
+<br>
+<br>
+<br>
 <p>${message}</p>
 <p><sup style="color: red;">*</sup>は入力必須項目です。</p>
 
@@ -73,7 +77,9 @@
 		</select></td>
 	<td><p>設定中のポイント：${e.givePoint}</p></td>
 	<td><textarea name="memo">${e.memo}</textarea></td>
-	<td><input type="submit" name="submit" value="更新"></td>
+	<td><input type="submit" name="submit" value="更新">
+	<input type="submit" name="submit" value="削除">
+	</td>
 	</tr>
 	</table>
 	</form>

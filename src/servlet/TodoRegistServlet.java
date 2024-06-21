@@ -60,6 +60,9 @@ public class TodoRegistServlet extends HttpServlet {
 		String memo = request.getParameter("memo");
 		int todoDelete = 0;
 
+		Users dbUser = (Users) session.getAttribute("dbUser");
+		request.setAttribute("myUser", dbUser);
+
 		TodoListDAO tlDao = new TodoListDAO();
 		TimeLogic time = new TimeLogic();
 		String date = time.nowNomalDay();

@@ -59,32 +59,47 @@ public class TodoEditServlet extends HttpServlet {
 			response.sendRedirect("/A3/LoginServlet");
 			return;
 		}
-
+		request.setCharacterEncoding("UTF-8");
 		int listId = Integer.parseInt(request.getParameter("list_id"));
 		int familyId = Integer.parseInt(request.getParameter("family_id"));
-		String task = request.getParameter("name");
+		String task = request.getParameter("task");
 		String category = request.getParameter("category");
 		int givePoint = Integer.parseInt(request.getParameter("give_point"));
 		String listDate = request.getParameter("list_date");
 		String memo = request.getParameter("memo");
 		int todoDelete = 0;
+		System.out.println("ここまできたよ");
 
 		TodoListDAO tlDao = new TodoListDAO();
 		Users user = (Users)session.getAttribute("user");
 		int familyID = user.getFamilyId();
 //		List<TodoList> todolist = tlDao.select(familyID, task);
 //		request.setAttribute("todolist", todolist);
-
+		System.out.println("aaa"+request.getParameter("submit")+"aaa");
 		if (request.getParameter("submit").equals("更新")) {
 			if (tlDao.update(familyID, new TodoList(listId, familyId, task, category, givePoint, listDate, memo, todoDelete))) {
+				System.out.println("更新完了");
 				request.setAttribute("message", "更新しました。");
+
 			} else {
+				System.out.println("更新あかん");
 				request.setAttribute("message", "更新に失敗しました。");
+			}
+		} else {
+			if(tlDao.delete(listId)) {
+				request.setAttribute("message", "削除しました");
+			} else {
+				request.setAttribute("message", "削除に失敗しました");
 			}
 		}
 
+//		List<TodoList> todolist = tlDao.select(familyId, task);
+//		request.setAttribute("todolist", todolist);
+
+		List<TodoList> todoview = tlDao.view(familyId);
+		request.setAttribute("todoview", todoview);
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoEdit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todo.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -45,6 +45,7 @@
 </c:forEach>
 
 <button onclick="window.location.href= '/A3/TodoRegistServlet'" >登録</button><br>
+<p>${message}</p>
 <script src="js/todoedit.js"></script>
 </body>
 </html>
