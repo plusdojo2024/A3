@@ -12,6 +12,10 @@ public class Notes implements Serializable{
 	private String imageTwo;  //写真２
 	private String noteUpdate;  //ノート変更
 
+	//引数なしコンストラクタ
+	public Notes() {
+
+	}
 
 
 	public Notes(int noteID, int familyID, String title, String note, String noteDate, String imageOne, String imageTwo,

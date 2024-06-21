@@ -102,48 +102,22 @@ public class NotesDAO {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", "");
 
+				String sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE, IMAGE_ONE, IMAGE_TWO) VALUES(? , ?, ?, ?, ?)";
+				if(memo.getImageOne()==null && memo.getImageTwo()==null) {
+					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE) VALUES(? , ?, ?)";
+				}else if(memo.getImageOne()==null || memo.getImageTwo()==null) {
+					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,IMAGE_ONE) VALUES(? , ?, ?, ?)";
+				}
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE, IMAGE_ONE, IMAGE_TWO VALUES(? , ?, ?, ?, ?, ?)";
+
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-
-				if (memo.getTitle() != null && !memo.getTitle().equals("")) {
 					pStmt.setString(1, memo.getTitle());
-				}
-				else {
-					pStmt.setString(1, "（未設定）");
-				}
-				if (memo.getNote() != null && !memo.getNote().equals("")) {
 					pStmt.setString(2, memo.getNote());
-				}
-				else {
-					pStmt.setString(2, "（未設定）");
-				}
-				if (memo.getNoteDate() != null && !memo.getNoteDate().equals("")) {
 					pStmt.setString(3, memo.getNoteDate());
-				}
-				else {
-					pStmt.setString(3, "（未設定）");
-				}
-				if (memo.getImageOne() != null && !memo.getImageOne().equals("")) {
 					pStmt.setString(4, memo.getImageOne());
-				}
-				else {
-					pStmt.setString(4, "（未設定）");
-				}
-				if (memo.getImageTwo() != null && !memo.getImageTwo().equals("")) {
 					pStmt.setString(5, memo.getImageTwo());
-				}
-				else {
-					pStmt.setString(5, "（未設定）");
-				}
-				if (memo.getNoteUpdate() != null && !memo.getNoteUpdate().equals("")) {
-					pStmt.setString(6, memo.getNoteUpdate());
-				}
-				else {
-					pStmt.setString(6, "（未設定）");
-				}
 
 
 				// SQL文を実行する
