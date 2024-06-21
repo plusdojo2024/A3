@@ -3,10 +3,10 @@ package model;
 import java.io.Serializable;
 
 public class Notes implements Serializable{
-	private String title;//タイトル
-	private String memo;//メモ
 	private int noteID;  //メモID
 	private int familyID;  //家族ID
+	private String title;//タイトル
+	private String note;//メモ
 	private String noteDate;  //ノート日付
 	private String imageOne;  //写真１
 	private String imageTwo;  //写真２
@@ -14,6 +14,19 @@ public class Notes implements Serializable{
 
 
 
+	public Notes(int noteID, int familyID, String title, String note, String noteDate, String imageOne, String imageTwo,
+			String noteUpdate) {
+		super();
+		this.noteID = noteID;
+		this.familyID = familyID;
+		this.title = title;
+		this.note = note;
+		this.noteDate = noteDate;
+		this.imageOne = imageOne;
+		this.imageTwo = imageTwo;
+		this.noteUpdate = noteUpdate;
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 	//getter,setter
 	public String getTitle() {
 		return title;
@@ -21,11 +34,11 @@ public class Notes implements Serializable{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getMemo() {
-		return memo;
+	public String getNote() {
+		return note;
 	}
-	public void setMemo(String memo) {
-		this.memo = memo;
+	public void setNote(String note) {
+		this.note = note;
 
 	}
 	public String getNoteUpdate() {
