@@ -65,14 +65,6 @@
         }
     }
 
-    document.getElementById('ch').addEventListener('change', function() {
-        if (this.checked) {
-       	// チェックがついた時の処理
-       	 document.getElementById('deleteButton').style.display = 'none';
-        } else {
-            // チェックが外れた時の処理
-       	 document.getElementById('deleteButton').style.display = 'block';
-        }
-    });
+
 </script>
 </html>
