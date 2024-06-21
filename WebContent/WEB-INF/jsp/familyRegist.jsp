@@ -10,16 +10,18 @@
 <link rel="stylesheet" href="css/main.css">
 <body>
 	<h2>新規登録</h2>
-	<form id="create_form" method="post"
+	<form id="regist_form" method="post"
 		action="/A3//FamilyRegistServlet" enctype="multipart/form-data">
 		<table>
 
 			<tr>
 				<td><label>アイコン画像<br> <input type="file"
-						name="icon" >
-				</label></td>
+						name="icon" id="icon">
+				</label>
+				<p id="error_icon" style="display: none">入力された値が正しくありません</p>
+				</td>
 				<td><label>家族名<br> <input type="text"
-						name="family_name">
+						name="family_name" maxlength="20">
 				</label></td>
 
 			</tr>
@@ -27,23 +29,25 @@
 				<td><label>個人カラー<br> <input type="color"
 						name="color">
 				</label></td>
-				<td><label>メールアドレス<br> <input type="text"
-						name="mail">
+				<td><label>メールアドレス<br> <input type="email"
+						name="mail" maxlength="20">
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>家族パスワード<br> <input type="password"
-						name="family_pass">
+						name="family_pass" id="f_pass" maxlength="20">
+						<span class="pass_warn">8文字以上20文字以内の大文字を1文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>代表者ユーザー名<br> <input type="text"
-						name="user_name">
+						name="user_name" maxlength="20">
 				</label></td>
 			<tr>
 			<tr>
-				<td><label>代表者個人PASS<br> <input type="password"
-						name="user_pass">
+				<td><label>代表者個人パスワード<br> <input type="password"
+						name="user_pass" id="u_pass" maxlength="20">
+						<span class="pass_warn">8文字以上20文字以内の大文字を1文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
@@ -56,5 +60,6 @@
 
 		</table>
 	</form>
+	<script src="js/passCheck.js"></script>
 </body>
 </html>

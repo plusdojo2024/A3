@@ -46,17 +46,17 @@
 			<tr>
 				<td><c:set var="name" value="${myUser.name}">
 					</c:set> <label>個人名<br> <input type="text" name="user_name"
-						value="${name}">
+						value="${name}" max=20>
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>個人パスワード<br> <input type="password"
-						name="user_pass" id="pass"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						name="user_pass" id="pass" max=20><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>個人パスワード確認<br> <input type="password"
-						id="pass_check"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						id="pass_check" max=20><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
@@ -72,7 +72,7 @@
 				</label></td>
 			<tr>
 			<tr>
-				<td><input type="submit" name="submit" value="変更"> <span
+				<td><input type="submit" name="submit" id = "submit" value="変更"> <span
 					id="error_message"> </span>
 
 					<p class="error">

@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/accountRegist.css">
 <link rel="stylesheet" href="css/main.css">
-<div class="nav">
 	<div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${myUser.icon}"></c:set>
@@ -32,8 +31,6 @@
 	</div>
 
 </div>
-</div>
-
 <title>家族登録画面</title>
 
 </head>
@@ -58,10 +55,10 @@
 			<tr>
 			<tr>
 				<td colspan="2">
-					<button type="button" id="parent">
+					<button type="button" id="parent" class="role_button">
 						<img src="images/parent.png" class="role_image" id="parent_image">
 					</button>
-					<button type="button" id="child">
+					<button type="button" id="child" class="role_button">
 						<img src="images/children.png" class="role_image" id="child_image">
 					</button>
 				</td>

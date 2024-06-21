@@ -36,7 +36,7 @@ public class AccountRegistServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		Users user = (Users) session.getAttribute("myUser");
+		Users user = (Users) session.getAttribute("user");
 
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
