@@ -35,7 +35,7 @@ public class CalendarServlet extends HttpServlet {
 
 		TodoDAO tDao = new TodoDAO();
 
-		List<Todo> todoCalendar = tDao.getCalendarData();
+		List<Todo> todoCalendar = tDao.getCalendarData(dbUser.getFamilyId());
 
 		request.setAttribute("eventList", todoCalendar);
 		// アカウント管理ページにフォワードする

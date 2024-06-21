@@ -159,7 +159,7 @@ public class TodoDAO {
 
 	//カレンダーに表示する用
 	//テーブル3つ結合するの面倒いからゴリ押し
-	public List<Todo> getCalendarData() {
+	public List<Todo> getCalendarData(int familyId) {
 		Connection conn = null;
 		ArrayList<Todo> calendarList = new ArrayList<Todo>();
 		try {
@@ -170,9 +170,14 @@ public class TodoDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM TODO";
+			String sql = "SELECT "
+					+ "*"
+					+ "FROM TODO as T "
+					+ "JOIN USERS as U ON U.UID = T.UID "
+					+ "WHERE family_id = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
 
+			pStmt.setInt(1, familyId);
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
