@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/accountRegist.css">
 <link rel="stylesheet" href="css/main.css">
-<
 <div class="nav">
+	<div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}" />
+		<c:set var="icon" value="${myUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
@@ -21,24 +21,27 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="/A3/HomeServlet">F&M</a>
+		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
 	</div>
 
 	<div class="right_buttons">
-		<button class="account-management">
-			<a href="/A3/AccountServlet">アカウント管理</a>
-		</button>
-		<button class="logout">
-			<a href="/A3/LogoutServlet">ログアウト</a>
-		</button>
+		<button class="account-management"
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+		<button class="logout"
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
 	</div>
+
+</div>
 </div>
 
 <title>家族登録画面</title>
 
 </head>
 <body>
-<br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<h1>家族登録</h1>
 	<form id="create_form" method="post" action="/A3//AccountRegistServlet"
 		enctype="multipart/form-data">

@@ -20,8 +20,8 @@
         </div>
 
         <div class="right_buttons">
-            <button class="account-management"><a href="/A3/AccountServlet">アカウント管理</a></button>
-            <button class="logout"><a href="/A3/LogoutServlet">ログアウト</a></button>
+            <button class="account-management" id="account_manage">アカウント管理</button>
+            <button class="logout" id="logout">ログアウト</button>
         </div>
 
     </div>
@@ -39,6 +39,6 @@
 				type="hidden" name="admin" value="${admin}">
 		</form>
 	</c:forEach>
-
+<script src="js/main.js"></script>
 </body>
 </html>

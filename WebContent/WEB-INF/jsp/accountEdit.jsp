@@ -26,12 +26,10 @@
 	</div>
 
 	<div class="right_buttons">
-		<button class="account-management">
-			<a href="/A3/AccountServlet">アカウント管理</a>
-		</button>
-		<button class="logout">
-			<a href="/A3/LogoutServlet">ログアウト</a>
-		</button>
+		<button class="account-management"
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+		<button class="logout"
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
 	</div>
 
 </div>
