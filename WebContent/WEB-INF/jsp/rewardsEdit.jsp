@@ -29,16 +29,17 @@
 </head>
 <body>
 <h1>ご褒美　編集・削除</h1>
-<form method="post" action="/A3/rewardsEditServlet">
-	※<input type="text" name="reward" value="${rewards}"><br>
-	※<input type="text" name="point" value="${point}"><br>
-	<select name="name">
-		<c:forEach var="e" items="${ud}" >
-			<option value="${u.uId}">${u.name}</option>
-		</c:forEach>
-	</select><br>
-<input type="submit" name="regist" value="更新">　
-<input type="submit" name="regist" value="削除"><br>
+<form method="post" action="/A3/RewardsEditServlet">
+	<input type="text" name="reward" value="${param.reward}"><br>
+	<input type="text" name="point" value="${param.point}"><br>
+	<input type="text" name="name" value="${param.name}"><br>
+	<input type="hidden" name="reward_id" value="${param.rewardId}"><br>
+	<input type="hidden" name="reward_date" value="${param.rewardDate}"><br>
+	<input type="hidden" name="request" value="${param.re}"><br>
+	<input type="hidden" name="u_id" value="${param.uId}"><br>
+	<br>
+<input type="submit" name="regist" value="更新完了">　
+
 </form>
 </body>
 </html>
