@@ -50,7 +50,7 @@ public class TodoDAO {
 		return result;
 	}
 
-	public boolean registLoop(List<Todo> todoList) {
+	public boolean registLoop(Todo todo) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -63,7 +63,7 @@ public class TodoDAO {
 					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			int count=0;
-			for (Todo todo : todoList) {
+
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				pStmt.setInt(1, todo.getListId());
 				pStmt.setString(2, todo.getTodoDate());
@@ -76,12 +76,12 @@ public class TodoDAO {
 				pStmt.setInt(9, todo.getFriday());
 				pStmt.setInt(10, todo.getSaturday());
 				pStmt.setInt(11, todo.getSunday());
-				pStmt.executeUpdate();
-				count++;
-			}
-			if(count==todoList.size()) {
-				result=true;
-			}
+				if(pStmt.executeUpdate()==1) {
+					result=true;
+				}
+
+
+
 
 
 		} catch (SQLException e) {

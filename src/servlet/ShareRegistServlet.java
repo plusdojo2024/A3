@@ -121,15 +121,15 @@ public class ShareRegistServlet extends HttpServlet {
 
 			List<Todo> todoList = tLogic.createTodo(selectDate, endDate, week, uid, listId);
 
-			System.out.println(todoList.size());
-			for(Todo test:todoList) {
-				System.out.println(test.getListId());
+			for(Todo loopTodo:todoList) {
+				if(tdDao.registLoop(loopTodo)) {
+					System.out.println("成功しました。");
+				}else {
+					System.out.println("失敗しました。");
+				}
 			}
-			if(tdDao.registLoop(todoList)) {
-				System.out.println("成功しました。");
-			}else {
-				System.out.println("失敗しました。");
-			}
+
+
 
 			// Calendarにフォワードする
 			response.sendRedirect("/A3/CalendarServlet");
