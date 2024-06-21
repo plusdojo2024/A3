@@ -13,8 +13,7 @@ import model.Rewards;
 //import model.Rewards.java;
 
 public class RewardsDAO {
-	//ご褒美に検索機能なんて無いよなと思いつつよく理解していないまま一旦書きしました。
-	//勉強してやり直します。
+
 	public ArrayList<Rewards> select(int rewardId, String reward, int reqPoint, String rewardDate, int uid, int request) {
 		Connection conn = null;
 		ArrayList<Rewards> list = new ArrayList<Rewards>();
@@ -104,7 +103,7 @@ public class RewardsDAO {
 
 
 	//入力された人のデータをrewardsに追加するメソッド-----------------------
-	public int insert( String reward, int reqPoint,  int uid) {
+	public int insert(String reward, int reqPoint,  int uid) {
 
 		Connection conn = null;
 		int result = 0;
@@ -158,5 +157,7 @@ public class RewardsDAO {
 		// Servletに結果を返す（登録された件数をreturn）
 		return result;
 	}
+
+
 
 }
