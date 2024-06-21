@@ -31,9 +31,17 @@ public class RewardsEditServlet extends HttpServlet {
 		//sessionの中のuserデータを持ってくる
 		Users user = (Users)session.getAttribute("user");
 
+
+		//対象者選択のプルダウンで必要な登録ユーザー情報を、画面遷移時に取得する
 		UsersDAO dao = new UsersDAO();
 		List<Users> ud = dao.selectFamily(user.getFamilyId());
 		request.setAttribute("ud", ud);
+
+		//
+		RewardsDAO redao = new RewardsDAO();
+
+
+
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsEdit.jsp");
