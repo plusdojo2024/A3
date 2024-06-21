@@ -64,6 +64,6 @@
 
 	</form>
 </main>
-<script src="js/todoedit.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

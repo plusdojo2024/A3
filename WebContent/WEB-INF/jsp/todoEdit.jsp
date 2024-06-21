@@ -46,6 +46,10 @@
 <c:set var="list_id" value="${e.listId}"></c:set>
 <c:set var="family_id" value="${e.familyId}"></c:set>
 <c:set var="list_date" value="${e.listDate}"></c:set>
+<c:set var="task" value="${e.task}"></c:set>
+<c:set var="category" value="${e.category}"></c:set>
+<c:set var="give_point" value="${e.givePoint}"></c:set>
+<c:set var="memo" value="${e.memo}"></c:set>
 <form method="post" action="/A3/TodoEditServlet">
 <table>
 	<tr>
@@ -53,10 +57,10 @@
 		<input type="hidden" value="${family_id}" name="family_id">
 		<input type="hidden" value="${list_date}" name="list_date">
 		</td>
-		<td><sup style="color: red;">*</sup><input type="text" name="task" value="${e.task}"></td>
+		<td><sup style="color: red;">*</sup><input type="text" name="task" value="${task}"></td>
 		<td><sup style="color: red;">*</sup>
 		<select name="category" required>
-		<option value="${e.category}">${e.category}</option>
+		<option value="${category}">${e.category}</option>
 		<option value="洗濯">洗濯</option>
 		<option value="ごみ捨て">ごみ捨て</option>
 		<option value="掃除">掃除</option>
@@ -75,8 +79,8 @@
 		}
 		</script>
 		</select></td>
-	<td><p>設定中のポイント：${e.givePoint}</p></td>
-	<td><textarea name="memo">${e.memo}</textarea></td>
+	<td><p>設定中のポイント：${give_point}</p></td>
+	<td><textarea name="memo">${memo}</textarea></td>
 	<td><input type="submit" name="submit" value="更新">
 	<input type="submit" name="submit" value="削除">
 	</td>

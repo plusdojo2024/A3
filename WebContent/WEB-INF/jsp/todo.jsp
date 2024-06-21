@@ -34,10 +34,11 @@
 </div>
 </head>
 <body>
+<header>
+
+</header>
 <br><br><br><br>
-<%--<p><a href="/A3/TodoMemoServlet?name=掃除機をかける">掃除機</a>--%>
-<%--<p><a href="/A3/TodoMemoServlet?name=皿洗い">皿洗い</a>--%>
-<%--<p><a href="/A3/TodoMemoServlet?name=${task}">掃除機</a>--%>
+<h1>やることリスト</h1>
 <c:forEach var="e" items="${todoview}">
 <c:set var="task" value="${e.task}"></c:set>
 	<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" ><c:out value="${task}" /></button><br>
@@ -45,7 +46,10 @@
 </c:forEach>
 
 <button onclick="window.location.href= '/A3/TodoRegistServlet'" >登録</button><br>
+<button onclick="window.location.href= '/A3/CalendarServlet'" >カレンダー</button><br>
+<button onclick="window.location.href= '/A3/TodayListServlet'" >当日リスト</button><br>
+
 <p>${message}</p>
-<script src="js/todoedit.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

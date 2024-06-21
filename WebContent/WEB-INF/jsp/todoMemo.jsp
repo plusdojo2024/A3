@@ -34,20 +34,8 @@
 	<c:out value="${e.category}" /><br>
 	<c:out value="${e.givePoint}" /><br>
 	<c:out value="${e.memo}" />
-
-	<input type="text" name="task" value="${e.task}">
-	<select name="category" required>
-	<option value="">カテゴリーを選択してください</option>
-	<option value="洗濯">洗濯</option>
-	<option value="ごみ捨て">ごみ捨て</option>
-	<option value="掃除">掃除</option>
-	<option value="料理">料理</option>
-	<option value="買い物">買い物</option>
-	<option value="日用品の補充">日用品の補充</option>
-	<option value="子育て">子育て</option>
-	<option value="その他">その他</option>
-	</select><br>
 </c:forEach>
 </main>
+<script src="js/main.js"></script>
 </body>
 </html>
