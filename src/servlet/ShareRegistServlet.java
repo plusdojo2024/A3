@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.TodoDAO;
 import logic.TimeLogic;
+import model.Todo;
 /**
  * Servlet implementation class ShareRegistServlet
  */
@@ -21,11 +22,18 @@ public class ShareRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+		/*
+	 	// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("/A3/LoginServlet");
+			return;
+		}
+		*/
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -33,7 +41,7 @@ public class ShareRegistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		int uid = Integer.parseInt(request.getParameter("uid"));
@@ -49,7 +57,6 @@ public class ShareRegistServlet extends HttpServlet {
 		int friday = Integer.parseInt(request.getParameter("friday"));
 		int saturday = Integer.parseInt(request.getParameter("saturday"));
 		int sunday = Integer.parseInt(request.getParameter("sunday"));
-
 		String selectDate = request.getParameter("select_date");
 
 
@@ -61,17 +68,17 @@ public class ShareRegistServlet extends HttpServlet {
 
 		//日付の取得
 		String date = time.nowNomalDay();
-/*
-		Object todoDate;
-		if(tdDao.regist(date, listId, new Todo(0,todoDate,uid,loop,startDate,endDate,monday,tuesday,wednesday,thursday,friday,saturday,sunday)))
-		{
-			request.setAttribute("msg", "登録しました");
-		}
-		else
-		{
-			request.setAttribute("msg", "登録に失敗しました");
-		}
-		*/
+
+
+		Todo newTodo = new Todo(0, uid, loop, sunday, sunday, startDate, endDate, monday, tuesday, wednesday, thursday, friday, saturday, sunday);
+
+        boolean isRegistered = tdDao.regist(date, 1, newTodo);
+
+        if (isRegistered) {
+            request.setAttribute("msg", "登録しました");
+        } else {
+            request.setAttribute("msg", "登録に失敗しました");
+        }
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
