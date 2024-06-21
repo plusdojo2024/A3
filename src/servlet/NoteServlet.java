@@ -16,8 +16,8 @@ import javax.servlet.http.Part;
 import dao.NotesDAO;
 import logic.FileLogic;
 import logic.TimeLogic;
+import model.Notes;
 import model.Users;
-
 
 /**
  * Servlet implementation class NoteServlet
@@ -26,7 +26,6 @@ import model.Users;
 @MultipartConfig(location = "C:/pleiades/workspace/A3/WebContent/tmp", maxFileSize = 1024 * 1024 * 10)
 public class NoteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -51,30 +50,51 @@ public class NoteServlet extends HttpServlet {
 		String date = time.nowNomalDay();
 		FileLogic fL = new FileLogic();
 
-
 		HttpSession session = request.getSession();
 
 		Users user = (Users) session.getAttribute("user");
 
-	Part part = request.getPart("photo");//写真画像取得
+		Part part = request.getPart("photo");//写真画像取得
+		String relativePath_one=null;
+		String relativePath_two=null;
 
-	String name = fL.getFileName(part);//ファイル名取得
+		if (part.getSize() != 0) {//1個目の画像が入ってたら
+			String name = fL.getFileName(part);//ファイル名取得
 
-	String absolutePass = fL.setAbsolutePass(name, user.getFamilyId());//絶対パス
+			String absolutePass = fL.setAbsolutePass(name, user.getFamilyId());//絶対パス
 
-	//フォルダのパスだけ作成
-	File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + user.getFamilyId() + "/");
+			//フォルダのパスだけ作成
+			File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + user.getFamilyId() + "/");
 
-	if (!target.exists()) {//フォルダが存在しなければ作成
-		target.mkdirs();
-		//ファイル保存
-		part.write(absolutePass);
-	} else {
-		part.write(absolutePass);
+			if (!target.exists()) {//フォルダが存在しなければ作成
+				target.mkdirs();
+				//ファイル保存
+				part.write(absolutePass);
+			} else {
+				part.write(absolutePass);
+			}
+			//画像の相対パス作成
+			relativePath_one = fL.setRelativePath(name, user.getFamilyId());
+
+		} else {
+			//入ってなかったら
+
+		}
+		Notes note = new Notes();
+
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+
+		note.setFamilyID(user.getFamilyId());
+		note.setImageOne(relativePath_one);
+		//どんどんセットしていく
+
+
+		if(nDao.insert(note))
+		{
+			System.out.println("成功");
+		}else {
+			System.out.println("失敗");
+		}
 	}
-	//画像の相対パス作成
-	String relativePath = fL.setRelativePath(name, user.getFamilyId());
-
-}
 
 }
