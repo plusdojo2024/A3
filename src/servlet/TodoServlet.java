@@ -36,6 +36,9 @@ public class TodoServlet extends HttpServlet {
 		Users user = (Users)session.getAttribute("user");
 		int familyId = user.getFamilyId();
 
+		Users dbUser = (Users) session.getAttribute("dbUser");
+		request.setAttribute("myUser", dbUser);
+
 		TodoListDAO tlDao = new TodoListDAO();
 		List<TodoList> todoview = tlDao.view(familyId);
 		request.setAttribute("todoview", todoview);
