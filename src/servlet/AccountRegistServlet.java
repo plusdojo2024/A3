@@ -36,7 +36,7 @@ public class AccountRegistServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		Users user = (Users) session.getAttribute("dbUser");
+		Users user = (Users) session.getAttribute("myUser");
 
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
@@ -62,8 +62,8 @@ public class AccountRegistServlet extends HttpServlet {
 		String userPass = request.getParameter("user_pass");
 		String color = request.getParameter("color");
 
-		System.out.println(strRole);
-		System.out.println(userName);
+		//System.out.println(strRole);
+		//System.out.println(userName);
 		//ロールが文字列で送られてくるのでintに修正
 		int role = 0;
 		if (strRole.equals("0")) {
@@ -89,9 +89,13 @@ public class AccountRegistServlet extends HttpServlet {
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 		UsersDAO uDao = new UsersDAO();
 
-		if(uDao.userCheck(dbUser.getFamilyId(), userName)) {
+		if (uDao.userCheck(dbUser.getFamilyId(), userName)) {
 			System.out.println("既にいる");
 			request.setAttribute("myUser", dbUser);
+			Message msg = new Message();
+			msg.setTitle("作成失敗！");
+			msg.setMessage("既に同じ名前のアカウントが存在します。");
+			session.setAttribute("message", msg);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountRegist.jsp");
 			dispatcher.forward(request, response);
 			return;
@@ -114,33 +118,40 @@ public class AccountRegistServlet extends HttpServlet {
 
 		Part part = request.getPart("icon");//アイコン画像取得
 
-		String name = fL.getFileName(part);//ファイル名取得
+		if (part.getSize() != 0) {
+			String name = fL.getFileName(part);//ファイル名取得
 
-		int familyId = user.getFamilyId();
+			int familyId = user.getFamilyId();
 
-		String absolutePass = fL.setAbsolutePass(name, familyId);//絶対パス
+			String absolutePass = fL.setAbsolutePass(name, familyId);//絶対パス
 
-		//フォルダのパスだけ作成
-		File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
+			//フォルダのパスだけ作成
+			File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
 
-		if (!target.exists()) {//フォルダが存在しなければ作成
-			target.mkdirs();
-			//ファイル保存
-			part.write(absolutePass);
-		} else {
-			part.write(absolutePass);
+			if (!target.exists()) {//フォルダが存在しなければ作成
+				target.mkdirs();
+				//ファイル保存
+				part.write(absolutePass);
+			} else {
+				part.write(absolutePass);
+			}
+			try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
+				Thread.sleep(2000); // 2秒(2000ミリ秒)間だけ処理を止める
+			} catch (InterruptedException e) {
+			}
+			part.delete();
+
+			//アイコン画像の相対パス作成
+			String relativePath = fL.setRelativePath(name, familyId);
+
+			addUser.setIcon(relativePath);
+		}else {
+			if(role==1) {
+				addUser.setIcon("images/icon/parent.png");
+			}else {
+				addUser.setIcon("images/icon/children.png");
+			}
 		}
-		try {//eclipseのファイル同期が遅いので少し待機しないとアップロードした画像を表示できない
-			Thread.sleep(2000); // 2秒(2000ミリ秒)間だけ処理を止める
-		} catch (InterruptedException e) {
-		}
-		part.delete();
-
-		//アイコン画像の相対パス作成
-		String relativePath = fL.setRelativePath(name, familyId);
-
-		addUser.setIcon(relativePath);
-
 
 		Message msg = new Message();
 		if (uDao.insert(addUser)) {

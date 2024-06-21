@@ -92,27 +92,30 @@ public class FamilyRegistServlet extends HttpServlet {
 				FileLogic fL = new FileLogic();
 
 				Part part = request.getPart("icon");//アイコン画像取得
-
-				String name = fL.getFileName(part);//ファイル名取得
-
+				String relativePath="images/icon/parent.png";
 				int familyId = fDao.searchId(hashMail);//familyIDを取得
+				if (part.getSize() != 0) {
+					String name = fL.getFileName(part);//ファイル名取得
 
-				String absolutePass = fL.setAbsolutePass(name, familyId);//絶対パス
+					String absolutePass = fL.setAbsolutePass(name, familyId);//絶対パス
 
-				//フォルダのパスだけ作成
-				File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
+					//フォルダのパスだけ作成
+					File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + familyId + "/");
 
-				if (!target.exists()) {//フォルダが存在しなければ作成
-					target.mkdirs();
-					//ファイル保存
-					part.write(absolutePass);
-				} else {
-					part.write(absolutePass);
+					if (!target.exists()) {//フォルダが存在しなければ作成
+						target.mkdirs();
+						//ファイル保存
+						part.write(absolutePass);
+					} else {
+						part.write(absolutePass);
+					}
+
+					//アイコン画像の相対パス作成
+					relativePath = fL.setRelativePath(name, familyId);
+				}else {
+
+					relativePath=("images/icon/parent.png");
 				}
-
-
-				//アイコン画像の相対パス作成
-				String relativePath = fL.setRelativePath(name, familyId);
 
 				//管理用ユーザー作成
 				Users user = new Users();

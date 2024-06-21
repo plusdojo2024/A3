@@ -7,8 +7,6 @@
 <head>
 <meta charset='utf-8' />
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/main.css">
-
     <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${myUser.icon}"></c:set>
