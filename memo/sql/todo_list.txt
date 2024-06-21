@@ -2,7 +2,7 @@
 CREATE TABLE TODO_LIST(
     list_id INTEGER NOT NULL AUTO_INCREMENT,
     family_id INTEGER,
-    task VARCHAR(20) UNIQUE,
+    task VARCHAR(20),
     category VARCHAR,
     give_point INTEGER(2),
     list_date VARCHAR(32),
