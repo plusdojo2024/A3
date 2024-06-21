@@ -34,16 +34,6 @@ public class AlbumServlet extends HttpServlet {
 		//文字化け禁止
 		request.setCharacterEncoding("UTF-8");
 
-
-		//DAOのインスタンス化
-//		NotesDAO notesDAO = new NotesDAO();
-//		Users user = (Users)session.getAttribute("user");
-//		int familyID = user.getFamilyId();
-//		List<Notes> noteslist = notesDAO.select(ImageOne, ImageTwo);
-//		request.setAttribute("noteslist", noteslist);
-
-
-
 		// アルバムページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/album.jsp");
 		dispatcher.forward(request, response);

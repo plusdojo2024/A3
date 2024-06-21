@@ -49,7 +49,7 @@ public class TodayListServlet extends HttpServlet {
 //		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH時mm分ss秒");
 //		String date2 = yesterday.format(f);
 //		//昨日のやっていないやることリストのデータを持ってくる----------------
-//		List<TodoList> todoListAfter = tDAO.selectNow(user.getUid(), date2, 0);
+//		List<TodoList> todoListAfter = (List<TodoList>)tDAO.selectNow(user.getUid(), date2, 0);
 //
 //		//引継ぎノートのdaoをインスタンス化
 //
@@ -62,6 +62,7 @@ public class TodayListServlet extends HttpServlet {
 //		//取得してきた値をリクエストに保存
 //		request.setAttribute("todoList", todoList);
 //		request.setAttribute("todoListAfter", todoListAfter);
+
 
 		// 今日やることリストページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todayList.jsp");
