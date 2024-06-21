@@ -41,8 +41,11 @@
 <br><br><br>
 <div id="main">
 	<h2>引継ぎノート</h2>
-	<form id="create_form" method="post" action="/A3/NoteServlet"
-		enctype="multipart/form-data">
+	<br>
+<br>
+<br>
+<br>
+	<form method="post" action="/A3/NoteServlet">
 		<table>
 
 			<tr>
@@ -61,8 +64,8 @@
 			</tr>
 
 			<tr>
-				<td colspan="2"><input type="submit" name="submit" value="登録">
-					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="error_message"></span>
+				<td colspan="2"><a href="/A3/NoteEditServlet"><input type="submit" name="submit" value="登録">
+					履歴・編集</a><span id="error_message"></span>
 				</td>
 
 			</tr>

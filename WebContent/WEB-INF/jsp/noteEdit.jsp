@@ -44,6 +44,7 @@
 		<c:set var="note_date" value="${note.noteDate}" />
 		<c:set var="title" value="${note.title}" />
 		<c:set var="memo" value="${note.memo}" />
+
 			<tr>
 
 				<td><label><input type="text" name="noteDate"
