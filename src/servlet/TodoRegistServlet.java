@@ -66,10 +66,14 @@ public class TodoRegistServlet extends HttpServlet {
 		TodoListDAO tlDao = new TodoListDAO();
 		TimeLogic time = new TimeLogic();
 		String date = time.nowNomalDay();
-		if(tlDao.regist(date, familyID, new TodoList(0, familyID, task, category, givePoint, listDate, memo, todoDelete))) {
-			request.setAttribute("message", "家事を登録しました");
-		}else {
-			request.setAttribute("message", "登録に失敗しました");
+		if(tlDao.isTaskOK(familyID, task)) {
+			request.setAttribute("message", "登録済みのタスクです");
+		} else {
+			if(tlDao.regist(date, familyID, new TodoList(0, familyID, task, category, givePoint, listDate, memo, todoDelete))) {
+				request.setAttribute("message", "家事を登録しました");
+			}else {
+				request.setAttribute("message", "登録に失敗しました");
+			}
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoRegist.jsp");

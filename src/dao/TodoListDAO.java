@@ -341,4 +341,53 @@ public class TodoListDAO {
 		// 結果を返す
 		return result;
 	}
+
+	public boolean isTaskOK(int familyId, String task) {
+		Connection conn = null;
+		boolean taskResult = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " "); //接続するための文字列、ユーザー名、パスワード
+
+			// SELECT文を準備する
+			String sql = "SELECT COUNT(*) FROM TODO_LIST WHERE family_id=? AND task=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2,task);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			rs.next();
+			if(rs.getInt("COUNT(*)") == 1) {
+				taskResult = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			taskResult = false;
+		}
+		catch (ClassNotFoundException e) { //ドライバの読み込み失敗
+			e.printStackTrace(); //エラー内容はコンソールに表示
+			taskResult = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					taskResult = false;
+				}
+			}
+		}
+
+		// 結果を返す
+		return taskResult;
+	}
 }
