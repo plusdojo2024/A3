@@ -51,6 +51,5 @@
 	</c:if>
 	<c:out value="${message.message}" />
 	<script src="js/account.js"></script>
-	<script src="js/main.js"></script>
 </body>
 </html>
