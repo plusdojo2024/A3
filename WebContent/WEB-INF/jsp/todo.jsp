@@ -33,10 +33,12 @@
 <%--<p><a href="/A3/TodoMemoServlet?name=皿洗い">皿洗い</a>--%>
 <%--<p><a href="/A3/TodoMemoServlet?name=${task}">掃除機</a>--%>
 <c:forEach var="e" items="${todoview}">
-	<a href="/A3/TodoMemoServlet?name=${e.task}"><c:out value="${e.task}" /></a>
-	<a href="/A3/TodoEditServlet?name=${e.task}">編集・削除</a><br>
+<c:set var="task" value="${e.task}"></c:set>
+	<a href="/A3/TodoMemoServlet?name=${task}"><c:out value="${task}" /></a>
+	<button id="todo_edit" name="${task}">編集・削除</button><br>
 </c:forEach>
 
-<p><a href="/A3/TodoRegistServlet">登録</a>
+<p><a href="/A3/TodoRegistServlet">登録</a></p>
+<script src="js/todoedit.js"></script>
 </body>
 </html>

@@ -62,7 +62,7 @@ public class TodoEditServlet extends HttpServlet {
 
 		int listId = Integer.parseInt(request.getParameter("list_id"));
 		int familyId = Integer.parseInt(request.getParameter("family_id"));
-		String task = request.getParameter("task");
+		String task = request.getParameter("name");
 		String category = request.getParameter("category");
 		int givePoint = Integer.parseInt(request.getParameter("give_point"));
 		String listDate = request.getParameter("listDate");
@@ -72,6 +72,8 @@ public class TodoEditServlet extends HttpServlet {
 		TodoListDAO tlDao = new TodoListDAO();
 		Users user = (Users)session.getAttribute("user");
 		int familyID = user.getFamilyId();
+//		List<TodoList> todolist = tlDao.select(familyID, task);
+//		request.setAttribute("todolist", todolist);
 
 		if (request.getParameter("submit").equals("更新")) {
 			if (tlDao.update(familyID, new TodoList(listId, familyId, task, category, givePoint, listDate, memo, todoDelete))) {

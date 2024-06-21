@@ -31,8 +31,9 @@
 <main>
 <p>${message}</p>
 <p><sup style="color: red;">*</sup>は入力必須項目です。</p>
+
 <c:forEach var="e" items="${todolist}" >
-	<form method="post" action="/A3/TodoEditServlet">
+<form method="post" action="/A3/TodoEditServlet">
 	<sup style="color: red;">*</sup><input type="text" name="task" value="${e.task}"><br>
 	<sup style="color: red;">*</sup>
 	<select name="category" required>
