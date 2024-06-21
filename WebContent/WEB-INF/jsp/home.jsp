@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>ホーム</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/home.css">
 
 <div class="nav">
 	<div class="left_icons">
@@ -36,14 +37,16 @@
 <body>
 <br><br><br><br><br>
 <h1>ホーム画面</h1>
-	<button class="todoList"
+    <div class="button-container">
+	<button class="button1"
 			onclick="window.location.href = '/A3/TodoServlet';">やることリスト</button>
-	<button class="notes"
+	<button class="button1"
 			onclick="window.location.href = '/A3/NoteServlet';">引継ぎノート</button>
-	<button class="rewards"
+	<button class="button1"
 			onclick="window.location.href = '/A3/RewardsServlet';">ご褒美</button>
-	<button class="album"
+	<button class="button1"
 			onclick="window.location.href = '/A3/AlbumServlet';">アルバム</button>
+    </div>
 </body>
 
 <script>
