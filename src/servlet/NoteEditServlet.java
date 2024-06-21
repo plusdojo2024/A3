@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.UsersDAO;
-import logic.TimeLogic;
+import dao.NotesDAO;
+import model.Notes;
 import model.Users;
 
 /**
@@ -26,37 +25,47 @@ public class NoteEditServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		Users user = (Users)session.getAttribute("user");
-		UsersDAO usersdao = new UsersDAO();
-		List<Users> ud = usersdao.selectFamily(user.getFamilyId());
-		System.out.println(ud.get(0).getName());
-		request.setAttribute("ud", ud);
-		TimeLogic time = new TimeLogic();
-		String date = time.nowNomalDay();
-
-
+				Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		request.setAttribute("myUser", dbUser);
+		// 履歴ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/noteEdit.jsp");
-	    dispatcher.forward(request, response);
+		dispatcher.forward(request, response);
 	}
+
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 
 		request.setCharacterEncoding("UTF-8");
-		String nd =request.getParameter("noteDate");
-		String title = request.getParameter("title");
-		String memo = request.getParameter("memo");
+		int noteID = Integer.parseInt(request.getParameter("noteID"));
 
-        request.setAttribute("title", title);
-        request.setAttribute("memo", memo);
-        request.setAttribute("nd", nd);
+		NotesDAO nDao = new NotesDAO();
+        	if (request.getParameter("submit").equals("更新")) {
+			// ここを改造する
+        		if (nDao.update(new Notes( ))) {	// 更新成功
+			// ここまで
+				System.out.println("更新完了");
+				request.setAttribute("message", "更新しました。");
+			}
+			else {												// 更新失敗
+				System.out.println("失敗");
+				request.setAttribute("message", "更新に失敗しました。");
+			}
+		}
+		else {
+			if (nDao.delete(noteID)){
+				request.setAttribute("message", "削除しました");
+			} else {
+				request.setAttribute("message", "削除に失敗しました");
+			}
+		}
 
+		// 結果ページにフォワードする
 
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/noteEdit.jsp");
 	dispatcher.forward(request, response);

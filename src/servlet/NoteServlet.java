@@ -16,6 +16,7 @@ import javax.servlet.http.Part;
 import dao.NotesDAO;
 import logic.FileLogic;
 import logic.TimeLogic;
+import model.Message;
 import model.Notes;
 import model.Users;
 
@@ -77,23 +78,34 @@ public class NoteServlet extends HttpServlet {
 			relativePath_one = fL.setRelativePath(name, user.getFamilyId());
 
 		} else {
-			//入ってなかったら
+			//入ってなかったら　合ってるかわからない
+			relativePath_one = fL.setRelativePath(relativePath_one, 0);;
 
 		}
-		Notes note = new Notes();
 
+
+		Notes note = new Notes();
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
 		note.setFamilyID(user.getFamilyId());
 		note.setImageOne(relativePath_one);
 		//どんどんセットしていく
 
-
+		Message msg = new Message();
 		if(nDao.insert(note))
 		{
 			System.out.println("成功");
+			msg.setMessage("引継ぎノートを登録しました。");
+			session.setAttribute("message", msg);
+			// 引継ぎノートページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
+			dispatcher.forward(request, response);
 		}else {
 			System.out.println("失敗");
+			msg.setMessage("引継ぎノートの登録に失敗しました。");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
+			dispatcher.forward(request, response);
+
 		}
 	}
 
