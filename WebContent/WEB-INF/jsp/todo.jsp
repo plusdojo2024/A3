@@ -44,8 +44,7 @@
 	<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" >編集・削除</button><br>
 </c:forEach>
 
-<p><a href="/A3/TodoRegistServlet">登録</a></p>
-<button onclick="window.location.href= '/A3/TodoRegistServlet'" >編集・削除</button><br>
+<button onclick="window.location.href= '/A3/TodoRegistServlet'" >登録</button><br>
 <script src="js/todoedit.js"></script>
 </body>
 </html>

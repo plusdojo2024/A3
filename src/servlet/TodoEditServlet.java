@@ -65,7 +65,7 @@ public class TodoEditServlet extends HttpServlet {
 		String task = request.getParameter("name");
 		String category = request.getParameter("category");
 		int givePoint = Integer.parseInt(request.getParameter("give_point"));
-		String listDate = request.getParameter("listDate");
+		String listDate = request.getParameter("list_date");
 		String memo = request.getParameter("memo");
 		int todoDelete = 0;
 
