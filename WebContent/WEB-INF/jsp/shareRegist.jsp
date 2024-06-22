@@ -40,7 +40,9 @@
 	<form action="/A3/ShareRegistServlet" method="post">
 		<br> <br> <br> <br> <br>
 
-
+		<div class="day">
+			<c:out value="${today}" />
+		</div><br>
 		<div class="title_box">分担登録</div>
 
 		<div class="main_box">

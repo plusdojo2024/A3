@@ -97,9 +97,22 @@ body
 }
 
 /* -----------------------
-曜日関連
+日付
 -------------------------*/
-
+.day
+{
+	background-color: white;
+    color: green;
+    width: 200px;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin: 0 0;
+}
 
 
 
