@@ -42,7 +42,7 @@
 
 		<div class="day">
 			<c:out value="${today}" />
-		</div><br>
+		</div>
 		<div class="title_box">分担登録</div>
 
 		<div class="main_box">
@@ -92,7 +92,7 @@
 		<c:set var="set_today" value = "${today}" />
 		<input type ="hidden" name="select_date" value="${set_today}">
 		<c:set var="set_end" value = "${endDay}" />
-			いつまで<input type="date"  name=end_date min="${set_today}" max="${set_end}">
+			いつまで<input type="date"  name=end_date min="${set_today}" max="${set_end}" style="pointer-events: none">
 		</div>
 
 		<div class="submit_box">
@@ -106,6 +106,12 @@
 			checkboxes.forEach(function(checkbox) {
 				checkbox.disabled = value === '0';
 				checkbox.style.pointerEvents = value === '0' ? 'none' : 'auto';
+			});
+
+			var dates = document.querySelectorAll('input[type="date"]');
+			dates.forEach(function(date) {
+				date.disabled = value === '0';
+				date.style.pointerEvents = value === '0' ? 'none' : 'auto';
 			});
 		}
 		/*
