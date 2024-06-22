@@ -13,7 +13,7 @@
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}" />
+		<c:set var="icon" value="${myUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
@@ -23,16 +23,14 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="/A3/HomeServlet">F&M</a>
+		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
 	</div>
 
 	<div class="right_buttons">
-		<button class="account-management">
-			<a href="/A3/AccountServlet">アカウント管理</a>
-		</button>
-		<button class="logout">
-			<a href="/A3/LogoutServlet">ログアウト</a>
-		</button>
+		<button class="account-management"
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+		<button class="logout"
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
 	</div>
 
 </div>
@@ -47,11 +45,13 @@
 <br>
 	<form method="post" action="/A3/NoteServlet">
 		<table>
+		<tr>
+		<c:out value="${date}" />
+		</tr>
 
 			<tr>
 				<td><label>タイトル<br> <input type="text"
-						name="memotittle"><input type="text" name="date"
-						value="${date}">
+						name="memotittle">
 				</label></td>
 			</tr>
 			<tr>
@@ -64,8 +64,8 @@
 			</tr>
 
 			<tr>
-				<td colspan="2"><a href="/A3/NoteEditServlet"><input type="submit" name="submit" value="登録">
-					履歴・編集</a><span id="error_message"></span>
+				<td colspan="2"><input type="submit" name="submit" value="登録">
+					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="error_message"></span>
 				</td>
 
 			</tr>

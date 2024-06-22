@@ -33,6 +33,11 @@ public class NoteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		TimeLogic tLogic = new TimeLogic();
+		request.setAttribute("date", tLogic.nowJpDay());
+
 		// 引継ぎノートページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
 		dispatcher.forward(request, response);
