@@ -6,13 +6,13 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>家事分担登録</title>
+<title>家事分担編集・削除</title>
 <link rel="stylesheet" href="css/main.css">
 <!-- <link rel="stylesheet" href="css/shareRegist.css"> -->
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}" />
+		<c:set var="icon" value="${myUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
@@ -22,25 +22,29 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="/A3/HomeServlet">F&M</a>
+		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
 	</div>
 
 	<div class="right_buttons">
-		<button class="account-management">
-			<a href="/A3/AccountServlet">アカウント管理</a>
-		</button>
-		<button class="logout">
-			<a href="/A3/LogoutServlet">ログアウト</a>
-		</button>
+		<button class="account-management"
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+		<button class="logout"
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
 	</div>
 
 </div>
 </head>
 <body>
-	<form action="/A3/ShareRegistServlet" method="post">
+	<form action="/A3/ShareEditServlet" method="post">
 		<br> <br> <br> <br> <br> <br>
 		<div class="title_box">分担編集・削除</div>
-
+		選択した予定：<c:out value="${date}" />：<c:out value="${event}" />
+		<c:set var="day" value="${date}" /><c:set var="select_task" value="${event}" />
+		<input type="hidden" name="start_date" value="${day}">
+		<input type="hidden" name="select_task" value="${select_task}">
+		担当者：<c:out value="${name}" />
+		<c:set var="select_name" value="${name}" />
+		<input type="hidden" name="select_name" value="${select_name}">
 		<div class="main_box">
 			<label for="task">項目</label> <select id="task" name="task" required>
 				<c:forEach var="task" items="${taskList}">
@@ -86,13 +90,14 @@
 
 		<div class="main_box">
 		<c:set var="set_today" value = "${today}" />
-		<input type ="hidden" name="select_date" value="${set_today}">
 		<c:set var="set_end" value = "${endDay}" />
 			いつまで<input type="date"  name=end_date min="${set_today}" max="${set_end}">
 		</div>
 
 		<div class="submit_box">
 			<input type="submit" value="編集" name="submit"><input type="submit" value="削除" name="submit">
+			<br>
+			<button type="button" onclick="history.back();">戻る</button>
 		</div>
 
 		<script>

@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<meta charset='utf-8' />
+<meta charset='UTF-8' />
 <link rel="stylesheet" href="css/main.css">
     <div class="nav">
 	<div class="left_icons">
@@ -32,7 +32,7 @@
 </div>
 
 <link rel="stylesheet" href="css/calendar.css">
-<title>テストcalendar</title>
+<title>カレンダー</title>
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
 
@@ -71,9 +71,9 @@
 			},
 			eventClick : function(info) {
 
-				//var url = "/TestWeb01/ShareUpdateDeleteServlet?event="+info.event.title+"&date="+info.event.start;
+
 				const form = document.createElement('form');
-				form.action = '/A3/ShareEditServlet';
+				form.action = '/A3/CalendarServlet';
 				form.method = 'post';
 				const data1 = document.createElement('input');
 				data1.value = info.event.title;
@@ -90,7 +90,6 @@
 				document.body.appendChild(form);
 
 				form.submit();
-				//window.location.href = url; // 通常の遷移
 
 			}
 		});

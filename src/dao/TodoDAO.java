@@ -62,7 +62,6 @@ public class TodoDAO {
 					+ "monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES "
 					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-			int count=0;
 
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				pStmt.setInt(1, todo.getListId());
@@ -80,10 +79,6 @@ public class TodoDAO {
 					result=true;
 				}
 
-
-
-
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -99,6 +94,53 @@ public class TodoDAO {
 			}
 		}
 		return result;
+	}
+
+	//登録しようとしたタスクが既にあるかチェック
+	public boolean registCheck(Todo todo) {
+		Connection conn = null;
+		boolean taskResult = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " "); //接続するための文字列、ユーザー名、パスワード
+
+			// SELECT文を準備する
+			String sql = "SELECT COUNT(*) FROM TODO WHERE uid = ? AND list_id = ? AND todo_date = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, todo.getUid());
+			pStmt.setInt(2, todo.getListId());
+			pStmt.setString(3, todo.getTodoDate());
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			rs.next();
+			if (rs.getInt("COUNT(*)") == 1) {
+				taskResult = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			taskResult = false;
+		} catch (ClassNotFoundException e) { //ドライバの読み込み失敗
+			e.printStackTrace(); //エラー内容はコンソールに表示
+			taskResult = false;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					taskResult = false;
+				}
+			}
+		}
+
+		// 結果を返す
+		return taskResult;
 	}
 
 	public ArrayList<Todo> select(int uid) {
@@ -214,5 +256,40 @@ public class TodoDAO {
 			}
 		}
 		return calendarList;
+	}
+
+	public boolean delete(int uid,int list_id,String todo_date) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			String sql = "delete from todo where uid = ? AND list_id = ? AND todo_date = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setInt(1, uid);
+			pStmt.setInt(2, list_id);
+			pStmt.setString(3, todo_date);
+
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
 	}
 }

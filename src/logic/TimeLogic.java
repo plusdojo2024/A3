@@ -57,12 +57,12 @@ public class TimeLogic {
 
 	public List<Todo> createTodo(String startDate, String endDate, int[] week,int uid,int listId) {
 		List<Todo> todoList = new ArrayList<Todo>();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate start = LocalDate.parse(startDate,dtf);
-		LocalDate end = LocalDate.parse(endDate,dtf);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");//フォーマット指定
+		LocalDate start = LocalDate.parse(startDate,dtf);//Stringの日付を指定したフォーマットでLocalDateに変換
+		LocalDate end = LocalDate.parse(endDate,dtf);//Stringの日付を指定したフォーマットでLocalDateに変換
 
 		//フォーマットを指定
-		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");//2020-06-06
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");//例：2020-06-06
 		for (int i = 0; i < week.length; i++) {
 			if (week[i] == 1) {
 				LocalDate temp = start.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));

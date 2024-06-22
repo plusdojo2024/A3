@@ -46,6 +46,7 @@ public class ShareRegistServlet extends HttpServlet {
 		Users user = (Users) session.getAttribute("user");
 
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		request.setAttribute("myUser", dbUser);
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String strDay = request.getParameter("date");
@@ -78,8 +79,18 @@ public class ShareRegistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
+		HttpSession session = request.getSession();
+		/*
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("/A3/LoginServlet");
+			return;
+		}
+		*/
+		Users user = (Users) session.getAttribute("user");
+
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		request.setAttribute("myUser", dbUser);
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		int uid = Integer.parseInt(request.getParameter("uid"));
@@ -96,15 +107,44 @@ public class ShareRegistServlet extends HttpServlet {
 			todo.setUid(uid);
 			todo.setTodoDate(selectDate);
 			todo.setListId(listId);
-			if (tdDao.registOneDay(todo)) {
-				System.out.println("成功しました。");
-				// Calendarにフォワードする
-				response.sendRedirect("/A3/CalendarServlet");
+			if (!tdDao.registCheck(todo)) {
+				if (tdDao.registOneDay(todo)) {
+					System.out.println("成功しました。");
+					// Calendarにフォワードする
+					response.sendRedirect("/A3/CalendarServlet");
+				} else {
+					System.out.println("失敗しました。");
+					// Calendarにフォワードする
+					response.sendRedirect("/A3/CalendarServlet");
+				}
 			} else {
-				System.out.println("失敗しました。");
-				// Calendarにフォワードする
-				response.sendRedirect("/A3/CalendarServlet");
+				System.out.println("既にあります。");
+				request.setAttribute("msg", "既に同じタスクが登録されています。");
+
+				//日付文字列をLocalDate型に変換
+				LocalDate startDay = LocalDate.parse(selectDate, DateTimeFormatter.ISO_LOCAL_DATE);
+
+				//開始日の翌月の月末まで
+				LocalDate endDay = startDay.plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
+
+				UsersDAO uDao = new UsersDAO();
+				TodoListDAO tLDao = new TodoListDAO();
+
+				List<Users> userList = uDao.selectFamily(user.getFamilyId());
+
+				List<TodoList> taskList = tLDao.view(user.getFamilyId());
+
+				request.setAttribute("taskList", taskList);
+				request.setAttribute("userList", userList);
+				request.setAttribute("today", selectDate);
+				request.setAttribute("endDay", endDay);
+
+				// 登録ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
+				dispatcher.forward(request, response);
+				return;
 			}
+
 		} else {
 			String endDate = request.getParameter("end_date");
 			String strWeek[] = request.getParameterValues("week[]");
@@ -119,17 +159,21 @@ public class ShareRegistServlet extends HttpServlet {
 
 			TimeLogic tLogic = new TimeLogic();
 
+			//startからendまでの指定した曜日の日をリストにして取得
 			List<Todo> todoList = tLogic.createTodo(selectDate, endDate, week, uid, listId);
 
-			for(Todo loopTodo:todoList) {
-				if(tdDao.registLoop(loopTodo)) {
-					System.out.println("成功しました。");
-				}else {
-					System.out.println("失敗しました。");
+			for (Todo loopTodo : todoList) {
+				if (!tdDao.registCheck(loopTodo)) {
+					if (tdDao.registLoop(loopTodo)) {
+						System.out.println("成功しました。");
+					} else {
+						System.out.println("失敗しました。");
+					}
+				} else {
+					System.out.println("既に登録してあります。");
 				}
+
 			}
-
-
 
 			// Calendarにフォワードする
 			response.sendRedirect("/A3/CalendarServlet");
