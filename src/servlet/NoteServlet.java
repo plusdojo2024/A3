@@ -130,6 +130,7 @@ public class NoteServlet extends HttpServlet {
 			session.setAttribute("message", msg);
 			//tmpファイル削除
 			part.delete();
+			partTwo.delete();
 			// 引継ぎノートページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
 			dispatcher.forward(request, response);
@@ -138,6 +139,7 @@ public class NoteServlet extends HttpServlet {
 			msg.setMessage("引継ぎノートの登録に失敗しました。");
 			//tmpファイル削除
 			part.delete();
+			partTwo.delete();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
 			dispatcher.forward(request, response);
 		}
