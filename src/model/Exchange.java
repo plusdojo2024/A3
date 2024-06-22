@@ -8,6 +8,7 @@ public class Exchange implements Serializable
 	private String reward;//ご褒美名
 	private int uid;//対象者番号
 	private String exchangeDate;//交換日付
+	private String name;//交換した人の名前
 
 	// 引数がないコンストラクタ
 	public Exchange()
@@ -61,6 +62,12 @@ public class Exchange implements Serializable
 	public void setExchangeDate(String exchangeDate)
 	{
 		this.exchangeDate = exchangeDate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 

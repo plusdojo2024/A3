@@ -131,7 +131,7 @@ public class ShareEditServlet extends HttpServlet {
 				}
 			}
 		}
-		// Calendarにフォワードする
+		// Calendarにリダイレクト
 		response.sendRedirect("/A3/CalendarServlet");
 
 	}

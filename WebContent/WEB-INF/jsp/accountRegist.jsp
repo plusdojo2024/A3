@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/accountRegist.css">
 <link rel="stylesheet" href="css/main.css">
-	<div class="nav">
+<div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${myUser.icon}"></c:set>
 		<div class="green_box">

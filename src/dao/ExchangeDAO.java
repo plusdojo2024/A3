@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Exchange;
 
@@ -109,6 +111,70 @@ public class ExchangeDAO
             }
         }
 		return result;
+	}
+
+	public List<Exchange> getExchangeHistoryByUid(int familyId)
+	{
+		Connection conn = null;
+		List<Exchange> exchangeList = new ArrayList<Exchange>();
+
+		try
+		{
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+			//usersテーブルとエクスチェンジテーブルを結合
+			//自分の家族IDを家族IDで検索
+			String sql = "SELECT "
+					+ "E.REWARD, "
+					+ "E.EXCHANGE_DATE, "
+					+ "E.UID, "
+					+ "E.NAME, "
+					+ "FROM EXCHANGE as E "
+					+ "JOIN USERS as U ON U.UID = E.UID "
+					+ "WHERE E.UID = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, familyId);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				Exchange e = new Exchange();
+
+				e.setName(rs.getString("name"));
+				e.setExchangeDate(rs.getString("exchange_date"));
+				e.setReward(rs.getString("reward"));
+				e.setUid(rs.getInt("uid"));
+
+				exchangeList.add(e);
+			}
+
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			// データベースを切断
+			if (conn != null) {
+				try
+				{
+					conn.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return exchangeList;
 	}
 
 }

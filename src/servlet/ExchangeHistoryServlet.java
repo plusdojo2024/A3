@@ -1,11 +1,19 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.ExchangeDAO;
+import model.Exchange;
+import model.Users;
 
 /**
  * Servlet implementation class ExchangeHistoryServlet
@@ -17,15 +25,30 @@ public class ExchangeHistoryServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//セッションスコープからログイン中のユーザー情報を持ってくる
+		HttpSession session = request.getSession();
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		request.setAttribute("myUser", dbUser);
+
+		ExchangeDAO eDao = new ExchangeDAO();
+
+		List<Exchange> exchangeList =  eDao.getExchangeHistoryByUid(dbUser.getFamilyId());
+
+		session.setAttribute("exchangeList", exchangeList);
+
+
+		// 交換履歴ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/exchangeHistory.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
