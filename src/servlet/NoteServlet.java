@@ -47,6 +47,8 @@ public class NoteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+
+		//単体で実行したらエラーになるのでやるならログインから
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("memo_title");
