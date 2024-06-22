@@ -258,7 +258,7 @@ public class TodoDAO {
 		return calendarList;
 	}
 
-	public boolean delete(int uid,int list_id,String todo_date) {
+	public boolean delete(int uid,int listId,String todoDate) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -266,12 +266,12 @@ public class TodoDAO {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-			String sql = "delete from todo where uid = ? AND list_id = ? AND todo_date = ?";
+			String sql = "DELETE FROM todo WHERE uid = ? AND list_id = ? AND todo_date = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setInt(1, uid);
-			pStmt.setInt(2, list_id);
-			pStmt.setString(3, todo_date);
+			pStmt.setInt(2, listId);
+			pStmt.setString(3, todoDate);
 
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -292,4 +292,43 @@ public class TodoDAO {
 		}
 		return result;
 	}
+
+	public boolean update(int updateUid,int updateListId,int uid,int listId,String todoDate) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			String sql = "UPDATE todo SET uid = ?,list_id = ? WHERE uid = ? AND list_id = ? AND todo_date = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setInt(1, updateUid);
+			pStmt.setInt(2, updateListId);
+			pStmt.setInt(3, uid);
+			pStmt.setInt(4, listId);
+			pStmt.setString(5, todoDate);
+
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+
+
 }

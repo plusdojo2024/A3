@@ -59,7 +59,7 @@ public class ShareEditServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		//選択したイベント
 		String selectName = request.getParameter("select_name");
-		String task = request.getParameter("select_task");
+		String selectTask = request.getParameter("select_task");
 		String startDate = request.getParameter("start_date");
 
 		UsersDAO uDao = new UsersDAO();
@@ -67,23 +67,36 @@ public class ShareEditServlet extends HttpServlet {
 		Users manager = uDao.loginSearch(dbUser.getFamilyId(), selectName);
 
 		TodoListDAO tLDao = new TodoListDAO();
-		TodoList todoList = tLDao.selectByFamilyIdAndTask(manager.getFamilyId(), task);
+		TodoList todoList = tLDao.selectByFamilyIdAndTask(manager.getFamilyId(), selectTask);
 		TodoDAO tDao = new TodoDAO();
 
 
 		//編集後の項目
-		String uid = request.getParameter("uid");
+		String strUid = request.getParameter("uid");
+		int uid = Integer.parseInt(strUid);
+
+		String strListId = request.getParameter("task");
+		int listId = Integer.parseInt(strListId);
+
 		String loop = request.getParameter("loop");
+
+		Users updateUser = uDao.getUser(uid);
 
 
 		String submit = request.getParameter("submit");
 
+		TimeLogic tLogic = new TimeLogic();
+
+
+
+
 
 		if(loop.equals("0")) {
 			if(submit.equals("編集")) {
-
+				tDao.update(updateUser.getUid(), listId,manager.getUid(),todoList.getListId(),startDate);
+				System.out.println("更新成功しました。");
 			}else if(submit.equals("削除")) {
-				tDao.delete(manager.getUid(), todoList.getListId(),startDate);
+				tDao.delete(manager.getUid(), listId,startDate);
 				System.out.println("削除成功しました。");
 			}
 		}else {
@@ -98,10 +111,16 @@ public class ShareEditServlet extends HttpServlet {
 				week[i] = Integer.parseInt(strWeek[i]);
 			}
 
-			TimeLogic tLogic = new TimeLogic();
+
 			List<Todo> list = tLogic.createTodo(startDate, endDate, week,manager.getUid(), todoList.getListId());
 			if(submit.equals("編集")) {
-
+				for(Todo todo:list) {
+					if(tDao.update(updateUser.getUid(),listId,todo.getUid(),todo.getListId(),todo.getTodoDate())) {
+						System.out.println("更新成功しました。");
+					}else {
+						System.out.println("更新失敗しました。");
+					}
+				}
 			}else if(submit.equals("削除")) {
 				for(Todo todo:list) {
 					if(tDao.delete(manager.getUid(), todoList.getListId(),todo.getTodoDate())) {
