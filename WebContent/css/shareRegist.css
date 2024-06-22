@@ -16,15 +16,15 @@ body
 {
     background-color: white;
     color: green;
-    width: 30%;
+    width: 200px;
     height: 60px;
     border-radius: 15px;
     /* 角を丸くする */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
-    margin: 0 10px;
+    font-size: 18px;
+    margin: 0 0;
 }
 /* -----------------------
 入力項目のボックス
@@ -33,7 +33,7 @@ body
 {
     background-color: #7dcd85;
     color: white;
-    width: 30%;
+    width: 200px;
     height: 60px;
     border-radius: 15px;
     /* 角を丸くする */
@@ -41,7 +41,7 @@ body
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    margin: 0 0;
+    margin: 10px 0;
 }
 /* -----------------------
 担当者のボックス
@@ -58,7 +58,7 @@ body
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    margin: 0 0;
+    margin: 10px 0;
 }
 /* -----------------------
 要録ボタンのボックス
@@ -75,7 +75,7 @@ body
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    margin: 0 0;
+    margin: 10px 30px;
 }
 
 /* -----------------------
@@ -96,7 +96,9 @@ body
     margin: 0 0;
 }
 
-
+/* -----------------------
+曜日関連
+-------------------------*/
 
 
 
