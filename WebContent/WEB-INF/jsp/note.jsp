@@ -43,7 +43,7 @@
 <br>
 <br>
 <br>
-	<form method="post" action="/A3/NoteServlet">
+	<form method="post" action="/A3/NoteServlet" enctype="multipart/form-data">
 		<table>
 		<tr>
 		<c:out value="${date}" />
@@ -51,15 +51,17 @@
 
 			<tr>
 				<td><label>タイトル<br> <input type="text"
-						name="memotittle">
+						name="memo_title" maxlength="20">
 				</label></td>
 			</tr>
 			<tr>
-				<td><textarea name="memo">メモ</textarea></td>
+				<td><textarea name="memo" maxlength="200">メモ</textarea></td>
 
 			</tr>
 			<tr>
-				<td><label>写真<br> <input type="file" name="photo">
+				<td ><label>写真１<br> <input type="file" name="photo">
+				</label></td>
+				<td ><label>写真２<br> <input type="file" name="photo_two">
 				</label></td>
 			</tr>
 
@@ -67,6 +69,7 @@
 				<td colspan="2"><input type="submit" name="submit" value="登録">
 					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="error_message"></span>
 				</td>
+				<c:out value="${message.message}" />
 
 			</tr>
 

@@ -34,8 +34,24 @@ public class FileLogic {
 		TimeLogic time = new TimeLogic();
 		String now = time.nowCalendar();
 		String url = relativeBase + now +"-"+ fileName;
+		return url;
+	}
 
+	//アルバム用
+	public String setAvsolutePathAlbum(String fileName,int familyId){
+		String absoluteBase = "C:/pleiades/workspace/A3/WebContent/upload/family_"+familyId+"/album/";
 
+		TimeLogic time = new TimeLogic();
+		String now = time.nowCalendar();
+		String path = absoluteBase + now +"-"+ fileName;
+		return path;
+	}
+	public String setRelativePathAlbum (String fileName,int familyId) {
+		String relativeBase = "upload/family_"+familyId+"/album/";
+
+		TimeLogic time = new TimeLogic();
+		String now = time.nowCalendar();
+		String url = relativeBase + now +"-"+ fileName;
 		return url;
 	}
 	public String getAbsolute() {

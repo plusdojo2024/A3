@@ -144,6 +144,7 @@ public class FamilyRegistServlet extends HttpServlet {
 						Thread.sleep(2000); // 2秒(2000ミリ秒)間だけ処理を止める
 					} catch (InterruptedException e) {
 					}
+					//tmpファイル削除
 					part.delete();
 
 					Message msg = new Message();

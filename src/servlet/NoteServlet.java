@@ -28,12 +28,12 @@ import model.Users;
 public class NoteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		request.setAttribute("myUser", dbUser);
 
 		TimeLogic tLogic = new TimeLogic();
 		request.setAttribute("date", tLogic.nowJpDay());
@@ -49,52 +49,78 @@ public class NoteServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String title = request.getParameter("title");
+		String title = request.getParameter("memo_title");
 		String memo = request.getParameter("memo");
 		NotesDAO nDao = new NotesDAO();
 		TimeLogic time = new TimeLogic();
-		String date = time.nowNomalDay();
 		FileLogic fL = new FileLogic();
 
 		HttpSession session = request.getSession();
 
 		Users user = (Users) session.getAttribute("user");
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
-		Part part = request.getPart("photo");//写真画像取得
-		String relativePath_one=null;
-		String relativePath_two=null;
+
+		Part part = request.getPart("photo");//画像取得
+		Part partTwo = request.getPart("photo_two");//画像取得
+		String relativePathOne=null;
+		String relativePathTwo=null;
+
+		Notes note = new Notes();
 
 		if (part.getSize() != 0) {//1個目の画像が入ってたら
 			String name = fL.getFileName(part);//ファイル名取得
 
-			String absolutePass = fL.setAbsolutePass(name, user.getFamilyId());//絶対パス
+			String absolutePassOne = fL.setAvsolutePathAlbum(name, user.getFamilyId());//絶対パス
 
 			//フォルダのパスだけ作成
-			File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + user.getFamilyId() + "/");
+			File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + user.getFamilyId() + "/album/");
 
 			if (!target.exists()) {//フォルダが存在しなければ作成
 				target.mkdirs();
 				//ファイル保存
-				part.write(absolutePass);
+				part.write(absolutePassOne);
 			} else {
-				part.write(absolutePass);
+				part.write(absolutePassOne);
 			}
 			//画像の相対パス作成
-			relativePath_one = fL.setRelativePath(name, user.getFamilyId());
+			relativePathOne = fL.setRelativePathAlbum(name, user.getFamilyId());
 
 		} else {
 			//入ってなかったら　合ってるかわからない
-			relativePath_one = fL.setRelativePath(relativePath_one, 0);;
+			relativePathOne = null;
+
+		}
+		if (partTwo.getSize() != 0) {//2個目の画像が入ってたら
+			String name = fL.getFileName(partTwo);//ファイル名取得
+
+			String absolutePassTwo = fL.setAvsolutePathAlbum(name, user.getFamilyId());//絶対パス
+
+			//フォルダのパスだけ作成
+			File target = new File("C:/pleiades/workspace/A3/WebContent/upload/family_" + user.getFamilyId() + "/album/");
+
+			if (!target.exists()) {//フォルダが存在しなければ作成
+				target.mkdirs();
+				//ファイル保存
+				partTwo.write(absolutePassTwo);
+			} else {
+				partTwo.write(absolutePassTwo);
+			}
+			//画像の相対パス作成
+			relativePathTwo = fL.setRelativePathAlbum(name, user.getFamilyId());
+
+		} else {
+			//入ってなかったら
+			relativePathTwo = null;
 
 		}
 
-
-		Notes note = new Notes();
-		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-
 		note.setFamilyID(user.getFamilyId());
-		note.setImageOne(relativePath_one);
-		//どんどんセットしていく
+		note.setImageOne(relativePathOne);
+		note.setImageTwo(relativePathTwo);
+		note.setNoteDate(time.nowJpDay());
+		note.setNoteUpdate(time.nowJpDay());
+
 
 		Message msg = new Message();
 		if(nDao.insert(note))
@@ -102,15 +128,18 @@ public class NoteServlet extends HttpServlet {
 			System.out.println("成功");
 			msg.setMessage("引継ぎノートを登録しました。");
 			session.setAttribute("message", msg);
+			//tmpファイル削除
+			part.delete();
 			// 引継ぎノートページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
 			dispatcher.forward(request, response);
 		}else {
 			System.out.println("失敗");
 			msg.setMessage("引継ぎノートの登録に失敗しました。");
+			//tmpファイル削除
+			part.delete();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
 			dispatcher.forward(request, response);
-
 		}
 	}
 

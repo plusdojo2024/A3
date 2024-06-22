@@ -29,7 +29,6 @@ public class Notes implements Serializable{
 		this.imageOne = imageOne;
 		this.imageTwo = imageTwo;
 		this.noteUpdate = noteUpdate;
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 	//getter,setter
 	public String getTitle() {

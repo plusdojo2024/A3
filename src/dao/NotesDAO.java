@@ -100,26 +100,44 @@ public class NotesDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-				String sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE, IMAGE_ONE, IMAGE_TWO) VALUES(? , ?, ?, ?, ?)";
+				String sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE, IMAGE_ONE, IMAGE_TWO,NOTE_UPDATE) VALUES(? , ?, ?, ?, ?,?)";
 				if(memo.getImageOne()==null && memo.getImageTwo()==null) {
-					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE) VALUES(? , ?, ?)";
+					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,NOTE_UPDATE) VALUES(? , ?, ?, ?)";
 				}else if(memo.getImageOne()==null || memo.getImageTwo()==null) {
-					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,IMAGE_ONE) VALUES(? , ?, ?, ?)";
+					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,IMAGE_ONE,NOTE_UPDATE) VALUES(? , ?, ?, ?, ?)";
 				}
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
+				if(memo.getImageOne()==null && memo.getImageTwo()==null) {
+					pStmt.setString(1, memo.getTitle());
+					pStmt.setString(2, memo.getNote());
+					pStmt.setString(3, memo.getNoteDate());
+					pStmt.setString(4, memo.getNoteUpdate());
+				}else if(memo.getImageOne()==null) {
+					pStmt.setString(1, memo.getTitle());
+					pStmt.setString(2, memo.getNote());
+					pStmt.setString(3, memo.getNoteDate());
+					pStmt.setString(4, memo.getImageTwo());
+					pStmt.setString(5, memo.getNoteUpdate());
+				}else if(memo.getImageTwo()==null){
+					pStmt.setString(1, memo.getTitle());
+					pStmt.setString(2, memo.getNote());
+					pStmt.setString(3, memo.getNoteDate());
+					pStmt.setString(4, memo.getImageOne());
+					pStmt.setString(5, memo.getNoteUpdate());
+				}else {
 					pStmt.setString(1, memo.getTitle());
 					pStmt.setString(2, memo.getNote());
 					pStmt.setString(3, memo.getNoteDate());
 					pStmt.setString(4, memo.getImageOne());
 					pStmt.setString(5, memo.getImageTwo());
-
-
+					pStmt.setString(6, memo.getNoteUpdate());
+				}
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
@@ -157,7 +175,7 @@ public class NotesDAO {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 				// SQL文を準備する
 				String sql = "UPDATE Notes SET title=?, note=?, note_date=?, image_one=?, image_two=? , note_update=? WHERE note?id=?";
@@ -238,7 +256,7 @@ public class NotesDAO {
 					Class.forName("org.h2.Driver");
 
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 					// SQL文を準備する
 					String sql = "DELETE FROM A3 WHERE note_id=?";
