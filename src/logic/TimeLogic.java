@@ -55,6 +55,8 @@ public class TimeLogic {
 		return date;
 	}
 
+	//startからendまでの指定した曜日の日付をlistに格納していく(week配列内の全曜日)
+	//曜日は1を初期値として日曜日～月曜日の順番　(1～7)
 	public List<Todo> createTodo(String startDate, String endDate, int[] week,int uid,int listId) {
 		List<Todo> todoList = new ArrayList<Todo>();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");//フォーマット指定
@@ -140,5 +142,27 @@ public class TimeLogic {
 		}
 
 		return todoList;
+	}
+
+	//Dateを年月日のint型配列に分割して返す
+	public int[] splitDate(String date) {
+		int[] dateList = new int[3];
+
+		if(date.split("[年月日]").length == 3) {//yyyy年MM月dd日
+
+			for(int i=0;i<dateList.length;i++) {
+				dateList[i] = Integer.parseInt(date.split("[年月日]")[i]);
+			}
+		}else if(date.split("-").length == 3) {//yyyy-MM-dd
+			for(int i=0;i<dateList.length;i++) {
+				dateList[i] = Integer.parseInt(date.split("-")[i]);
+			}
+		}else if(date.split("/").length == 3) {//yyyy/MM/dd
+			for(int i=0;i<dateList.length;i++) {
+				dateList[i] = Integer.parseInt(date.split("/")[i]);
+			}
+		}
+
+		return dateList;
 	}
 }

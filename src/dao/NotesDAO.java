@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import logic.TimeLogic;
 import model.Notes;
 
 public class NotesDAO {
@@ -104,7 +105,7 @@ public class NotesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Notes WHERE family_id = ?";
+			String sql = "SELECT * FROM Notes WHERE family_id = ? ORDER BY note_date ASC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -124,6 +125,13 @@ public class NotesDAO {
 				record.setNoteDate(rs.getString("note_date"));
 				record.setImageOne(rs.getString("image_one"));
 				record.setImageTwo(rs.getString("image_two"));
+
+				TimeLogic time = new TimeLogic();
+				//noteDateを年月日で分割してint型に格納
+				record.setYear(time.splitDate(record.getNoteDate())[0]);
+				record.setMonth(time.splitDate(record.getNoteDate())[1]);
+				record.setDay(time.splitDate(record.getNoteDate())[2]);
+
 				album.add(record);
 			}
 		}

@@ -11,6 +11,10 @@ public class Notes implements Serializable{
 	private String imageOne;  //写真１
 	private String imageTwo;  //写真２
 	private String noteUpdate;  //ノート変更
+	private int year; //年
+	private int month; //月
+	private int day; //日
+
 
 	//引数なしコンストラクタ
 	public Notes() {
@@ -80,5 +84,36 @@ public class Notes implements Serializable{
 	public void setNoteDate(String noteDate) {
 		this.noteDate = noteDate;
 	}
+
+
+	public int getYear() {
+		return year;
+	}
+
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+
+	public int getMonth() {
+		return month;
+	}
+
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+
+	public int getDay() {
+		return day;
+	}
+
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
 
 }
