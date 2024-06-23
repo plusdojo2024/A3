@@ -69,7 +69,7 @@
 
 			<tr>
 				<td colspan="2"><input type="submit" name="submit" value="登録">
-					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="error_message"></span>
+					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="submit_error"></span>
 				</td>
 				<c:out value="${message.message}" />
 

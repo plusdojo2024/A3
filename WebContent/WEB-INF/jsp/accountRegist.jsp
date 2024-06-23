@@ -87,5 +87,6 @@
 		</table>
 	</form>
 	<script src="js/accountRegist.js"></script>
+	<script src="js/passCheck.js"></script>
 </body>
 </html>

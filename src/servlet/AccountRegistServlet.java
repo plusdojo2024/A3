@@ -160,7 +160,7 @@ public class AccountRegistServlet extends HttpServlet {
 			msg.setMessage("アカウントを作成しました。");
 
 			session.setAttribute("message", msg);
-			session.setAttribute("user", user);
+			session.setAttribute("myUser", dbUser);
 			// アカウント登録ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
 			dispatcher.forward(request, response);

@@ -36,7 +36,7 @@
 <body>
 	<h1>家族削除</h1>
 	<c:forEach var="e" items="${familyList}">
-		<form method="post" action="/A3/AccountDeleteServlet">
+		<form method="post" action="/A3/AccountDeleteServlet" id="form">
 			<c:set var="name" value="${e.name}"></c:set>
 			<c:set var="uid" value="${e.uid}"></c:set>
 			<c:set var="admin" value="${e.admin}"></c:set>
@@ -45,5 +45,6 @@
 				type="hidden" name="admin" value="${admin}">
 		</form>
 	</c:forEach>
+	<script src="js/delete.js"></script>
 </body>
 </html>
