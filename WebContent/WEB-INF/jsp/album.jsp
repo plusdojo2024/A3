@@ -36,8 +36,9 @@
 </head>
 <body>
 <h1>アルバム</h1>
-<%-- <c:forEach> --%>
-	<div class="accordion" onclick="toggleAccordion('accordion1')">xxxx年xx月xx日</div>
+<%-- <c:forEach var="e" items="${albumList}"> --%>
+	<div class="accordion" onclick="toggleAccordion('accordion1')">
+	<c:out value="${e.noteDate}" /></div>
 	<div class="panel" id="accordion1">
     	<table>
     		<thead>

@@ -34,12 +34,17 @@ public class AlbumServlet extends HttpServlet {
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 		request.setAttribute("myUser", dbUser);//ヘッダー用情報セット
 
+		//単体テスト用ユーザー作成　使う時は上のdbUserとかをコメントアウトして重複回避
+		//Users dbUser = new Users();
+		//単体テスト用ファミリーIDをセット
+		//dbUser.setFamilyId(22);//各自のfamilyテーブルにある家族情報を確認して入れる
+
 		NotesDAO nDao = new NotesDAO();
 
-		List<Notes> album = nDao.getAlbumAllByFamilyId(dbUser.getFamilyId());
+		List<Notes> albumList = nDao.getAlbumAllByFamilyId(dbUser.getFamilyId());
 
 
-		request.setAttribute("album", album);//アルバムセット
+		request.setAttribute("albumList", albumList);//アルバムセット
 
 		// アルバムページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/album.jsp");
