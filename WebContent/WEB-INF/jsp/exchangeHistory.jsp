@@ -1,7 +1,7 @@
 <!--交換履歴-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,20 +34,25 @@
 <title>交換履歴</title>
 </head>
 <body>
-<br><br><br><br>
-<h1>交換履歴</h1>
-<c:forEach var="e" items="${exchangeList}">
-<div>
-<div>
-<c:out value="e.date" />
-</div>
-<div>
-交換内容：<c:out value="e.reward" />
-</div>
-<div>
-交換した人：<c:out value="e.name" />
-</div>
-</div>
-</c:forEach>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>交換履歴</h1>
+	<c:forEach var="e" items="${exchangeList}">
+		<div>
+			<div>
+				<c:out value="e.date" />
+			</div>
+			<div>
+				交換内容：
+				<c:out value="e.reward" />
+			</div>
+			<div>
+				交換した人：
+				<c:out value="e.name" />
+			</div>
+		</div>
+	</c:forEach>
 </body>
 </html>

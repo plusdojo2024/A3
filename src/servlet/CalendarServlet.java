@@ -116,11 +116,11 @@ public class CalendarServlet extends HttpServlet {
 			break;
 		}
 
-		String name = eventList[1];
-		event = eventList[0];
-		date = dateList[3] + "-" + dateList[1] + "-" + dateList[2];
+		String name = eventList[1];//担当者名
+		event = eventList[0];//項目名
+		date = dateList[3] + "-" + dateList[1] + "-" + dateList[2];//実施日
 		//日付文字列をLocalDate型に変換
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");//フォーマット指定
+		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");//フォーマット指定
 		LocalDate startDay = LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
 
 		//開始日の翌月の月末まで
