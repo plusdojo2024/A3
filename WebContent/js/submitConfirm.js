@@ -1,6 +1,5 @@
-let formObj = document.getElementById('form');
 
-formObj.onsubmit = function() {
+function Check() {
 	if (!window.confirm('本当によろしいですか？')) {
 		return false;
 	}
