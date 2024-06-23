@@ -20,15 +20,13 @@ public class TodoDAO {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-			String sql = "INSERT INTO TODO (list_id, todo_date, uid, start_date, end_date) VALUES "
-					+ "(?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO TODO (list_id, todo_date, uid) VALUES "
+					+ "(?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setInt(1, todo.getListId());
 			pStmt.setString(2, todo.getTodoDate());
 			pStmt.setInt(3, todo.getUid());
-			pStmt.setString(4, todo.getTodoDate());
-			pStmt.setString(5, todo.getTodoDate());
 
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -58,9 +56,8 @@ public class TodoDAO {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-			String sql = "INSERT INTO TODO (list_id, todo_date, uid, loop, "
-					+ "monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES "
-					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO TODO (list_id, todo_date, uid, loop) VALUES "
+					+ "(?, ?, ?, ?)";
 
 
 				PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -68,13 +65,6 @@ public class TodoDAO {
 				pStmt.setString(2, todo.getTodoDate());
 				pStmt.setInt(3, todo.getUid());
 				pStmt.setInt(4, todo.getLoop());
-				pStmt.setInt(5, todo.getMonday());
-				pStmt.setInt(6, todo.getTuesday());
-				pStmt.setInt(7, todo.getWednesday());
-				pStmt.setInt(8, todo.getThursday());
-				pStmt.setInt(9, todo.getFriday());
-				pStmt.setInt(10, todo.getSaturday());
-				pStmt.setInt(11, todo.getSunday());
 				if(pStmt.executeUpdate()==1) {
 					result=true;
 				}

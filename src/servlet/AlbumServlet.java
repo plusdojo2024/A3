@@ -43,6 +43,23 @@ public class AlbumServlet extends HttpServlet {
 
 		List<Notes> albumList = nDao.getAlbumAllByFamilyId(dbUser.getFamilyId());
 
+		List<Notes> yearMonthList = albumList;
+		int tempYear=0;
+		int tempMonth=0;
+
+		int index=0;
+		for(int i=0;i<albumList.size();i++) {
+			if(i==0) {
+				tempYear = yearMonthList.get(i).getYear();
+				tempMonth = yearMonthList.get(i).getMonth();
+			}
+
+
+
+			index++;
+		}
+
+
 
 		request.setAttribute("albumList", albumList);//アルバムセット
 
