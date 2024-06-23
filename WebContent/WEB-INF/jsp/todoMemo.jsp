@@ -6,8 +6,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>タイトル各自変更してください</title>
+    <title>項目詳細 | F&amp;M</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/todoRegist.css">
 
     <div class="nav">
         <div class="left_icons">
@@ -29,7 +30,8 @@
 </head>
 <body>
 <main>
-<h1>項目詳細</h1>
+<br><br><br><br>
+<h1 class="title_box">項目詳細</h1>
 <c:forEach var="e" items="${todolist}">
 	<c:out value="${e.category}" /><br>
 	<c:out value="${e.givePoint}" /><br>

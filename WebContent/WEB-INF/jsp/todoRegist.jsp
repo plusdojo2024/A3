@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>項目登録 | F&amp;M</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/todoRegist.css">
 <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${myUser.icon}"></c:set>
@@ -33,7 +34,8 @@
 </head>
 <body>
 <main>
-	<h1>項目登録</h1>
+<br><br><br><br>
+	<h1 class="title_box">項目登録</h1>
 	<p>${message}</p>
 	<p><sup style="color: red;">*</sup>は入力必須項目です。</p>
 	<form method="post" action="/A3/TodoRegistServlet">
