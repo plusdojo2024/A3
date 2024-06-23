@@ -117,12 +117,20 @@ public class NoteServlet extends HttpServlet {
 
 		}
 
+
+
 		note.setFamilyID(user.getFamilyId());
 		note.setImageOne(relativePathOne);
 		note.setImageTwo(relativePathTwo);
 		note.setNoteDate(time.nowJpDay());
 		note.setNoteUpdate(time.nowJpDay());
 		note.setYearMonth(time.nowJpYearMonth());
+		note.setTitle(title);
+		if(memo!=null) {
+			note.setNote(memo);
+		}else {
+			note.setNote("引継ぎ事項無し");
+		}
 
 
 		Message msg = new Message();
