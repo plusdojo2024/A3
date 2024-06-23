@@ -122,6 +122,7 @@ public class NoteServlet extends HttpServlet {
 		note.setImageTwo(relativePathTwo);
 		note.setNoteDate(time.nowJpDay());
 		note.setNoteUpdate(time.nowJpDay());
+		note.setYearMonth(time.nowJpYearMonth());
 
 
 		Message msg = new Message();

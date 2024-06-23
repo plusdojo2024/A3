@@ -160,15 +160,6 @@ public class TodoDAO {
 				t.setTodoDate(rs.getString("todo_date"));
 				t.setUid(rs.getInt("uid"));
 				t.setLoop(rs.getInt("loop"));
-				t.setStartDate(rs.getString("start_date"));
-				t.setEndDate(rs.getString("end_date"));
-				t.setMonday(rs.getInt("monday"));
-				t.setTuesday(rs.getInt("tuesday"));
-				t.setWednesday(rs.getInt("wednesday"));
-				t.setThursday(rs.getInt("thursday"));
-				t.setFriday(rs.getInt("friday"));
-				t.setSaturday(rs.getInt("saturday"));
-				t.setSunday(rs.getInt("sunday"));
 
 				list.add(t);
 			}

@@ -34,6 +34,17 @@ public class TimeLogic {
 		return date;
 	}
 
+	//フォーマットを日本語の年月に直して時刻を切り落として返す
+		public String nowJpYearMonth() {
+
+			LocalDateTime now = LocalDateTime.now();//現在時刻取得
+			//日本語フォーマットを指定
+			DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy年MM月");
+			String date = now.format(f);
+
+			return date;
+		}
+
 	//カレンダーで使用されているフォーマットで現在時刻を返す
 	public String nowCalendar() {
 
@@ -163,6 +174,14 @@ public class TimeLogic {
 			}
 		}
 
+		return dateList;
+	}
+
+	public String[] yearMonth(String date) {
+		String[] dateList = new String[2];
+		if(date.split("月").length==2) {
+			dateList=date.split("月");
+		}
 		return dateList;
 	}
 }

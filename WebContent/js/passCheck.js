@@ -1,6 +1,6 @@
 
 /* HTML要素をオブジェクトとして取得する */
-let formObj = document.getElementById('regist_form');
+let formObj = document.getElementById('form');
 let errorMessageObj = document.getElementById('error_message');
 
 /* [新規作成]ボタンをクリックしたときの処理 */
@@ -30,9 +30,6 @@ formObj.onsubmit = function() {
     errorMessageObj.textContent = null;
 };
 
-//画像チェック icon
-let errorMessageObj = document.getElementById('error_icon');
-let errorMessageObj = document.getElementById('icon');
 
 
 

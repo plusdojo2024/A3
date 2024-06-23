@@ -31,35 +31,22 @@ public class AlbumServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Users user = (Users) session.getAttribute("user");
 
-		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-		request.setAttribute("myUser", dbUser);//ヘッダー用情報セット
+		//Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+		//request.setAttribute("myUser", dbUser);//ヘッダー用情報セット
 
 		//単体テスト用ユーザー作成　使う時は上のdbUserとかをコメントアウトして重複回避
-		//Users dbUser = new Users();
+		Users dbUser = new Users();
 		//単体テスト用ファミリーIDをセット
-		//dbUser.setFamilyId(22);//各自のfamilyテーブルにある家族情報を確認して入れる
+		dbUser.setFamilyId(22);//各自のfamilyテーブルにある家族情報を確認して入れる
 
 		NotesDAO nDao = new NotesDAO();
 
 		List<Notes> albumList = nDao.getAlbumAllByFamilyId(dbUser.getFamilyId());
 
-		List<Notes> yearMonthList = albumList;
-		int tempYear=0;
-		int tempMonth=0;
-
-		int index=0;
-		for(int i=0;i<albumList.size();i++) {
-			if(i==0) {
-				tempYear = yearMonthList.get(i).getYear();
-				tempMonth = yearMonthList.get(i).getMonth();
-			}
+		List<Notes> yearMonthList = nDao.getAlbumCategory(dbUser.getFamilyId());
 
 
-
-			index++;
-		}
-
-
+		request.setAttribute("yearMonthList", yearMonthList);//アルバムセット
 
 		request.setAttribute("albumList", albumList);//アルバムセット
 

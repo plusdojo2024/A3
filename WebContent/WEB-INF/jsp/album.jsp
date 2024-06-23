@@ -36,9 +36,9 @@
 </head>
 <body>
 <h1>アルバム</h1>
-<%-- <c:forEach var="e" items="${albumList}"> --%>
+<%-- <c:forEach var="category" items="${yearMonthList}"> --%>
 	<div class="accordion" onclick="toggleAccordion('accordion1')">
-	<c:out value="${e.noteDate}" /></div>
+	<c:out value="${category.yearMonth}" /></div>
 	<div class="panel" id="accordion1">
     	<table>
     		<thead>
@@ -48,12 +48,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>写真</td>
+                    <td><img src=""></td>
                 </tr>
                 <tr>
-                    <td><input type="checkbox" name="checkbox" id="ch"></td>
+                    <td><input type="checkbox" name="checkbox[]" id="ch"></td>
                 </tr>
             </tbody>
+
     	</table>
 	</div>
 <%-- </c:forEach> --%>

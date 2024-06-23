@@ -43,7 +43,7 @@
 <br>
 <br>
 <br>
-	<form method="post" action="/A3/NoteServlet" enctype="multipart/form-data">
+	<form method="post" action="/A3/NoteServlet" enctype="multipart/form-data" id="form">
 		<table>
 		<tr>
 		<c:out value="${date}" />
@@ -59,10 +59,12 @@
 
 			</tr>
 			<tr>
-				<td ><label>写真１<br> <input type="file" name="photo">
-				</label></td>
-				<td ><label>写真２<br> <input type="file" name="photo_two">
-				</label></td>
+				<td ><label>写真１<br> <input type="file" name="photo" id="photo">
+				</label><br><span
+					id="error_message"></span></td>
+				<td ><label>写真２<br> <input type="file" name="photo_two" id="photo_two">
+				</label><br><span
+					id="error_message_two"></span></td>
 			</tr>
 
 			<tr>
@@ -76,5 +78,6 @@
 		</table>
 	</form>
 </div>
+<script src="js/fileSizeCheck.js"></script>
 </body>
 </html>

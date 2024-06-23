@@ -160,6 +160,66 @@ public class NotesDAO {
 		return album;
 	}
 
+
+	//FamilyIdを引数にしてアルバムの年月重複なしリストを取得
+		public List<Notes> getAlbumCategory(int familyId) {
+			Connection conn = null;
+			List<Notes> album = new ArrayList<Notes>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+				// SQL文を準備する
+				String sql = "SELECT * FROM Notes WHERE family_id = ? GROUP BY note_date_yearmonth ORDER BY note_date_yearmonth DESC";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				// SQL文を完成させる
+				pStmt.setInt(1,familyId);
+
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// 結果表をコレクションにコピーする
+				while (rs.next()) {
+					Notes record = new Notes();
+
+					record.setFamilyID(familyId);
+					record.setNoteID(rs.getInt("note_id"));
+					record.setNoteDate(rs.getString("note_date"));
+					record.setYearMonth(rs.getString("note_date_yearmonth"));
+
+					album.add(record);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				album = null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				album = null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						album = null;
+					}
+				}
+			}
+
+			// 結果を返す
+			return album;
+		}
+
 	// 引数memoで指定されたレコードを登録し、成功したらtrueを返す
 		public boolean insert(Notes memo) {
 			Connection conn = null;
@@ -172,11 +232,11 @@ public class NotesDAO {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-				String sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE, IMAGE_ONE, IMAGE_TWO,NOTE_UPDATE) VALUES(? , ?, ?, ?, ?,?)";
+				String sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE, IMAGE_ONE, IMAGE_TWO,NOTE_UPDATE,NOTE_DATE_YEARMONTH) VALUES(? , ?, ?, ?, ?,?,?)";
 				if(memo.getImageOne()==null && memo.getImageTwo()==null) {
-					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,NOTE_UPDATE) VALUES(? , ?, ?, ?)";
+					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,NOTE_UPDATE,NOTE_DATE_YEARMONTH) VALUES(? , ?, ?, ?,?)";
 				}else if(memo.getImageOne()==null || memo.getImageTwo()==null) {
-					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,IMAGE_ONE,NOTE_UPDATE) VALUES(? , ?, ?, ?, ?)";
+					sql = "INSERT INTO NOTES ( TITLE , NOTE, NOTE_DATE,IMAGE_ONE,NOTE_UPDATE,NOTE_DATE_YEARMONTH) VALUES(? , ?, ?, ?, ?,?)";
 				}
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 

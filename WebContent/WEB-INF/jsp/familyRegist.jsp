@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/main.css">
 <body>
 	<h2>新規登録</h2>
-	<form id="regist_form" method="post"
+	<form id="form" method="post"
 		action="/A3//FamilyRegistServlet" enctype="multipart/form-data">
 		<table>
 
@@ -61,5 +61,6 @@
 		</table>
 	</form>
 	<script src="js/passCheck.js"></script>
+	<script src="js/fileSizeCheck.js"></script>
 </body>
 </html>
