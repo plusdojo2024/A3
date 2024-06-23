@@ -7,16 +7,16 @@ let errorMessageObj_two = document.getElementById('error_message_two');
 
 if (img_one != null) {
 	img_one.onchange = (e) =>{
-		if (img_one.files.length > 0){
+		if (img_one.files.length>0){
 		/// ファイルサイズ取得
-			var fileSize = img_one.files[0].size;
+		var fileSize = img_one.files[0].size;
 
-			var fileMib = fileSize / 1024 ** 2;
-			if (fileMib >= 5) {
-				errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
-			}
-		}
-	}
+		var fileMib = fileSize / (1024 ** 2);
+		if (fileMib >= 5) {
+			errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
+		};
+	};
+};
 
 formObj.onsubmit = function() {
 	if (img_one.files.length > 0) {
@@ -27,17 +27,17 @@ formObj.onsubmit = function() {
 		if (fileMib >= 5) {
 			errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
 			return false;
-		}
-	}
+		};
+	};
 	if (!window.confirm('この情報で登録します。よろしいですか？')) {
 		return false;
-	}
+	};
 	errorMessageObj.textContent = null;
 };
 };
 
 
-if (img_two !=  null){
+if (img_two != null ){
 	img_two.onchange = (e) => {
 		if (img_two.files.length > 0) {
 			/// ファイルサイズ取得
@@ -46,9 +46,9 @@ if (img_two !=  null){
 			var fileMib = fileSize / 1024 ** 2;
 			if (fileMib >= 5) {
 				errorMessageObj_two.textContent = 'ファイルサイズは5MB以内にしてください。';
-			}
-		}
-	}
+			};
+		};
+	};
 	formObj.onsubmit = function() {
 		if (icon.files.length > 0) {
 			/// ファイルサイズ取得
@@ -58,11 +58,11 @@ if (img_two !=  null){
 			if (fileMib >= 5) {
 				errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
 				return false;
-			}
-		}
+			};
+		};
 		if (!window.confirm('この情報で登録します。よろしいですか？')) {
 			return false;
-		}
+		};
 		errorMessageObj.textContent = null;
 	};
 };
@@ -75,9 +75,9 @@ if (icon != null) {
 			var fileMib = fileSize / 1024 ** 2;
 			if (fileMib >= 5) {
 				errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
-			}
-		}
-	}
+			};
+		};
+	};
 	formObj.onsubmit = function() {
 		if (icon.files.length > 0) {
 			/// ファイルサイズ取得
@@ -87,11 +87,11 @@ if (icon != null) {
 			if (fileMib >= 5) {
 				errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
 				return false;
-			}
-		}
+			};
+		};
 		if (!window.confirm('この情報で登録します。よろしいですか？')) {
 			return false;
-		}
+		};
 		errorMessageObj.textContent = null;
 	};
 };
