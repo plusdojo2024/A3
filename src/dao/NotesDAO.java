@@ -105,7 +105,7 @@ public class NotesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Notes WHERE family_id = ? ORDER BY note_date ASC";
+			String sql = "SELECT * FROM Notes WHERE family_id = ? ORDER BY note_date DESC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
