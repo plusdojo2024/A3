@@ -73,26 +73,27 @@
 		<div class="main_box">曜日</div>
 
 		<label for="monday">月曜日</label> <input type="checkbox" id="monday"
-			name="week[]" value="2" style="pointer-events: none"><br>
+			name="week[]" value="2" style="pointer-events: none" required><br>
 			<label for="tuesday">火曜日</label>
-		<input type="checkbox" id="tuesday" name="week[]" value="3" style="pointer-events: none"><br>
+		<input type="checkbox" id="tuesday" name="week[]" value="3" style="pointer-events: none" required><br>
 
 		<label for="wednesday">水曜日</label> <input type="checkbox"
-			id="wednesday" name="week[]" value="4" style="pointer-events: none"><br>
+			id="wednesday" name="week[]" value="4" style="pointer-events: none" required><br>
 			<label for="thuresday">木曜日</label> <input type="checkbox" id="thuresday"
-			name="week[]" value="5" style="pointer-events: none"><br>
+			name="week[]" value="5" style="pointer-events: none" required><br>
 			<label for="friday">金曜日</label>
-		<input type="checkbox" id="friday" name="week[]" value="6" style="pointer-events: none"><br>
+		<input type="checkbox" id="friday" name="week[]" value="6" style="pointer-events: none" required><br>
 
 		<label for="saturday">土曜日</label> <input type="checkbox" id="saturday"
-			name="week[]" value="7" style="pointer-events: none"><br>
+			name="week[]" value="7" style="pointer-events: none" required><br>
 			 <label for="sunday">日曜日</label>
-		<input type="checkbox" id="sunday" name="week[]" value="1" style="pointer-events: none"><br>
+		<input type="checkbox" id="sunday" name="week[]" value="1" style="pointer-events: none" required><br>
 
 		<div class="main_box">
 		<c:set var="set_today" value = "${today}" />
 		<c:set var="set_end" value = "${endDay}" />
-			いつまで<input type="date"  name=end_date min="${set_today}" max="${set_end}">
+			いつまで<input type="date" id="end_date" name=end_date min="${set_today}" max="${set_end}"
+			style="pointer-events: none" >
 		</div>
 
 		<div class="submit_box">
