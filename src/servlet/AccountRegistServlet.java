@@ -159,7 +159,7 @@ public class AccountRegistServlet extends HttpServlet {
 
 			msg.setMessage("アカウントを作成しました。");
 
-			session.setAttribute("message", msg);
+			request.setAttribute("message", msg);
 			session.setAttribute("myUser", dbUser);
 			// アカウント登録ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
@@ -167,7 +167,7 @@ public class AccountRegistServlet extends HttpServlet {
 		} else {
 			System.out.println("失敗しました。");
 			msg.setMessage("アカウントの作成に失敗しました。");
-			session.setAttribute("message", msg);
+			request.setAttribute("message", msg);
 			session.setAttribute("user", user);
 			// アカウント登録ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");

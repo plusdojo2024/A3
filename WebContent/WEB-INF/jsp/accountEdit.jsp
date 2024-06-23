@@ -40,23 +40,23 @@
 	<br>
 	<h2>個人情報変更</h2>
 
-	<form id="create_form" method="post" action="/A3/AccountEditServlet"
+	<form id="form" method="post" action="/A3/AccountEditServlet"
 		enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td><c:set var="name" value="${myUser.name}">
 					</c:set> <label>個人名<br> <input type="text" name="user_name"
-						value="${name}" max=20>
+						value="${name}" maxlength=20>
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>個人パスワード<br> <input type="password"
-						name="user_pass" id="pass" max=20><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						name="user_pass" id="pass" maxlength=20><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>個人パスワード確認<br> <input type="password"
-						id="pass_check" max=20><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						id="pass_check" maxlength=20><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
@@ -72,7 +72,7 @@
 				</label></td>
 			<tr>
 			<tr>
-				<td><input type="submit" name="submit" id = "submit" value="変更"> <span
+				<td><input type="submit" name="submit" id = "submit" value="変更"  onClick="return Check()"> <span
 					id="error_message"> </span>
 
 					<p class="error">
@@ -82,5 +82,6 @@
 			</tr>
 		</table>
 	</form>
+	<script src="js/submitConfirm.js"></script>
 </body>
 </html>

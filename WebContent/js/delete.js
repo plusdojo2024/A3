@@ -1,7 +1,8 @@
-let formObj = document.getElementById('form');
-
-formObj.onsubmit = function() {
-	if (!window.confirm('この情報で登録します。よろしいですか？')) {
+function Check() {
+	var checked = confirm("削除します");
+	if (checked == true) {
+		return true;
+	} else {
 		return false;
 	}
 }

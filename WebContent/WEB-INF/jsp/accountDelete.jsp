@@ -29,7 +29,6 @@
 		<button class="logout"
 			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
 	</div>
-
 </div>
 <title>家族削除画面</title>
 </head>
@@ -40,7 +39,7 @@
 			<c:set var="name" value="${e.name}"></c:set>
 			<c:set var="uid" value="${e.uid}"></c:set>
 			<c:set var="admin" value="${e.admin}"></c:set>
-			<input type="submit" name="user_name" value="${name}"> <input
+			<input type="submit" name="user_name" value="${name}" onClick="return Check()"> <input
 				type="hidden" name="uid" value="${uid}"> <input
 				type="hidden" name="admin" value="${admin}">
 		</form>
