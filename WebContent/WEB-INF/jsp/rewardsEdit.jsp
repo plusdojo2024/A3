@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>ご褒美　編集・削除</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/rewards.css">
 
     <div class="nav">
         <div class="left_icons">
@@ -28,22 +29,30 @@
     </div>
 </head>
 <body>
-<h1>ご褒美　編集・削除</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>ご褒美編集</h1>
 <form method="post" action="/A3/RewardsEditServlet">
 	<input type="text" name="reward" value="${param.reward}"><br>
 	<input type="text" name="reqPoint" value="${param.reqPoint}"><br>
-	※<select name="name">
+	<select name="name">
 		<c:forEach var="e" items="${ud}" >
 			<option value="${e.uid}">${e.name}</option>
 		</c:forEach>
 	</select><br>
-	<input type="hidden" name="reward_id" value="${param.rewardId}"><br>
-	<input type="hidden" name="reward_date" value="${param.rewardDate}"><br>
-	<input type="hidden" name="request" value="${param.re}"><br>
-	<input type="hidden" name="u_id" value="${param.uId}"><br>
+	<input type="hidden" name="reward_id" value="${param.rewardId}">
+	<input type="hidden" name="reward_date" value="${param.rewardDate}">
+	<input type="hidden" name="request" value="${param.re}">
+	<input type="hidden" name="u_id" value="${param.uId}">
 	<br>
-<input type="submit" name="edit" value="更新" onclick="return editBt()">　
-<input type="submit" name="delete" value="削除" onclick="return deleteBt()">
+<input class="green_edit" type="submit" name="edit" value="更新" onclick="return editBt()">　
+
 
 </form>
 
