@@ -40,17 +40,17 @@
 	<br>
 	<br>
 	<h1>家族登録</h1>
-	<form id="create_form" method="post" action="/A3//AccountRegistServlet"
+	<form id="form" method="post" action="/A3//AccountRegistServlet"
 		enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td><label>個人名<br> <input type="text"
-						name="user_name">
+						name="user_name" maxlength="20">
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>個人パスワード<br> <input type="password"
-						name="user_pass">
+						name="user_pass" id="u_pass" maxlength="20"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
@@ -76,7 +76,7 @@
 				</label></td>
 			<tr>
 			<tr>
-				<td><input type="submit" name="submit" value="新規登録"> <span
+				<td><input type="submit" name="submit" value="新規登録" onClick="return Check()"> <span
 					id="error_message"> </span>
 
 					<p class="error">
@@ -87,5 +87,6 @@
 		</table>
 	</form>
 	<script src="js/accountRegist.js"></script>
+	<script src="js/submitConfirm.js"></script>
 </body>
 </html>

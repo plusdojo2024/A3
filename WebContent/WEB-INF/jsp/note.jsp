@@ -51,12 +51,11 @@
 
 			<tr>
 				<td><label>タイトル<br> <input type="text"
-						name="memo_title" maxlength="20">
+						name="memo_title" maxlength="20" placeholder="タイトルを記入">
 				</label></td>
 			</tr>
 			<tr>
-				<td><textarea name="memo" maxlength="200">メモ</textarea></td>
-
+				<td><textarea name="memo" maxlength="200" placeholder="引継ぎ事項">メモ</textarea></td>
 			</tr>
 			<tr>
 				<td ><label>写真１<br> <input type="file" name="photo" id="photo">
@@ -68,8 +67,8 @@
 			</tr>
 
 			<tr>
-				<td colspan="2"><input type="submit" name="submit" value="登録">
-					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="error_message"></span>
+				<td colspan="2"><input type="submit" name="submit" value="登録" onclick="return Check();">
+					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="submit_error"></span>
 				</td>
 				<c:out value="${message.message}" />
 
@@ -79,5 +78,7 @@
 	</form>
 </div>
 <script src="js/fileSizeCheck.js"></script>
+<script src="js/submitConfirm.js"></script>
+<script src="js/note.js"></script>
 </body>
 </html>

@@ -37,23 +37,23 @@
 
 			<tr>
 				<td><label>家族名<br> <input type="text"
-						name="family_name" value="${family_name}">
+						name="family_name" value="${family_name}" maxlength="20">
 				</label></td>
 
 			</tr>
 			<tr>
 				<td><label>メールアドレス<br> <input type="email"
-						name="mail"  value="${mail}">
+						name="mail"  value="${mail}" maxlength="64">
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>家族パスワード<br> <input type="password"
-						name="family_pass">
+						name="family_pass" maxlength="20"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>家族パスワード確認<br> <input type="password"
-						id = "pass_check">
+						id = "pass_check" maxlength="20"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
@@ -62,7 +62,6 @@
 					<p class="error"><c:out value="${message.title}" />  <c:out value="${message.message}" /></p>
 					</td>
 			</tr>
-
 		</table>
 	</form>
 </body>

@@ -1,0 +1,43 @@
+body
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+    /* ページの余白をゼロに設定 */
+    padding: 0;
+    /* ページのパディングをゼロに設定 */
+    background-color: #bfe8bf;
+}
+
+/* -----------------------
+タイトルのボックス
+-------------------------*/
+.title_box
+{
+    background-color: white;
+    color: green;
+    border-radius: 30px; /* 角を丸くする */
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    /* font-size: 14px; */
+    margin: 0 10px;
+    white-space: nowrap;
+    padding: 0.5rem;
+}
+
+.select_box {
+    background-color: green;
+    color: white;
+    width: 12.7em;
+}
+
+option {
+    background-color: white;
+    color: black;
+}
+
+.regist_button {
+    left: 50%;
+}
