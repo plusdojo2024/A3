@@ -13,12 +13,12 @@
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}"></c:set>
+		<c:set var="icon" value="${dbUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 
@@ -51,11 +51,11 @@
 
 			<tr>
 				<td><label>タイトル<br> <input type="text"
-						name="memo_title" maxlength="20" placeholder="タイトルを記入">
+						name="note_title" maxlength="20" placeholder="タイトルを記入">
 				</label></td>
 			</tr>
 			<tr>
-				<td><textarea name="memo" maxlength="200" placeholder="引継ぎ事項">メモ</textarea></td>
+				<td><textarea name="note" maxlength="200" placeholder="引継ぎ事項"></textarea></td>
 			</tr>
 			<tr>
 				<td ><label>写真１<br> <input type="file" name="photo" id="photo">

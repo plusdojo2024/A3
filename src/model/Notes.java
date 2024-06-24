@@ -3,8 +3,8 @@ package model;
 import java.io.Serializable;
 
 public class Notes implements Serializable{
-	private int noteID;  //メモID
-	private int familyID;  //家族ID
+	private int noteId;  //メモID
+	private int familyId;  //家族ID
 	private String title;//タイトル
 	private String note;//メモ
 	private String noteDate;  //ノート日付
@@ -23,18 +23,6 @@ public class Notes implements Serializable{
 	}
 
 
-	public Notes(int noteID, int familyID, String title, String note, String noteDate, String imageOne, String imageTwo,
-			String noteUpdate) {
-		super();
-		this.noteID = noteID;
-		this.familyID = familyID;
-		this.title = title;
-		this.note = note;
-		this.noteDate = noteDate;
-		this.imageOne = imageOne;
-		this.imageTwo = imageTwo;
-		this.noteUpdate = noteUpdate;
-	}
 	//getter,setter
 	public String getTitle() {
 		return title;
@@ -55,17 +43,17 @@ public class Notes implements Serializable{
 	public void setNoteUpdate(String noteUpdate) {
 		this.noteUpdate = noteUpdate;
 	}
-	public int getFamilyID() {
-		return familyID;
+	public int getFamilyId() {
+		return familyId;
 	}
-	public void setFamilyID(int familyID) {
-		this.familyID = familyID;
+	public void setFamilyId(int familyId) {
+		this.familyId = familyId;
 	}
-	public int getNoteID() {
-		return noteID;
+	public int getNoteId() {
+		return noteId;
 	}
-	public void setNoteID(int noteID) {
-		this.noteID = noteID;
+	public void setNoteId(int noteId) {
+		this.noteId = noteId;
 	}
 	public String getImageTwo() {
 		return imageTwo;

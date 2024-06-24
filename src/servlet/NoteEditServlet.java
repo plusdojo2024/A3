@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.NotesDAO;
+import logic.TimeLogic;
+import model.Message;
 import model.Notes;
 import model.Users;
 
@@ -27,8 +30,13 @@ public class NoteEditServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-				Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-		request.setAttribute("myUser", dbUser);
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+
+		NotesDAO ndao = new NotesDAO();
+		List<Notes> noteList = ndao.select(dbUser.getFamilyId());
+		request.setAttribute("noteList", noteList);
+
+
 		// 履歴ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/noteEdit.jsp");
 		dispatcher.forward(request, response);
@@ -42,27 +50,50 @@ public class NoteEditServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		request.setCharacterEncoding("UTF-8");
-		int noteID = Integer.parseInt(request.getParameter("noteID"));
+		int noteId = Integer.parseInt(request.getParameter("note_id"));
+		String noteDate = request.getParameter("note_date");
+		String title = request.getParameter("title");
+		String note = request.getParameter("note");
+
+TimeLogic time = new TimeLogic();
+
+
 
 		NotesDAO nDao = new NotesDAO();
+		Notes notes = new Notes();
+		notes.setNoteId(noteId);
+		notes.setNoteDate(noteDate);
+		notes.setTitle(title);
+		notes.setNote(note);
+		notes.setNoteUpdate(time.nowJpDay());
+
+		Message msg = new Message();
         	if (request.getParameter("submit").equals("更新")) {
 			// ここを改造する
-        		if (nDao.update(new Notes( ))) {	// 更新成功
-			// ここまで
+        		if (nDao.update(notes)) {	// 更新成功
+			// ここまでs
 				System.out.println("更新完了");
-				request.setAttribute("message", "更新しました。");
+				msg.setMessage("履歴更新しました");
+				request.setAttribute("message",msg);
 			}
 			else {												// 更新失敗
 				System.out.println("失敗");
-				request.setAttribute("message", "更新に失敗しました。");
+				msg.setMessage("失敗");
+				request.setAttribute("message",msg);
 			}
+
 		}
-		else {
-			if (nDao.delete(noteID)){
-				request.setAttribute("message", "削除しました");
+
+		if (request.getParameter("submit").equals("削除")) {
+			if (nDao.delete(noteId)){
+				msg.setMessage("削除しました");
+				request.setAttribute("message", msg);
 			} else {
-				request.setAttribute("message", "削除に失敗しました");
+				msg.setMessage("削除に失敗しました");
+				request.setAttribute("message", msg);
+
 			}
+
 		}
 
 		// 結果ページにフォワードする

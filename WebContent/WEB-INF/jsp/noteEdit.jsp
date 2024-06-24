@@ -12,51 +12,52 @@
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}" />
+		<c:set var="icon" value="${dbUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 
 	<div class="home_logo">
-		<a href="/A3/HomeServlet">F&M</a>
+		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
 	</div>
 
 	<div class="right_buttons">
-		<button class="account-management">
-			<a href="/A3/AccountServlet">アカウント管理</a>
-		</button>
-		<button class="logout">
-			<a href="/A3/LogoutServlet">ログアウト</a>
-		</button>
+		<button class="account-management"
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+		<button class="logout"
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
 	</div>
 
 </div>
 </head>
 <body>
 	<h2>履歴</h2>
-	<form id="create_form" method="post" action="/A3/NoteEditServlet"
-		enctype="multipart/form-data">
-		<table>
-		<c:set var="note_date" value="${note.noteDate}" />
-		<c:set var="title" value="${note.title}" />
-		<c:set var="memo" value="${note.memo}" />
 
+		<c:forEach var="a" items="${noteList }" >
+			<form id="form" method="post" action="/A3/NoteEditServlet">
+			<table>
 			<tr>
 
-				<td><label><input type="text" name="noteDate"
-						value="${note_date}"><br> </label></td>
+				<td><label><input type="hidden" name="note_id"
+						value="${a.noteId}"><br> </label></td>
+			</tr>
+			<tr>
+
+				<td><c:out value="${a.noteDate}" />
+				<label><input type="hidden" name="note_date"
+						value="${a.noteDate}"><br> </label></td>
 			</tr>
 			<tr>
 				<td><label><input type="text" name="title"
-						value="${title}"><br> </label></td>
+						value="${a.title}"><br> </label></td>
 			</tr>
 			<tr>
-				<td><label><input type="text" name="memo"
-						value="${memo}"><br> </label></td>
+				<td><label><input type="text" name="note"
+						value="${a.note}"><br> </label></td>
 
 			</tr>
 			<tr>
@@ -65,7 +66,10 @@
 			</tr>
 
 		</table>
-	</form>
+
+			</form>
+		</c:forEach>
+
 
 
 </body>
