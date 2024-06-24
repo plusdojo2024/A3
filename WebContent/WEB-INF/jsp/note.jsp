@@ -23,36 +23,40 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
+		<a href="/A3/HomeServlet"><img src="images/FM1.png" width="90%" height="90%"></a>
 	</div>
 
-	<div class="right_buttons">
-		<button class="account-management"
-			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
-		<button class="logout"
-			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
-	</div>
+    <div class="right_buttons">
+        <button class="account-management"
+            onclick="window.location.href = '/A3/AccountServlet';">アカウント管理<br><img src="images/ic007.png" width="65px" height="65px"></button>
+        <button class="logout"
+            onclick="window.location.href = '/A3/LogoutServlet';">ログアウト<br><img src="images/935.png" width="65px" height="65px"></button>
+
+    </div>
 
 </div>
 </head>
 <body >
 <br><br><br><br>
-
 <br>
 <div id="main">
 	<h2><div id="title">
+
 	引継ぎノート</div></h2>
+<c:set var = "day" value="${date}" />
 
 	<form method="post" action="/A3/NoteServlet" enctype="multipart/form-data" id="form">
 		<table>
 			<tr>
-				<td><label><br><c:out value="${date}" /><input type="text"
+				<td><label><p>${day}</p><input type="text"
 						name="note_title" maxlength="20" placeholder="タイトルを記入">
 				</label></td>
 			</tr>
 			<tr>
 				<td><textarea name="note" maxlength="200" placeholder="引継ぎ事項"></textarea></td>
 			</tr>
+			<div id="a">
+
 			<tr>
 				<td ><label>写真１<br> <input type="file" name="photo" id="photo">
 				</label><br><span
@@ -60,7 +64,6 @@
 				</label><br><span
 					id="error_message_two"></span></td>
 			</tr>
-
 			<tr>
 				<td colspan="2"><input type="submit" name="submit" value="登録" onclick="return Check();">
 					<a href="/A3/NoteEditServlet">履歴・編集</a><span id="submit_error"></span>
@@ -68,7 +71,7 @@
 				<c:out value="${message.message}" />
 
 			</tr>
-
+			</div>
 		</table>
 	</form>
 </div>

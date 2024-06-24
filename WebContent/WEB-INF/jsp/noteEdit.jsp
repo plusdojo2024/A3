@@ -23,15 +23,16 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
+		<a href="/A3/HomeServlet"><img src="images/FM1.png" width="90%" height="90%"></a>
 	</div>
 
-	<div class="right_buttons">
-		<button class="account-management"
-			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
-		<button class="logout"
-			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
-	</div>
+    <div class="right_buttons">
+        <button class="account-management"
+            onclick="window.location.href = '/A3/AccountServlet';">アカウント管理<br><img src="images/ic007.png" width="65px" height="65px"></button>
+        <button class="logout"
+            onclick="window.location.href = '/A3/LogoutServlet';">ログアウト<br><img src="images/935.png" width="65px" height="65px"></button>
+
+    </div>
 
 </div>
 </head>
@@ -62,10 +63,10 @@
 			</tr>
 			<tr>
 				<td><label><input type="text" name="title"
-						value="${a.title}" maxlength="20" placeholder="タイトルを記入"><br> </label></td>
+						value="${a.title}" maxlength="20" placeholder="タイトルを記入"> </label></td>
 			</tr>
 			<tr>
-				<td><br><textarea name="note"
+				<td><textarea name="note"
 						 maxlength="200" placeholder="引継ぎ事項">${a.note}</textarea><br></td>
 
 			</tr>
