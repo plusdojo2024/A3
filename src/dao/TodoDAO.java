@@ -450,6 +450,7 @@ public class TodoDAO {
 				t.setTask(task);
 				TimeLogic time = new TimeLogic();
 				t.setTodoDate(time.changeFormat(rs.getString("todo_date")));
+				t.setName(rs.getString("name"));
 
 				list.add(t);
 			}
