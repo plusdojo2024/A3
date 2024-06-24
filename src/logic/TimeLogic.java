@@ -208,4 +208,12 @@ public class TimeLogic {
 
 		return strYesterday;
 	}
+
+	public String changeFormat(String strDate) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy年MM月dd日");//フォーマット指定
+		LocalDate date = LocalDate.parse(strDate, dtf);//Stringの日付を指定したフォーマットでLocalDateに変換
+		String jpDate = date.format(dtf);
+
+		return jpDate;
+	}
 }

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import logic.TimeLogic;
 import model.Todo;
 import model.Users;
 
@@ -412,6 +413,63 @@ public class TodoDAO {
 			}
 		}
 		return list;
+
+	}
+
+	public List<Todo> getTaskHistory(int familyId ,String task){
+		Connection conn = null;
+		ArrayList<Todo> list = new ArrayList<Todo>();
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT "
+					+ "*"
+					+ "FROM TODO as T "
+					+ "JOIN USERS as U ON U.UID = T.UID "
+					+ "WHERE family_id = ? AND task = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, task);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				Todo t = new Todo();
+
+				t.setTodoId(rs.getInt("todo_id"));
+				t.setListId(rs.getInt("list_id"));
+				t.setUid(rs.getInt("uid"));
+				t.setLoop(rs.getInt("loop"));
+				t.setTask(task);
+				TimeLogic time = new TimeLogic();
+				t.setTodoDate(time.changeFormat(rs.getString("todo_date")));
+				t.setName(rs.getString("name"));
+
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+
 
 	}
 }
