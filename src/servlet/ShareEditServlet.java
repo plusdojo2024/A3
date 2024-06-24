@@ -54,7 +54,6 @@ public class ShareEditServlet extends HttpServlet {
 		Users user = (Users) session.getAttribute("user");
 
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-		request.setAttribute("myUser", dbUser);//ヘッダー用情報
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		//選択したイベント

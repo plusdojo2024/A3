@@ -46,7 +46,6 @@ public class ShareRegistServlet extends HttpServlet {
 		Users user = (Users) session.getAttribute("user");
 
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-		request.setAttribute("myUser", dbUser);
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String strDay = request.getParameter("date");

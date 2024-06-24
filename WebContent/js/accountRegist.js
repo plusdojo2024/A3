@@ -4,6 +4,27 @@ window.onload = function() {
 	let child_button = document.getElementById("child");
 	let child_image = document.getElementById('child_image');
 	let role = document.getElementById("role");
+	let image_flag = 0;
+
+	const icon = document.getElementById("icon");
+
+
+	icon.onchange = (e) => {
+		if (icon.files.length > 0) {
+			// ファイルサイズ取得
+			var fileSize = icon.files[0].size;
+
+			var fileMib = fileSize / (1024 ** 2);
+			if (fileMib >= 5) {
+				errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
+				image_flag = 1;
+			} else {
+				errorMessageObj.textContent = null;
+				image_flag = 0;
+			}
+		};
+	}
+
 
 	parent_button.addEventListener("click", () => {
 		role.value = "1";
@@ -41,12 +62,19 @@ window.onload = function() {
 		} else if (!user_pass_value_checked_result) {
 			errorMessageObj.textContent = '※パスワードが要件を満たしていません。';
 			return false;
-		}else{
-		if (!window.confirm('この情報で登録します。よろしいですか？')) {
+		} else if (image_flag == 1) {
+			errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
 			return false;
 		}
-		errorMessageObj.textContent = null;
+		else {
+			if (!window.confirm('この情報で登録します。よろしいですか？')) {
+				return false;
+			}
+			errorMessageObj.textContent = null;
 		}
 
 	};
+
+
+
 }

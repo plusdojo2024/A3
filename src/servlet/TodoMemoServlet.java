@@ -44,7 +44,6 @@ public class TodoMemoServlet extends HttpServlet {
 		//session.setAttribute("familyId", f);
 		Users user = (Users)session.getAttribute("user");
 		Users dbUser = (Users) session.getAttribute("dbUser");
-		request.setAttribute("myUser", dbUser);
 		int familyId = user.getFamilyId();
 
 		TodoListDAO tlDao = new TodoListDAO();

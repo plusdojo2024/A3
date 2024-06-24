@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="css/shareRegist.css">
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}" />
+		<c:set var="icon" value="${dbUser.icon}" />
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 

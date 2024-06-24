@@ -12,9 +12,9 @@
 
     <div class="nav">
         <div class="left_icons">
-        <c:set var="icon" value="${myUser.icon}"></c:set>
+        <c:set var="icon" value="${dbUser.icon}"></c:set>
             <div class="green_box"><img src="${icon}" id="user_icon"></div>
-            <div class="green_box"><c:out value="${myUser.havePoint}" /></div>
+            <div class="green_box"><c:out value="${dbUser.havePoint}" /></div>
         </div>
 
 	<div class="home_logo">

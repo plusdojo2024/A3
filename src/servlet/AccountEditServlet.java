@@ -32,10 +32,7 @@ public class AccountEditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//セッションスコープからログイン中のユーザー情報を持ってくる
-		HttpSession session = request.getSession();
-		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-		request.setAttribute("myUser", dbUser);
+
 		// アカウント編集ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountEdit.jsp");
 		dispatcher.forward(request, response);

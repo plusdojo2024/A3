@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>家族情報変更</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/familyEdit.css">
 <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${dbUser.icon}"></c:set>
@@ -42,7 +43,7 @@
         <a href="/A3/RewardsServlet">ご褒美</a>
     </div> -->
 <h1>家族情報変更</h1>
-<form id="create_form" method="post"
+<form id="form" method="post"
 		action="/A3//FamilyEditServlet">
 		<table>
 		<c:set var="family_name" value="${userNoHash.familyName}" />
@@ -66,16 +67,17 @@
 			<tr>
 			<tr>
 				<td><label>家族パスワード確認<br> <input type="password"
-						id = "pass_check" maxlength="20"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						id = "pass_check" maxlength="20" name="pass_check"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
 				<td><input type="submit" name="submit" value="変更"> <span
-					id="error_message"></span>
+					id="error_message"  style="right:24%"></span>
 					<p class="error"><c:out value="${message.title}" />  <c:out value="${message.message}" /></p>
 					</td>
 			</tr>
 		</table>
 	</form>
+	<script src="js/familyEdit.js"></script>
 </body>
 </html>

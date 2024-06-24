@@ -36,7 +36,6 @@ public class TodoEditServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Users user = (Users)session.getAttribute("user");
 		Users dbUser = (Users) session.getAttribute("dbUser");
-		request.setAttribute("myUser", dbUser);
 
 		TodoListDAO tlDao = new TodoListDAO();
 //		Users user = (Users)session.getAttribute("user");
