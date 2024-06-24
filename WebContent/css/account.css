@@ -18,7 +18,7 @@
       font-size: 35px;
       position:absolute;
       top:180px;
-      left:300px
+      left:350px
 
   }
 
@@ -44,8 +44,8 @@
     cursor: pointer;
     border-radius: 15px; /* 角を丸くする */
     transition: background-color 0.5s ease; /* 色が変わる際のアニメーション */
-    width: 500px;
-    height: 150px;
+    width: 450px;
+    height: 130px;
   }
 
   .button1:hover {
