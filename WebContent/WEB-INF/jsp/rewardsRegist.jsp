@@ -32,14 +32,44 @@
 <h1>ご褒美登録</h1>
 <form method="post" action="/A3/RewardsRegistServlet">
 	※<input type="text" name="reward" placeholder="ご褒美"><br>
-	※<input type="text" name="point" placeholder="付与ポイント"><br>
-	<select name="name">
+	※<input type="text" name="reqPoint" placeholder="付与ポイント"><br>
+	※<select name="name">
 		<c:forEach var="e" items="${ud}" >
 			<option value="${e.uid}">${e.name}</option>
 		</c:forEach>
 	</select><br>
-	<input type="submit" name="regist" value="登録"><br>
+	<!-- <input type="submit" name="regist" value="登録" id="regist"><br> -->
+	<input type="submit" name="regist" value="登録" onclick="return registBt()"><br>
 </form>
+
+<script>
+//登録ボタン押された時の処理
+	/* let regist =document.getElementById("regist");
+
+	regist.addEventListener('click',function(event){
+		let ans = confirm("登録してもよろしいですか？");
+		alert(ans);
+		if(ans == true){
+			return true;
+		}else{
+			event.preventDefault();
+			return false;
+		}
+	}); */
+
+	function registBt(){
+		 let regist =document.getElementById("regist");
+		 let ans = confirm("登録しますか？");
+
+			if(ans == true){
+				return true;
+			}else{
+				return false;
+			}
+	}
+
+</script>
+
 </body>
 
 </html>
