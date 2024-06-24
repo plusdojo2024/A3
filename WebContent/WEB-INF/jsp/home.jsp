@@ -37,13 +37,13 @@
 </head>
 <body>
 	<br><br><br><br><br><br>
-	<div class="sidebar">
+<!-- 	<div class="sidebar">
         <a href="/A3/HomeServlet">ホーム</a>
         <a href="/A3/TodoServlet">やることリスト</a>
         <a href="/A3/NoteServlet">引継ぎノート</a>
         <a href="/A3/AlbumServlet">アルバム</a>
         <a href="/A3/RewardsServlet">ご褒美</a>
-    </div>
+    </div> -->
 
     <br><br><br><br>
 <h1>当日のリスト</h1>
