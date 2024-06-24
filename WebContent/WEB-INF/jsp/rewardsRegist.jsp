@@ -6,8 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>ご褒美登録</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/rewards.css">
 
     <div class="nav">
         <div class="left_icons">
@@ -29,18 +31,32 @@
 </head>
 
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class = "rewardsRe">
 <h1>ご褒美登録</h1>
-<form method="post" action="/A3/RewardsRegistServlet">
-	※<input type="text" name="reward" placeholder="ご褒美"><br>
-	※<input type="text" name="reqPoint" placeholder="付与ポイント"><br>
-	※<select name="name">
-		<c:forEach var="e" items="${ud}" >
-			<option value="${e.uid}">${e.name}</option>
-		</c:forEach>
-	</select><br>
+	<div class = "rewardsRegist">
+		<form method="post" action="/A3/RewardsRegistServlet">
+			※<input type="text" name="reward" placeholder="ご褒美"><br>
+			※<input type="text" name="reqPoint" placeholder="付与ポイント"><br>
+			※<select name="name">
+				<c:forEach var="e" items="${ud}" >
+					<option value="${e.uid}">${e.name}</option>
+				</c:forEach>
+				</select><br>
 	<!-- <input type="submit" name="regist" value="登録" id="regist"><br> -->
-	<input type="submit" name="regist" value="登録" onclick="return registBt()"><br>
-</form>
+		<input type="submit" name="regist" value="登録" onclick="return registBt()"><br>
+		</form>
+	</div>
+</div>
+
 
 <script>
 //登録ボタン押された時の処理
