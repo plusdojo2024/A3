@@ -36,7 +36,7 @@
 </head>
 <body>
 	<form action="/A3/ShareEditServlet" method="post">
-		<br> <br> <br> <br> <br> <br>
+		<br> <br> <br> <br> <br> <br> <br> <br>
 
 		<div class="title_box">分担編集・削除</div>
 		選択した予定：<c:out value="${date}" />：<c:out value="${event}" />
@@ -96,13 +96,7 @@
 			style="pointer-events: none" >
 		</div>
 
-		<div class="submit_box">
-			<input type="submit" value="編集" name="submit"><input type="submit" value="削除" name="submit">
-			<br>
-		</div>
-		<button type="button" onclick="history.back();"class="back-button">戻る</button>
-		<img class="back-button" src="images/603_1.png">
-
+		<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 
 		<script>
 		//繰り返すを選択時の曜日選択処理

@@ -25,12 +25,10 @@
 	</div>
 
 	<div class="right_buttons">
-		<button class="account-management">
-			<a href="/A3/AccountServlet">アカウント管理</a>
-		</button>
-		<button class="logout">
-			<a href="/A3/LogoutServlet">ログアウト</a>
-		</button>
+		<button class="account-management"
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+		<button class="logout"
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
 	</div>
 
 </div>
@@ -38,11 +36,12 @@
 </head>
 <body>
 	<form action="/A3/ShareRegistServlet" method="post">
-		<br> <br> <br> <br> <br>
+		<br> <br> <br> <br> <br> <br> <br> <br>
 
 		<div class="day">
 			<c:out value="${today}" />
 		</div>
+		<br>
 		<div class="title_box">分担登録</div>
 
 		<div class="main_box">
@@ -98,6 +97,8 @@
 		<div class="submit_box">
 			<input type="submit" value="登録" name="regist">
 		</div>
+
+		<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 
 		<script>
 		//繰り返すを選択時の曜日選択処理
