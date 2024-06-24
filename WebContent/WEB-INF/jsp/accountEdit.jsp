@@ -12,12 +12,12 @@
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}"></c:set>
+		<c:set var="icon" value="${dbUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 
@@ -44,7 +44,7 @@
 		enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td><c:set var="name" value="${myUser.name}">
+				<td><c:set var="name" value="${dbUser.name}">
 					</c:set> <label>個人名<br> <input type="text" name="user_name"
 						value="${name}" maxlength=20>
 				</label></td>
@@ -66,7 +66,7 @@
 
 			</tr>
 			<tr>
-				<c:set var="color" value="${myUser.color}"></c:set>
+				<c:set var="color" value="${dbUser.color}"></c:set>
 				<td><label>個人カラー<br> <input type="color"
 						name="color" value="${color}">
 				</label></td>
