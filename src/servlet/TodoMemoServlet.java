@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.TodoDAO;
 import dao.TodoListDAO;
+import model.Todo;
 import model.TodoList;
 import model.Users;
 
@@ -48,6 +50,11 @@ public class TodoMemoServlet extends HttpServlet {
 		TodoListDAO tlDao = new TodoListDAO();
 		List<TodoList> todolist = tlDao.select(familyId, task);
 		request.setAttribute("todolist", todolist);
+
+		TodoDAO tDao = new TodoDAO();
+		List<Todo> todoHistory = tDao.getTaskHistory(familyId, task);
+
+		request.setAttribute("todoHistory", todoHistory);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoMemo.jsp");
 		dispatcher.forward(request, response);
