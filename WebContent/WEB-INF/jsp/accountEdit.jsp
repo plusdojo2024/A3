@@ -83,5 +83,6 @@
 	</form>
 	<script src="js/submitConfirm.js"></script>
 	</div>
+	<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 </body>
 </html>

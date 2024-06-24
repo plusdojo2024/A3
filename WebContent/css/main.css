@@ -108,8 +108,6 @@ body
     cursor: pointer; /* カーソルの形状 */
     z-index: 1000; /* 他の要素より手前に表示 */
     border: none;
-    background-color: #bfe8bf;
-
 }
 /* -----------------------
 緑のボックス
