@@ -35,7 +35,7 @@
 
 </head>
 <body>
-	<form action="/A3/ShareRegistServlet" method="post">
+	<form action="/A3/ShareRegistServlet" method="post" id="form">
 		<br> <br> <br> <br> <br> <br> <br> <br>
 
 		<div class="day">
@@ -91,11 +91,12 @@
 		<c:set var="set_today" value = "${today}" />
 		<input type ="hidden" name="select_date" value="${set_today}">
 		<c:set var="set_end" value = "${endDay}" />
-			いつまで<input type="date"  name=end_date min="${set_today}" max="${set_end}" style="pointer-events: none">
+			いつまで<input type="date"  name="end_date" min="${set_today}" max="${set_end}" style="pointer-events: none">
 		</div>
 
 		<div class="submit_box">
 			<input type="submit" value="登録" name="regist">
+			<span id="error_message" style="right:24%;"> </span>
 		</div>
 
 		<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
@@ -124,5 +125,6 @@
 		</script>
 		<c:out value="${msg}" />
 	</form>
+	<script src="js/shareRegist.js"></script>
 </body>
 </html>
