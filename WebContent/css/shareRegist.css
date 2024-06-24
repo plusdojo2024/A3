@@ -122,30 +122,6 @@ body
   vertical-align: middle;
 }
 
-/* -----------------------
-曜日チェックボックス（要修正）
--------------------------*/
-.youbi
-{
-	background-color: white;
-    width: 200px;
-    height: 100px;
-    border-radius: 15px;
-    /* 角を丸くする */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    margin: 0 0;
-
-}
-/* -----------------------
-戻るボタン
--------------------------*/
-.backbutton
-{
-
-}
 
 
 
