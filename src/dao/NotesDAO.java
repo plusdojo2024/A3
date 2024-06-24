@@ -256,6 +256,7 @@ public class NotesDAO {
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -413,5 +414,52 @@ public class NotesDAO {
 
 		// 結果を返す
 		return note;
+	}
+
+	public boolean checkNote(int familyId, String date) {
+		Connection conn = null;
+		boolean result=false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM Notes WHERE family_id = ? AND todo_date = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, date);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+
+			// 結果表をコレクションにコピーする
+			if (rs.getInt("COUNT(*)") == 1) {
+				result = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
 	}
 }

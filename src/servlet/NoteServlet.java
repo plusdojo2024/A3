@@ -31,9 +31,22 @@ public class NoteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		Users user = (Users) session.getAttribute("user");
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
 		TimeLogic tLogic = new TimeLogic();
-		request.setAttribute("date", tLogic.nowJpDay());
+		NotesDAO nDao = new NotesDAO();
+
+		String now = tLogic.nowJpDay();
+		if(nDao.checkNote(dbUser.getFamilyId(), now)) {
+			response.sendRedirect("/A3/NoteEditServlet");
+			return;
+		}
+
+
+		request.setAttribute("date", now);
 
 		// 引継ぎノートページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
