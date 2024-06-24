@@ -76,13 +76,15 @@ body
     border: none;
     /* ボーダーを無しに設定 */
     color: white;
+    width:200px; /*箱の幅調整*/
+    height:125px; /*箱の高さ調整*/
     padding: 10px 15px;
     margin: 10px 40px;
-    border-radius: 5px;
+    border-radius: 15px;
     /* 角を丸くする */
     cursor: pointer;
     /* カーソルをポインターに設定 */
-    font-size: 14px;
+    font-size: 18px;
 }
 
 /* ログアウトボタンのスタイル */
@@ -139,3 +141,24 @@ body
 .pass_warn{
 	font-size: 20%;
 }
+
+/*左に固定してるタブ*/
+        .sidebar {
+            position:fixed;
+            background-color: #5cbf6b;
+            width: 275px;
+            height: 100vh;
+            float: left;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            display: block;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 15px;
+            text-align: left;
+            margin: 5px 0;
+        }
+        .sidebar a:hover {
+            background-color: #7dcd85;
+        }
