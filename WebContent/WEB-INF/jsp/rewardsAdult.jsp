@@ -45,11 +45,13 @@
 <br>
 <br>
 <div class = "rewardsA">
-<h1>ご褒美一覧</h1>
+<h1>ご褒美一覧　　　　　　　　　
 
 	<button class="rewards_regist"
 		onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録
 	</button><br><br>
+
+</h1>
 
 <br>
 <br>
