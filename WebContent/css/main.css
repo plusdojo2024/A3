@@ -141,6 +141,13 @@ body
 .pass_warn{
 	font-size: 20%;
 }
+#error_message{
+	color:FF0000;
+}
+#submit_error{
+	color:FF0000;
+}
+
 
 /*左に固定してるタブ*/
         .sidebar {
