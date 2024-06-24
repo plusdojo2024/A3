@@ -35,12 +35,12 @@ public class TimeLogic {
 	}
 
 	//フォーマットを日本語の年月に直して時刻を切り落として返す
-		public String nowJpYearMonth() {
+		public int nowJpYearMonth() {
 
 			LocalDateTime now = LocalDateTime.now();//現在時刻取得
 			//日本語フォーマットを指定
 			DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy年MM月");
-			String date = now.format(f);
+			int date = Integer.parseInt(now.format(f));
 
 			return date;
 		}

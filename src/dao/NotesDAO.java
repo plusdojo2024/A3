@@ -125,6 +125,7 @@ public class NotesDAO {
 				record.setNoteDate(rs.getString("note_date"));
 				record.setImageOne(rs.getString("image_one"));
 				record.setImageTwo(rs.getString("image_two"));
+				record.setYearMonth(rs.getInt("note_date_yearmonth"));
 
 				TimeLogic time = new TimeLogic();
 				//noteDateを年月日で分割してint型に格納
@@ -190,7 +191,7 @@ public class NotesDAO {
 					record.setFamilyID(familyId);
 					record.setNoteID(rs.getInt("note_id"));
 					record.setNoteDate(rs.getString("note_date"));
-					record.setYearMonth(rs.getString("note_date_yearmonth"));
+					record.setYearMonth(rs.getInt("note_date_yearmonth"));
 
 					album.add(record);
 				}
@@ -248,18 +249,22 @@ public class NotesDAO {
 					pStmt.setString(2, memo.getNote());
 					pStmt.setString(3, memo.getNoteDate());
 					pStmt.setString(4, memo.getNoteUpdate());
+					pStmt.setInt(5, memo.getYearMonth());
+
 				}else if(memo.getImageOne()==null) {
 					pStmt.setString(1, memo.getTitle());
 					pStmt.setString(2, memo.getNote());
 					pStmt.setString(3, memo.getNoteDate());
 					pStmt.setString(4, memo.getImageTwo());
 					pStmt.setString(5, memo.getNoteUpdate());
+					pStmt.setInt(6, memo.getYearMonth());
 				}else if(memo.getImageTwo()==null){
 					pStmt.setString(1, memo.getTitle());
 					pStmt.setString(2, memo.getNote());
 					pStmt.setString(3, memo.getNoteDate());
 					pStmt.setString(4, memo.getImageOne());
 					pStmt.setString(5, memo.getNoteUpdate());
+					pStmt.setInt(6, memo.getYearMonth());
 				}else {
 					pStmt.setString(1, memo.getTitle());
 					pStmt.setString(2, memo.getNote());
@@ -267,6 +272,7 @@ public class NotesDAO {
 					pStmt.setString(4, memo.getImageOne());
 					pStmt.setString(5, memo.getImageTwo());
 					pStmt.setString(6, memo.getNoteUpdate());
+					pStmt.setInt(7, memo.getYearMonth());
 				}
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {

@@ -14,7 +14,7 @@ public class Notes implements Serializable{
 	private int year; //年
 	private int month; //月
 	private int day; //日
-	private String yearMonth;//日だけを除く
+	private int yearMonth;//日だけを除く
 
 
 	//引数なしコンストラクタ
@@ -117,14 +117,17 @@ public class Notes implements Serializable{
 	}
 
 
-	public String getYearMonth() {
+	public int getYearMonth() {
 		return yearMonth;
 	}
 
 
-	public void setYearMonth(String yearMonth) {
+	public void setYearMonth(int yearMonth) {
 		this.yearMonth = yearMonth;
 	}
+
+
+
 
 
 }
