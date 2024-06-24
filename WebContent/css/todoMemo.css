@@ -1,0 +1,54 @@
+/*body
+{
+	display: flex;*/
+	/*justify-content: center;
+	align-items: center;*/
+	/*margin: 0;
+    /* ページの余白をゼロに設定 */
+    /*padding: 0;1*/
+    /* ページのパディングをゼロに設定 */
+    /*background-color: #bfe8bf;*/
+/*}*/
+
+/* -----------------------
+タイトルのボックス
+-------------------------*/
+.title_box {
+    background-color: white;
+    color: #00bf63;
+    border-radius: 30px; /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 23%;
+    top: 25%;
+    font-size: 35px;
+    margin: 10px 25px 0px 25px;
+    /*white-space: nowrap;*/
+    /*padding: 0.5rem;*/
+    width: 400px;
+    height: 80px;
+}
+
+.t_main {
+	position: absolute;
+	left: 40%;
+}
+
+.view_box {
+	background-color: #00bf63;
+	color: white;
+    border-radius: 30px; /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 30px;
+    position: relative;
+    top: 15px;
+}
+
+td {
+	margin: auto 70px;
+}
