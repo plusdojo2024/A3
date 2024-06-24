@@ -6,10 +6,14 @@
 }
 
 .right {
+	 /*コレ*/max-width: 100%;
+    /*コレ*/height: auto;
 	width: 50%;
 	float: right;
 }
 
 .form {
+	position: relative;
 	align-items: center;
+	margin: 0 auto;
 }

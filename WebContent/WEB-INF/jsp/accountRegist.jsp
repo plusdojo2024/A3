@@ -79,12 +79,12 @@
 			</tr>
 			<tr>
 				<td><label><div class="color">個人カラー：</div><input type="color"
-						name="color" id="color" height:30px">
+						name="color" id="color" style="height:30px">
 				</label></td>
 			<tr>
 			<tr>
-				<td><input type="submit" name="submit" value="新規登録" onClick="return Check()" class="custom-submit"> <span
-					id="error_message" > </span>
+				<td><input type="submit" name="submit" value="新規登録" class="custom-submit"> <span
+					id="error_message"  style="right:27%"> </span>
 
 					<p class="error">
 						<c:out value="${message.title}" />

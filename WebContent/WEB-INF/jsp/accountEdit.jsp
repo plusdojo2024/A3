@@ -45,7 +45,7 @@
 		enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td><c:set var="name" value="${myUser.name}">
+				<td><c:set var="name" value="${dbUser.name}">
 					</c:set> <label><div class="userName">個人名：</div> <input type="text" name="user_name"
 						value="${name}" maxlength=20 id="user_name" style="width:300px; height:30px">
 				</label></td>
@@ -57,7 +57,7 @@
 			<tr>
 			<tr>
 				<td><label><div class="pass_check">個人パスワード確認：</div><input type="password" placeholder="password"
-						id="pass_check" maxlength=20 style="width:300px; height:30px"><span class="pass_warn"><br><div class="text2">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください</div><br></span>
+						id="pass_check" name="pass_check" maxlength="20" style="width:300px; height:30px"><span class="pass_warn"><br><div class="text2">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください</div><br></span>
 				</label></td>
 			<tr>
 			<tr>
@@ -66,14 +66,14 @@
 				</label></td>
 			</tr>
 			<tr>
-				<c:set var="color" value="${myUser.color}"></c:set>
+				<c:set var="color" value="${dbUser.color}"></c:set>
 				<td><label><div class="color">個人カラー：</div> <input type="color"
 						name="color" value="${color}" style="height:30px" id="color">
 				</label></td>
 			<tr>
 			<tr>
-				<td><input type="submit" name="submit" id = "submit" value="変更"  onClick="return Check()" class="custom-submit"> <span
-					id="error_message" style="width:300px; height:30px"> </span>
+				<td><input type="submit" name="submit" id = "submit" value="変更"  class="custom-submit"> <span
+					id="error_message" style="right:24%;"> </span>
 					<p class="error">
 						<c:out value="${message.title}" />
 						<c:out value="${message.message}" />
@@ -82,6 +82,7 @@
 		</table>
 	</form>
 	<script src="js/submitConfirm.js"></script>
+	<script src="js/accountEdit.js"></script>
 	</div>
 	<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 </body>

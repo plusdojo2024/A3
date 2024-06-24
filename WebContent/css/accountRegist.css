@@ -35,6 +35,13 @@
 
   }
 
+   #error_message{
+  position:absolute;
+	top:666px;
+	right:100%;
+	color:#FF0000;
+  }
+
   .custom-submit {
     background-color: #7dcd85; /* ボタンの背景色 */
     color: #000000; /* ボタンのテキスト色 */

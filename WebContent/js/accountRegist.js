@@ -7,7 +7,7 @@ window.onload = function() {
 
 	parent_button.addEventListener("click", () => {
 		role.value = "1";
-		alert("ロール：" + role.value);//デバッグ用
+		//alert("ロール：" + role.value);//デバッグ用
 		child_button.style.backgroundColor = '#ffffff';
 		child_image.style.backgroundColor = '#ffffff';
 		parent_button.style.backgroundColor = '#008000';
@@ -15,7 +15,7 @@ window.onload = function() {
 	});
 	child_button.addEventListener("click", () => {
 		role.value = "0";
-		alert("ロール：" + role.value);//デバッグ用
+		//alert("ロール：" + role.value);//デバッグ用
 		parent_button.style.backgroundColor = '#ffffff';
 		parent_image.style.backgroundColor = '#ffffff';
 		child_button.style.backgroundColor = '#008000';
@@ -34,21 +34,19 @@ window.onload = function() {
 	  ・文字数が8~20字以内
 	  */
 		const password_regex = /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/;
-		const family_pass_value_checked_result = password_regex.test(formObj.family_pass.value);
 		const user_pass_value_checked_result = password_regex.test(formObj.user_pass.value);
 		if (!formObj.user_name.value || !formObj.user_pass.value) {
 			errorMessageObj.textContent = '※全ての項目を入力してください。';
 			return false;
-		} else if (!family_pass_value_checked_result || !user_pass_value_checked_result) {
+		} else if (!user_pass_value_checked_result) {
 			errorMessageObj.textContent = '※パスワードが要件を満たしていません。';
 			return false;
-		} else if (!formObj.mail.value.match(/[a-zA-Z0-9]+[a-zA-Z0-9\._-]*@[a-zA-Z0-9_-]+[a-zA-Z0-9\._-]+/)) {
-			errorMessageObj.textContent = 'メールアドレスの形式が不正です。';
-			return false;
-		}
+		}else{
 		if (!window.confirm('この情報で登録します。よろしいですか？')) {
 			return false;
 		}
 		errorMessageObj.textContent = null;
+		}
+
 	};
 }

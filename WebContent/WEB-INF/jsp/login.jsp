@@ -11,36 +11,45 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/login.css">
 <body>
-<div>
-<img src="images/login_logo.png" class="left">
-</div>
-<div class = "right">
-	<form id="create_form" method="post" action="/A3//LoginServlet" class="form">
-		<table>
-			<tr>
+	<div>
+		<img src="images/login_logo.png" class="left" >
+	</div>
+	<div class="right">
+		<div class="form">
+			<form id="create_form" method="post" action="/A3//LoginServlet"
+				>
+				<table>
+					<tr>
 
-				<td><label>メールアドレス<br> <input type="text"
-						name="mail">
-				</label></td>
-			<tr>
-			<tr>
+						<td><label>メールアドレス<br> <input type="text"
+								name="mail">
+						</label></td>
+						<tr>
+
+					<tr>
 				<td><label>家族パスワード<br> <input type="password"
-						name="family_pass">
+								name="family_pass">
 				</label></td>
-			<tr>
-			<tr>
+
+					<tr>
+
+					<tr>
 				<td><label>ユーザー名<br> <input type="text"
-						name="user_name">
+								name="user_name">
 				</label></td>
-			<tr>
-			<tr>
+
+					<tr>
+
+					<tr>
 				<td><label>個人パスワード<br> <input type="password"
-						name="user_pass">
+								name="user_pass">
 				</label></td>
-			<tr>
-			<tr>
+
+					<tr>
+
+					<tr>
 				<td><input type="submit" name="submit" value="ログイン"> <span
-					id="error_message"></span>
+							id="error_message"></span>
 					<p class="error">
 						<c:out value="${message.title}" />
 						<c:out value="${message.message}" />
@@ -49,7 +58,9 @@
 
 		</table>
 	</form>
-	<a href="/A3//FamilyRegistServlet">新規アカウント作成</a>
 	</div>
+	<a href="/A3//FamilyRegistServlet">新規アカウント作成</a>
+
+</div>
 </body>
 </html>
