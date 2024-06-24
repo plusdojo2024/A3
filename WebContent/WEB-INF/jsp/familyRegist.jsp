@@ -11,11 +11,11 @@
 <body>
 	<h2>新規登録</h2>
 	<form id="form" method="post"
-		action="/A3//FamilyRegistServlet" enctype="multipart/form-data">
+		action="/A3//FamilyRegistServlet" enctype="multipart/form-data" >
 		<table>
 
 			<tr>
-				<td><label>アイコン画像<br> <input type="file"
+				<td><label>アイコン画像<br> <input type="file" accept="image/*"
 						name="icon" id="icon">
 				</label>
 				<p id="error_icon" style="display: none">入力された値が正しくありません</p>

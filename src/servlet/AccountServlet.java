@@ -29,10 +29,6 @@ public class AccountServlet extends HttpServlet {
 
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
-		//Users dbUser = new Users();
-		//dbUser.setHavePoint(50);//単体テスト用
-		//アイコン画像は家族ごとにパスが変わるので未設定
-		request.setAttribute("myUser", dbUser);
 
 		// アカウント管理ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");

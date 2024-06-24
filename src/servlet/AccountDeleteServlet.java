@@ -39,7 +39,6 @@ public class AccountDeleteServlet extends HttpServlet {
 		//リクエストスコープにセット
 		request.setAttribute("familyList", familyList);
 
-		request.setAttribute("myUser", dbUser);
 		// アカウント削除ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountDelete.jsp");
 		dispatcher.forward(request, response);

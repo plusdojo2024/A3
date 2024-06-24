@@ -10,12 +10,12 @@
 <link rel="stylesheet" href="css/main.css">
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}"></c:set>
+		<c:set var="icon" value="${dbUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 
@@ -65,7 +65,7 @@
 				<td><input type="hidden" name="role" value="0" id="role"></td>
 			<tr>
 			<tr>
-				<td><label>アイコン画像<br> <input type="file"
+				<td><label>アイコン画像<br> <input type="file" accept="image/*"
 						name="icon">
 				</label></td>
 

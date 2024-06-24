@@ -36,15 +36,7 @@ public class AccountRegistServlet extends HttpServlet {
 
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		Users user = (Users) session.getAttribute("user");
-
-		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-
-		//Users dbUser = new Users();
-		//dbUser.setHavePoint(50);//単体テスト用
-		//アイコン画像は家族ごとにパスが変わるので未設定
-		request.setAttribute("myUser", dbUser);
-		// アカウント登録ページにフォワードする
+			// アカウント登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/accountRegist.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -30,8 +30,7 @@ public class FamilyEditServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 		Users myUser = (Users) session.getAttribute("user");//ハッシュ化前ユーザー
-		request.setAttribute("myUser", dbUser);
-		request.setAttribute("userNoHash", myUser);
+
 		// アカウント管理ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/familyEdit.jsp");
 		dispatcher.forward(request, response);

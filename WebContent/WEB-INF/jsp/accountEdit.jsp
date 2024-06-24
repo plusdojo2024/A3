@@ -60,7 +60,7 @@
 				</label></td>
 			<tr>
 			<tr>
-				<td><label>アイコン画像<br> <input type="file"
+				<td><label>アイコン画像<br> <input type="file" accept="image/*"
 						name="icon">
 				</label></td>
 
