@@ -50,6 +50,9 @@
 	<button class="rewards_regist"
 		onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録
 	</button><br><br>
+
+<br>
+<br>
 	<div class = "rewards">
 	<c:forEach var="e" items="${rewardsList}" >  <!--リストの内容を端から順に入れていく-->
 		<form method="post" action="/A3/RewardsEditServlet">
