@@ -136,10 +136,10 @@ public class NoteServlet extends HttpServlet {
 		note.setNoteUpdate(time.nowJpDay());
 		note.setYearMonth(time.nowJpYearMonth());
 		note.setTitle(title);
-		if(note!=null) {
-			note.setNote(memo);
-		}else {
+		if(note==null || note.equals("")) {
 			note.setNote("引継ぎ事項無し");
+		}else {
+			note.setNote(memo);
 		}
 
 

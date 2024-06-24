@@ -62,7 +62,11 @@ public class NoteEditServlet extends HttpServlet {
 		notes.setNoteId(noteId);
 		notes.setNoteDate(noteDate);
 		notes.setTitle(title);
-		notes.setNote(note);
+		if(note==null || note.equals("")) {
+			notes.setNote("引継ぎ事項無し");
+		}else {
+			notes.setNote(note);
+		}
 		notes.setNoteUpdate(time.nowJpDay());
 
 		Message msg = new Message();
