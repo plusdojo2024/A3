@@ -49,11 +49,11 @@
 		<table>
 			<tr>
 				<td><label><p>${day}</p><input type="text"
-						name="note_title" maxlength="20" placeholder="タイトルを記入">
+						name="note_title" maxlength="20" placeholder="タイトルを記入" required >
 				</label></td>
 			</tr>
 			<tr>
-				<td><textarea name="note" maxlength="200" placeholder="引継ぎ事項"></textarea></td>
+				<td><textarea name="note" maxlength="200" placeholder="引継ぎ事項" required ></textarea></td>
 			</tr>
 			<div id="a">
 
@@ -61,8 +61,7 @@
 				<td ><label>写真１<br> <input type="file" name="photo" id="photo">
 				</label><br><span
 					id="error_message"></span><label>写真２<br> <input type="file" name="photo_two" id="photo_two">
-				</label><br><span
-					id="error_message_two"></span></td>
+				</label><br><span id="error_message_two"></span></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" name="submit" value="登録" onclick="return Check();">

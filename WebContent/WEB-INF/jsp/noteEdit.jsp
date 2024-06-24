@@ -63,11 +63,11 @@
 			</tr>
 			<tr>
 				<td><label><input type="text" name="title"
-						value="${a.title}" maxlength="20" placeholder="タイトルを記入"> </label></td>
+						value="${a.title}" maxlength="20" placeholder="タイトルを記入" required> </label></td>
 			</tr>
 			<tr>
 				<td><textarea name="note"
-						 maxlength="200" placeholder="引継ぎ事項">${a.note}</textarea><br></td>
+						 maxlength="200" placeholder="引継ぎ事項" >${a.note}</textarea><br></td>
 
 			</tr>
 			<tr>
