@@ -35,22 +35,18 @@
 
 </div>
 </head>
-<body>
-<br><br><br>
+<body >
+<br><br><br><br>
+
+<br>
 <div id="main">
-	<h2>引継ぎノート</h2>
-	<br>
-<br>
-<br>
-<br>
+	<h2><div id="title">
+	引継ぎノート</div></h2>
+
 	<form method="post" action="/A3/NoteServlet" enctype="multipart/form-data" id="form">
 		<table>
-		<tr>
-		<c:out value="${date}" />
-		</tr>
-
 			<tr>
-				<td><label>タイトル<br> <input type="text"
+				<td><label><br><c:out value="${date}" /><input type="text"
 						name="note_title" maxlength="20" placeholder="タイトルを記入">
 				</label></td>
 			</tr>
@@ -60,8 +56,7 @@
 			<tr>
 				<td ><label>写真１<br> <input type="file" name="photo" id="photo">
 				</label><br><span
-					id="error_message"></span></td>
-				<td ><label>写真２<br> <input type="file" name="photo_two" id="photo_two">
+					id="error_message"></span><label>写真２<br> <input type="file" name="photo_two" id="photo_two">
 				</label><br><span
 					id="error_message_two"></span></td>
 			</tr>

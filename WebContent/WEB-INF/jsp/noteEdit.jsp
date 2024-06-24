@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>履歴</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/note.css">
 
 <div class="nav">
 	<div class="left_icons">
@@ -35,7 +36,15 @@
 </div>
 </head>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
 	<h2>履歴</h2>
+							<c:out value="${message.message}" />
 
 		<c:forEach var="a" items="${noteList }" >
 			<form id="form" method="post" action="/A3/NoteEditServlet">
@@ -53,22 +62,26 @@
 			</tr>
 			<tr>
 				<td><label><input type="text" name="title"
-						value="${a.title}"><br> </label></td>
+						value="${a.title}" maxlength="20" placeholder="タイトルを記入"><br> </label></td>
 			</tr>
 			<tr>
-				<td><label><input type="text" name="note"
-						value="${a.note}"><br> </label></td>
+				<td><br><textarea name="note"
+						 maxlength="200" placeholder="引継ぎ事項">${a.note}</textarea><br></td>
 
 			</tr>
 			<tr>
-				<td><input type="submit" name="submit" value="更新"></td>
-				<td><input type="submit" name="submit" value="削除"></td>
+				<td><input type="submit" name="submit" value="更新">
+				<input type="submit" name="submit" value="削除"></td>
+
+
 			</tr>
 
 		</table>
 
 			</form>
 		</c:forEach>
+
+
 
 
 
