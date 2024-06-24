@@ -99,8 +99,10 @@
 		<div class="submit_box">
 			<input type="submit" value="編集" name="submit"><input type="submit" value="削除" name="submit">
 			<br>
-			<button type="button" onclick="history.back();">戻る</button>
 		</div>
+		<button type="button" onclick="history.back();"class="back-button">戻る</button>
+		<img class="back-button" src="images/603_1.png">
+
 
 		<script>
 		//繰り返すを選択時の曜日選択処理

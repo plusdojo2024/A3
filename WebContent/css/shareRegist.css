@@ -78,6 +78,21 @@ body
     margin: 10px 30px;
 }
 
+.custom-submit {
+    background-color: #7DCD85; /* ボタンの背景色 */
+    color: #000000; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    margin: 10px 550px;
+    border: none; /* ボーダーなし */
+    border-radius: 30px; /* 角丸 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+}
+.custom-submit:hover {
+    background-color: #45A049; /* ホバー時の背景色 */
+}
+
 /* -----------------------
 削除のボックス
 -------------------------*/
@@ -104,7 +119,7 @@ body
 	background-color: white;
     color: green;
     width: 200px;
-    height: 60px;
+    height: 20px;
     border-radius: 15px;
     /* 角を丸くする */
     display: flex;
@@ -122,6 +137,30 @@ body
   vertical-align: middle;
 }
 
+/* -----------------------
+曜日チェックボックス（要修正）
+-------------------------*/
+.youbi
+{
+	background-color: white;
+    width: 200px;
+    height: 100px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin: 0 0;
+
+}
+/* -----------------------
+戻るボタン
+-------------------------*/
+.backbutton
+{
+	
+}
 
 
 
