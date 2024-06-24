@@ -72,6 +72,8 @@
 		</table>
 	</form>
 </div>
+<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
+
 <script src="js/fileSizeCheck.js"></script>
 <script src="js/submitConfirm.js"></script>
 <script src="js/note.js"></script>
