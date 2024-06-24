@@ -326,7 +326,7 @@ public class TodoDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM TODO WHERE uid = ? AND date = ?";
+			String sql = "SELECT * FROM TODO WHERE uid = ? AND todo_date = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
 
 			pStmt.setInt(1, uid);
