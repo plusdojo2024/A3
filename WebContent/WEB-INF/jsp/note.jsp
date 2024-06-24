@@ -13,12 +13,12 @@
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}"></c:set>
+		<c:set var="icon" value="${dbUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 
@@ -35,33 +35,28 @@
 
 </div>
 </head>
-<body>
-<br><br><br>
+<body >
+<br><br><br><br>
+
+<br>
 <div id="main">
-	<h2>引継ぎノート</h2>
-	<br>
-<br>
-<br>
-<br>
+	<h2><div id="title">
+	引継ぎノート</div></h2>
+
 	<form method="post" action="/A3/NoteServlet" enctype="multipart/form-data" id="form">
 		<table>
-		<tr>
-		<c:out value="${date}" />
-		</tr>
-
 			<tr>
-				<td><label>タイトル<br> <input type="text"
-						name="memo_title" maxlength="20" placeholder="タイトルを記入">
+				<td><label><br><c:out value="${date}" /><input type="text"
+						name="note_title" maxlength="20" placeholder="タイトルを記入">
 				</label></td>
 			</tr>
 			<tr>
-				<td><textarea name="memo" maxlength="200" placeholder="引継ぎ事項">メモ</textarea></td>
+				<td><textarea name="note" maxlength="200" placeholder="引継ぎ事項"></textarea></td>
 			</tr>
 			<tr>
 				<td ><label>写真１<br> <input type="file" name="photo" id="photo">
 				</label><br><span
-					id="error_message"></span></td>
-				<td ><label>写真２<br> <input type="file" name="photo_two" id="photo_two">
+					id="error_message"></span><label>写真２<br> <input type="file" name="photo_two" id="photo_two">
 				</label><br><span
 					id="error_message_two"></span></td>
 			</tr>

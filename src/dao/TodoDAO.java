@@ -160,6 +160,8 @@ public class TodoDAO {
 				t.setTodoDate(rs.getString("todo_date"));
 				t.setUid(rs.getInt("uid"));
 				t.setLoop(rs.getInt("loop"));
+				TodoListDAO tlDao = new TodoListDAO();
+				t.setTask(tlDao.getTaskByListId(t.getListId()));
 
 				list.add(t);
 			}
@@ -310,6 +312,60 @@ public class TodoDAO {
 		}
 		return result;
 	}
+
+	//todayList用
+
+	public List<Todo> getTodayListByUidNow(int uid,String date){
+		Connection conn = null;
+		ArrayList<Todo> list = new ArrayList<Todo>();
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO WHERE uid = ? AND date = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+
+			pStmt.setInt(1, uid);
+			pStmt.setString(2, date);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				Todo t = new Todo();
+
+				t.setTodoId(rs.getInt("todo_id"));
+				t.setListId(rs.getInt("list_id"));
+				t.setTodoDate(rs.getString("todo_date"));
+				t.setUid(rs.getInt("uid"));
+				TodoListDAO tlDao = new TodoListDAO();
+				t.setTask(tlDao.getTaskByListId(t.getListId()));
+				t.setComplete(rs.getInt("todo_complete"));
+
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+
+	}
+
 
 
 }

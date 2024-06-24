@@ -16,6 +16,6 @@
       transition: background-color 0.5s ease; /* 色が変わる際のアニメーション */
     }
 
-    button:hover {
+    button1:hover {
       background-color: #569f3c; /* hover時の色 */
     }

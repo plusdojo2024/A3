@@ -31,9 +31,6 @@ public class NoteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-		request.setAttribute("myUser", dbUser);
 
 		TimeLogic tLogic = new TimeLogic();
 		request.setAttribute("date", tLogic.nowJpDay());
@@ -51,8 +48,8 @@ public class NoteServlet extends HttpServlet {
 		//単体で実行したらエラーになるのでやるならログインから
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String title = request.getParameter("memo_title");
-		String memo = request.getParameter("memo");
+		String title = request.getParameter("note_title");
+		String memo = request.getParameter("note");
 		NotesDAO nDao = new NotesDAO();
 		TimeLogic time = new TimeLogic();
 		FileLogic fL = new FileLogic();
@@ -119,14 +116,14 @@ public class NoteServlet extends HttpServlet {
 
 
 
-		note.setFamilyID(user.getFamilyId());
+		note.setFamilyId(user.getFamilyId());
 		note.setImageOne(relativePathOne);
 		note.setImageTwo(relativePathTwo);
 		note.setNoteDate(time.nowJpDay());
 		note.setNoteUpdate(time.nowJpDay());
 		note.setYearMonth(time.nowJpYearMonth());
 		note.setTitle(title);
-		if(memo!=null) {
+		if(note!=null) {
 			note.setNote(memo);
 		}else {
 			note.setNote("引継ぎ事項無し");
@@ -138,7 +135,7 @@ public class NoteServlet extends HttpServlet {
 		{
 			System.out.println("成功");
 			msg.setMessage("引継ぎノートを登録しました。");
-			session.setAttribute("message", msg);
+			request.setAttribute("message", msg);
 			//tmpファイル削除
 			part.delete();
 			partTwo.delete();
@@ -148,6 +145,7 @@ public class NoteServlet extends HttpServlet {
 		}else {
 			System.out.println("失敗");
 			msg.setMessage("引継ぎノートの登録に失敗しました。");
+			request.setAttribute("message", msg);
 			//tmpファイル削除
 			part.delete();
 			partTwo.delete();

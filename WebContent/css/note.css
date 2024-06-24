@@ -1,10 +1,26 @@
 @charset "UTF-8";
 
 textarea {
-  width: 200px;  /* 幅を固定 */
+  width:90%;  /* 幅を固定 */
   height: 100px; /* 高さを固定 */
   resize: none;  /* リサイズを無効にする */
+
 }
-#main{
-	margin:0 auto;
+body{
+		text-align:-webkit-center;
+		font-size:1.5em;
+}
+
+submit{
+  font-size:1.5em;
+}
+table{
+	border:1px solid white;
+	background-color:#DBEFE1;
+	width:800px;
+}
+.title{
+		background-color:white;
+	border:1px solid white;
+
 }

@@ -9,10 +9,14 @@
 <title>ログインページ</title>
 </head>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/login.css">
 <body>
-	<form id="create_form" method="post" action="/A3//LoginServlet">
+<div>
+<img src="images/login_logo.png" class="left">
+</div>
+<div class = "right">
+	<form id="create_form" method="post" action="/A3//LoginServlet" class="form">
 		<table>
-
 			<tr>
 
 				<td><label>メールアドレス<br> <input type="text"
@@ -46,5 +50,6 @@
 		</table>
 	</form>
 	<a href="/A3//FamilyRegistServlet">新規アカウント作成</a>
+	</div>
 </body>
 </html>

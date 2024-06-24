@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+.body{
+	position:relative;
+}
+
+    .box
+  {
+      background-color: #FFFFFF;
+      color: #95D4AA;
+      width: 400px;
+      height: 80px;
+      border-radius: 30px;
+      /* 角を丸くする */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 35px;
+      position:absolute;
+      top:180px;
+      left:300px
+
+  }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  margin: 50px 0px;
+}
+
+
+  .button1 {
+    display:flex;
+    align-items: center; /* 垂直方向に中央揃え */
+    justify-content: center; /* 横方向に中央揃え */
+    font-size: 30px;
+    color:#FFFFFF;
+    padding: 15px 20px;
+    border: none;
+    background-color: #7dcd85; /* ボタンのデフォルト色 */
+    cursor: pointer;
+    border-radius: 15px; /* 角を丸くする */
+    transition: background-color 0.5s ease; /* 色が変わる際のアニメーション */
+    width: 500px;
+    height: 150px;
+  }
+
+  .button1:hover {
+    background-color: #5cbf6b; /* hover時の色 */
+  }
+
+  .button1 img {
+    margin-right: 10px; /* 画像とテキストの間隔 */
+    width: 100px; /* 画像の幅 */
+    height: 100px; /* 画像の高さ */
+}
+
+#family_regist{
+	position:absolute;
+	top:340px;
+    left:350px
+}
+
+#user_edit{
+	position:absolute;
+	top:340px;
+    left:950px
+}
+
+#family_edit{
+	position:absolute;
+	top:550px;
+    left:350px
+}
+
+#user_delete{
+	position:absolute;
+	top:550px;
+    left:950px
+}
