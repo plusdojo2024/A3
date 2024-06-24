@@ -298,4 +298,56 @@ public class RewardsDAO {
 	}
 
 
+	//削除したい
+	public int delete(int rewardId) {
+		Connection conn = null;
+		int result = 0;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// １．データベースに接続する準備
+	    	//どのデータベースにつなぐか、つなぐためのidとpwは何かをconに入れる
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// ２．SQL文を準備する
+			String sql = "DELETE FROM rewards WHERE reward_id=?";
+
+			//１と２の情報をpStmtに入れる
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//現在の日付を取ってくる
+			TimeLogic tl = new TimeLogic();
+			String now = tl.nowJpDay();
+
+			//SQL文を完成させる
+			pStmt.setInt(1, rewardId);
+
+			// SQL文を実行する（deleteは削除した件数が返ってくる）
+			result = pStmt.executeUpdate();
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
+	}
+
+
 }
