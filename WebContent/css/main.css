@@ -133,20 +133,6 @@ body
 /* -----------------------
 タイトルのボックス
 -------------------------*/
-.title_box
-{
-    background-color: white;
-    color: green;
-    width: 60px;
-    height: 60px;
-    border-radius: 15px;
-    /* 角を丸くする */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    margin: 0 10px;
-}
 
 /*アイコン画像を親要素に合わせる*/
 #user_icon{
