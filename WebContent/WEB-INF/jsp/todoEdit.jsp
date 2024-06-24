@@ -75,7 +75,7 @@
 		</tr>
 		<tr>
 		<td>
-		<select name="category" required>
+		<select name="category" required class="select_box">
 		<option value="${category}">${e.category}</option>
 		<option value="洗濯">洗濯</option>
 		<option value="ごみ捨て">ごみ捨て</option>
@@ -90,16 +90,14 @@
 		</tr>
 		<tr>
 		<td>
-		<select name="give_point">
+		<select name="give_point" class="select_box">
 		<script>
 		var i;
 		for(i=1; i<11; i+=1) {
 			document.write('<option value="'+i+'">'+i+'pt</option>');
 		}
 		</script>
-		</select></td>
-		</tr>
-		<tr>
+		</select><sup style="color: red;">*</sup></td>
 		<td>
 		<p>設定中のポイント：${give_point}</p>
 		</td>
@@ -111,10 +109,10 @@
 		</tr>
 		<tr>
 		<td>
-		<input type="submit" name="submit" value="更新">
+		<input type="submit" name="submit" value="更新" class="custom-submit">
 		</td>
 		<td>
-		<input type="submit" name="submit" value="削除">
+		<input type="submit" name="submit" value="削除" class="custom-submit_d">
 		</td>
 		</tr>
 		</table>
@@ -123,5 +121,6 @@
 	</div>
 </main>
 <script src="js/main.js"></script>
+<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 </body>
 </html>

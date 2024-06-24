@@ -1,0 +1,51 @@
+.title_box {
+    background-color: white;
+    color: #00bf63;
+    border-radius: 30px; /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 23%;
+    top: 25%;
+    font-size: 35px;
+    margin: 10px 25px 0px 25px;
+    /*white-space: nowrap;*/
+    /*padding: 0.5rem;*/
+    width: 400px;
+    height: 80px;
+}
+
+.task_btn {
+	background-color: #95d4aa;
+    border: none;
+    /* ボーダーを無しに設定 */
+    color: white;
+    width:200px; /*箱の幅調整*/
+    height:125px; /*箱の高さ調整*/
+    padding: 10px 15px;
+    margin: 10px 40px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    cursor: pointer;
+    /* カーソルをポインターに設定 */
+    font-size: 22px;
+}
+
+.edit_btn {
+	position: absolute;
+	left: 5%;
+	background-color: green;
+    border: none;
+    /* ボーダーを無しに設定 */
+    color: white;
+    width: 100px; /* 箱の幅調整*/
+    height: 60px; /*箱の高さ調整*/
+    padding: 10px 15px;
+    margin: 10px 40px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    cursor: pointer;
+    /* カーソルをポインターに設定 */
+    font-size: 22px;
+}

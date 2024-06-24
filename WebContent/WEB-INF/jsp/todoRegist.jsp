@@ -55,7 +55,7 @@
 	<td>
 	<p>家事名：</p>
 	</td>
-	<td>
+	<td class="view_box">
 	<input type="text" name="task" placeholder="例：洗濯物を干す"><sup style="color: red;">*</sup><br><br>
 	</td>
 	</tr>
@@ -63,7 +63,7 @@
 	<td>
 	<p>カテゴリー：</p>
 	</td>
-	<td>
+	<td class="view_box">
 	<select name="category" required class="select_box">
 	<option value="">カテゴリーを選択してください</option>
 	<option value="洗濯">洗濯</option>
@@ -81,7 +81,7 @@
 	<td>
 	<p>ポイント：</p>
 	</td>
-	<td>
+	<td class="view_box">
 	<select name="give_point" class="select_box">
 	<script>
 	var i;
@@ -96,7 +96,7 @@
 	<td>
 	<p>メモ：</p>
 	</td>
-	<td>
+	<td class="view_box">
 	<textarea name="memo">${memo}</textarea><br><br>
 	</td>
 	</tr>

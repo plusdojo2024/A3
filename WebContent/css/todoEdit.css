@@ -60,15 +60,33 @@ option {
     border-radius: 30px; /* 角丸 */
     cursor: pointer; /* カーソルをポインターに変更 */
     position: relative;
-    left: 90%;
+    right: 10%;
 }
 .custom-submit:hover {
     background-color: #45A049; /* ホバー時の背景色 */
 }
 
+.custom-submit_d {
+    background-color: #ff896f; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    margin: 10px auto;
+    border: none; /* ボーダーなし */
+    border-radius: 30px; /* 角丸 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    position: relative;
+    right: 85%;
+}
+.custom-submit_d:hover {
+    background-color: #45A049; /* ホバー時の背景色 */
+}
+
 .t_main {
-	position: relative;
-	left: 37%;
+	position: absolute;
+	left: 40%;
+	top: 38%;
 }
 
 input{

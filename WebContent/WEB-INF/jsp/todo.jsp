@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>やることリスト | F&amp;M</title>
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/todo.css">
 
 <div class="nav">
 	<div class="left_icons">
@@ -21,15 +22,16 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
+		<a href="/A3/HomeServlet"><img src="images/FM1.png" width="90%" height="90%"></a>
 	</div>
 
-	<div class="right_buttons">
-		<button class="account-management"
-			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
-		<button class="logout"
-			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
-	</div>
+    <div class="right_buttons">
+        <button class="account-management"
+            onclick="window.location.href = '/A3/AccountServlet';">アカウント管理<br><img src="images/ic007.png" width="65px" height="65px"></button>
+        <button class="logout"
+            onclick="window.location.href = '/A3/LogoutServlet';">ログアウト<br><img src="images/935.png" width="65px" height="65px"></button>
+
+    </div>
 
 </div>
 </head>
@@ -37,19 +39,23 @@
 <header>
 
 </header>
-<br><br><br><br>
-<h1>やることリスト</h1>
-<c:forEach var="e" items="${todoview}">
-<c:set var="task" value="${e.task}"></c:set>
-	<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" ><c:out value="${task}" /></button><br>
-	<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" >編集・削除</button><br>
-</c:forEach>
+<main>
+	<br><br><br><br><br><br><br>
+	<h1 class="title_box">やることリスト</h1>
+	<c:forEach var="e" items="${todoview}">
+	<c:set var="task" value="${e.task}"></c:set>
+	<div class="btn">
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	</div>
+	</c:forEach>
 
-<button onclick="window.location.href= '/A3/TodoRegistServlet'" >登録</button><br>
-<button onclick="window.location.href= '/A3/CalendarServlet'" >カレンダー</button><br>
-<button onclick="window.location.href= '/A3/TodayListServlet'" >当日リスト</button><br>
+	<button onclick="window.location.href= '/A3/TodoRegistServlet'" >登録</button><br>
+	<button onclick="window.location.href= '/A3/CalendarServlet'" >カレンダー</button><br>
+	<button onclick="window.location.href= '/A3/TodayListServlet'" >当日リスト</button><br>
 
-<p>${message}</p>
+	<p>${message}</p>
+</main>
 <script src="js/main.js"></script>
 </body>
 </html>
