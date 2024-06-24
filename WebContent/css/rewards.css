@@ -75,21 +75,20 @@
 
 /*ご褒美項目の位置調整-----------------------------------*/
 .rewards {
-	display: flex;
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+/* 	display: flex;
 	justify-content: left;
-	flex-wrap:wrap;
+	flex-wrap:wrap; */
 /* 	justify-content: space-between; */
 	text-align: center;
 	font-size: 25px;
-	position: absolute;
-	left: 10%;
-	right: 10%;
-    height:auto;
+	padding: 3% 10% 3% 10%;
+/* 	position: absolute;
+	left: 10%; */
 /* 	top: 15px;
 	left: 2%; */
 /* 	max-width: 60px; */
-/* 	display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; */
 /* 	position: relative;
 	top: 5%;
 	left: 40%; */
