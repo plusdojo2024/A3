@@ -44,6 +44,41 @@
         <a href="/A3/AlbumServlet">アルバム</a>
         <a href="/A3/RewardsServlet">ご褒美</a>
     </div>
+
+    <br><br><br><br>
+<h1>当日のリスト</h1>
+<br>
+<div class="table-container">
+	<h2>やることリスト</h2>
+	<table>
+		<%-- <c:forEach> --%>
+		<tr>
+			<td>${todoList}</td>
+			<td><input type="checkbox" name="checkbox"></td>
+		</tr>
+		<%-- </c:forEach> --%>
+	</table>
+
+	<h2>前日忘れたこと</h2>
+	<table>
+		<%-- <c:forEach> --%>
+		<tr>
+			<td>${todoListAfter}</td>
+		</tr>
+		<%-- </c:forEach> --%>
+</table>
+</div>
+
+<h2>前日の引継ぎノート</h2>
+<%-- <c:choose> --%>
+<%--	<c:when test="${notes}=null"> --%>
+		<p>前日の引継ぎノートのデータはありません。<p>
+<%--	</c:when>  --%>
+<%--	<c:when test="${notes}!=null"> --%>
+		<button name="notes">${notes}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</button>
+<%--	</c:when>  --%>
+<%-- </c:choose> --%>
+
 </body>
 
 <script>
