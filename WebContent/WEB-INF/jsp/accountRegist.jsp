@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/accountRegist.css">
-
 <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${dbUser.icon}"></c:set>
@@ -21,16 +20,15 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="/A3/HomeServlet"><img src="images/FM1.png" width="90%" height="90%"></a>
+		<a href="home.png"></a> <a href="/A3/HomeServlet">F&M</a>
 	</div>
 
-    <div class="right_buttons">
-        <button class="account-management"
-            onclick="window.location.href = '/A3/AccountServlet';">アカウント管理<br><img src="images/ic007.png" width="65px" height="65px"></button>
-        <button class="logout"
-            onclick="window.location.href = '/A3/LogoutServlet';">ログアウト<br><img src="images/935.png" width="65px" height="65px"></button>
-
-    </div>
+	<div class="right_buttons">
+		<button class="account-management"
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+		<button class="logout"
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
+	</div>
 
 </div>
 <title>家族登録画面</title>
@@ -56,7 +54,8 @@
 			<tr>
 			<tr>
 				<td><label>個人パスワード<br> <input type="password"
-						name="user_pass" id="u_pass" maxlength="20"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						name="user_pass" id="u_pass" maxlength="20">
+						<br><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
