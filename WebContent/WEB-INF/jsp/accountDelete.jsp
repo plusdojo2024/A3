@@ -33,6 +33,16 @@
 <title>家族削除画面</title>
 </head>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 	<h1>家族削除</h1>
 	<c:forEach var="e" items="${familyList}">
 		<form method="post" action="/A3/AccountDeleteServlet" id="form">

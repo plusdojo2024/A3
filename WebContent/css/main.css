@@ -137,6 +137,7 @@ body
 /*アイコン画像を親要素に合わせる*/
 #user_icon{
 	width:90%;
+	height:90%;
 }
 .pass_warn{
 	font-size: 20%;

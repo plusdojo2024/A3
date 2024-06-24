@@ -413,6 +413,5 @@ public class NotesDAO {
 
 		// 結果を返す
 		return note;
-
 	}
 }

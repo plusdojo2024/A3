@@ -62,13 +62,15 @@ public class HomeServlet extends HttpServlet {
 		List<Todo> todayList = tDao.getTodayListByUidNow(dbUser.getUid(), today);
 
 		//前日の完了がついてないやることリスト
-		List<Todo> yesterdayList = tDao.getTodayListByUidNow(dbUser.getUid(), yesterday);
+		List<Todo> yesterdayList = tDao.getYesterdayListByUidNow(dbUser.getUid(), yesterday);
 
 		//前日の引継ぎノートを取得
 		Notes note = nDao.getNoteByDay(dbUser.getFamilyId(), yesterday);
 
+		//前日の引継ぎノート
 		request.setAttribute("note", note);
 
+		//今日のやることリスト
 		request.setAttribute("todayList", todayList);
 		request.setAttribute("todayList", yesterdayList);
 
@@ -78,6 +80,8 @@ public class HomeServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		dispatcher.forward(request, response);
 	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
+	}
 }

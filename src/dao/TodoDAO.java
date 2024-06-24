@@ -59,15 +59,14 @@ public class TodoDAO {
 			String sql = "INSERT INTO TODO (list_id, todo_date, uid, loop) VALUES "
 					+ "(?, ?, ?, ?)";
 
-
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setInt(1, todo.getListId());
-				pStmt.setString(2, todo.getTodoDate());
-				pStmt.setInt(3, todo.getUid());
-				pStmt.setInt(4, todo.getLoop());
-				if(pStmt.executeUpdate()==1) {
-					result=true;
-				}
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, todo.getListId());
+			pStmt.setString(2, todo.getTodoDate());
+			pStmt.setInt(3, todo.getUid());
+			pStmt.setInt(4, todo.getLoop());
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -216,7 +215,7 @@ public class TodoDAO {
 				UsersDAO uDao = new UsersDAO();
 
 				Users user = new Users();
-				user=uDao.getUser(t.getUid());
+				user = uDao.getUser(t.getUid());
 				t.setName(user.getName());
 				t.setColor(user.getColor());
 				TodoListDAO tlDao = new TodoListDAO();
@@ -241,7 +240,7 @@ public class TodoDAO {
 		return calendarList;
 	}
 
-	public boolean delete(int uid,int listId,String todoDate) {
+	public boolean delete(int uid, int listId, String todoDate) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -276,7 +275,7 @@ public class TodoDAO {
 		return result;
 	}
 
-	public boolean update(int updateUid,int updateListId,int uid,int listId,String todoDate) {
+	public boolean update(int updateUid, int updateListId, int uid, int listId, String todoDate) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -315,7 +314,7 @@ public class TodoDAO {
 
 	//todayList用
 
-	public List<Todo> getTodayListByUidNow(int uid,String date){
+	public List<Todo> getTodayListByUidNow(int uid, String date) {
 		Connection conn = null;
 		ArrayList<Todo> list = new ArrayList<Todo>();
 		try {
@@ -366,6 +365,53 @@ public class TodoDAO {
 
 	}
 
+	public List<Todo> getYesterdayListByUidNow(int uid, String date) {
+		Connection conn = null;
+		ArrayList<Todo> list = new ArrayList<Todo>();
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
 
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO WHERE uid = ? AND date = ? AND todo_complete=0";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+
+			pStmt.setInt(1, uid);
+			pStmt.setString(2, date);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				Todo t = new Todo();
+
+				t.setTodoId(rs.getInt("todo_id"));
+				t.setListId(rs.getInt("list_id"));
+				t.setTodoDate(rs.getString("todo_date"));
+				t.setUid(rs.getInt("uid"));
+				TodoListDAO tlDao = new TodoListDAO();
+				t.setTask(tlDao.getTaskByListId(t.getListId()));
+
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+
+	}
 }
