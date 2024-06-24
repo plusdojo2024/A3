@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.RewardsDAO;
 import dao.UsersDAO;
+import model.Rewards;
 import model.Users;
 
 /**
@@ -42,7 +44,7 @@ public class RewardsRegistServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String reward = request.getParameter("reward");
-		String point = request.getParameter("point");
+		String point = request.getParameter("reqPoint");
 		int p = Integer.parseInt(point);
 		String name = request.getParameter("name");
 		int n = Integer.parseInt(name);
@@ -54,12 +56,25 @@ public class RewardsRegistServlet extends HttpServlet {
        //デバッグ用
        if(result==1) {
     	   System.out.println("成功だよ");
+    	   request.setAttribute("msg", "成功だよ");
        }else {
     	   System.out.println("失敗だよ");
+    	   request.setAttribute("msg", "失敗だよ");
        }
 
+       //sessionを使いますよという宣言
+		HttpSession session = request.getSession();
+		Users user = (Users)session.getAttribute("dbUser");
+		int familyId = user.getFamilyId();
+		int role = user.getRole();
+		int userId = user.getUid();
 
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsRegist.jsp");
+		RewardsDAO dao1 = new RewardsDAO();
+		ArrayList<Rewards> rewardsList = dao1.allSelect(familyId, role, userId);
+		request.setAttribute("rewardsList", rewardsList);
+
+
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
 	dispatcher.forward(request, response);
 
 	}

@@ -31,15 +31,36 @@
 <h1>ご褒美　編集・削除</h1>
 <form method="post" action="/A3/RewardsEditServlet">
 	<input type="text" name="reward" value="${param.reward}"><br>
-	<input type="text" name="point" value="${param.point}"><br>
-	<input type="text" name="name" value="${param.name}"><br>
+	<input type="text" name="reqPoint" value="${param.reqPoint}"><br>
+	※<select name="name">
+		<c:forEach var="e" items="${ud}" >
+			<option value="${e.uid}">${e.name}</option>
+		</c:forEach>
+	</select><br>
 	<input type="hidden" name="reward_id" value="${param.rewardId}"><br>
 	<input type="hidden" name="reward_date" value="${param.rewardDate}"><br>
 	<input type="hidden" name="request" value="${param.re}"><br>
 	<input type="hidden" name="u_id" value="${param.uId}"><br>
 	<br>
-<input type="submit" name="regist" value="更新完了">　
+<input type="submit" name="edit" value="更新" onclick="return editBt()">　
+<input type="submit" name="delete" value="削除" onclick="return deleteBt()">
 
 </form>
+
+<script>
+	function editBt(){
+		let edit document.getElementById("edit");
+		let ans = confirm("ご褒美内容を更新しますか？");
+
+		if(ans == true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+</script>
+
 </body>
 </html>
