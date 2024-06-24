@@ -13,12 +13,12 @@
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}"></c:set>
+		<c:set var="icon" value="${dbUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 
@@ -37,16 +37,16 @@
 </head>
 <body>
 	<h1>アカウント管理画面</h1>
-	<c:if test="${myUser.role==1}">
+	<c:if test="${dbUser.role==1}">
 		<button id="family_regist">家族登録</button>
 	</c:if>
 	<button id="user_edit">個人情報変更</button>
 	<br>
 	<br>
-	<c:if test="${myUser.role==1}">
+	<c:if test="${dbUser.role==1}">
 		<button id="family_edit">家族情報変更</button>
 	</c:if>
-	<c:if test="${myUser.role==1}">
+	<c:if test="${dbUser.role==1}">
 		<button id="user_delete">アカウント削除</button>
 	</c:if>
 	<c:out value="${message.message}" />
