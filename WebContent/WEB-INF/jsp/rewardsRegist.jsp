@@ -38,32 +38,38 @@
 </head>
 
 <body>
+
+<div class="body">
+<br><br><br><br>
+	<div class="sidebar">
+        <a href="/A3/HomeServlet">ホーム</a>
+        <a href="/A3/TodoServlet">やることリスト</a>
+        <a href="/A3/NoteServlet">引継ぎノート</a>
+        <a href="/A3/AlbumServlet">アルバム</a>
+        <a href="/A3/RewardsServlet">ご褒美</a>
+    </div>
+</div>
+
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<div class = "rewardsRe">
-<h1>ご褒美登録</h1>
-	<div class = "rewardsRegist">
-		<form method="post" action="/A3/RewardsRegistServlet">
-			※<input type="text" name="reward" placeholder="ご褒美"><br>
-			※<input type="text" name="reqPoint" placeholder="付与ポイント"><br>
-			※<select name="name">
-				<c:forEach var="e" items="${ud}" >
-					<option value="${e.uid}">${e.name}</option>
-				</c:forEach>
-				</select>
+<div class = "rewards_title">ご褒美登録</div>
+<div class="required">※は必須項目です</div>
+	<form method="post" action="/A3/RewardsRegistServlet">
+		※<input type="text" name="reward" placeholder="ご褒美"><br>
+		※<input type="text" name="reqPoint" placeholder="付与ポイント"><br>
+		※<select name="name">
+			<c:forEach var="e" items="${ud}" >
+				<option value="${e.uid}">${e.name}</option>
+			</c:forEach>
+			</select>
 	<!-- <input type="submit" name="regist" value="登録" id="regist"><br> -->
 <br>
-		<input type="submit" name="regist" value="登録" onclick="return registBt()"><br>
-		</form>
-	</div>
-</div>
+	<input type="submit" class = "reregi-button" name="regist" value="登録" onclick="return registBt()"><br>
+	</form>
+
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 
 

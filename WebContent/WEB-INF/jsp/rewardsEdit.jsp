@@ -35,15 +35,24 @@
 </div>
 </head>
 <body>
+
+<div class="body">
+<br><br><br><br>
+	<div class="sidebar">
+        <a href="/A3/HomeServlet">ホーム</a>
+        <a href="/A3/TodoServlet">やることリスト</a>
+        <a href="/A3/NoteServlet">引継ぎノート</a>
+        <a href="/A3/AlbumServlet">アルバム</a>
+        <a href="/A3/RewardsServlet">ご褒美</a>
+    </div>
+</div>
+
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<h1>ご褒美編集</h1>
+<div class="rewards_title">ご褒美編集</div>
 <form method="post" action="/A3/RewardsEditServlet">
 	<input type="text" name="reward" value="${param.reward}"><br>
 	<input type="text" name="reqPoint" value="${param.reqPoint}"><br>
@@ -56,8 +65,7 @@
 	<input type="hidden" name="reward_date" value="${param.rewardDate}">
 	<input type="hidden" name="request" value="${param.re}">
 	<input type="hidden" name="u_id" value="${param.uId}">
-	<br>
-<input class="green_edit" type="submit" name="edit" value="更新" onclick="return editBt()">　
+<input class="green_edit_button" type="submit" name="edit" value="更新" onclick="return editBt()">　
 
 
 </form>
