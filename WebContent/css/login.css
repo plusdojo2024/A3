@@ -6,14 +6,21 @@
 }
 
 .right {
-	 /*コレ*/max-width: 100%;
+	 /*コレ*/max-width: 33%;
     /*コレ*/height: auto;
 	width: 50%;
 	float: right;
+	align-content: center;
 }
 
 .form {
 	position: relative;
 	align-items: center;
 	margin: 0 auto;
+}
+textarea {
+  width:100%;  /* 幅を固定 */
+  height: 100px; /* 高さを固定 */
+  resize: none;  /* リサイズを無効にする */
+  	margin:auto auto  auto 20px;
 }
