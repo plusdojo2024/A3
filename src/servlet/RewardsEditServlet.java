@@ -53,19 +53,20 @@ public class RewardsEditServlet extends HttpServlet {
 		//文字化け防止
 		request.setCharacterEncoding("UTF-8");
 
-		if(request.getParameter("submit")!= null) {
-			//更新ボタンが押されたら
-			if(request.getParameter("submit").equals("更新")) {
-				//jspから入力されたデータを持ってくる
+
+			//更新ボタンが押されたら-----------------------------------------------------------------------------------------
+
+			if(request.getParameter("edit")!= null && request.getParameter("edit").equals("更新")) {
+				//データを持ってくる
 				String reward = request.getParameter("reward");
-				String stPoint = request.getParameter("reqPoint");
+				String stPoint = request.getParameter("req_point");
 				int reqPoint = Integer.parseInt(stPoint);    //pointはStringで受け取るからDBに合わせて型変換
-				String stUId = request.getParameter("uId");
+				String stUId = request.getParameter("u_id");
 				int uId = Integer.parseInt(stUId);    //nameはStringで受け取るからDBに合わせて型変換
 				String name = request.getParameter("name");
-				String stReId = request.getParameter("rewardId");
+				String stReId = request.getParameter("reward_id");
 				int rewardId = Integer.parseInt(stReId);
-				String rewardDate = request.getParameter("rewardDate");
+				String rewardDate = request.getParameter("reward_date");
 		        String stReq = request.getParameter("re");
 		        int re = Integer.parseInt(stReq);
 //		        String stUid = request.getParameter("u_id");
@@ -84,15 +85,24 @@ public class RewardsEditServlet extends HttpServlet {
 		        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsEdit.jsp");
 		    	dispatcher.forward(request, response);
 
-			//削除ボタンが押されたら
-			}else if (request.getParameter("submit").equals("削除")){
+		    //-------------------------------------------------------------------------------------------------------------
 
-				String stReId = request.getParameter("rewardId");
+
+
+			//削除ボタンが押されたら----------------------------------------------------------------------------------------
+
+			}else if (request.getParameter("delete")!= null && request.getParameter("delete").equals("削除")){
+				System.out.println("削除入ったやで");
+				String stReId = request.getParameter("reward_id");
 				int rewardId = Integer.parseInt(stReId);
 
 				//ココでdaoをnewして、rewardIdをメソッドに渡して削除する
 				RewardsDAO dao = new RewardsDAO();
-				dao.delete(rewardId);
+				int result = dao.delete(rewardId);
+
+				if(result==1) {
+					request.setAttribute("msg", "削除が成功しました！");
+				}
 
 				//sessionにアクセス
 				HttpSession session = request.getSession();
@@ -109,14 +119,97 @@ public class RewardsEditServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
 				dispatcher.forward(request, response);
 
-			}
+			//----------------------------------------------------------------------------------------------------------------------
 
-		//更新完了ボタンが押された時
-		}else {
+
+
+			//リクエストボタンが押されたら------------------------------------------------------------------------------------------
+			 } else if(request.getParameter("req_button")!= null && request.getParameter("req_button").equals("リクエスト")) {
+
+					String stReId = request.getParameter("reward_id");
+					int rewardId = Integer.parseInt(stReId);
+
+					String stReq = request.getParameter("re");
+					int req = Integer.parseInt(stReq);
+
+					if(req == 0) {
+						req = 1;
+					}
+
+					//受け取ったデータをdaoに渡してリクエスト処理
+					RewardsDAO exdao =new RewardsDAO();
+					int result = exdao.exchange(rewardId, req);
+
+					if(result==1) {
+						request.setAttribute("msg", "リクエストを送りました！");
+					}
+
+				    //sessionを使いますよという宣言
+					HttpSession session = request.getSession();
+					Users user = (Users)session.getAttribute("dbUser");
+					int familyId = user.getFamilyId();
+					int role = user.getRole();
+					int userId = user.getUid();
+
+					RewardsDAO dao1 = new RewardsDAO();
+					ArrayList<Rewards> rewardsList = dao1.allSelect(familyId, role, userId);
+					request.setAttribute("rewardsList", rewardsList);
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+					dispatcher.forward(request, response);
+
+			//--------------------------------------------------------------------------------------------------------------------
+
+
+
+			//交換完了ボタンが押されたら---------------------------------------------------------------------------------------
+
+			} else if(request.getParameter("complete")!= null && request.getParameter("complete").equals("交換完了")) {
+
+				String stReId = request.getParameter("reward_id");
+				int rewardId = Integer.parseInt(stReId);
+
+				String stReq = request.getParameter("re");
+				int req = Integer.parseInt(stReq);
+
+				if(req == 1) {
+					req = 0;
+				}
+
+				//受け取ったデータをdaoに渡して交換完了処理
+				RewardsDAO exdao =new RewardsDAO();
+				int result = exdao.exchange(rewardId, req);
+
+				//sessionを使いますよという宣言
+				HttpSession session = request.getSession();
+				Users user = (Users)session.getAttribute("dbUser");
+				int familyId = user.getFamilyId();
+				int role = user.getRole();
+				int userId = user.getUid();
+
+				if(result==1) {
+					request.setAttribute("msg", "交換を完了しました！");
+			    }
+
+				RewardsDAO dao1 = new RewardsDAO();
+				ArrayList<Rewards> rewardsList = dao1.allSelect(familyId, role, userId);
+				request.setAttribute("rewardsList", rewardsList);
+
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+			dispatcher.forward(request, response);
+
+		//----------------------------------------------------------------------------------------------------------------
+
+
+
+		//更新完了ボタンが押された時------------------------------------------------------------------------------------------
+
+		} else if (request.getParameter("edit2")!=null&&request.getParameter("edit2").equals("更新")) {
 
 			//jspから入力されたデータを持ってくる
 			String reward = request.getParameter("reward");
-			String point = request.getParameter("reqPoint");
+			String point = request.getParameter("req_point");
 			int p = Integer.parseInt(point);    //pointはStringで受け取るからDBに合わせて型変換
 			String stUId = request.getParameter("u_id");
 			int uId = Integer.parseInt(stUId);    //nameはStringで受け取るからDBに合わせて型変換
@@ -124,11 +217,10 @@ public class RewardsEditServlet extends HttpServlet {
 			String stReId = request.getParameter("reward_id");
 			int rewardId = Integer.parseInt(stReId);
 			String rewardDate = request.getParameter("reward_date");
-	        String stReq = request.getParameter("request");
+	        String stReq = request.getParameter("re");
 	        int re = Integer.parseInt(stReq);
 	        //String stUid = request.getParameter("u_id");
             //int uid = Integer.parseInt(stUid);
-
 
 
 			//受け取ったデータをdaoに渡して更新処理
@@ -136,8 +228,9 @@ public class RewardsEditServlet extends HttpServlet {
 			int result = dao.update(rewardId, reward, p, rewardDate, uId, re);
 
 
-
 		    if(result==1) {
+
+		    	request.setAttribute("msg", "変更が成功しました！");
 		        System.out.println("成功だよ");
 			    //sessionを使いますよという宣言
 				HttpSession session = request.getSession();
@@ -150,8 +243,6 @@ public class RewardsEditServlet extends HttpServlet {
 				ArrayList<Rewards> rewardsList = dao1.allSelect(familyId, role, userId);
 				request.setAttribute("rewardsList", rewardsList);
 
-
-
 		    }else {
 	          System.out.println("失敗だよ");
 		    }
@@ -161,6 +252,10 @@ public class RewardsEditServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
 			dispatcher.forward(request, response);
 		}
+
+		//------------------------------------------------------------------------------------------------------------------
+
 	}
 
 }
+

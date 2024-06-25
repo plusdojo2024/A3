@@ -14,6 +14,9 @@ import model.Rewards;
 
 public class RewardsDAO {
 
+
+
+	//一覧表示のメソッド----------------------------------------------------------
 	public ArrayList<Rewards> allSelect(int familyId, int role, int userId) {
 		Connection conn = null;
 		ArrayList<Rewards> list = new ArrayList<Rewards>();
@@ -39,7 +42,7 @@ public class RewardsDAO {
 					+ "JOIN USERS as U ON U.UID = R.UID "
 					+ "WHERE U.FAMILY_ID = ? ";
 					if(role==0) {
-						sql+= "and R.UID = ? ";
+						sql+= "and R.UID = ? "; //権限が子の場合は表示情報を個人に絞る
 					}
 			//１と２の情報をpStmtに入れる
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -240,7 +243,7 @@ public class RewardsDAO {
 	}
 
 
-	//更新するメソッドを作りたい
+	//更新するメソッド---------------------------------------------------------
 	public int update(int rewardId, String reward, int reqPoint, String rewardDate, int uid, int request) {
 		Connection conn = null;
 		int result = 0;
@@ -298,7 +301,7 @@ public class RewardsDAO {
 	}
 
 
-	//削除したい
+	//削除するメソッド----------------------------------------------------------------------
 	public int delete(int rewardId) {
 		Connection conn = null;
 		int result = 0;
@@ -324,7 +327,7 @@ public class RewardsDAO {
 			//SQL文を完成させる
 			pStmt.setInt(1, rewardId);
 
-			// SQL文を実行する（deleteは削除した件数が返ってくる）
+			//SQL文を実行する（deleteは削除した件数が返ってくる）
 			result = pStmt.executeUpdate();
 
 		}
@@ -350,4 +353,65 @@ public class RewardsDAO {
 	}
 
 
+
+	//リクエストと交換完了のメソッド----------------------------------------------------------------------
+	public int exchange(int rewardId,  int request) {
+		Connection conn = null;
+		int result = 0;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// １．データベースに接続する準備
+	    	//どのデータベースにつなぐか、つなぐためのidとpwは何かをconに入れる
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// ２．SQL文を準備する
+			String sql = "UPDATE rewards SET request=? WHERE reward_id=?";
+
+			//１と２の情報をpStmtに入れる
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//現在の日付を取ってくる
+			TimeLogic tl = new TimeLogic();
+			String now = tl.nowJpDay();
+
+			//SQL文を完成させる
+			pStmt.setInt(1, request);
+			pStmt.setInt(2, rewardId);
+
+			//SQL文を実行する（リクエストした件数が返ってくる）
+			result = pStmt.executeUpdate();
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
+	}
+
 }
+
+
+
+
+
+
+
+

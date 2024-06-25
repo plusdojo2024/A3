@@ -55,17 +55,17 @@
 <div class="rewards_title">ご褒美編集</div>
 <form method="post" action="/A3/RewardsEditServlet">
 	<input type="text" name="reward" value="${param.reward}"><br>
-	<input type="text" name="reqPoint" value="${param.reqPoint}"><br>
+	<input type="text" name="req_point" value="${param.req_point}"><br>
 	<select name="name">
 		<c:forEach var="e" items="${ud}" >
 			<option value="${e.uid}">${e.name}</option>
 		</c:forEach>
 	</select><br>
-	<input type="hidden" name="reward_id" value="${param.rewardId}">
-	<input type="hidden" name="reward_date" value="${param.rewardDate}">
-	<input type="hidden" name="request" value="${param.re}">
-	<input type="hidden" name="u_id" value="${param.uId}">
-<input class="green_edit_button" type="submit" name="edit" value="更新" onclick="return editBt()">　
+	<input type="hidden" name="reward_id" value="${param.reward_id}">
+	<input type="hidden" name="reward_date" value="${param.reward_date}">
+	<input type="hidden" name="re" value="${param.re}">
+	<input type="hidden" name="u_id" value="${param.u_id}">
+<input class="green_edit_button" type="submit" name="edit2" value="更新" onclick="return editBt()">　
 
 
 </form>

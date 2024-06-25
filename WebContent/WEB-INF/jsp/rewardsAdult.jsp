@@ -50,29 +50,35 @@
 
 <br><br>
 <div class = "rewards_title">ご褒美一覧　　　　　　　　　</div>
+<button class="reregi-submit"onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録</button>
 <br>
-	<button class="reregi-submit"onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録</button>
+<br>
+<br>
+<span style="color:red">${msg}</span>
 
-
-
-	<div class = "rewards">
-	<c:forEach var="e" items="${rewardsList}" >  <!--リストの内容を端から順に入れていく-->
+<div class = "rewards">
+	<!--リストの内容を端から順に入れていく-->
+	<c:forEach var="e" items="${rewardsList}" >
 		<form method="post" action="/A3/RewardsEditServlet">
 			<input type = "hidden" name = "reward" value="${e.reward}">${e.reward}<br>
-			<input type = "hidden" name = "reqPoint" value="${e.reqPoint}">${e.reqPoint}pt<br>
-			<input type = "hidden" name = "uId" value="${e.uid}">
+			<input type = "hidden" name = "req_point" value="${e.reqPoint}">${e.reqPoint}pt<br>
+			<input type = "hidden" name = "u_id" value="${e.uid}">
 			<input type = "hidden" name = "name" value="${e.name}">${e.name}<br>
-			<input type = "hidden" name = "rewardId" value="${e.rewardId}">
-			<input type = "hidden" name = "rewardDate" value="${e.rewardDate}">
+			<input type = "hidden" name = "reward_id" value="${e.rewardId}">
+			<input type = "hidden" name = "reward_date" value="${e.rewardDate}">
 			<input type = "hidden" name = "re" value="${e.request}">
 
-			<input class="green_edit" type="submit" name="submit" value="更新">
-			<input class="red_button" type="submit" name="submit" value="削除" onclick="return deleteBt()">　
+			<input class="req_button" type="submit" name="req_button" value="リクエスト" onclick="return reqBt()">
+			<input class="comp_button" type="submit" name="complete" value="交換完了" onclick="return compBt()">
+			<input class="green_edit" type="submit" name="edit" value="更新">
+			<input class="red_button" type="submit" name="delete" value="削除" onclick="return deleteBt()">　
 			<br><br>
 		</form>
+<!-- 		<button class="req_buttont"onclick="window.location.href = '/A3/RewardsServlet';">リクエスト</button>
+		<button class="comp_button"onclick="window.location.href = '/A3/RewardsServlet';">交換完了</button> -->
     </c:forEach>
-    </div>
 </div>
+
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 
 </body>
@@ -81,6 +87,28 @@
 	function deleteBt(){
 		 let regist =document.getElementById("regist");
 		 let ans = confirm("ご褒美を削除しますか？");
+
+			if(ans == true){
+				return true;
+			}else{
+				return false;
+			}
+	}
+
+	function reqBt(){
+		 let regist =document.getElementById("req");
+		 let ans = confirm("ご褒美をリクエストしますか？");
+
+			if(ans == true){
+				return true;
+			}else{
+				return false;
+			}
+	}
+
+	function compBt(){
+		 let regist =document.getElementById("comp");
+		 let ans = confirm("ご褒美の交換を完了しますか？");
 
 			if(ans == true){
 				return true;
