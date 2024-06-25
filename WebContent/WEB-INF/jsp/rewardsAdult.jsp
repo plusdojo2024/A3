@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/rewards.css">
 
 
+
 <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${dbUser.icon}"></c:set>
@@ -32,20 +33,27 @@
         <button class="logout"
             onclick="window.location.href = '/A3/LogoutServlet';">ログアウト<br><img src="images/935.png" width="65px" height="65px"></button>
     </div>
-
 </div>
+
 </head>
 <body>
+<div class="body">
+<br><br><br><br>
+	<div class="sidebar">
+        <a href="/A3/HomeServlet">ホーム</a>
+        <a href="/A3/TodoServlet">やることリスト</a>
+        <a href="/A3/NoteServlet">引継ぎノート</a>
+        <a href="/A3/AlbumServlet">アルバム</a>
+        <a href="/A3/RewardsServlet">ご褒美</a>
+    </div>
+</div>
 
-<br><br><br><br><br><br><br><br>
-<div class = "rewardsA">
-<h1>ご褒美一覧　　　　　　　　　
+<br><br>
+<div class = "rewards_title">ご褒美一覧　　　　　　　　　</div>
 <br>
-	<button class="rewards_regist"
-		onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録
-	</button>
+	<button class="reregi-submit"onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録</button>
 
-</h1>
+
 
 	<div class = "rewards">
 	<c:forEach var="e" items="${rewardsList}" >  <!--リストの内容を端から順に入れていく-->
