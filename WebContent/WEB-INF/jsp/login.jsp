@@ -22,27 +22,27 @@
 					<tr>
 
 						<td><label>メールアドレス<br> <input type="text"
-								name="mail">
+								name="mail" required>
 						</label></td>
 						<tr>
 
 					<tr>
 				<td><label>家族パスワード<br> <input type="password"
-								name="family_pass">
+								name="family_pass" required>
 				</label></td>
 
 					<tr>
 
 					<tr>
 				<td><label>ユーザー名<br> <input type="text"
-								name="user_name">
+								name="user_name" required>
 				</label></td>
 
 					<tr>
 
 					<tr>
 				<td><label>個人パスワード<br> <input type="password"
-								name="user_pass">
+								name="user_pass" required>
 				</label></td>
 
 					<tr>
