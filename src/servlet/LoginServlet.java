@@ -95,10 +95,10 @@ public class LoginServlet extends HttpServlet {
 				//ipアドレスが一致するユーザーを格納
 				UserIp listUser = ipLogic.searchUser(user, ipList);
 
-				//現在時刻の24時間前を格納
-				LocalDateTime yesterday = user.getDate().minusHours(24);
+				//現在時刻の1時間前を格納
+				LocalDateTime yesterday = user.getDate().minusHours(1);
 
-				//最終アクセスから24時間以上経過していたら
+				//最終アクセスから1時間以上経過していたら
 				if (listUser.getDate().isEqual(yesterday) || listUser.getDate().isBefore(yesterday)) {
 					//リストから削除
 					ipLogic.removeList(user, ipList);
@@ -106,7 +106,7 @@ public class LoginServlet extends HttpServlet {
 					//リストに再登録
 					ipList.add(user);
 					application.setAttribute("ipList", ipList);
-				} else {//24時間経過していなければ
+				} else {//1時間経過していなければ
 					//最終アクセス時間を更新
 					user.setDate(LocalDateTime.now());
 					user.setCount(ipLogic.userCountPlus(user, ipList));

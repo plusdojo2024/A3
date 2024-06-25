@@ -33,3 +33,13 @@
 .custom-submit:hover {
     background-color: #45a049; /* ホバー時の背景色 */
 }
+.left {
+	width: 50%;
+	float: left;
+}
+
+.form {
+	position: relative;
+	align-items: center;
+	margin: 0 auto;
+}
