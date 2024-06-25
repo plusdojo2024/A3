@@ -73,6 +73,17 @@
 	</td>
 	</tr>
 	</c:forEach>
+	<c:forEach var="e" items="${todoHistory}">
+	<c:set var="date" value="${e.listDate}"></c:set>
+	<!--<c:set var="name" value="$"{e.name}"></c:set>-->
+	<tr>
+	<td>
+	<p>履歴：</p>
+	</td>
+	<td class="view_box">
+		<c:out value="${date}"></c:out><br>
+		<!--<c:out value="${name}"></c:out>-->
+	</c:forEach>
 	</table>
 	</div>
 </main>

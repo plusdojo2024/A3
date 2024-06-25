@@ -36,26 +36,34 @@
 </div>
 </head>
 <body>
-<header>
-
-</header>
+<div class="body">
+<br><br><br><br><br><br>
+	<div class="sidebar">
+        <a href="/A3/HomeServlet">ホーム</a>
+        <a href="/A3/TodoServlet">やることリスト</a>
+        <a href="/A3/NoteServlet">引継ぎノート</a>
+        <a href="/A3/AlbumServlet">アルバム</a>
+        <a href="/A3/RewardsServlet">ご褒美</a>
+    </div>
+</div>
 <main>
 	<br><br><br><br><br><br><br>
 	<h1 class="title_box">やることリスト</h1>
+	<div class="btn">
 	<c:forEach var="e" items="${todoview}">
 	<c:set var="task" value="${e.task}"></c:set>
-	<div class="btn">
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
-	</div>
 	</c:forEach>
+	</div>
 
-	<button onclick="window.location.href= '/A3/TodoRegistServlet'" >登録</button><br>
-	<button onclick="window.location.href= '/A3/CalendarServlet'" >カレンダー</button><br>
-	<button onclick="window.location.href= '/A3/TodayListServlet'" >当日リスト</button><br>
+	<button onclick="window.location.href= '/A3/TodoRegistServlet'"  class="r_btn">家事登録</button><br>
+	<button onclick="window.location.href= '/A3/CalendarServlet'"  class="c_btn">カレンダー</button><br>
+	<button onclick="window.location.href= '/A3/TodayListServlet'"  class="l_btn">当日リスト</button><br>
 
 	<p>${message}</p>
 </main>
+<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 <script src="js/main.js"></script>
 </body>
 </html>
