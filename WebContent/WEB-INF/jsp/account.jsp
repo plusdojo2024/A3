@@ -52,16 +52,16 @@
     <div class="container">
 	<h1 class="box">アカウント管理画面</h1>
 	<div class="button-container">
-	<c:if test="${dbUser.role==1}">
+	<c:if test="${dbUser.admin==1}">
 		<button id="family_regist" class="button1">家族登録</button>
 	</c:if>
 	<button id="user_edit" class="button1">個人情報変更</button>
 	<br>
 	<br>
-	<c:if test="${dbUser.role==1}">
+	<c:if test="${dbUser.admin==1}">
 		<button id="family_edit" class="button1">家族情報変更</button>
 	</c:if>
-	<c:if test="${dbUser.role==1}">
+	<c:if test="${dbUser.admin==1}">
 		<button id="user_delete" class="button1">アカウント削除</button>
 	</c:if>
 	<c:out value="${message.message}" />
