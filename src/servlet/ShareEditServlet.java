@@ -32,8 +32,6 @@ public class ShareEditServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareEdit.jsp");
 		dispatcher.forward(request, response);
 		return;

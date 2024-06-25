@@ -199,7 +199,7 @@ public class TodoDAO {
 					+ "*"
 					+ "FROM TODO as T "
 					+ "JOIN USERS as U ON U.UID = T.UID "
-					+ "WHERE family_id = ? ";
+					+ "WHERE family_id = ? AND todo_complete=0";
 			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
 
 			pStmt.setInt(1, familyId);
@@ -469,7 +469,40 @@ public class TodoDAO {
 			}
 		}
 		return list;
-
-
 	}
+
+	public boolean complete(int todoId) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			String sql = "UPDATE todo SET complete=1 WHERE todo_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			pStmt.setInt(1, todoId);
+
+
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+
 }

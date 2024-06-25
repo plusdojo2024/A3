@@ -222,7 +222,7 @@ public class ShareRegistServlet extends HttpServlet {
 
 					}
 
-					// Calendarにフォワードする
+					// Calendarにリダイレクトする
 					response.sendRedirect("/A3/CalendarServlet");
 
 				}
