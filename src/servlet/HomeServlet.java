@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.NotesDAO;
 import dao.TodoDAO;
+import dao.UsersDAO;
 import logic.TimeLogic;
 import model.Notes;
 import model.Todo;
@@ -80,7 +81,14 @@ public class HomeServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 		dispatcher.forward(request, response);
 	}
+
+	//Post
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+		HttpSession session = request.getSession();
+
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 		String strTodoId = request.getParameter("todo_id");
 
 		System.out.println(strTodoId);
@@ -88,7 +96,23 @@ public class HomeServlet extends HttpServlet {
 		int todoId = Integer.parseInt(strTodoId);
 		TodoDAO tDao = new TodoDAO();
 		if(tDao.complete(todoId)) {
+			//更新成功
 			System.out.println("完了しました");
+			//完了したタスクのポイントを取得
+			int point = tDao.getPointByTodoId(todoId);
+			System.out.println("ポイント："+point);
+			//ユーザーの保有ポイントと合わせる
+			point += dbUser.getHavePoint();
+			System.out.println("合計ポイント："+point);
+
+			UsersDAO uDao = new UsersDAO();
+			//ユーザーのポイントを更新
+			uDao.pointUpdate(dbUser.getUid(), point);
+
+			//セッションスコープのユーザー情報更新
+			Users updateUser = uDao.getUser(dbUser.getUid());
+
+			session.setAttribute("dbUser", updateUser);
 		}else {
 			System.out.println("更新失敗しました");
 		}

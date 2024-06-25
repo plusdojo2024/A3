@@ -416,7 +416,7 @@ public class TodoDAO {
 
 	}
 
-	public List<Todo> getTaskHistory(int familyId ,String task){
+	public List<Todo> getTaskHistory(int familyId, String task) {
 		Connection conn = null;
 		ArrayList<Todo> list = new ArrayList<Todo>();
 		try {
@@ -484,7 +484,6 @@ public class TodoDAO {
 
 			pStmt.setInt(1, todoId);
 
-
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
@@ -503,6 +502,48 @@ public class TodoDAO {
 			}
 		}
 		return result;
+	}
+
+	public int getPointByTodoId(int TodoId) {
+		Connection conn = null;
+		int point = 0;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT "
+					+ "*"
+					+ "FROM TODO as T "
+					+ "JOIN TODO_LIST as L ON L.LIST_ID = T.LIST_ID "
+					+ "WHERE todo_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+
+			pStmt.setInt(1, TodoId);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			rs.next();
+
+			point = rs.getInt("give_point");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return point;
 	}
 
 }
