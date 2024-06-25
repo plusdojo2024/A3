@@ -49,9 +49,20 @@
 <main>
 	<br><br><br><br><br><br><br>
 	<h1 class="title_box">やることリスト</h1>
+	<div class="category">
+	<h3>洗濯</h3>
+	<h3>ごみ捨て</h3>
+	<h3>掃除</h3>
+	<h3>料理</h3>
+	<h3>買い物</h3>
+	<h3>日用品の補充</h3>
+	<h3>子育て</h3>
+	<h3>その他</h3>
+	</div>
 	<div class="btn">
 	<c:forEach var="e" items="${todoview}">
 	<c:set var="task" value="${e.task}"></c:set>
+	<c:set var="category" value="${e.category}"></c:set>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
 	</c:forEach>
