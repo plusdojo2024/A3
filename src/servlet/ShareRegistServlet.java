@@ -148,34 +148,86 @@ public class ShareRegistServlet extends HttpServlet {
 			String endDate = request.getParameter("end_date");
 			String strWeek[] = request.getParameterValues("week[]");
 
-			//strWeekと同じ要素数のint型配列宣言
-			int[] week = new int[strWeek.length];
+			if (strWeek == null) {
+				request.setAttribute("msg", "ループ選択時は曜日を1つ以上選択してください");
 
-			//Stringの配列をintに変換
-			for (int i = 0; i < strWeek.length; i++) {
-				week[i] = Integer.parseInt(strWeek[i]);
-			}
+				//日付文字列をLocalDate型に変換
+				LocalDate startDay = LocalDate.parse(selectDate, DateTimeFormatter.ISO_LOCAL_DATE);
 
-			TimeLogic tLogic = new TimeLogic();
+				//開始日の翌月の月末まで
+				LocalDate endDay = startDay.plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
 
-			//startからendまでの指定した曜日の日をリストにして取得
-			List<Todo> todoList = tLogic.createTodo(selectDate, endDate, week, uid, listId);
+				UsersDAO uDao = new UsersDAO();
+				TodoListDAO tLDao = new TodoListDAO();
 
-			for (Todo loopTodo : todoList) {
-				if (!tdDao.registCheck(loopTodo)) {
-					if (tdDao.registLoop(loopTodo)) {
-						System.out.println("成功しました。");
-					} else {
-						System.out.println("失敗しました。");
-					}
+				List<Users> userList = uDao.selectFamily(user.getFamilyId());
+
+				List<TodoList> taskList = tLDao.view(user.getFamilyId());
+
+				request.setAttribute("taskList", taskList);
+				request.setAttribute("userList", userList);
+				request.setAttribute("today", selectDate);
+				request.setAttribute("endDay", endDay);
+				// 登録ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				if (endDate == "") {
+					request.setAttribute("msg", "ループ終了日を選択してください");
+					//日付文字列をLocalDate型に変換
+					LocalDate startDay = LocalDate.parse(selectDate, DateTimeFormatter.ISO_LOCAL_DATE);
+
+					//開始日の翌月の月末まで
+					LocalDate endDay = startDay.plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
+
+					UsersDAO uDao = new UsersDAO();
+					TodoListDAO tLDao = new TodoListDAO();
+
+					List<Users> userList = uDao.selectFamily(user.getFamilyId());
+
+					List<TodoList> taskList = tLDao.view(user.getFamilyId());
+
+					request.setAttribute("taskList", taskList);
+					request.setAttribute("userList", userList);
+					request.setAttribute("today", selectDate);
+					request.setAttribute("endDay", endDay);
+					// 登録ページにフォワードする
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shareRegist.jsp");
+					dispatcher.forward(request, response);
+
 				} else {
-					System.out.println("既に登録してあります。");
+					//strWeekと同じ要素数のint型配列宣言
+					int[] week = new int[strWeek.length];
+
+					//Stringの配列をintに変換
+					for (int i = 0; i < strWeek.length; i++) {
+						week[i] = Integer.parseInt(strWeek[i]);
+					}
+
+					TimeLogic tLogic = new TimeLogic();
+
+					//startからendまでの指定した曜日の日をリストにして取得
+					List<Todo> todoList = tLogic.createTodo(selectDate, endDate, week, uid, listId);
+
+					for (Todo loopTodo : todoList) {
+						if (!tdDao.registCheck(loopTodo)) {
+							if (tdDao.registLoop(loopTodo)) {
+								System.out.println("成功しました。");
+							} else {
+								System.out.println("失敗しました。");
+							}
+						} else {
+							System.out.println("既に登録してあります。");
+						}
+
+					}
+
+					// Calendarにフォワードする
+					response.sendRedirect("/A3/CalendarServlet");
+
 				}
 
 			}
-
-			// Calendarにフォワードする
-			response.sendRedirect("/A3/CalendarServlet");
 
 		}
 
