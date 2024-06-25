@@ -37,6 +37,13 @@
 </head>
 <body>
 	<br><br><br><br><br><br>
+ 	<div class="sidebar">
+        <a href="/A3/HomeServlet">ホーム</a>
+        <a href="/A3/TodoServlet">やることリスト</a>
+        <a href="/A3/NoteServlet">引継ぎノート</a>
+        <a href="/A3/AlbumServlet">アルバム</a>
+        <a href="/A3/RewardsServlet">ご褒美</a>
+    </div>
 <h1 class="box">アルバム</h1>
 <%-- <c:forEach var="category" items="${yearMonthList}"> --%>
 	<div class="accordion" onclick="toggleAccordion('accordion1')">
@@ -57,6 +64,8 @@
 <%-- </c:forEach> --%>
 
 <button id="deleteButton" onclick="deleteChecked()" class="custom-submit">削除</button>
+
+<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 </body>
 <script>
     function toggleAccordion(panelId) {

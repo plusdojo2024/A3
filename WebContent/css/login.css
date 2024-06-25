@@ -16,11 +16,40 @@
 .form {
 	position: relative;
 	align-items: center;
-	margin: 0 auto;
+	margin: 50px -50px;
 }
-textarea {
-  width:100%;  /* 幅を固定 */
-  height: 100px; /* 高さを固定 */
-  resize: none;  /* リサイズを無効にする */
-  	margin:auto auto  auto 20px;
+.custom-submit {
+    background-color: #7DCD85; /* ボタンの背景色 */
+    color: #000000; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    margin: 10px auto;
+    border: none; /* ボーダーなし */
+    border-radius: 30px; /* 角丸 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    position: absolute;
+    top:325px;
+    left:80px;
+}
+.custom-submit:hover {
+    background-color: #45A049; /* ホバー時の背景色 */
+}
+
+.new_account {
+    background-color: #45A049; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 200px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    margin: 10px auto;
+    border: none; /* ボーダーなし */
+    border-radius: 30px; /* 角丸 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    position:absolute;
+    top:440px;
+    left:820px;
+}
+.new_account:hover {
+    background-color: #008000; /* ホバー時の背景色 */
 }

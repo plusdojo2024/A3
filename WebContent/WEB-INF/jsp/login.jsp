@@ -21,34 +21,34 @@
 				<table>
 					<tr>
 
-						<td><label>メールアドレス<br> <input type="text"
-								name="mail" required>
+						<td class="mail"><label>メールアドレス <br><input type="text" placeholder="aaa@example.com" style="width:300px; height:30px"
+								name="mail"  id="mail" required>
 						</label></td>
 						<tr>
 
 					<tr>
-				<td><label>家族パスワード<br> <input type="password"
-								name="family_pass" required>
+				<td class="family_pass"><label>家族パスワード<br><input type="password" placeholder="password" style="width:300px; height:30px"
+								name="family_pass" id="family_pass" required>
 				</label></td>
 
 					<tr>
 
 					<tr>
-				<td><label>ユーザー名<br> <input type="text"
-								name="user_name" required>
+				<td class="user_name"><label>ユーザー名 <br><input type="text" placeholder="山田太郎" style="width:300px; height:30px"
+								name="user_name" id="user_name" required>
 				</label></td>
 
 					<tr>
 
 					<tr>
-				<td><label>個人パスワード<br> <input type="password"
+				<td class="pass"><label>個人パスワード<br> <input type="password" placeholder="password" style="width:300px; height:30px"
 								name="user_pass" required>
 				</label></td>
 
 					<tr>
 
 					<tr>
-				<td><input type="submit" name="submit" value="ログイン"> <span
+				<td><input type="submit" name="submit" value="ログイン" class="custom-submit"> <span
 							id="error_message"></span>
 					<p class="error">
 						<c:out value="${message.title}" />
@@ -59,7 +59,8 @@
 		</table>
 	</form>
 	</div>
-	<a href="/A3//FamilyRegistServlet">新規アカウント作成</a>
+	<button class="new_account"
+            onclick="window.location.href = '/A3/FamilyRegistServlet';">新規アカウント作成<br></button>
 
 </div>
 </body>
