@@ -56,7 +56,6 @@ public class CalendarServlet extends HttpServlet {
 		//セッションスコープからログイン中のユーザー情報を持ってくる
 		HttpSession session = request.getSession();
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
-		request.setAttribute("myUser", dbUser);
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");

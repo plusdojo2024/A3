@@ -12,12 +12,12 @@
 
 <div class="nav">
 	<div class="left_icons">
-		<c:set var="icon" value="${myUser.icon}"></c:set>
+		<c:set var="icon" value="${dbUser.icon}"></c:set>
 		<div class="green_box">
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${myUser.havePoint}" />
+			<c:out value="${dbUser.havePoint}" />
 		</div>
 	</div>
 
@@ -73,28 +73,29 @@
 		<div class="main_box">曜日</div>
 
 		<label for="monday">月曜日</label> <input type="checkbox" id="monday"
-			name="week[]" value="2" style="pointer-events: none" required><br>
+			name="week[]" value="2" style="pointer-events: none"><br>
 			<label for="tuesday">火曜日</label>
-		<input type="checkbox" id="tuesday" name="week[]" value="3" style="pointer-events: none" required><br>
+		<input type="checkbox" id="tuesday" name="week[]" value="3" style="pointer-events: none"><br>
 
 		<label for="wednesday">水曜日</label> <input type="checkbox"
-			id="wednesday" name="week[]" value="4" style="pointer-events: none" required><br>
+			id="wednesday" name="week[]" value="4" style="pointer-events: none" ><br>
 			<label for="thuresday">木曜日</label> <input type="checkbox" id="thuresday"
-			name="week[]" value="5" style="pointer-events: none" required><br>
+			name="week[]" value="5" style="pointer-events: none"><br>
 			<label for="friday">金曜日</label>
-		<input type="checkbox" id="friday" name="week[]" value="6" style="pointer-events: none" required><br>
+		<input type="checkbox" id="friday" name="week[]" value="6" style="pointer-events: none"><br>
 
 		<label for="saturday">土曜日</label> <input type="checkbox" id="saturday"
-			name="week[]" value="7" style="pointer-events: none" required><br>
+			name="week[]" value="7" style="pointer-events: none" ><br>
 			 <label for="sunday">日曜日</label>
-		<input type="checkbox" id="sunday" name="week[]" value="1" style="pointer-events: none" required><br>
+		<input type="checkbox" id="sunday" name="week[]" value="1" style="pointer-events: none"><br>
 
 		<div class="main_box">
 		<c:set var="set_today" value = "${today}" />
 		<c:set var="set_end" value = "${endDay}" />
 			いつまで<input type="date" id="end_date" name=end_date min="${set_today}" max="${set_end}"
-			style="pointer-events: none" >
+			style="pointer-events: none"  required>
 		</div>
+		<input type="submit" value="編集" name="submit"><input type="submit" value="削除" name="submit">
 
 		<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 

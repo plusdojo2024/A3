@@ -81,6 +81,15 @@ public class HomeServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String strTodoId = request.getParameter("todo_id");
 
+		int todoId = Integer.parseInt(strTodoId);
+		TodoDAO tDao = new TodoDAO();
+		if(tDao.complete(todoId)) {
+			System.out.println("完了しました");
+		}else {
+			System.out.println("更新失敗しました");
+		}
+		response.sendRedirect("/A3/HomeServlet");
 	}
 }

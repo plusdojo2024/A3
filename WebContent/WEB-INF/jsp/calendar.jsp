@@ -64,7 +64,6 @@
 				right : 'dayGridMonth,timeGridWeek'
 			},
 			dateClick : function(info) {
-				alert('clicked ' + info.dateStr);
 				var url = "/A3/ShareRegistServlet?date="
 						+ info.dateStr;
 				window.location.href = url; // 通常の遷移
