@@ -37,31 +37,26 @@
 </head>
 <body>
 	<br><br><br><br><br><br>
-<h1>アルバム</h1>
+<h1 class="box">アルバム</h1>
 <%-- <c:forEach var="category" items="${yearMonthList}"> --%>
 	<div class="accordion" onclick="toggleAccordion('accordion1')">
 	<c:out value="${category.yearMonth}" /></div>
 	<div class="panel" id="accordion1">
     	<table>
-    		<thead>
-                <tr>
-                    <th>日付</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src=""></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="checkbox[]" id="ch"></td>
-                </tr>
-            </tbody>
-
-    	</table>
+                    <tr>
+                        <th>日付</th>
+                    </tr>
+                    <tr>
+                        <td>写真</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="checkbox[]" id="ch"></td>
+                    </tr>
+                </table>
 	</div>
 <%-- </c:forEach> --%>
 
-<button id="deleteButton" onclick="deleteChecked()">削除</button>
+<button id="deleteButton" onclick="deleteChecked()" class="custom-submit">削除</button>
 </body>
 <script>
     function toggleAccordion(panelId) {

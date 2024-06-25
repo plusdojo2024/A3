@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>ホーム</title>
 <link rel="stylesheet" href="css/main.css">
-<!-- <link rel="stylesheet" href="css/home.css"> -->
+<link rel="stylesheet" href="css/home.css">
 
 <div class="nav">
 	<div class="left_icons">
@@ -37,7 +37,7 @@
 </head>
 <body>
 	<br><br><br><br><br><br>
-	<div class="sidebar">
+ 	<div class="sidebar">
         <a href="/A3/HomeServlet">ホーム</a>
         <a href="/A3/TodoServlet">やることリスト</a>
         <a href="/A3/NoteServlet">引継ぎノート</a>
@@ -46,39 +46,51 @@
     </div>
 
     <br><br><br><br>
-<h1>当日のリスト</h1>
+<h1 class="box">当日のリスト</h1>
 <br>
-<div class="table-container">
-	<h2>やることリスト</h2>
-	<table>
-		<%-- <c:forEach> --%>
+
+	<h2 class="box2">やることリスト</h2>
+	<table class="container">
+	 <c:forEach var="todo" items="${todayList}">
+		<c:set var="task" value="todo.task"></c:set>
+		<c:if test="${todo.complete==0}">
+		<form>
+
 		<tr>
-			<td>${todoList}</td>
-			<td><input type="checkbox" name="checkbox"></td>
+			<td><input type="submit" value="${task}"></td>
 		</tr>
-		<%-- </c:forEach> --%>
+		<input type="hidden" name="todo_id" value="${todo.todoId}">
+		</form>
+		</c:if>
+		<c:if test="${todo.complete==1}">
+			<tr>
+				<td id="line">${task}</td>
+			</tr>
+		</c:if>
+		</c:forEach>
 	</table>
 
-	<h2>前日忘れたこと</h2>
+	<h2 class="box3">前日忘れたこと</h2>
 	<table>
-		<%-- <c:forEach> --%>
+		 <c:forEach var="task" items="${yesterdayList}">
 		<tr>
-			<td>${todoListAfter}</td>
+			<td><c:out value="${task.task}"/></td>
 		</tr>
-		<%-- </c:forEach> --%>
-</table>
+		</c:forEach>
+	</table>
+
+<h2 class="box4">前日の引継ぎノート</h2>
+<div class="notes">
+
+<c:if test="${note == null}">
+	<p>前日の引継ぎノートのデータはありません。</p>
+</c:if>
+<c:if test="${note != null }">
+	<p><c:out value="${note.note}"/>
+</c:if>
+
+
 </div>
-
-<h2>前日の引継ぎノート</h2>
-<%-- <c:choose> --%>
-<%--	<c:when test="${notes}=null"> --%>
-		<p>前日の引継ぎノートのデータはありません。<p>
-<%--	</c:when>  --%>
-<%--	<c:when test="${notes}!=null"> --%>
-		<button name="notes">${notes}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</button>
-<%--	</c:when>  --%>
-<%-- </c:choose> --%>
-
 </body>
 
 <script>
