@@ -377,7 +377,7 @@ public class TodoDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM TODO WHERE uid = ? AND date = ? AND todo_complete=0";
+			String sql = "SELECT * FROM TODO WHERE uid = ? AND todo_date = ? AND todo_complete=0";
 			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
 
 			pStmt.setInt(1, uid);
@@ -479,7 +479,7 @@ public class TodoDAO {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
-			String sql = "UPDATE todo SET complete=1 WHERE todo_id=?";
+			String sql = "UPDATE todo SET todo_complete=1 WHERE todo_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setInt(1, todoId);

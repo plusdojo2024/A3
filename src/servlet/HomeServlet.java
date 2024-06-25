@@ -83,6 +83,8 @@ public class HomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String strTodoId = request.getParameter("todo_id");
 
+		System.out.println(strTodoId);
+
 		int todoId = Integer.parseInt(strTodoId);
 		TodoDAO tDao = new TodoDAO();
 		if(tDao.complete(todoId)) {
