@@ -95,6 +95,7 @@
 			いつまで<input type="date" id="end_date" name=end_date min="${set_today}" max="${set_end}"
 			style="pointer-events: none"  required>
 		</div>
+		<input type="submit" value="編集" name="submit"><input type="submit" value="削除" name="submit">
 
 		<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 

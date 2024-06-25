@@ -37,24 +37,16 @@
 </head>
 <body>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br><br>
 <div class = "rewardsA">
 <h1>ご褒美一覧　　　　　　　　　
-
+<br>
 	<button class="rewards_regist"
 		onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録
-	</button><br><br>
+	</button>
 
 </h1>
 
-<br>
-<br>
 	<div class = "rewards">
 	<c:forEach var="e" items="${rewardsList}" >  <!--リストの内容を端から順に入れていく-->
 		<form method="post" action="/A3/RewardsEditServlet">
@@ -73,6 +65,7 @@
     </c:forEach>
     </div>
 </div>
+<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 
 </body>
 
