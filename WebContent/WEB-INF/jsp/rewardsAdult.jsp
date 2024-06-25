@@ -60,6 +60,9 @@
 	<!--リストの内容を端から順に入れていく-->
 	<c:forEach var="e" items="${rewardsList}" >
 		<form method="post" action="/A3/RewardsEditServlet">
+
+
+			<c:if test = "${e.request ==1 }"><div class="req_w">リクエスト中</div></c:if>
 			<input type = "hidden" name = "reward" value="${e.reward}">${e.reward}<br>
 			<input type = "hidden" name = "req_point" value="${e.reqPoint}">${e.reqPoint}pt<br>
 			<input type = "hidden" name = "u_id" value="${e.uid}">

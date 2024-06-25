@@ -126,6 +126,26 @@ input[type="text"] {
 
 
 
+/*リクエスト中---------------------------------------*/
+
+.req_now {
+	background-color: white;
+    color: #00bf63;
+    border-radius: 30px; /* 角を丸くする */
+    align-items: center;
+    position: absolute;
+    left: 23%;
+    top: 25%;
+    font-size: 35px;
+    margin: 10px 25px 0px 25px;
+    width: 400px;
+    height: 80px;
+}
+
+/*-------------------------------------------------*/
+
+
+
 /*完了ボタン---------------------------------------*/
 
 .comp_button {

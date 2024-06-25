@@ -144,6 +144,11 @@ public class RewardsEditServlet extends HttpServlet {
 						request.setAttribute("msg", "リクエストを送りました！");
 					}
 
+					if(req==1) {
+						request.setAttribute("reqmess", "リクエスト中");
+					}
+
+
 				    //sessionを使いますよという宣言
 					HttpSession session = request.getSession();
 					Users user = (Users)session.getAttribute("dbUser");
