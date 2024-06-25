@@ -107,3 +107,14 @@
 .l_btn:hover {
 	background-color: #45A049; /* ホバー時の背景色 */
 }
+
+.category {
+	position: absolute;
+	left: 50%;
+	top: 45%;
+	background-color: #7DCD85; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+}
