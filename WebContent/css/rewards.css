@@ -3,6 +3,29 @@
 
 
 
+body{
+		text-align:-webkit-center;
+		font-size:1.5em;
+ }
+table{
+	border:1px solid white;
+	background-color:#DBEFE1;
+	width:500px;
+}
+input[type="text"] {
+	width:40%;
+    color: #253958;
+    font-size: 23px;
+    text-align:center;
+     	margin:auto auto  auto 20px;
+}
+
+input[type="submit"] {
+    width:auto;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
 /*登録ボタン---------------------------------------*/
 .rewards_regist {
     background-color: #ffffff;
@@ -12,9 +35,10 @@
     align-items: center;
     font-size: 20px;
     margin: 0 10px;
-    padding: 5px 20px;
-    border-color: white;
+    padding: 5px 10px;
+
 }
+
 /*-------------------------------------------------*/
 
 
@@ -107,3 +131,4 @@
 	display: center;
 }
  */
+
