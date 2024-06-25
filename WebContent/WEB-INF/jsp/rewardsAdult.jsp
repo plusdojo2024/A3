@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ご褒美一覧</title>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/rewards.css">
 
