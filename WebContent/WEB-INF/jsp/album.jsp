@@ -73,9 +73,9 @@
 									<th><c:out value="${e.noteDate}"></c:out></th>
 								</tr>
 								<tr>
-									<td><img src="${imageOne}" style="width: 100%" class="zoomable-image" onclick="zoomImage(this)"></td>
+									<td><img src="${imageOne}" style="width: 120%" class="zoomable-image" onclick="zoomImage(this)"></td>
 									<c:if test="${imageTwo!=null}">
-										<td><img src="${imageTwo}" style="width: 100%"></td>
+										<td><img src="${imageTwo}" style="width: 120%" class="zoomable-image" onclick="zoomImage(this)"></td>
 									</c:if>
 								</tr>
 								<tr>

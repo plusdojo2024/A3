@@ -9,7 +9,7 @@
 <title>ホーム</title>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/home.css">
-
+<!--
 <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${dbUser.icon}"></c:set>
@@ -40,7 +40,7 @@
 
 	</div>
 
-</div>
+</div> -->
 </head>
 <body>
 	<br>
@@ -49,11 +49,11 @@
 	<br>
 	<br>
 	<br>
-   	<div class="sidebar">
+<!--     	<div class="sidebar">
 		<a href="/A3/HomeServlet">ホーム</a> <a href="/A3/TodoServlet">やることリスト</a>
 		<a href="/A3/NoteServlet">引継ぎノート</a> <a href="/A3/AlbumServlet">アルバム</a>
 		<a href="/A3/RewardsServlet">ご褒美</a>
-	</div>
+	</div> -->
 
 	<br>
 	<br>
@@ -84,7 +84,7 @@
 </table>
 
 	<h2 class="box3">前日忘れたこと</h2>
- 	<table  class="y_box">
+ 	<table>
 		<c:forEach var="task" items="${yesterdayList}">
 			<tr>
 				<td><c:out value="${task.task}" /></td>
@@ -102,7 +102,7 @@
 			<p>前日の引継ぎノートのデータはありません。</p>
 		</c:if>
 		<c:if test="${note != null }">
-			<c:out value="${note.note}" />
+			<p><c:out value="${note.note}" /></p>
 		</c:if> -->
 	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p>
 
