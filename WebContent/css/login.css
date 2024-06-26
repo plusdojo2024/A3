@@ -48,7 +48,7 @@
     cursor: pointer; /* カーソルをポインターに変更 */
     position:absolute;
     top:440px;
-    left:820px;
+    left:1025px;
 }
 .new_account:hover {
     background-color: #008000; /* ホバー時の背景色 */

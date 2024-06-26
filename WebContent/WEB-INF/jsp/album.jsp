@@ -71,6 +71,7 @@
 				</tr>
 				<tr>
 					<td><img src="${imageOne}"  style="width:100%"></td>
+					<td><img src="${imageTwo}"  style="width:100%"></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="checkbox[]" id="ch"></td>

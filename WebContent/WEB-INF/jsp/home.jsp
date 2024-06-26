@@ -49,11 +49,11 @@
 	<br>
 	<br>
 	<br>
-	<div class="sidebar">
+<!--   	<div class="sidebar">
 		<a href="/A3/HomeServlet">ホーム</a> <a href="/A3/TodoServlet">やることリスト</a>
 		<a href="/A3/NoteServlet">引継ぎノート</a> <a href="/A3/AlbumServlet">アルバム</a>
 		<a href="/A3/RewardsServlet">ご褒美</a>
-	</div>
+	</div> -->
 
 	<br>
 	<br>
@@ -63,13 +63,13 @@
 	<br>
 
 	<h2 class="box2">やることリスト</h2>
-	<table class="container">
+	<table>
 		<c:forEach var="todo" items="${todayList}">
 			<c:set var="task" value="${todo.task}"></c:set>
 			<c:if test="${todo.complete==0}">
 				<form id="form" method="post" action="/A3//HomeServlet">
 				<tr>
-					<td><input type="submit" value="${task}"></td>
+					<td><input type="submit" value="${task}" class="custom-submit"></td>
 				</tr>
 				<span><input type="hidden" name="todo_id" value="${todo.todoId}"></span>
 				</form>
@@ -91,7 +91,7 @@
 		</c:forEach>
 	</table>
 
-	<h2 class="box4">前日の引継ぎノート</h2>
+<!-- 	<h2 class="box4">前日の引継ぎノート</h2>
 	<div class="notes">
 
 		<c:if test="${note == null}">
@@ -100,7 +100,7 @@
 		<c:if test="${note != null }">
 			<c:out value="${note.note}" />
 		</c:if>
-
+-->
 
 	</div>
 </body>
