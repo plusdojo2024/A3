@@ -70,7 +70,7 @@
 		</tr>
 		<tr>
 		<td>
-		<input type="text" name="task" value="${task}"><sup style="color: red;">*</sup>
+		<input type="text" name="task" value="${task}" required><sup style="color: red;">*</sup>
 		</td>
 		</tr>
 		<tr>
@@ -109,10 +109,10 @@
 		</tr>
 		<tr>
 		<td>
-		<input type="submit" name="submit" value="更新" class="custom-submit">
+		<input type="submit" name="submit" value="更新" class="custom-submit" onClick="return Echeck()">
 		</td>
 		<td>
-		<input type="submit" name="submit" value="削除" class="custom-submit_d">
+		<input type="submit" name="submit" value="削除" class="custom-submit_d" onClick="return Check()">
 		</td>
 		</tr>
 		</table>
@@ -120,7 +120,7 @@
 	</c:forEach>
 	</div>
 </main>
-<script src="js/main.js"></script>
+<script src="js/todo.js"></script>
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 </body>
 </html>

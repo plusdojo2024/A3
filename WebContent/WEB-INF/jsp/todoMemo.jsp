@@ -48,12 +48,15 @@
 	<div class="t_main">
 	<table>
 	<c:forEach var="e" items="${todolist}">
+	<c:set var="category" value="${e.category}" />
+	<c:set var="point" value="${e.givePoint}" />
+	<c:set var="memo" value="${e.memo}" />
 	<tr>
 	<td>
 	<p>カテゴリー：</p>
 	</td>
 	<td class="view_box">
-		<c:out value="${e.category}" /><br>
+		<c:out value="${category}" /><br>
 	</td>
 	</tr>
 	<tr>
@@ -61,7 +64,7 @@
 	<p>ポイント：</p>
 	</td>
 	<td class="view_box">
-		<c:out value="${e.givePoint}" /><br>
+		<c:out value="${point}" /><br>
 	</td>
 	</tr>
 	<tr>
@@ -69,9 +72,22 @@
 	<p>メモ：</p>
 	</td>
 	<td class="view_box">
-		<c:out value="${e.memo}" />
+		<c:out value="${memo}" />
 	</td>
 	</tr>
+	<tr>
+	<td>
+	<p>履歴：</p>
+	</td>
+	<td class="view_box">
+	<c:forEach var="e" items="${todoHistory}">
+	<c:set var="date" value="${e.todoDate}"></c:set>
+	<c:set var="name" value="${e.name}"></c:set>
+		<c:out value="${date}"></c:out><br>
+		<c:out value="${name}"></c:out><br><br>
+	</td>
+	</tr>
+	</c:forEach>
 	</c:forEach>
 	</table>
 	</div>

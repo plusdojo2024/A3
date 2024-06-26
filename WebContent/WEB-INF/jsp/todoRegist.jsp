@@ -102,7 +102,7 @@
 	</tr>
 	<tr>
 	<td>
-	<input type="submit" name="regist" value="登録" class="custom-submit">
+	<input type="submit" name="regist" value="登録" class="custom-submit" onClick="return Rcheck()">
 	</td>
 	</tr>
 	</form>
@@ -110,7 +110,7 @@
 	</div>
 </main>
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
-<script src="js/main.js"></script>
+<script src="js/todo.js"></script>
 </div>
 </body>
 </html>

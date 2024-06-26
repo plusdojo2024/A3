@@ -108,13 +108,113 @@
 	background-color: #45A049; /* ホバー時の背景色 */
 }
 
-.category {
+.category1 {
 	position: absolute;
 	left: 50%;
-	top: 45%;
+	top: 40%;
 	background-color: #7DCD85; /* ボタンの背景色 */
     color: white; /* ボタンのテキスト色 */
     font-size: 16px; /*ボタンのテキストの大きさ*/
     width: 150px; /*幅調整*/
     height: 40px; /*高さ調整*/
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category2 {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background-color: #7DCD85; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category3 {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background-color: #7DCD85; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category4 {
+	position: absolute;
+	left: 50%;
+	top: 55%;
+	background-color: #7DCD85; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category5 {
+	position: absolute;
+	left: 50%;
+	top: 60%;
+	background-color: #7DCD85; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category6 {
+	position: absolute;
+	left: 50%;
+	top: 75%;
+	background-color: #7DCD85; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category7 {
+	position: absolute;
+	left: 50%;
+	top: 80%;
+	background-color: #7DCD85; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message {
+	position: absolute;
+    left: 25%;
+    top: 37%;
 }

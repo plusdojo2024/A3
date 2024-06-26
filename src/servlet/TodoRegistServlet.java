@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -76,7 +77,10 @@ public class TodoRegistServlet extends HttpServlet {
 			}
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todoRegist.jsp");
+		List<TodoList> todoview = tlDao.view(familyID);
+		request.setAttribute("todoview", todoview);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todo.jsp");
 		dispatcher.forward(request, response);
 	}
 
