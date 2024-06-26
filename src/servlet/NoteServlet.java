@@ -43,14 +43,13 @@ public class NoteServlet extends HttpServlet {
 		if(nDao.checkNote(dbUser.getFamilyId(), now)) {
 			response.sendRedirect("/A3/NoteEditServlet");
 			return;
+		}else {
+			request.setAttribute("date", now);
+
+			// 引継ぎノートページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
+			dispatcher.forward(request, response);
 		}
-
-
-		request.setAttribute("date", now);
-
-		// 引継ぎノートページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/note.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	@SuppressWarnings("unused")
