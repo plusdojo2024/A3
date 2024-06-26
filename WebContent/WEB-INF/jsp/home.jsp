@@ -49,7 +49,7 @@
 	<br>
 	<br>
 	<br>
-     	<div class="sidebar">
+       	<div class="sidebar">
 		<a href="/A3/HomeServlet">ホーム</a> <a href="/A3/TodoServlet">やることリスト</a>
 		<a href="/A3/NoteServlet">引継ぎノート</a> <a href="/A3/AlbumServlet">アルバム</a>
 		<a href="/A3/RewardsServlet">ご褒美</a>
@@ -59,10 +59,11 @@
 	<br>
 	<br>
 	<br>
-	<h1 class="box">やることリスト</h1>
+	<h1 class="box">当日リスト</h1>
 	<br>
 
-	<h2 class="box2">今日やること</h2>
+<h2 class="box2">今日やること</h2>
+<div class="scrollable ">
 <table class="content">
     <c:forEach var="todo" items="${todayList}">
         <tr>
@@ -71,7 +72,7 @@
                     <td>
                         <form id="form-${todo.todoId}" method="post" action="/A3/HomeServlet">
                             <input type="hidden" name="todo_id" value="${todo.todoId}">
-                            <input type="submit" value="${todo.task}" id="task" >
+                            <input type="submit" value="${todo.task}" id="task" onclick="return confirmDialog()">
                         </form>
                     </td>
                 </c:when>
@@ -82,12 +83,13 @@
         </tr>
     </c:forEach>
 </table>
+</div>
 
 	<h2 class="box3">前日忘れたこと</h2>
- 	<table>
+ 	<table class="content1">
 		<c:forEach var="task" items="${yesterdayList}">
 			<tr>
-				<td><c:out value="${task.task}" /></td>
+				<td class="yes_box"><c:out value="${task.task}" /></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -98,19 +100,27 @@
  	<h2 class="box4">前日の引継ぎノート</h2>
 	<div class="notes">
 
-	<!--	<c:if test="${note == null}">
+	<c:if test="${note == null}">
 			<p>前日の引継ぎノートのデータはありません。</p>
 		</c:if>
 		<c:if test="${note != null }">
 			<p><c:out value="${note.note}" /></p>
-		</c:if> -->
-	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p>
+		</c:if>
+<!-- 	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p> -->
 
 	</div>
 </body>
 
 <script>
-
+function confirmDialog() {
+    if (confirm('家事が完了しましたか？')) {
+        // OKボタンがクリックされた場合の処理
+        alert('家事が完了したため、ポイントが付与されました！');
+    } else {
+        // キャンセルボタンがクリックされた場合の処理
+        alert('キャンセルされました。');
+    }
+}
 </script>
 
 
