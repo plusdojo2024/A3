@@ -72,11 +72,14 @@
 			<input type = "hidden" name = "re" value="${e.request}">
 		</div>
 
-			<input class="req_button" type="submit" name="req_button" value="リクエスト" onclick="return reqBt()">
+<%-- 		<c:if test = "${e.request ==1 }"><div class="req_now">リクエスト中</div></c:if> --%>
+			<c:if test = "${e.request ==0 }"><input class="req_button" type="submit" name="req_button" value="リクエスト" onclick="return reqBt()"><br></c:if>
+			<c:if test = "${e.request ==1 }"><div class="req_now">リクエスト中</div></c:if>
+			<!-- <input class="req_button" type="submit" name="req_button" value="リクエスト" onclick="return reqBt()"><br> -->
 			<input class="comp_button" type="submit" name="complete" value="交換完了" onclick="return compBt()">
 			<input class="green_edit" type="submit" name="edit" value="更新">
 			<input class="red_button" type="submit" name="delete" value="削除" onclick="return deleteBt()">　
-			<c:if test = "${e.request ==1 }"><div class="req_now">リクエスト中</div></c:if>
+
 			<br><br>
 		</form>
 <!-- 		<button class="req_buttont"onclick="window.location.href = '/A3/RewardsServlet';">リクエスト</button>

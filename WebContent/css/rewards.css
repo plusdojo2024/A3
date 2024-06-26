@@ -162,11 +162,9 @@ input[type="text"] {
     font-size: 16px; /*ボタンのテキストの大きさ*/
     width: 150px; /*幅調整*/
     height: 40px; /*高さ調整*/
-    margin: auto;
+    margin: 22px auto 2px auto;
     border: none; /* ボーダーなし */
     border-radius: 30px; /* 角丸 */
-    position: center; /* 位置を真ん中に設定 */
-    text-align: center;
 }
 
 /*-------------------------------------------------*/
@@ -179,9 +177,9 @@ input[type="text"] {
     background-color: #7dcd85; /* ボタンの背景色 */
     color: #ffffff; /* ボタンのテキスト色 */
     font-size: 16px; /*ボタンのテキストの大きさ*/
-    width: 150px; /*幅調整*/
+    width: 80px; /*幅調整*/
     height: 40px; /*高さ調整*/
-    margin: 2px 5%;
+    margin: 2px;
     border: none; /* ボーダーなし */
     border-radius: 30px; /* 角丸 */
     cursor: pointer; /* カーソルをポインターに変更 */
@@ -204,7 +202,7 @@ input[type="text"] {
     font-size: 16px; /*ボタンのテキストの大きさ*/
     width: 80px; /*幅調整*/
     height: 40px; /*高さ調整*/
-    margin: 2px 5%;
+    margin: 2px;
     border: none; /* ボーダーなし */
     border-radius: 30px; /* 角丸 */
     cursor: pointer; /* カーソルをポインターに変更 */
@@ -250,7 +248,7 @@ input[type="text"] {
     font-size: 16px; /*ボタンのテキストの大きさ*/
     width: 80px; /*幅調整*/
     height: 40px; /*高さ調整*/
-    margin: 2px 5%;
+    margin: 2px;
     border: none; /* ボーダーなし */
     border-radius: 30px; /* 角丸 */
     cursor: pointer; /* カーソルをポインターに変更 */

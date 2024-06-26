@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ExchangeDAO;
 import dao.RewardsDAO;
 import dao.UsersDAO;
+import model.Exchange;
 import model.Rewards;
 import model.Users;
 
@@ -171,26 +173,62 @@ public class RewardsEditServlet extends HttpServlet {
 
 			} else if(request.getParameter("complete")!= null && request.getParameter("complete").equals("交換完了")) {
 
-				String stReId = request.getParameter("reward_id");
-				int rewardId = Integer.parseInt(stReId);
+				String reward = request.getParameter("reward");
+				String stRewardId = request.getParameter("reward_id");
+				int rewardId = Integer.parseInt(stRewardId);
+				String stU = request.getParameter("u_id");
+				int uId = Integer.parseInt(stU);
+
+				String stPoint = request.getParameter("req_point");
+				int reqPoint = Integer.parseInt(stPoint);
 
 				String stReq = request.getParameter("re");
 				int req = Integer.parseInt(stReq);
 
-				if(req == 1) {
-					req = 0;
+				Exchange ex = new Exchange();
+				ex.setName(reward);
+				ex.setUid(uId);
+				HttpSession session = request.getSession();
+				Users u = (Users)session.getAttribute("dbUser");
+				int point = u.getHavePoint();
+				int re =0;
+
+				if(reqPoint <= point) {
+					//交換処理
+					ExchangeDAO edao = new ExchangeDAO();
+					boolean result = edao.insert(ex);
+
+					if(result == true) {
+						//リクエストのフラグを元に戻す
+						RewardsDAO exdao =new RewardsDAO();
+						re = exdao.exchange(rewardId,0);
+
+						if(re==1) {
+
+						}
+					}
+
+
 				}
 
-				//受け取ったデータをdaoに渡して交換完了処理
-				RewardsDAO exdao =new RewardsDAO();
-				int result = exdao.exchange(rewardId, req);
+
+
+
+
+
+
+
+
+
+
 
 				//sessionを使いますよという宣言
-				HttpSession session = request.getSession();
+
 				Users user = (Users)session.getAttribute("dbUser");
 				int familyId = user.getFamilyId();
 				int role = user.getRole();
 				int userId = user.getUid();
+
 
 				if(result==1) {
 					request.setAttribute("msg", "交換を完了しました！");
