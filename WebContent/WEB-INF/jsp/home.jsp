@@ -9,7 +9,7 @@
 <title>ホーム</title>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/home.css">
-<!--
+
 <div class="nav">
 	<div class="left_icons">
 		<c:set var="icon" value="${dbUser.icon}"></c:set>
@@ -40,7 +40,7 @@
 
 	</div>
 
-</div> -->
+</div>
 </head>
 <body>
 	<br>
@@ -49,11 +49,11 @@
 	<br>
 	<br>
 	<br>
-<!--     	<div class="sidebar">
+     	<div class="sidebar">
 		<a href="/A3/HomeServlet">ホーム</a> <a href="/A3/TodoServlet">やることリスト</a>
 		<a href="/A3/NoteServlet">引継ぎノート</a> <a href="/A3/AlbumServlet">アルバム</a>
 		<a href="/A3/RewardsServlet">ご褒美</a>
-	</div> -->
+	</div>
 
 	<br>
 	<br>
