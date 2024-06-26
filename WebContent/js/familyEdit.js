@@ -9,7 +9,7 @@ formObj.onsubmit = function() {
   */
 	const password_regex = /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/;
 	const family_pass_value_checked_result = password_regex.test(formObj.family_pass.value);
-	if (!formObj.family_name.value || !formObj.family_pass.value || !formObj.mail.value) {
+	if (!formObj.family_name.value.trim() || !formObj.family_pass.value.trim() || !formObj.mail.value.trim()) {
 		errorMessageObj.textContent = '※全ての項目を入力してください。';
 		return false;
 	} else if(!family_pass_value_checked_result){

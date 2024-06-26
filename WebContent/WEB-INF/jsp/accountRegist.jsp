@@ -51,12 +51,12 @@
 		<table>
 			<tr>
 				<td><label><div class="user_name">個人名：</div> <input type="text" style="width:300px; height:30px"
-						name="user_name" maxlength="20" id="user_name" placeholder="山田花子">
+						name="user_name" maxlength="20" id="user_name" placeholder="山田花子" required >
 				</label></td>
 			<tr>
 			<tr>
 				<td><label><div class="u_pass">個人パスワード： </div><input type="password"
-						name="user_pass" id="u_pass" maxlength="20" placeholder="password" style="width:300px; height:30px">
+						name="user_pass" id="u_pass" maxlength="20" placeholder="password" style="width:300px; height:30px" required >
 						<br><span class="pass_warn"><div class="text1">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください</div><br></span>
 				</label></td>
 			<tr>

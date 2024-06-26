@@ -8,7 +8,6 @@ window.onload = function() {
 
 	const icon = document.getElementById("icon");
 
-
 	icon.onchange = (e) => {
 		if (icon.files.length > 0) {
 			// ファイルサイズ取得
@@ -57,7 +56,7 @@ window.onload = function() {
 		const password_regex = /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/;
 		const name_regex = /^[0-9a-zA-Z]{8,20}$/;
 		const user_pass_value_checked_result = password_regex.test(formObj.user_pass.value);
-		if (!formObj.user_name.value || !formObj.user_pass.value) {
+		if (!formObj.user_name.value.trim() || !formObj.user_pass.value.trim()) {
 			errorMessageObj.textContent = '※全ての項目を入力してください。';
 			return false;
 		} else if (!user_pass_value_checked_result) {
@@ -75,4 +74,6 @@ window.onload = function() {
 		}
 
 	};
+
+
 }
