@@ -50,9 +50,9 @@
 
 <br><br>
 <div class = "rewards_title">ご褒美一覧　　　　　　　　　</div>
-<c:if test="${sessionScope.dbuser.role ==1 }">
+<%-- <c:if test="${sessionScope.dbuser.role ==1 }"> --%>
 <button class="reregi-submit"onclick="window.location.href = '/A3/RewardsRegistServlet';">ご褒美登録</button>
-</c:if>
+<%-- </c:if> --%>
 <button class="rehis-submit"onclick="window.location.href = '/A3/ExchangeHistoryServlet';">交換履歴</button>
 <br>
 <br>
@@ -79,12 +79,11 @@
 			<c:if test = "${a.request ==0 }"><input class="req_button" type="submit" name="req_button" value="リクエスト" onclick="return reqBt()"><br></c:if>
 			<c:if test = "${a.request ==1 }"><div class="req_now">リクエスト中</div></c:if>
 			<!-- <input class="req_button" type="submit" name="req_button" value="リクエスト" onclick="return reqBt()"><br> -->
-<c:if test="${sessionScope.dbuser.role == 1 }">
+<%-- <c:if test="${sessionScope.dbuser.role == 1 }"> --%>
 				<input class="comp_button" type="submit" name="complete" value="交換完了" onclick="return compBt()">
 				<input class="green_edit" type="submit" name="edit" value="更新">
 				<input class="red_button" type="submit" name="delete" value="削除" onclick="return deleteBt()">　
-
-</c:if>
+<%-- </c:if> --%>
 			<br><br>
 		</form>
 <!-- 		<button class="req_buttont"onclick="window.location.href = '/A3/RewardsServlet';">リクエスト</button>

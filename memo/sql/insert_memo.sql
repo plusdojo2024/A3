@@ -1,0 +1,1 @@
+insert into exchange(reward,uid,exchange_date) values('報酬',13,'2024-06-26');
