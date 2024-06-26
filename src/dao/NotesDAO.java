@@ -435,8 +435,9 @@ public class NotesDAO {
 			ResultSet rs = pStmt.executeQuery();
 
 
+			rs.next();
 			// 結果表をコレクションにコピーする
-			if (rs.getInt("COUNT(*)") == 1) {
+			if (rs.getInt("COUNT(*)") >= 1) {
 				result = true;
 			}
 
