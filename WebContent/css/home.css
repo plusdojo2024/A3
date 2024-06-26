@@ -3,6 +3,36 @@
 body{
 	position:relative;
 }
+
+.table-wrapper {
+    max-height: 420px; /* スクロールバーを表示する最大の高さを設定 */
+    width:350px;
+    height:210px;
+    overflow-y: auto; /* 縦方向のスクロールバーを表示する */
+    padding: 0px; /* 適宜パディングを設定 */
+    position:absolute;
+    top:330px;
+    left:500px;
+
+}
+
+.table-wrapper::-webkit-scrollbar{
+  display:none;
+}
+.table-wrapper1 {
+    max-height: 420px; /* スクロールバーを表示する最大の高さを設定 */
+    width:350px;
+    height:210px;
+    overflow-y: auto; /* 縦方向のスクロールバーを表示する */
+    padding: 0px; /* 適宜パディングを設定 */
+    position:absolute;
+    top:330px;
+    left:1000px;
+}
+
+.table-wrapper::-webkit-scrollbar{
+  display:none;
+}
     .box
   {
       background-color: #FFFFFF;
@@ -86,6 +116,7 @@ body{
         padding: 10px 20px; /* 内側の余白 */
         border-radius: 20px; /* 角を丸くする */
         width:250px;
+        margin-bottom:20px;
 }
 
 #line{
@@ -95,10 +126,11 @@ body{
     color: #000000; /* テキスト色 */
     padding: 10px 20px; /* 内側の余白 */
     border-radius: 20px; /* 角を丸くする */
-    width:250px;
+    width:210px;
+    margin-bottom:20px;
 }
 
-#line:hover{
+#task:hover{
 	background-color: #45a049; /* ホバー時の背景色 */
 }
 
@@ -114,22 +146,6 @@ body{
     height:30px;
 }
 
-.content{
-  position:absolute;
-  top:330px;
-  left:550px;
-  overflow: auto; /* スクロールを有効にする */
-}
-
-.content1{
-  position:absolute;
-  top:330px;
-  left:1050px;
-}
-
-.content1 tr{
-	margin:10px 10px;
-}
 
   .custom-submit {
     background-color: #7dcd85; /* ボタンの背景色 */

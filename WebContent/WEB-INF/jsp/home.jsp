@@ -63,8 +63,8 @@
 	<br>
 
 <h2 class="box2">今日やること</h2>
-<div class="scrollable ">
-<table class="content">
+<div class="table-wrapper">
+<table>
     <c:forEach var="todo" items="${todayList}">
         <tr>
             <c:choose>
@@ -86,13 +86,15 @@
 </div>
 
 	<h2 class="box3">前日忘れたこと</h2>
- 	<table class="content1">
+	<div class="table-wrapper1">
+ 	<table>
 		<c:forEach var="task" items="${yesterdayList}">
 			<tr>
 				<td class="yes_box"><c:out value="${task.task}" /></td>
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 
 <!-- 	<p class="y_box">キッチン掃除</p>
 	<p class="y_box1">ゴミ出し</p> -->
@@ -106,7 +108,7 @@
 		<c:if test="${note != null }">
 			<p><c:out value="${note.note}" /></p>
 		</c:if>
-<!-- 	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p> -->
+ 	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p>
 
 	</div>
 </body>
@@ -121,6 +123,8 @@ function confirmDialog() {
         alert('キャンセルされました。');
     }
 }
+
+
 </script>
 
 
