@@ -63,7 +63,7 @@
 			headerToolbar : {
 				left : 'prev,next today',
 				center : 'title',
-				right : 'dayGridMonth,timeGridWeek'
+				right : 'dayGridMonth'
 			},
 			dateClick : function(info) {
 				var url = "/A3/ShareRegistServlet?date="
