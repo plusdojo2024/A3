@@ -6,3 +6,25 @@
 
 	background-color: #ffffff;
 }
+
+/* -----------------------
+カレンダー
+-------------------------*/
+.c
+{
+	position:absolute;
+	left:500px;
+	top:300px;
+}
+
+/* -----------------------
+カレンダー説明
+-------------------------*/
+.p
+{
+	font-size:28px;
+	color: green;
+	position:absolute;
+	left:500px;
+	top:150px;
+}
