@@ -50,7 +50,7 @@
 		<br>
 		<div class="title_box">分担登録</div>
 
-		<div class="main_box">
+		<div class="koumoku_box">
 			<label for="task">項目</label> <select id="task" name="task" required>
 				<c:forEach var="task" items="${taskList}">
 					<option value="${task.listId}">${task.task}</option>
@@ -67,7 +67,7 @@
 		</div>
 
 		<div class="k_box">
-			<select name="loop"
+			繰り返し<select name="loop"
 				 onchange="Checkbox(this.value)">
 				<option value="0">繰り返さない</option>
 				<option value="1">繰り返す</option>
@@ -102,8 +102,8 @@
 			いつまで<input type="date"  name="end_date" min="${set_today}" max="${set_end}" style="pointer-events: none">
 		</div>
 
-		<div class="submit_box">
-			<input type="submit" value="登録" name="regist">
+		<div>
+			<input type="submit" class="submit_box" value="登録" name="regist">
 			<span id="error_message" style="right:24%;"> </span>
 		</div>
 

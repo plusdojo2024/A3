@@ -48,7 +48,8 @@
 		<div class="title_box">分担編集・削除</div>
 
 		<div class="task_box">
-			選択した予定：<c:out value="${date}" />：<c:out value="${event}" />
+			選択した予定：<c:out value="${date}" /><br>
+			選択した予定：<c:out value="${event}" />
 			<c:set var="day" value="${date}" /><c:set var="select_task" value="${event}" />
 			<input type="hidden" name="start_date" value="${day}">
 			<input type="hidden" name="select_task" value="${select_task}">
@@ -59,7 +60,7 @@
 			<input type="hidden" name="select_name" value="${select_name}">
 		</div>
 
-		<div class="main_box">
+		<div class="koumoku_box">
 			<label for="task">項目</label> <select id="task" name="task" required>
 				<c:forEach var="task" items="${taskList}">
 					<option value="${task.listId}">${task.task}</option>
