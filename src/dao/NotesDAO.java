@@ -150,7 +150,7 @@ public class NotesDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Notes WHERE family_id = ? GROUP BY note_date_yearmonth ORDER BY note_date_yearmonth DESC";
+			String sql = "SELECT DISTINCT note_date_yearmonth FROM Notes WHERE family_id = ? ORDER BY note_date_yearmonth DESC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -162,10 +162,6 @@ public class NotesDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Notes record = new Notes();
-
-				record.setFamilyId(familyId);
-				record.setNoteId(rs.getInt("note_id"));
-				record.setNoteDate(rs.getString("note_date"));
 				record.setYearMonth(rs.getString("note_date_yearmonth"));
 
 				album.add(record);
@@ -444,6 +440,88 @@ public class NotesDAO {
 				result = true;
 			}
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+	public boolean deleteImageOne(int noteId) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "UPDATE Notes SET image_one=null WHERE note_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, noteId);
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+	public boolean deleteImageTwo(int noteId) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "UPDATE Notes SET image_two=null WHERE note_id=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, noteId);
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

@@ -29,13 +29,12 @@
 	<div class="right_buttons">
 		<button class="account-management"
 			onclick="window.location.href = '/A3/AccountServlet';">
-			アカウント管理<br>
-			<img src="images/ic007.png" width="65px" height="65px">
+			アカウント管理<br> <img src="images/ic007.png" width="65px"
+				height="65px">
 		</button>
 		<button class="logout"
 			onclick="window.location.href = '/A3/LogoutServlet';">
-			ログアウト<br>
-			<img src="images/935.png" width="65px" height="65px">
+			ログアウト<br> <img src="images/935.png" width="65px" height="65px">
 		</button>
 
 	</div>
@@ -55,40 +54,52 @@
 		<a href="/A3/RewardsServlet">ご褒美</a>
 	</div>
 	<h1 class="box">アルバム</h1>
+	<form>
 	<c:forEach var="category" items="${yearMonthList}">
 		<div class="accordion" onclick="toggleAccordion('accordion1')">
 			<c:out value="${category.yearMonth}" />
 		</div>
 
-		<div class="panel" id="accordion1">
-			<c:forEach var="e" items="${albumList}">
+			<div class="panel" id="accordion1">
+				<c:forEach var="e" items="${albumList}">
+					<c:if test="${category.yearMonth==e.yearMonth}">
 
-			<c:set var="imageOne" value="${e.imageOne}" />
-			<c:if test="${imageOne!=null}">
-			<table>
-				<tr>
-					<th><c:out value="${e.noteDate}"></c:out></th>
-				</tr>
-				<tr>
-					<td><img src="${imageOne}"  style="width:100%"></td>
-					<td><img src="${imageTwo}"  style="width:100%"></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="checkbox[]" id="ch"></td>
-				</tr>
-
-			</table>
-			</c:if>
-			</c:forEach>
-		</div>
-
+						<c:set var="imageOne" value="${e.imageOne}" />
+						<c:set var="imageTwo" value="${e.imageTwo}" />
+						<c:set var="noteId" value="${e.noteId}" />
+						<c:if test="${imageOne!=null}">
+							<table>
+								<tr>
+									<th><c:out value="${e.noteDate}"></c:out></th>
+								</tr>
+								<tr>
+									<td><img src="${imageOne}" style="width: 100%"></td>
+									<c:if test="${imageTwo!=null}">
+										<td><img src="${imageTwo}" style="width: 100%"></td>
+									</c:if>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="check_one[]" id="ch"
+										value="${noteId}"></td>
+									<c:if test="${imageTwo!=null}">
+										<td><input type="checkbox" name="check_two[]" id="ch"
+											value="${noteId}"></td>
+									</c:if>
+								</tr>
+							</table>
+						</c:if>
+					</c:if>
+				</c:forEach>
+			</div>
 	</c:forEach>
 
-	<button id="deleteButton" onclick="deleteChecked()"
-		class="custom-submit">削除</button>
+	<input type="submit" id="deleteButton" onclick="deleteChecked()"
+		class="custom-submit" value="削除">
+	</form>
 
 	<img class="back-button" src="images/603_1.png"
 		onClick="history.back();return false;">
+	<script src="js/delete.js"></script>
 </body>
 <script>
 	function toggleAccordion(panelId) {
