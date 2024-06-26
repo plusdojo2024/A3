@@ -53,7 +53,7 @@ window.onload = function() {
 	  ・半角数字、半角英字がそれぞれ一文字以上使用されている
 	  ・文字数が8~20字以内
 	  */
-		const password_regex = /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/;
+		const password_regex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[A-Z])[0-9a-zA-Z]{8,20}$/;
 		const name_regex = /^[0-9a-zA-Z]{8,20}$/;
 		const user_pass_value_checked_result = password_regex.test(formObj.user_pass.value);
 		if (!formObj.user_name.value.trim() || !formObj.user_pass.value.trim()) {
@@ -61,6 +61,9 @@ window.onload = function() {
 			return false;
 		} else if (!user_pass_value_checked_result) {
 			errorMessageObj.textContent = '※パスワードが要件を満たしていません。';
+			return false;
+		}else if(!formObj.user_name.value.match(/^[A-Za-z0-9]*$/)){
+			errorMessageObj.textContent = '名前は半角英数字にしてください。';
 			return false;
 		} else if (image_flag == 1) {
 			errorMessageObj.textContent = 'ファイルサイズは5MB以内にしてください。';
