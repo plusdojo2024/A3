@@ -210,8 +210,9 @@ public class TimeLogic {
 	}
 
 	public String changeFormat(String strDate) {
+		DateTimeFormatter dtfTemp = DateTimeFormatter.ofPattern("yyyy-MM-dd");//フォーマット指定
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy年MM月dd日");//フォーマット指定
-		LocalDate date = LocalDate.parse(strDate, DateTimeFormatter.BASIC_ISO_DATE);//Stringの日付を指定したフォーマットでLocalDateに変換
+		LocalDate date = LocalDate.parse(strDate, dtfTemp);//Stringの日付を指定したフォーマットでLocalDateに変換
 		String jpDate = date.format(dtf);
 
 		return jpDate;
