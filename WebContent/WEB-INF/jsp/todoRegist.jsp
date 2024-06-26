@@ -50,7 +50,7 @@
 	<p>${message}</p>
 	<p><sup style="color: red;">*</sup>は入力必須項目です。</p>
 	<table>
-	<form method="post" action="/A3/TodoRegistServlet">
+	<form method="post" action="/A3/TodoRegistServlet" id="form">
 	<tr>
 	<td>
 	<p>家事名：</p>
