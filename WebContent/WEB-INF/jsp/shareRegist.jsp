@@ -103,7 +103,7 @@
 		</div>
 
 		<div>
-			<input type="submit" class="submit_box" value="登録" name="regist">
+			<input type="submit" class="submit_box" value="登録" name="regist"  onClick="return Rcheck()">
 			<span id="error_message" style="right:24%;"> </span>
 		</div>
 
@@ -133,6 +133,6 @@
 		</script>
 		<c:out value="${msg}" />
 	</form>
-	<script src="js/shareRegist.js"></script>
+	<script src="js/share.js"></script>
 </body>
 </html>

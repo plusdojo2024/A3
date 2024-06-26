@@ -108,11 +108,11 @@
 		<c:set var="set_today" value = "${today}" />
 		<c:set var="set_end" value = "${endDay}" />
 			いつまで<input type="date" id="end_date" name=end_date min="${set_today}" max="${set_end}"
-			style="pointer-events: none"  required>
+			style="pointer-events: none">
 		</div>
 
-		<input type="submit" class="update_box" value="編集" name="submit">
-		<input type="submit"  class="delete_box" value="削除" name="submit">
+		<input type="submit" class="update_box" value="編集" name="submit" onClick="return Echeck()">
+		<input type="submit"  class="delete_box" value="削除" name="submit"onClick="return Check()">
 
 		<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 
@@ -134,5 +134,6 @@
 		</script>
 		<c:out value="${msg}" />
 	</form>
+	<script src="js/share.js"></script>
 </body>
 </html>
