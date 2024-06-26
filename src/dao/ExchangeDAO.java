@@ -131,7 +131,7 @@ public class ExchangeDAO
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 			//usersテーブルとエクスチェンジテーブルを結合
 			//自分の家族IDを家族IDで検索
-			String sql = "SELECT E.REWARD, E.EXCHANGE_DATE, E.UID, U.NAME, FROM EXCHANGE as E JOIN USERS as U ON U.UID = E.UID WHERE U.FAMILY_ID = ?";
+			String sql = "SELECT * FROM EXCHANGE as E JOIN USERS as U ON U.UID = E.UID WHERE FAMILY_ID = ?";
 
 			System.out.println(sql);
 			PreparedStatement pStmt = conn.prepareStatement(sql);

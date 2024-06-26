@@ -41,8 +41,8 @@ public class ExchangeHistoryServlet extends HttpServlet {
 		ec.setExchangeDate("テスト日付");
 		ec.setName("テスト名前");
 		ec.setReward("テスト報酬");
-		exchangeList.add(ec);
-		*/
+
+*/
 
 		session.setAttribute("exchangeList", exchangeList);
 
