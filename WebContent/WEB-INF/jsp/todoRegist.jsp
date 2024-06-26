@@ -56,7 +56,7 @@
 	<p>家事名：</p>
 	</td>
 	<td class="view_box">
-	<input type="text" name="task" placeholder="例：洗濯物を干す"><sup style="color: red;">*</sup><br><br>
+	<input type="text" name="task" placeholder="例：洗濯物を干す" required><sup style="color: red;">*</sup><br><br>
 	</td>
 	</tr>
 	<tr>
@@ -108,9 +108,11 @@
 	</form>
 	</table>
 	</div>
+	<span id="error_message" style="right:24%;"> </span>
 </main>
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 <script src="js/todo.js"></script>
+<script src="js/todoRegist.js"></script>
 </div>
 </body>
 </html>

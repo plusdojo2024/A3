@@ -51,79 +51,115 @@
 	<h1 class="title_box">やることリスト</h1>
 	<p class="message">${message}</p>
 
+	<h3 class="c_h">カテゴリー</h3>
 	<div class="ul">
 	<ul>
-		<a href="#wash"><li>洗濯</li></a>
-		<a href="#garbage"><li>ごみ捨て</li></a>
-		<a href="#clean"><li>掃除</li></a>
-		<a href="#cooking"><li>料理</li></a>
-		<a href="#shopping"><li>買い物</li></a>
-		<a href="#plus"><li>日用品の補充</li></a>
-		<a href="#child"><li>子育て</li></a>
-		<a href="#other"><li>その他</li></a>
+		<a href="#wash" class="a"><li>洗濯</li></a>
+		<a href="#garbage" class="a"><li>ごみ捨て</li></a>
+		<a href="#clean" class="a"><li>掃除</li></a>
+		<a href="#cooking" class="a"><li>料理</li></a>
+		<a href="#shopping" class="a"><li>買い物</li></a>
+		<a href="#plus" class="a"><li>日用品の補充</li></a>
+		<a href="#child" class="a"><li>子育て</li></a>
+		<a href="#other" class="a"><li>その他</li></a>
 	</ul>
 	</div>
 
+	<div class="tl">
 	<h3 id="wash">洗濯</h3>
 	<c:forEach var="e" items="${todowash}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul>
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
 
 	<h3 id="garbage">ごみ捨て</h3>
 	<c:forEach var="e" items="${todogarbage}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul>
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
 
 	<h3 id="clean">掃除</h3>
 	<c:forEach var="e" items="${todoclean}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul>
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
 
 	<h3 id="cooking">料理</h3>
 	<c:forEach var="e" items="${todocooking}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul class="c_r">
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
 
 	<h3 id="shopping">買い物</h3>
 	<c:forEach var="e" items="${todoshopping}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul class="c_s">
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
 
 	<h3 id="plus">日用品の補充</h3>
 	<c:forEach var="e" items="${todoplus}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul>
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
 
 	<h3 id="child">子育て</h3>
 	<c:forEach var="e" items="${todochild}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul>
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
 
 	<h3 id="other">その他</h3>
 	<c:forEach var="e" items="${todoother}">
 	<c:set var="task" value="${e.task}"></c:set>
-		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button>
-		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button><br>
+	<ul>
+	<li>
+		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+	</li>
+	</ul>
 	</c:forEach>
+	</div>
 
 	<button onclick="window.location.href= '/A3/TodoRegistServlet'"  class="r_btn">家事登録</button><br>
 	<button onclick="window.location.href= '/A3/CalendarServlet'"  class="c_btn">カレンダー</button><br>
 </main>
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
+<a href="#" class="top"><img src="images/top.png" class="top_btn"></a>
 <script src="js/main.js"></script>
 </body>
 </html>

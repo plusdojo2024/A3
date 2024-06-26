@@ -49,6 +49,7 @@
     cursor: pointer;
     /* カーソルをポインターに設定 */
     font-size: 22px;
+    margin-left: 28%;
 }
 
 .btn {
@@ -118,18 +119,29 @@
 .ul {
 	position: absolute;
 	right: 10%;
-	top: 30%;
+	top: 37%;
+	border: solid 3px #95d4aa;
+	padding-right: 50px;
+	color: white;
+	background-color: #95d4aa;
+	border-radius: 30px;
+	position: fixed;
+}
+
+.ul li {
+	margin-bottom: 10px;
 }
 
 ul {
 	padding-left: 0;
+
 }
 
 li {
 	list-style: none;
 }
 
-a,a:hover,a:visited{
+.a,.a:hover,.a:visited,.top,.top:hover,.top:visited{
 	text-decoration: none;
 	color: inherit;
 }
@@ -146,4 +158,19 @@ h3 {
     justify-content: center;
     align-items: center;
     margin-top: 0%;
+}
+
+.c_h {
+	position: absolute;
+	right: 10%;
+	top: 31.5%;
+	position: fixed;
+}
+
+.top_btn {
+	width: 150px; /* 幅 */
+    height: 150px; /* 高さ */
+    position: fixed; /* ページスクロールに関係なく固定する */
+    bottom: 0px; /* 下からの距離 */
+    right: 25%; /* 右からの距離 */
 }
