@@ -57,7 +57,7 @@
 	<form method="post" action="/A3/AlbumServlet">
 	<c:forEach var="category" items="${yearMonthList}">
 		<div class="accordion" onclick="toggleAccordion('accordion1')">
-			<c:out value="${category.yearMonth}" />
+			<br><c:out value="${category.yearMonth}" />
 		</div>
 
 			<div class="panel" id="accordion1">
@@ -73,7 +73,7 @@
 									<th><c:out value="${e.noteDate}"></c:out></th>
 								</tr>
 								<tr>
-									<td><img src="${imageOne}" style="width: 100%"></td>
+									<td><img src="${imageOne}" style="width: 100%" class="zoomable-image" onclick="zoomImage(this)"></td>
 									<c:if test="${imageTwo!=null}">
 										<td><img src="${imageTwo}" style="width: 100%"></td>
 									</c:if>

@@ -17,7 +17,7 @@
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${dbUser.havePoint}" />
+			<p style="font-size:30px;"><c:out value="${dbUser.havePoint}" /> P</p>
 		</div>
 	</div>
 
@@ -49,41 +49,42 @@
 	<br>
 	<br>
 	<br>
-<!--   	<div class="sidebar">
+   	<div class="sidebar">
 		<a href="/A3/HomeServlet">ホーム</a> <a href="/A3/TodoServlet">やることリスト</a>
 		<a href="/A3/NoteServlet">引継ぎノート</a> <a href="/A3/AlbumServlet">アルバム</a>
 		<a href="/A3/RewardsServlet">ご褒美</a>
-	</div> -->
+	</div>
 
 	<br>
 	<br>
 	<br>
 	<br>
-	<h1 class="box">当日のリスト</h1>
+	<h1 class="box">やることリスト</h1>
 	<br>
 
-	<h2 class="box2">やることリスト</h2>
-	<table>
-		<c:forEach var="todo" items="${todayList}">
-			<c:set var="task" value="${todo.task}"></c:set>
-			<c:if test="${todo.complete==0}">
-				<form id="form" method="post" action="/A3//HomeServlet">
-				<tr>
-					<td><input type="submit" value="${task}" class="custom-submit"></td>
-				</tr>
-				<span><input type="hidden" name="todo_id" value="${todo.todoId}"></span>
-				</form>
-			</c:if>
-			<c:if test="${todo.complete==1}">
-				<tr>
-					<td id="line">${task}</td>
-				</tr>
-			</c:if>
-		</c:forEach>
-	</table>
+	<h2 class="box2">今日やること</h2>
+<table class="content">
+    <c:forEach var="todo" items="${todayList}">
+        <tr>
+            <c:choose>
+                <c:when test="${todo.complete == 0}">
+                    <td>
+                        <form id="form-${todo.todoId}" method="post" action="/A3/HomeServlet">
+                            <input type="hidden" name="todo_id" value="${todo.todoId}">
+                            <input type="submit" value="${todo.task}" id="task" >
+                        </form>
+                    </td>
+                </c:when>
+                <c:when test="${todo.complete == 1}">
+                    <td id="line" class="box_task">${todo.task}</td>
+                </c:when>
+            </c:choose>
+        </tr>
+    </c:forEach>
+</table>
 
 	<h2 class="box3">前日忘れたこと</h2>
-	<table>
+ 	<table  class="y_box">
 		<c:forEach var="task" items="${yesterdayList}">
 			<tr>
 				<td><c:out value="${task.task}" /></td>
@@ -91,16 +92,19 @@
 		</c:forEach>
 	</table>
 
-<!-- 	<h2 class="box4">前日の引継ぎノート</h2>
+<!-- 	<p class="y_box">キッチン掃除</p>
+	<p class="y_box1">ゴミ出し</p> -->
+
+ 	<h2 class="box4">前日の引継ぎノート</h2>
 	<div class="notes">
 
-		<c:if test="${note == null}">
+	<!--	<c:if test="${note == null}">
 			<p>前日の引継ぎノートのデータはありません。</p>
 		</c:if>
 		<c:if test="${note != null }">
 			<c:out value="${note.note}" />
-		</c:if>
--->
+		</c:if> -->
+	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p>
 
 	</div>
 </body>

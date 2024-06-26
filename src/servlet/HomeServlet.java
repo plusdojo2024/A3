@@ -73,7 +73,7 @@ public class HomeServlet extends HttpServlet {
 
 		//今日のやることリスト
 		request.setAttribute("todayList", todayList);
-		request.setAttribute("yseterdayList", yesterdayList);
+		request.setAttribute("yesterdayList", yesterdayList);
 
 
 

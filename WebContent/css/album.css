@@ -24,6 +24,7 @@
 	overflow: hidden;
 	border-bottom: 1px solid #ccc;
 	width: 60%;
+	height:40%;
 	position:absolute;
 	top:330px;
 	left:400px;
@@ -36,9 +37,9 @@
 
     table {
         border-collapse: collapse;
-        width: calc(20% - 20px); /* テーブルの幅を20%に設定し、間隔を除く */
-        margin-right: 20px; /* テーブル間の間隔を設定 */
-        margin-bottom: 20px; /* テーブル下の余白を設定 */
+        width: calc(40% - 20px); /* テーブルの幅を20%に設定し、間隔を除く */
+        margin-right: 40px; /* テーブル間の間隔を設定 */
+        margin-bottom: 40px; /* テーブル下の余白を設定 */
     }
 
     th, td {
@@ -101,3 +102,11 @@
 .custom-submit:hover {
     background-color: #ff5f3c; /* ホバー時の背景色 */
 }
+
+    .zoomable-image {
+        transition: transform 0.3s ease; /* 変形のアニメーションを追加 */
+    }
+    .zoomable-image:hover {
+        transform: scale(1.5); /* ホバー時に1.2倍に拡大 */
+        cursor: pointer; /* カーソルをポインターに変更 */
+    }
