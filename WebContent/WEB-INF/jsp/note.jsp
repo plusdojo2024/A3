@@ -43,20 +43,24 @@
 </div>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+<div class="body">
+	<br><br><br><br>
+	<div class="sidebar">
+        <a href="/A3/HomeServlet">ホーム</a>
+        <a href="/A3/TodoServlet">やることリスト</a>
+        <a href="/A3/NoteServlet">引継ぎノート</a>
+        <a href="/A3/AlbumServlet">アルバム</a>
+        <a href="/A3/RewardsServlet">ご褒美</a>
+    </div>
 	<div id="main">
 		<h2>
-			<div id="title">引継ぎノート</div>
+			<div id="title" class="box">引継ぎノート</div>
 		</h2>
 		<c:set var="day" value="${date}" />
 
 		<form method="post" action="/A3/NoteServlet"
 			enctype="multipart/form-data" id="form">
-			<table>
+			<table class="note">
 				<tr>
 					<td><label><p>${day}</p> <input type="text"
 							name="note_title" maxlength="20" placeholder="タイトルを記入" required>

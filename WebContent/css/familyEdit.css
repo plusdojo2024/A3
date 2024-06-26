@@ -40,8 +40,8 @@
     border-radius: 30px; /* 角丸 */
     cursor: pointer; /* カーソルをポインターに変更 */
     position:absolute;
-    top:600px;
-    left:150px
+    top:280px;
+    left:-550px
 
 }
 
@@ -60,3 +60,21 @@
 	top:280px;
 	left:700px;
 }
+
+/* -----------------------
+テーブル関連
+-------------------------*/
+.tb
+{
+	position:absolute;
+	top:300px;
+	left:450px;
+}
+
+
+
+
+
+
+
+

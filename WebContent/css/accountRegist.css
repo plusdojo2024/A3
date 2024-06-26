@@ -121,3 +121,31 @@
 	top:600px;
 	left:700px;
 }
+
+/* -----------------------
+家族の名前のボタン
+-------------------------*/
+.family_name
+{
+	width: 15em;
+  	height:4em;
+  	font-size: 16px;
+  	border-radius: 15px;
+  	margin: 3px 0;
+  	background-color: #5cbf6b;
+  	color: #FFFFFF;
+  	border: none;
+}
+
+.family_name:hover
+{
+	background-color: #45a049;
+}
+
+.family_list
+{
+	position:absolute;
+	top:300px;
+	left:450px;
+}
+

@@ -41,10 +41,16 @@
 <br>
 <br>
 <br>
-<br>
+	<div class="sidebar">
+        <a href="/A3/HomeServlet">ホーム</a>
+        <a href="/A3/TodoServlet">やることリスト</a>
+        <a href="/A3/NoteServlet">引継ぎノート</a>
+        <a href="/A3/AlbumServlet">アルバム</a>
+        <a href="/A3/RewardsServlet">ご褒美</a>
+    </div>
 
 <br>
-	<h2>履歴</h2>
+	<h2 class="box">履歴</h2>
 							<c:out value="${message.message}" />
 
 		<c:forEach var="a" items="${noteList }" >

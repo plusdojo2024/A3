@@ -35,43 +35,43 @@
 </div>
 </head>
 	<br><br><br><br><br><br>
-<!-- 	<div class="sidebar">
+ 	<div class="sidebar">
         <a href="/A3/HomeServlet">ホーム</a>
         <a href="/A3/TodoServlet">やることリスト</a>
         <a href="/A3/NoteServlet">引継ぎノート</a>
         <a href="/A3/AlbumServlet">アルバム</a>
         <a href="/A3/RewardsServlet">ご褒美</a>
-    </div> -->
-<h1>家族情報変更</h1>
+    </div>
+<h1 class="box">家族情報変更</h1>
 <form id="form" method="post"
 		action="/A3//FamilyEditServlet">
-		<table>
+		<table class="tb">
 		<c:set var="family_name" value="${userNoHash.familyName}" />
 		<c:set var="mail" value="${userNoHash.mail}" />
 
 			<tr>
 				<td><label>家族名<br> <input type="text"
-						name="family_name" value="${family_name}" maxlength="20">
+						name="family_name" value="${family_name}" maxlength="20" style="width:300px; height:30px">
 				</label></td>
 
 			</tr>
 			<tr>
 				<td><label>メールアドレス<br> <input type="email"
-						name="mail"  value="${mail}" maxlength="64">
+						name="mail"  value="${mail}" maxlength="64" style="width:300px; height:30px">
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>家族パスワード<br> <input type="password"
-						name="family_pass" maxlength="20"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						name="family_pass" maxlength="20" style="width:300px; height:30px"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
 				<td><label>家族パスワード確認<br> <input type="password"
-						id = "pass_check" maxlength="20" name="pass_check"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
+						id = "pass_check" maxlength="20" name="pass_check" style="width:300px; height:30px"><span class="pass_warn">8文字以上20文字以内の大文字を一文字以上含む半角英数字を入力してください<br></span>
 				</label></td>
 			<tr>
 			<tr>
-				<td><input type="submit" name="submit" value="変更"> <span
+				<td><input type="submit" class="custom-submit" name="submit" value="変更"> <span
 					id="error_message"  style="right:24%"></span>
 					<p class="error"><c:out value="${message.title}" />  <c:out value="${message.message}" /></p>
 					</td>
@@ -79,5 +79,8 @@
 		</table>
 	</form>
 	<script src="js/familyEdit.js"></script>
+
+	<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
+
 </body>
 </html>
