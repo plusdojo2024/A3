@@ -42,7 +42,7 @@ public class RewardsServlet extends HttpServlet {
 		request.setAttribute("rewardsList", rewardsList);
 
         //準備出来たらjspに飛ばす
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -91,7 +91,7 @@ public class RewardsServlet extends HttpServlet {
 			          System.out.println("失敗だよ");
 				    }
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 					dispatcher.forward(request, response);
 
 
@@ -142,7 +142,7 @@ public class RewardsServlet extends HttpServlet {
 			          System.out.println("失敗だよ");
 				    }
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 				dispatcher.forward(request, response);
 
 				}

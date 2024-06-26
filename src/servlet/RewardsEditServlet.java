@@ -118,7 +118,7 @@ public class RewardsEditServlet extends HttpServlet {
 				request.setAttribute("rewardsList", rewardsList);
 
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 				dispatcher.forward(request, response);
 
 			//----------------------------------------------------------------------------------------------------------------------
@@ -162,7 +162,7 @@ public class RewardsEditServlet extends HttpServlet {
 					ArrayList<Rewards> rewardsList = dao1.allSelect(familyId, role, userId);
 					request.setAttribute("rewardsList", rewardsList);
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 					dispatcher.forward(request, response);
 
 			//--------------------------------------------------------------------------------------------------------------------
@@ -231,7 +231,7 @@ public class RewardsEditServlet extends HttpServlet {
 				request.setAttribute("rewardsList", rewardsList);
 
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 			dispatcher.forward(request, response);
 
 		//----------------------------------------------------------------------------------------------------------------
@@ -284,7 +284,7 @@ public class RewardsEditServlet extends HttpServlet {
 
 
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 			dispatcher.forward(request, response);
 		}
 

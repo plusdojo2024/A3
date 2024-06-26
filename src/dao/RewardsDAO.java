@@ -40,7 +40,8 @@ public class RewardsDAO {
 					+ "U.NAME "
 					+ "FROM REWARDS as R "
 					+ "JOIN USERS as U ON U.UID = R.UID "
-					+ "WHERE U.FAMILY_ID = ? ";
+					+ "WHERE U.FAMILY_ID = ?"
+					+ "ORDER BY R.REWARD_ID desc";
 					if(role==0) {
 						sql+= "and R.UID = ? "; //権限が子の場合は表示情報を個人に絞る
 					}

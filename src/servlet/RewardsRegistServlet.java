@@ -74,7 +74,7 @@ public class RewardsRegistServlet extends HttpServlet {
 		request.setAttribute("rewardsList", rewardsList);
 
 
-	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewardsAdult.jsp");
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/rewards.jsp");
 	dispatcher.forward(request, response);
 
 	}
