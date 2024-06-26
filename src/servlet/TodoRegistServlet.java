@@ -80,6 +80,23 @@ public class TodoRegistServlet extends HttpServlet {
 		List<TodoList> todoview = tlDao.view(familyID);
 		request.setAttribute("todoview", todoview);
 
+		List<TodoList> todowash = tlDao.viewWash(familyID, "洗濯");
+		request.setAttribute("todowash", todowash);
+		List<TodoList> todogarbage = tlDao.viewGarbage(familyID, "ごみ捨て");
+		request.setAttribute("todogarbage", todogarbage);
+		List<TodoList> todoclean = tlDao.viewClean(familyID, "掃除");
+		request.setAttribute("todoclean", todoclean);
+		List<TodoList> todocooking = tlDao.viewCooking(familyID, "料理");
+		request.setAttribute("todocooking", todocooking);
+		List<TodoList> todoshopping = tlDao.viewShopping(familyID, "買い物");
+		request.setAttribute("todoshopping", todoshopping);
+		List<TodoList> todoplus = tlDao.viewPlus(familyID, "日用品の補充");
+		request.setAttribute("todoplus", todoplus);
+		List<TodoList> todochild = tlDao.viewChild(familyID, "子育て");
+		request.setAttribute("todochild", todochild);
+		List<TodoList> todoother = tlDao.viewOther(familyID, "その他");
+		request.setAttribute("todoother", todoother);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/todo.jsp");
 		dispatcher.forward(request, response);
 	}
