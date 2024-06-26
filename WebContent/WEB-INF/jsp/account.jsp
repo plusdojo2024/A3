@@ -20,7 +20,7 @@
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${dbUser.havePoint}" />
+			<c:out value="${dbUser.havePoint} P" />
 		</div>
 	</div>
 
@@ -29,7 +29,7 @@
 	</div>
 
     <div class="right_buttons">
-        <button class="account-management"
+        <button class="account-management" P
             onclick="window.location.href = '/A3/AccountServlet';">アカウント管理<br><img src="images/ic007.png" width="65px" height="65px"></button>
         <button class="logout"
             onclick="window.location.href = '/A3/LogoutServlet';">ログアウト<br><img src="images/935.png" width="65px" height="65px"></button>

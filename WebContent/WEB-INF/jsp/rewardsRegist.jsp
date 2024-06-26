@@ -17,7 +17,7 @@
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${dbUser.havePoint}" />
+			<c:out value="${dbUser.havePoint} P" />
 		</div>
 	</div>
 
@@ -56,19 +56,28 @@
 <br>
 <br>
 <div class = "rewards_title">ご褒美登録</div>
-<div class="required">※は必須項目です</div>
+<div class="required">※全て必須項目です</div>
 	<form method="post" action="/A3/RewardsRegistServlet">
-		<input type="text" name="reward" placeholder="ご褒美"><br>
-		<input type="text" name="reqPoint" placeholder="付与ポイント"><br>
-		<select name="name">
+	<div class="ex_form">
+		<input type="text" name="reward" placeholder="ご褒美" required><br>
+	</div>
+	<div class="ex_form">
+		<input type="number" name="reqPoint" placeholder="付与ポイント" required min="1" max="1000"><br>
+	</div>
+	<div class="ex_form">
+		<select name="name" required class="name">
+			<option value="">対象者を選択してください</option>
 			<c:forEach var="e" items="${ud}" >
 				<option value="${e.uid}">${e.name}</option>
 			</c:forEach>
 		</select>
+	</div>
 	<!-- <input type="submit" name="regist" value="登録" id="regist"><br> -->
-<br>
+	<div class="ex_form">
 	<input type="submit" class = "reregi-button" name="regist" value="登録" onclick="return registBt()"><br>
+	</div>
 	</form>
+
 
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 

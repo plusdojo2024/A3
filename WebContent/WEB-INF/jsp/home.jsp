@@ -17,7 +17,7 @@
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<p style="font-size:30px;"><c:out value="${dbUser.havePoint}" /> P</p>
+			<p style="font-size:20px;"><c:out value="${dbUser.havePoint} P" /> </p>
 		</div>
 	</div>
 

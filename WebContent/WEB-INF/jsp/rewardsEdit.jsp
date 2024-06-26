@@ -17,7 +17,7 @@
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${dbUser.havePoint}" />
+			<c:out value="${dbUser.havePoint} P" />
 		</div>
 	</div>
 
@@ -52,22 +52,31 @@
 <br>
 <br>
 <br>
+
 <div class="rewards_title">ご褒美編集</div>
 <form method="post" action="/A3/RewardsEditServlet">
-	<input type="text" name="reward" value="${param.reward}"><br>
-	<input type="text" name="req_point" value="${param.req_point}"><br>
-	<select name="name">
-		<c:forEach var="e" items="${ud}" >
-			<option value="${e.uid}">${e.name}</option>
-		</c:forEach>
-	</select><br>
-	<input type="hidden" name="reward_id" value="${param.reward_id}">
-	<input type="hidden" name="reward_date" value="${param.reward_date}">
-	<input type="hidden" name="re" value="${param.re}">
-	<input type="hidden" name="u_id" value="${param.u_id}">
-<input class="green_edit_button" type="submit" name="edit2" value="更新" onclick="return editBt()">　
-
-
+<div class="required">※全て必須項目です</div>
+	<div class="ex_form">
+		<input type="text" name="reward" value="${param.reward}"><br>
+	</div>
+	<div class="ex_form">
+		<input type="number" name="req_point" value="${param.req_point}" required min="1" max="1000"><br>
+	</div>
+		<div class="ex_form">
+			<select name="name" required class="name">
+				<option value="">対象者を選択してください</option>
+					<c:forEach var="e" items="${ud}" >
+						<option value="${e.uid}">${e.name}</option>
+					</c:forEach>
+			</select><br>
+		</div>
+		<input type="hidden" name="reward_id" value="${param.reward_id}">
+		<input type="hidden" name="reward_date" value="${param.reward_date}">
+		<input type="hidden" name="re" value="${param.re}">
+		<input type="hidden" name="u_id" value="${param.u_id}">
+	<div class="ex_form">
+		<input class="green_edit_button" type="submit" name="edit2" value="更新" onclick="return editBt()">　
+	</div>
 </form>
 
 <script>

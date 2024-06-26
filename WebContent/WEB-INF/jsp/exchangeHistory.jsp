@@ -19,7 +19,7 @@
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${dbUser.havePoint}" />
+			<c:out value="${dbUser.havePoint} P" />
 		</div>
 	</div>
 
@@ -49,9 +49,13 @@
 
 	<br>
 	<br>
+	<br>
+	<br>
+	<br>
 <div class = "rewards_title">交換履歴</div>
+	<div class="ex">
 	<c:forEach var="e" items="${exchangeList}">
-		<div>
+		<div class="exchange">
 			<div>
 				<c:out value="${e.exchangeDate}" />
 			</div>
@@ -65,6 +69,7 @@
 			</div>
 		</div>
 	</c:forEach>
+	</div>
 
 	<img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
 </body>
