@@ -42,9 +42,10 @@ public class AlbumServlet extends HttpServlet {
 
 		List<Notes> albumList = nDao.getAlbumAllByFamilyId(dbUser.getFamilyId());
 
+
 		List<Notes> yearMonthList = nDao.getAlbumCategory(dbUser.getFamilyId());
-		System.out.println("アルバム："+albumList.size());
-		System.out.println("年月："+yearMonthList.size());
+		//System.out.println("アルバム："+albumList.size());
+		//System.out.println("年月："+yearMonthList.size());
 
 
 		request.setAttribute("yearMonthList", yearMonthList);//アルバムセット
@@ -62,13 +63,64 @@ public class AlbumServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+
+		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
+
 		//文字化け禁止
 		request.setCharacterEncoding("UTF-8");
 
+		//1枚目の画像のnoteID
+		String[] strImageOne = request.getParameterValues("check_one[]");
 
-		// アルバムページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/album.jsp");
-		dispatcher.forward(request, response);
+		//2枚目の画像のnoteID
+		String[] strImageTwo = request.getParameterValues("check_two[]");
+
+		//何も選択していなかったら
+		if(strImageOne==null && strImageTwo==null) {
+			//何もせずAlbumにリダイレクトする
+			response.sendRedirect("/A3/AlbumServlet");
+			return;
+		}else {
+			if(strImageOne!=null) {
+				//strImageOneと同じ要素数のint型配列宣言
+				int[] imageOne = new int[strImageOne.length];
+
+				//Stringの配列をintに変換
+				for (int i = 0; i < strImageOne.length; i++) {
+					imageOne[i] = Integer.parseInt(strImageOne[i]);
+				}
+				NotesDAO nDao = new NotesDAO();
+				for(int noteId:imageOne) {
+					if(nDao.deleteImageOne(noteId)) {
+						System.out.println("画像1の削除が成功しました。");
+					}else {
+						System.out.println("画像1の削除が失敗しました。");
+					}
+				}
+			}
+
+			if(strImageTwo!=null) {
+				//strImageOneと同じ要素数のint型配列宣言
+				int[] imageTwo = new int[strImageTwo.length];
+
+				//Stringの配列をintに変換
+				for (int i = 0; i < strImageTwo.length; i++) {
+					imageTwo[i] = Integer.parseInt(strImageTwo[i]);
+				}
+				NotesDAO nDao = new NotesDAO();
+				for(int noteId:imageTwo) {
+					if(nDao.deleteImageTwo(noteId)) {
+						System.out.println("画像2の削除が成功しました。");
+					}else {
+						System.out.println("画像2の削除が失敗しました。");
+					}
+				}
+			}
+
+			//Albumにリダイレクトする
+			response.sendRedirect("/A3/AlbumServlet");
+		}
 	}
 
 }

@@ -66,7 +66,7 @@ input[type="text"] {
     cursor: pointer; /* カーソルをポインターに変更 */
     position: absolute;
     top: 30%;
-    left: 25%;
+    left: 20%;
 }
 
 .reregi-submit :hover {
@@ -103,6 +103,31 @@ input[type="text"] {
 
 
 
+/*履歴ボタン---------------------------------------*/
+
+.rehis-submit {
+    background-color: #7dcd85; /* ボタンの背景色 */
+    color: #ffffff; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    margin: 10px 45%;
+    border: none; /* ボーダーなし */
+    border-radius: 30px; /* 角丸 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    position: absolute;
+    top: 30%;
+    left: 33%;
+}
+
+.reregi-submit :hover {
+    background-color: #45a049; /* ホバー時の背景色 */
+}
+
+/*-------------------------------------------------*/
+
+
+
 /*リクエストボタン---------------------------------------*/
 
 .req_button {
@@ -129,17 +154,19 @@ input[type="text"] {
 /*リクエスト中---------------------------------------*/
 
 .req_now {
-	background-color: white;
+ 	background-color: white;
     color: #00bf63;
-    border-radius: 30px; /* 角を丸くする */
+    display: flex;
+    justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 23%;
-    top: 25%;
-    font-size: 35px;
-    margin: 10px 25px 0px 25px;
-    width: 400px;
-    height: 80px;
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    margin: auto;
+    border: none; /* ボーダーなし */
+    border-radius: 30px; /* 角丸 */
+    position: center; /* 位置を真ん中に設定 */
+    text-align: center;
 }
 
 /*-------------------------------------------------*/
@@ -251,11 +278,11 @@ input[type="text"] {
 
 
 
-/*ご褒美項目の位置調整-----------------------------------*/
+/*ご褒美一覧の位置調整-----------------------------------*/
 
 .rewards{
 	display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
    	text-align: center;
 	font-size: 25px;
@@ -281,7 +308,14 @@ input[type="text"] {
 
 /*ご褒美項目の位置調整-----------------------------------*/
 
-.name {
+.reward {
+	background-color: #95d4aa;
+	border: none; /* ボーダーを無しに設定 */
+    color: #ffffff;
+/*     width:200px; 箱の幅調整 */
+/*     height:125px; 箱の高さ調整 */
+    margin: auto auto 20px auto;
+    border-radius: 15px; /* 角を丸くする */
     position: relative;
     top: 13px;
 }
@@ -294,6 +328,20 @@ input[type="text"] {
 
 .required {
 	color: #ED1A3D;
+}
+
+/*-------------------------------------------------*/
+
+
+
+/*操作完了メッセージ---------------------------------------*/
+
+.message {
+	color: #ED1A3D;
+	position: absolute;
+    left: 29%;
+    top: 40%;
+    font-size: 20px;
 }
 
 /*-------------------------------------------------*/

@@ -1,14 +1,3 @@
-body
-{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
-}
-
-
-
-
 /* -----------------------
 タイトルのボックス
 -------------------------*/
@@ -24,7 +13,64 @@ body
     justify-content: center;
     align-items: center;
     font-size: 18px;
+    position:absolute;
     margin: 0 0;
+    top:250px;
+    left:750px;
+
+}
+
+/* -----------------------
+担当者のボックス
+-------------------------*/
+.t_box
+{
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position:absolute;
+    margin: 0 0;
+    top:250px;
+    left:900px;
+
+}
+
+/* -----------------------
+繰り返し
+-------------------------*/
+.k_box
+{
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position:absolute;
+    margin: 0 0;
+    top:300px;
+    left:750px;
+
+}
+
+/* -----------------------
+曜日
+-------------------------*/
+.y_box
+{
+    width: 200px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position:absolute;
+    margin: 0 0;
+    top:500px;
+    left:800px;
+
 }
 /* -----------------------
 入力項目のボックス
@@ -41,7 +87,30 @@ body
     justify-content: center;
     align-items: center;
     font-size: 14px;
+    position:absolute;
     margin: 10px 0;
+    top:350px;
+    left:750px;
+}
+/* -----------------------
+入力項目のボックス
+-------------------------*/
+.youbi_box
+{
+    background-color: #7dcd85;
+    color: white;
+    width: 200px;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position:absolute;
+    margin: 10px 0;
+    top:420px;
+    left:750px;
 }
 /* -----------------------
 担当者のボックス
@@ -58,7 +127,10 @@ body
     justify-content: center;
     align-items: center;
     font-size: 14px;
+    position:absolute;
     margin: 10px 0;
+    top:150px;
+    left:750px;
 }
 /* -----------------------
 要録ボタンのボックス
@@ -76,7 +148,10 @@ body
     justify-content: center;
     align-items: center;
     font-size: 14px;
+    position:absolute;
     margin: 10px 30px;
+    top:700px;
+    left:750px;
 }
 /* -----------------------
 削除のボックス
@@ -93,7 +168,31 @@ body
     justify-content: center;
     align-items: center;
     font-size: 14px;
+    position:absolute;
     margin: 0 0;
+    top:700px;
+    left:900px;
+}
+
+/* -----------------------
+編集のボックス
+-------------------------*/
+.update_box
+{
+    background-color: #7dcd85;
+    color: white;
+    width: 130px;
+    height: 60px;
+    border-radius: 15px;
+    /* 角を丸くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    position:absolute;
+    margin: 0 0;
+    top:700px;
+    left:750px;
 }
 
 /* -----------------------
@@ -111,17 +210,25 @@ body
     justify-content: center;
     align-items: center;
     font-size: 18px;
+    position:absolute;
     margin: 0 0;
-}
-/* -----------------------
-必須マーク
--------------------------*/
-.required::after {
-  content: " *";
-  color: red;
-  vertical-align: middle;
+    top:200px;
+    left:750px;
 }
 
+.task_box
+{
+    width: 200px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position:absolute;
+    margin: 0 0;
+    top:200px;
+    left:750px;
+
+}
 
 
 

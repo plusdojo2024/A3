@@ -56,10 +56,10 @@ public class RewardsRegistServlet extends HttpServlet {
        //デバッグ用
        if(result==1) {
     	   System.out.println("成功だよ");
-    	   request.setAttribute("msg", "成功だよ");
+    	   request.setAttribute("msg", "ご褒美の登録が完了しました！");
        }else {
     	   System.out.println("失敗だよ");
-    	   request.setAttribute("msg", "失敗だよ");
+    	   request.setAttribute("msg", "ご褒美の登録が出来ませんでした");
        }
 
        //sessionを使いますよという宣言
