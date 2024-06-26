@@ -46,8 +46,8 @@
 <form id="form" method="post"
 		action="/A3//FamilyEditServlet">
 		<table class="tb">
-		<c:set var="family_name" value="${userNoHash.familyName}" />
-		<c:set var="mail" value="${userNoHash.mail}" />
+		<c:set var="family_name" value="${user.familyName}" />
+		<c:set var="mail" value="${user.mail}" />
 
 			<tr>
 				<td><label>家族名<br> <input type="text"
