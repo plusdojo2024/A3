@@ -431,4 +431,428 @@ public class TodoListDAO {
 		}
 		return record;
 	}
+
+	public List<TodoList> viewWash(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public List<TodoList> viewGarbage(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public List<TodoList> viewClean(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public List<TodoList> viewCooking(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public List<TodoList> viewShopping(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public List<TodoList> viewPlus(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public List<TodoList> viewChild(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
+
+	public List<TodoList> viewOther(int familyId, String category) {
+		Connection conn = null;
+		ArrayList<TodoList> todoview = new ArrayList<TodoList>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver"); //運転手を雇っている
+
+			// データベースに接続する　connにはどこのデータベースに繋ぐかの地図がいる。通行証であるidとpw(h2に接続するために必要な情報)も入っている
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM TODO_LIST WHERE FAMILY_ID=? AND CATEGORY=? ORDER BY LIST_ID";
+			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
+			pStmt.setInt(1, familyId);
+			pStmt.setString(2, category);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				TodoList record = new TodoList();
+				record.setFamilyId(rs.getInt("family_id"));
+				record.setListId(rs.getInt("list_id"));
+				record.setGivePoint(rs.getInt("give_point"));
+				record.setMemo(rs.getString("memo"));
+				record.setListDate(rs.getString("list_date"));
+				record.setTodoDelete(rs.getInt("todo_delete"));
+				record.setCategory(rs.getString("category"));
+				record.setTask(rs.getString("task"));
+
+				todoview.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			todoview = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			todoview = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					todoview = null;
+				}
+			}
+		}
+		return todoview;
+	}
 }
