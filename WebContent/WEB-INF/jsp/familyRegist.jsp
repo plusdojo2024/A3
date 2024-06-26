@@ -55,8 +55,7 @@
 					</label></td>
 				<tr>
 				<tr>
-					<td><input type="submit" name="submit" value="新規作成"
-						onClick="return Check()"> <span id="error_message"></span>
+					<td><input type="submit" name="submit" value="新規作成"> <span id="error_message"></span>
 						<p class="error">
 							<c:out value="${message.title}" />
 							<c:out value="${message.message}" />
