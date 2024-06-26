@@ -53,15 +53,15 @@
 	<c:forEach var="e" items="${exchangeList}">
 		<div>
 			<div>
-				<c:out value="e.date" />
+				<c:out value="${e.exchangeDate}" />
 			</div>
 			<div>
 				交換内容：
-				<c:out value="e.reward" />
+				<c:out value="${e.reward}" />
 			</div>
 			<div>
 				交換した人：
-				<c:out value="e.name" />
+				<c:out value="${e.name}" />
 			</div>
 		</div>
 	</c:forEach>

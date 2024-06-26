@@ -36,6 +36,13 @@ public class ExchangeHistoryServlet extends HttpServlet {
 
 		//単体で実行したらエラーになるのでやるならログインから
 		List<Exchange> exchangeList =  eDao.getExchangeHistoryByUid(dbUser.getFamilyId());
+		/*
+		Exchange ec = new Exchange();
+		ec.setExchangeDate("テスト日付");
+		ec.setName("テスト名前");
+		ec.setReward("テスト報酬");
+		exchangeList.add(ec);
+		*/
 
 		session.setAttribute("exchangeList", exchangeList);
 
