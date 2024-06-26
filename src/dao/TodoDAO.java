@@ -430,7 +430,7 @@ public class TodoDAO {
 			String sql = "SELECT "
 					+ "*"
 					+ "FROM TODO as T "
-					+ "JOIN USERS as U ON U.UID = T.UID "
+					+ "JOIN TODO_LIST as L ON L.LIST_ID = T.LIST_ID "
 					+ "WHERE family_id = ? AND task = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql); //データベースにアクセスするためにあるオブジェクト
 
@@ -445,12 +445,15 @@ public class TodoDAO {
 
 				t.setTodoId(rs.getInt("todo_id"));
 				t.setListId(rs.getInt("list_id"));
-				t.setUid(rs.getInt("uid"));
+
 				t.setLoop(rs.getInt("loop"));
 				t.setTask(task);
 				TimeLogic time = new TimeLogic();
 				t.setTodoDate(time.changeFormat(rs.getString("todo_date")));
-				t.setName(rs.getString("name"));
+				t.setUid(rs.getInt("uid"));
+				UsersDAO uDao = new UsersDAO();
+				Users user = uDao.getUser(t.getUid());
+				t.setName(user.getName());
 
 				list.add(t);
 			}
