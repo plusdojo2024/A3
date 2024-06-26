@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import logic.TimeLogic;
 import model.Exchange;
 
 public class ExchangeDAO
@@ -67,19 +68,22 @@ public class ExchangeDAO
 		{
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
+			//現在の日付を取ってくる
+			TimeLogic tl = new TimeLogic();
+			String now = tl.nowJpDay();
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 
 			//usersテーブルとエクスチェンジテーブルを結合し、自分の家族IDを家族IDで検索
 
-			String sql = "insert into (reward,uid,exchange_date)values(?,?,?)";//sql修正が必要
+			String sql = "insert into exchange (reward,uid,exchange_date)values(?,?,?)";//sql修正が必要
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 			pStmt.setString(1, exchange.getReward());
 			pStmt.setInt(2, exchange.getUid());
-			pStmt.setString(3, exchange.getExchangeDate());
+			pStmt.setString(3, now);
 
 			//SQL文を実行する
 			// SQL文を実行する
@@ -127,14 +131,9 @@ public class ExchangeDAO
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/A3", "sa", " ");
 			//usersテーブルとエクスチェンジテーブルを結合
 			//自分の家族IDを家族IDで検索
-			String sql = "SELECT "
-					+ "E.REWARD, "
-					+ "E.EXCHANGE_DATE, "
-					+ "E.UID, "
-					+ "E.NAME, "
-					+ "FROM EXCHANGE as E "
-					+ "JOIN USERS as U ON U.UID = E.UID "
-					+ "WHERE E.UID = ?";
+			String sql = "SELECT E.REWARD, E.EXCHANGE_DATE, E.UID, U.NAME, FROM EXCHANGE as E JOIN USERS as U ON U.UID = E.UID WHERE U.FAMILY_ID = ?";
+
+			System.out.println(sql);
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1, familyId);
 
