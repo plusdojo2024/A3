@@ -32,13 +32,14 @@ public class ExchangeHistoryServlet extends HttpServlet {
 		Users dbUser = (Users) session.getAttribute("dbUser");//ハッシュ化後ユーザー
 
 		ExchangeDAO eDao = new ExchangeDAO();
+		System.out.println(dbUser.getFamilyId()+"ふぁみあい");
 
 		//単体で実行したらエラーになるのでやるならログインから
 		List<Exchange> exchangeList =  eDao.getExchangeHistoryByUid(dbUser.getFamilyId());
 
 		session.setAttribute("exchangeList", exchangeList);
 
-
+		System.out.println(exchangeList.size());
 		// 交換履歴ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/exchangeHistory.jsp");
 		dispatcher.forward(request, response);

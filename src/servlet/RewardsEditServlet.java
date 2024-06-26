@@ -186,12 +186,13 @@ public class RewardsEditServlet extends HttpServlet {
 				int req = Integer.parseInt(stReq);
 
 				Exchange ex = new Exchange();
-				ex.setName(reward);
+				ex.setReward(reward);
 				ex.setUid(uId);
 				HttpSession session = request.getSession();
 				Users u = (Users)session.getAttribute("dbUser");
 				int point = u.getHavePoint();
 				int re =0;
+				boolean res = false;
 
 				if(reqPoint <= point) {
 					//交換処理
@@ -204,35 +205,26 @@ public class RewardsEditServlet extends HttpServlet {
 						re = exdao.exchange(rewardId,0);
 
 						if(re==1) {
-
+							UsersDAO d = new UsersDAO();
+							res =d.updateEx(uId,point-reqPoint);
 						}
 					}
-
-
 				}
 
+				if(res == true) {
+					request.setAttribute("msg", "交換を完了しました！");
+				}else {
+					request.setAttribute("msg", "交換をできませんでした");
+				}
 
-
-
-
-
-
-
-
-
-
-
-				//sessionを使いますよという宣言
-
+				//また一覧のデータを取得してくる
 				Users user = (Users)session.getAttribute("dbUser");
 				int familyId = user.getFamilyId();
 				int role = user.getRole();
 				int userId = user.getUid();
 
-
-				if(result==1) {
-					request.setAttribute("msg", "交換を完了しました！");
-			    }
+				user.setHavePoint(point-reqPoint);
+				session.setAttribute("dbuser", user);
 
 				RewardsDAO dao1 = new RewardsDAO();
 				ArrayList<Rewards> rewardsList = dao1.allSelect(familyId, role, userId);
