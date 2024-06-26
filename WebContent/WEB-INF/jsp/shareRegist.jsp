@@ -21,23 +21,29 @@
 	</div>
 
 	<div class="home_logo">
-		<a href="/A3/HomeServlet">F&M</a>
+		<a href="/A3/HomeServlet"><img src="images/FM1.png" width="90%"
+			height="90%"></a>
 	</div>
 
 	<div class="right_buttons">
 		<button class="account-management"
-			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理</button>
+			onclick="window.location.href = '/A3/AccountServlet';">アカウント管理<br><img src="images/ic007.png" width="65px" height="65px"></button>
 		<button class="logout"
-			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト</button>
+			onclick="window.location.href = '/A3/LogoutServlet';">ログアウト<br><img src="images/935.png" width="65px" height="65px"></button>
 	</div>
 
 </div>
 
 </head>
+
 <body>
 	<form action="/A3/ShareRegistServlet" method="post" id="form">
-		<br> <br> <br> <br> <br> <br> <br> <br>
-
+		<br> <br> <br> <br> <br> <br>
+<div class="sidebar">
+		<a href="/A3/HomeServlet">ホーム</a> <a href="/A3/TodoServlet">やることリスト</a>
+		<a href="/A3/NoteServlet">引継ぎノート</a> <a href="/A3/AlbumServlet">アルバム</a>
+		<a href="/A3/RewardsServlet">ご褒美</a>
+	</div>
 		<div class="day">
 			<c:out value="${today}" />
 		</div>
@@ -52,7 +58,7 @@
 			</select>
 		</div>
 
-		<div>
+		<div class="t_box">
 			<label for="uid">担当者</label> <select id="uid" name="uid" required>
 				<c:forEach var="user" items="${userList}">
 					<option value="${user.uid}">${user.name}</option>
@@ -60,7 +66,7 @@
 			</select>
 		</div>
 
-		<div class="main_box">
+		<div class="k_box">
 			<select name="loop"
 				 onchange="Checkbox(this.value)">
 				<option value="0">繰り返さない</option>
@@ -68,24 +74,26 @@
 			</select>
 		</div>
 
-		<div class="main_box">曜日</div>
+		<div class="youbi_box">曜日</div>
 
-		<label for="monday">月曜日</label> <input type="checkbox" id="monday"
-			name="week[]" value="2" style="pointer-events: none" ><br>
-			<label for="tuesday">火曜日</label>
-		<input type="checkbox" id="tuesday" name="week[]" value="3"style="pointer-events: none" ><br>
+		<div class="y_box">
+			<label for="monday">月曜日</label> <input type="checkbox" id="monday"
+				name="week[]" value="2" style="pointer-events: none" ><br>
+				<label for="tuesday">火曜日</label>
+			<input type="checkbox" id="tuesday" name="week[]" value="3"style="pointer-events: none" ><br>
 
-		<label for="wednesday">水曜日</label> <input type="checkbox"
-			id="wednesday" name="week[]" value="4"style="pointer-events: none" ><br>
-			<label for="thuresday">木曜日</label> <input type="checkbox" id="thuresday"
-			name="week[]" value="5"style="pointer-events: none" ><br>
-			<label for="friday">金曜日</label>
-		<input type="checkbox" id="friday" name="week[]" value="6"style="pointer-events: none" ><br>
+			<label for="wednesday">水曜日</label> <input type="checkbox"
+				id="wednesday" name="week[]" value="4"style="pointer-events: none" ><br>
+				<label for="thuresday">木曜日</label> <input type="checkbox" id="thuresday"
+				name="week[]" value="5"style="pointer-events: none" ><br>
+				<label for="friday">金曜日</label>
+			<input type="checkbox" id="friday" name="week[]" value="6"style="pointer-events: none" ><br>
 
-		<label for="saturday">土曜日</label> <input type="checkbox" id="saturday"
-			name="week[]" value="7"style="pointer-events: none" ><br>
-			 <label for="sunday">日曜日</label>
-		<input type="checkbox" id="sunday" name="week[]" value="1"style="pointer-events: none" ><br>
+			<label for="saturday">土曜日</label> <input type="checkbox" id="saturday"
+				name="week[]" value="7"style="pointer-events: none" ><br>
+				 <label for="sunday">日曜日</label>
+			<input type="checkbox" id="sunday" name="week[]" value="1"style="pointer-events: none" ><br>
+		</div>
 
 		<div class="main_box">
 		<c:set var="set_today" value = "${today}" />
