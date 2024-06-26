@@ -20,7 +20,7 @@
 			<img src="${icon}" id="user_icon">
 		</div>
 		<div class="green_box">
-			<c:out value="${dbUser.havePoint} P" />
+			<c:out value="${dbUser.havePoint}pt" />
 		</div>
 	</div>
 

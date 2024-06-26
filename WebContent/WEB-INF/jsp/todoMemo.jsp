@@ -14,7 +14,7 @@
         <div class="left_icons">
         <c:set var="icon" value="${dbUser.icon}"></c:set>
             <div class="green_box"><img src="${icon}" id="user_icon"></div>
-            <div class="green_box"><c:out value="${dbUser.havePoint} P" /></div>
+            <div class="green_box"><c:out value="${dbUser.havePoint}pt" /></div>
         </div>
 
 	<div class="home_logo">
