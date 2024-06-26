@@ -54,7 +54,7 @@
 		<a href="/A3/RewardsServlet">ご褒美</a>
 	</div>
 	<h1 class="box">アルバム</h1>
-	<form>
+	<form method="post" action="/A3/AlbumServlet">
 	<c:forEach var="category" items="${yearMonthList}">
 		<div class="accordion" onclick="toggleAccordion('accordion1')">
 			<c:out value="${category.yearMonth}" />
