@@ -73,7 +73,9 @@
 	<ul>
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
@@ -86,7 +88,9 @@
 	<ul>
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
@@ -99,7 +103,9 @@
 	<ul>
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
@@ -112,7 +118,9 @@
 	<ul class="c_r">
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
@@ -125,7 +133,9 @@
 	<ul class="c_s">
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
@@ -138,7 +148,9 @@
 	<ul>
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
@@ -151,7 +163,9 @@
 	<ul>
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
@@ -164,13 +178,17 @@
 	<ul>
 	<li>
 		<button onclick="window.location.href= '/A3/TodoMemoServlet?name=${task}'" class="task_btn"><c:out value="${task}" /></button><br>
+		<c:if test="${dbUser.role == 1}">
 		<button onclick="window.location.href= '/A3/TodoEditServlet?name=${task}'" class="edit_btn">編集・削除</button>
+		</c:if>
 	</li>
 	</ul>
 	</c:forEach>
 	</div>
 
+	<c:if test="${dbUser.role == 1}">
 	<button onclick="window.location.href= '/A3/TodoRegistServlet'"  class="r_btn">家事登録</button><br>
+	</c:if>
 	<button onclick="window.location.href= '/A3/CalendarServlet'"  class="c_btn">カレンダー</button><br>
 </main>
 <img class="back-button" src="images/603_1.png" onClick="history.back();return false;">
