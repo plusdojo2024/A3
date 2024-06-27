@@ -240,7 +240,7 @@ public class RewardsEditServlet extends HttpServlet {
 
 		//更新完了ボタンが押された時------------------------------------------------------------------------------------------
 
-		} else if (request.getParameter("edit2")!=null&&request.getParameter("edit2").equals("更新")) {
+		} else if (request.getParameter("edit2")!=null&&request.getParameter("edit2").equals("更新完了")) {
 
 			//jspから入力されたデータを持ってくる
 			String reward = request.getParameter("reward");

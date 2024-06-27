@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ご褒美　編集・削除</title>
+<title>ご褒美編集</title>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/rewards.css">
 
@@ -75,13 +75,13 @@
 		<input type="hidden" name="re" value="${param.re}">
 		<input type="hidden" name="u_id" value="${param.u_id}">
 	<div class="ex_form">
-		<input class="green_edit_button" type="submit" name="edit2" value="更新" onclick="return editBt()">　
+		<input class="green_edit_button" type="submit" name="edit2" value="更新完了" onclick="return editBt()">　
 	</div>
 </form>
 
 <script>
 	function editBt(){
-		let edit document.getElementById("edit");
+		let edit document.getElementById("edit2");
 		let ans = confirm("ご褒美内容を更新しますか？");
 
 		if(ans == true){

@@ -99,7 +99,7 @@
 
 	function registBt(){
 		 let regist =document.getElementById("regist");
-		 let ans = confirm("登録しますか？");
+		 let ans = confirm("ご褒美を登録しますか？");
 
 			if(ans == true){
 				return true;
