@@ -40,10 +40,10 @@ public class RewardsDAO {
 					+ "U.NAME "
 					+ "FROM REWARDS as R "
 					+ "JOIN USERS as U ON U.UID = R.UID "
-					+ "WHERE U.FAMILY_ID = ?"
-					+ "ORDER BY R.REWARD_ID desc";
+					+ "WHERE U.FAMILY_ID = ?";
 					if(role==0) {
-						sql+= "and R.UID = ? "; //権限が子の場合は表示情報を個人に絞る
+						sql+= "and R.UID = ?"; //権限が子の場合は表示情報を個人に絞る
+
 					}
 			//１と２の情報をpStmtに入れる
 			PreparedStatement pStmt = conn.prepareStatement(sql);

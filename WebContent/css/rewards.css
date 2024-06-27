@@ -14,19 +14,21 @@ table{
 }
 
 input[type="text"] {
-	width:40%;
+	width: 300px;
+	height: 30px;
     color: #253958;
-    font-size: 23px;
-    text-align:center;
+    font-size: 14px;
+    text-align: left;
     margin:auto auto  auto 20px;
     padding: auto;
 }
 
 input[type="number"] {
-	width:40%;
+	width: 300px;
+	height: 30px;
     color: #253958;
-    font-size: 23px;
-    text-align:center;
+    font-size: 14px;
+    text-align:left;
     margin:auto auto  auto 20px;
 }
 
@@ -400,11 +402,19 @@ input[type="number"] {
 .name {
     background-color: #7DCD85;
     color: white;
-    width: 40.45%;
-    height: 32px;
-    text-align: center;
+	width: 306px;
+	height: 33px;
+    text-align: left;
     margin: auto auto  auto 20px;
-    font-size: 23px;
+    font-size: 14px;
+    position: relative;
+	top: 20%;
+	left: 0.4%;
+}
+
+option {
+    background-color: white;
+    color: black;
 }
 
 /*-------------------------------------------------*/
@@ -416,6 +426,7 @@ input[type="number"] {
 .ex_form {
 	align-items: center;
 	margin: 0% 5% 0.3% 15%;
+	font-size: 14px;
 }
 
 /*-------------------------------------------------*/
