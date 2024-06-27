@@ -35,8 +35,8 @@
     border-radius: 30px; /* 角丸 */
     cursor: pointer; /* カーソルをポインターに変更 */
     position: absolute;
-    top:425px;
-    right:275px;
+    top:380px;
+    right:45%;
 }
 .custom-submit:hover {
     background-color: #45A049; /* ホバー時の背景色 */
@@ -55,12 +55,12 @@ head{
     padding: 0 0;
 }
 form{
-    position: relative;
-    margin:auto;
+    position: absolute;
+    margin:0 0;
+    top:80px;
+    right:5%;
 }
-h2{
-    
-}
+
 .input{
     margin: auto;
 }
@@ -76,5 +76,5 @@ h2{
     border-radius: 10px; /* 角を丸くする */
     width:225px;
     height:30px;
-    right:200px;
+    right:15%;
 }
