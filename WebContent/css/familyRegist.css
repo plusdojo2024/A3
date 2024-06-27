@@ -59,9 +59,22 @@ form{
     margin:auto;
 }
 h2{
-    margin: 0 auto;
-    text-align: center;
+    
 }
 .input{
     margin: auto;
+}
+.title_box{
+    margin: 0 auto;
+    text-align: center;
+    position:absolute;
+	font-size: 20px; /* テキストのサイズを調整 */
+	background-color: #95d4aa; /* 背景色 */
+    color: #FFFFFF; /* テキスト色 */
+    padding: 10px 20px; /* 内側の余白 */
+    border-color:#7dcd85;
+    border-radius: 10px; /* 角を丸くする */
+    width:225px;
+    height:30px;
+    right:200px;
 }
