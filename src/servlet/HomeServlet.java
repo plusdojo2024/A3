@@ -66,7 +66,7 @@ public class HomeServlet extends HttpServlet {
 		List<Todo> yesterdayList = tDao.getYesterdayListByUidNow(dbUser.getUid(), yesterday);
 
 		//前日の引継ぎノートを取得
-		Notes note = nDao.getNoteByDay(dbUser.getFamilyId(), yesterday);
+		Notes note = nDao.getNoteByDay(dbUser.getFamilyId(), time.changeFormat(yesterday));
 
 		//前日の引継ぎノート
 		request.setAttribute("note", note);
