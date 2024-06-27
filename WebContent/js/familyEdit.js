@@ -9,16 +9,16 @@ formObj.onsubmit = function () {
   */
 	const password_regex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[A-Z])[0-9a-zA-Z]{8,20}$/;
 	const family_pass_value_checked_result = password_regex.test(formObj.family_pass.value);
-	if (!formObj.family_name.value.trim() || !formObj.family_pass.value.trim() || !formObj.mail.value.trim()) {
-		errorMessageObj.textContent = '※全ての項目を入力してください。';
+	if (!formObj.family_name.value.trim()) {
+		errorMessageObj.textContent = '※名前を入力してください。';
 		return false;
-	} else if (!family_pass_value_checked_result) {
+	} else if (formObj.family_name.value && !family_pass_value_checked_result) {
 		errorMessageObj.textContent = '※パスワードが要件を満たしていません。';
 		return false;
-	} else if (!formObj.mail.value.match(/[a-zA-Z0-9]+[a-zA-Z0-9\._-]*@[a-zA-Z0-9_-]+[a-zA-Z0-9\._-]+/)) {
+	} else if (formObj.mail.value && !formObj.mail.value.match(/[a-zA-Z0-9]+[a-zA-Z0-9\._-]*@[a-zA-Z0-9_-]+[a-zA-Z0-9\._-]+/)) {
 		errorMessageObj.textContent = 'メールアドレスの形式が不正です。';
 		return false;
-	} else if (formObj.family_pass.value != formObj.pass_check.value) {
+	} else if (formObj.family_name.value && formObj.family_pass.value != formObj.pass_check.value) {
 		errorMessageObj.textContent = 'パスワード確認が一致しません。';
 		return false;
 	} else if (!formObj.family_name.value.match(/^[A-Za-z0-9]*$/)) {

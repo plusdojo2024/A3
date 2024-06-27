@@ -30,13 +30,13 @@ formObj.onsubmit = function () {
   */
 	const password_regex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[A-Z])[0-9a-zA-Z]{8,20}$/;
 	const user_pass_value_checked_result = password_regex.test(formObj.user_pass.value);
-	if (!formObj.user_name.value.trim() || !formObj.user_pass.value.trim() || !formObj.pass_check.value.trim()) {
+	if (!formObj.user_name.value.trim()) {
 		errorMessageObj.textContent = '※全ての項目を入力してください。';
 		return false;
-	} else if (!user_pass_value_checked_result) {
+	} else if (formObj.user_pass.value && !user_pass_value_checked_result) {
 		errorMessageObj.textContent = '※パスワードが要件を満たしていません。';
 		return false;
-	} else if (formObj.user_pass.value != formObj.pass_check.value) {
+	} else if (formObj.user_pass.value && formObj.user_pass.value != formObj.pass_check.value) {
 		errorMessageObj.textContent = '※確認用パスワードが一致しません。';
 		return false;
 	} else if (!formObj.user_name.value.match(/^[A-Za-z0-9]*$/)) {
