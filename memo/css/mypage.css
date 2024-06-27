@@ -1,0 +1,146 @@
+/*
+* {
+    outline: 1px solid #ff0000;
+}
+*/
+#upload {
+	margin-bottom: 0;
+	position: absolute;
+}
+
+#imageForm {
+	position: absolute;
+	top: 38.5%;
+	left: 27.5%;
+}
+
+.myIcon {
+	padding: 5px;
+	margin: 0;
+}
+
+.myIcon img {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+	border-radius: 50%;
+	/*border: 2px solid #b20000;*/
+	background-color: white;
+	z-index: 10;
+	/*position: absolute;*/
+	margin: 0;
+	padding: 10px;
+	left: 22%;
+	top: 22%;
+}
+
+.myIcon img:hover {
+	transform: scale(1.2);
+}
+
+.imageButton {
+	border: 0;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: transparent;
+}
+
+button img {
+	display: block;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: rgba(0, 0, 0, 50%);
+	padding: 40px 20px;
+	overflow: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s;
+	box-sizing: border-box;
+}
+
+/* モーダルの擬似要素の指定 */
+.modal:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	margin-left: -0.2em;
+}
+
+/* クラスが追加された時の指定 */
+.modal.is-active {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* モーダル内側の指定 */
+.modal-container {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 650px;
+	width: 90%;
+}
+
+/* モーダルを閉じるボタンの指定 */
+.modal-close {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: -20px;
+	right: -20px;
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	background: #000;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.modal-close:hover {
+	transform: scale(1.1);
+}
+
+/* モーダルのコンテンツ部分の指定 */
+.modal-content {
+	background: #fff;
+	text-align: left;
+	line-height: 1.8;
+	padding: 20px;
+}
+
+/* モーダルのコンテンツ部分のテキストの指定 */
+.modal-content p {
+	margin: 1em 0;
+}
+
+li {
+	padding: 0;
+	margin: 0;
+}
+
+#icon_list {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+}
+
+#icon_list img {
+	width: 60px;
+	height: 60px;
+}
