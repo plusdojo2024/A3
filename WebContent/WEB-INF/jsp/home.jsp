@@ -100,7 +100,7 @@
 	<p class="y_box1">ゴミ出し</p> -->
 
  	<h2 class="box4">前日の引継ぎノート</h2>
-	<div>
+	<div class="notes">
 
 	<c:if test="${note == null}">
 			<p  class="note_data">前日の引継ぎノートのデータはありません。</p>
@@ -108,9 +108,18 @@
 		<c:if test="${note != null }">
 			<p class="note_data"><c:out value="${note.note}" /></p>
 		</c:if>
-<!--  	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p> -->
+  	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p>
 
 	</div>
+<div class="scroll-prompt">
+  <div class="arrow"></div>
+  <div class="text">scroll</div>
+</div>
+
+<div class="scroll-prompt1">
+  <div class="arrow1"></div>
+  <div class="text">scroll</div>
+</div>
 </body>
 
 <script>
