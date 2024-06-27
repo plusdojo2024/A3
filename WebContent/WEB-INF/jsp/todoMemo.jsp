@@ -84,7 +84,7 @@
 	<c:set var="date" value="${e.todoDate}"></c:set>
 	<c:set var="name" value="${e.name}"></c:set>
 		<c:out value="${date}"></c:out><br>
-		<c:out value="${name}"></c:out><br><br>
+		<c:out value="${name}"></c:out><br>
 	</td>
 	</tr>
 	</c:forEach>

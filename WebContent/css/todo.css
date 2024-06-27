@@ -1,6 +1,6 @@
 .title_box {
     background-color: white;
-    color: #00bf63;
+    color: #95D4AA;
     border-radius: 30px; /* 角を丸くする */
     display: flex;
     justify-content: center;
@@ -118,7 +118,7 @@
 
 .ul {
 	position: absolute;
-	right: 10%;
+	right: 8%;
 	top: 37%;
 	border: solid 3px #95d4aa;
 	padding-right: 50px;
@@ -162,7 +162,7 @@ h3 {
 
 .c_h {
 	position: absolute;
-	right: 10%;
+	right: 8%;
 	top: 31.5%;
 	position: fixed;
 }
@@ -173,4 +173,11 @@ h3 {
     position: fixed; /* ページスクロールに関係なく固定する */
     bottom: 0px; /* 下からの距離 */
     right: 25%; /* 右からの距離 */
+}
+
+.tl{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: 900px;
+	margin-left: 20%;
 }

@@ -96,7 +96,7 @@ body{
       align-items: center;
       font-size: 25px;
       position:absolute;
-      top:530px;
+      top:540px;
       left:400px
   }
 
@@ -116,7 +116,7 @@ body{
         padding: 10px 20px; /* 内側の余白 */
         border-radius: 20px; /* 角を丸くする */
         width:250px;
-        margin-bottom:20px;
+        margin-bottom:5px;
 }
 
 #line{
@@ -162,10 +162,10 @@ body{
 
   .notes {
     position:absolute;
-    top:610px;
-    left:600px;
+    top:620px;
+    left:550px;
     width: 900px;
-    height: 60px;
+    height: 50px;
     background-color: #fff;
     background: repeating-linear-gradient(-45deg, #edf5f4, #edf5f4 10px, #f6faf9 0, #f6faf9 20px);
     padding: 1em;
@@ -205,4 +205,55 @@ body{
 .custom-submit:hover {
     background-color: #45a049; /* ホバー時の背景色 */
 }
+
+.scroll-prompt {
+  position: fixed;
+  bottom: 165px;
+  left: 41%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-prompt:hover {
+  opacity: 1;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  animation: arrowMove 1s infinite alternate; /* アニメーションを適用 */
+}
+
+.scroll-prompt1 {
+  position: fixed;
+  bottom: 165px;
+  left: 74%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-prompt1:hover {
+  opacity: 1;
+}
+
+.arrow1 {
+  width: 20px;
+  height: 20px;
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  animation: arrowMove 1s infinite alternate; /* アニメーションを適用 */
+}
+
 

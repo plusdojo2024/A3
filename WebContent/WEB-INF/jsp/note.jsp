@@ -44,7 +44,7 @@
 </head>
 <body>
 <div class="body">
-	<br><br><br><br>
+	<br><br><br><br><br>
 	<div class="sidebar">
         <a href="/A3/HomeServlet">ホーム</a>
         <a href="/A3/TodoServlet">やることリスト</a>
@@ -92,6 +92,7 @@
 						<td colspan="2"><input type="submit" name="submit" value="登録"
 							onclick="return Check();"> <a href="/A3/NoteEditServlet">履歴・編集</a><span
 							id="submit_error"></span></td>
+							<br><br><br>
 						<c:out value="${message.message}" />
 
 					</tr>
