@@ -55,15 +55,15 @@
 
 <div class="rewards_title">ご褒美編集</div>
 <form method="post" action="/A3/RewardsEditServlet">
-<div class="required">※全て必須項目です</div>
+<p style="font-size:14px;"><sup style="color: red;" >　　　　　　　　　　*</sup>すべて入力必須です。</p>
 	<div class="ex_form">
-		<input type="text" name="reward" value="${param.reward}"><br>
+		　　ご褒美名：　<input type="text" name="reward" value="${param.reward}"><br>
 	</div>
 	<div class="ex_form">
-		<input type="number" name="req_point" value="${param.req_point}" required min="1" max="1000"><br>
+		付与ポイント：　<input type="number" name="req_point" value="${param.req_point}" required min="1" max="1000"><br>
 	</div>
 		<div class="ex_form">
-			<select name="name" required class="name">
+			　 　対象者：　<select name="name" required class="name">
 				<option value="">対象者を選択してください</option>
 					<c:forEach var="e" items="${ud}" >
 						<option value="${e.uid}">${e.name}</option>
