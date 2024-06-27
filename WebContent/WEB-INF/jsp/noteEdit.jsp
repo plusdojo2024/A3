@@ -39,7 +39,7 @@
 <body>
 <br>
 <br>
-<br>
+<br><br>
 <br>
 	<div class="sidebar">
         <a href="/A3/HomeServlet">ホーム</a>
@@ -50,9 +50,9 @@
     </div>
 
 <br>
-	<h2 class="box">履歴</h2><br><br>
+	<h2 class="box">履歴</h2><br><br><br><br><br><br>
 							<c:out value="${message.message}" />
-<br><br><br><br><br>
+<br>
 		<c:forEach var="a" items="${noteList }" >
 			<form id="form" method="post" action="/A3/NoteEditServlet">
 			<table>
