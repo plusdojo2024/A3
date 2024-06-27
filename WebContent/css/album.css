@@ -5,7 +5,7 @@
 	color: #333;
 	cursor: pointer;
 	padding: 18px;
-	width: 60%;
+	width: 55%;
 	border: none;
 	text-align: left;
 	outline: none;
@@ -14,7 +14,7 @@
 	border-bottom: 1px solid #ccc;
 	position:absolute;
 	top:300px;
-	left:400px;
+	left:500px;
 }
 
 .panel {
@@ -23,11 +23,12 @@
 	background-color: white;
 	overflow: hidden;
 	border-bottom: 1px solid #ccc;
-	width: 60%;
+	width: 55%;
 	height:43%;
 	position:absolute;
 	top:330px;
-	left:400px;
+	left:500px;
+	overflow-y: auto; /* 縦方向のスクロールバーを表示する */
 }
 
     .table-container {
@@ -37,17 +38,18 @@
 
     table {
         border-collapse: collapse;
-        width: calc(40% - 20px); /* テーブルの幅を20%に設定し、間隔を除く */
+        width: calc(50% - 20px); /* テーブルの幅を20%に設定し、間隔を除く */
         margin-right: 40px; /* テーブル間の間隔を設定 */
         margin-bottom: 40px; /* テーブル下の余白を設定 */
     }
 
     th, td {
-        padding: 8px; /* 内側の余白を指定 */
+        padding: 10px; /* 内側の余白を指定 */
+        margin:20px;
         text-align: center; /* 中央寄せにする */
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
         /* 800px以下の場合は2列になるように調整 */
         .table-container {
             flex-wrap: wrap;
@@ -57,7 +59,7 @@
         }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 1000px) {
         /* 500px以下の場合は1列になるように調整 */
         table {
             width: calc(100% - 20px);

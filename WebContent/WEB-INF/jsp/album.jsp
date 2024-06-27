@@ -61,6 +61,7 @@
 		</div>
 
 			<div class="panel" id="accordion1">
+			<div style="display: flex; flex-wrap: wrap;">
 				<c:forEach var="e" items="${albumList}">
 					<c:if test="${category.yearMonth==e.yearMonth}">
 
@@ -90,6 +91,7 @@
 						</c:if>
 					</c:if>
 				</c:forEach>
+			</div>
 			</div>
 	</c:forEach>
 
