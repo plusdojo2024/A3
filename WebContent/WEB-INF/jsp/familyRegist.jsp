@@ -14,7 +14,7 @@
 		<img src="images/login_logo.png" class="left">
 	</div>
 	<div class="form">
-		<h2>新規登録</h2>
+		<h2 class="title_box">新規登録</h2>
 		<form id="form" method="post" action="/A3//FamilyRegistServlet"
 			enctype="multipart/form-data">
 			<table>
