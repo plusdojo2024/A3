@@ -1,45 +1,67 @@
 @charset "UTF-8";
 
-  .box
-  {
-      background-color: #FFFFFF;
-      color: #95D4AA;
-      width: 400px;
-      height: 80px;
-      border-radius: 30px;
-      /* 角を丸くする */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 35px;
-      position:absolute;
-      top:180px;
-      left:300px
-
-  }
-
-  .custom-submit {
-    background-color: #7dcd85; /* ボタンの背景色 */
-    color: #000000; /* ボタンのテキスト色 */
-    font-size: 16px; /*ボタンのテキストの大きさ*/
-    width: 150px; /*幅調整*/
-    height: 40px; /*高さ調整*/
-    margin: 10px 550px;
-    border: none; /* ボーダーなし */
-    border-radius: 30px; /* 角丸 */
-    cursor: pointer; /* カーソルをポインターに変更 */
-}
-
-.custom-submit:hover {
-    background-color: #45a049; /* ホバー時の背景色 */
-}
 .left {
+    margin-top: 0%;
 	width: 50%;
 	float: left;
+    padding: 0 ;
+}
+
+.right {
+    padding: 0 10px;
+    margin-top: 0%;
+	 /*コレ*/max-width: 33%;
+     max-width: 100%;
+    /*コレ*/height: auto;
+	width: 50%;
+	float: right;
+	align-content: center;
 }
 
 .form {
 	position: relative;
+    padding: 0 10px;
 	align-items: center;
-	margin: 0 auto;
+	margin: 0px auto;
+}
+.custom-submit {
+    background-color: #7DCD85; /* ボタンの背景色 */
+    color: #000000; /* ボタンのテキスト色 */
+    font-size: 16px; /*ボタンのテキストの大きさ*/
+    width: 150px; /*幅調整*/
+    height: 40px; /*高さ調整*/
+    margin: 10px auto;
+    border: none; /* ボーダーなし */
+    border-radius: 30px; /* 角丸 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    position: absolute;
+    top:425px;
+    right:275px;
+}
+.custom-submit:hover {
+    background-color: #45A049; /* ホバー時の背景色 */
+}
+
+div{
+    margin-top: 0 0;
+    padding: 0 0;
+}
+body{
+    margin: 0 0;
+    padding: 0 0;
+}
+head{
+    margin-top: 0;
+    padding: 0 0;
+}
+form{
+    position: relative;
+    margin:auto;
+}
+h2{
+    margin: 0 auto;
+    text-align: center;
+}
+.input{
+    margin: auto;
 }
