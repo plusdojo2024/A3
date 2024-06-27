@@ -65,8 +65,9 @@
 	</ul>
 	</div>
 
-	<div class="tl">
+
 	<h3 id="wash">洗濯</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todowash}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul>
@@ -76,8 +77,10 @@
 	</li>
 	</ul>
 	</c:forEach>
+	</div>
 
 	<h3 id="garbage">ごみ捨て</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todogarbage}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul>
@@ -87,8 +90,10 @@
 	</li>
 	</ul>
 	</c:forEach>
+	</div>
 
 	<h3 id="clean">掃除</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todoclean}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul>
@@ -98,8 +103,10 @@
 	</li>
 	</ul>
 	</c:forEach>
+	</div>
 
 	<h3 id="cooking">料理</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todocooking}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul class="c_r">
@@ -109,8 +116,10 @@
 	</li>
 	</ul>
 	</c:forEach>
+	</div>
 
 	<h3 id="shopping">買い物</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todoshopping}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul class="c_s">
@@ -120,8 +129,10 @@
 	</li>
 	</ul>
 	</c:forEach>
+	</div>
 
 	<h3 id="plus">日用品の補充</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todoplus}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul>
@@ -131,8 +142,10 @@
 	</li>
 	</ul>
 	</c:forEach>
+	</div>
 
 	<h3 id="child">子育て</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todochild}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul>
@@ -142,8 +155,10 @@
 	</li>
 	</ul>
 	</c:forEach>
+	</div>
 
 	<h3 id="other">その他</h3>
+	<div class="tl">
 	<c:forEach var="e" items="${todoother}">
 	<c:set var="task" value="${e.task}"></c:set>
 	<ul>
