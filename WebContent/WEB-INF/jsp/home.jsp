@@ -108,7 +108,7 @@
 		<c:if test="${note != null }">
 			<p class="note_data"><c:out value="${note.note}" /></p>
 		</c:if>
-  	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p>
+ <!--  	<p>　　昨日の朝、ごみ捨て忘れてたから娘が代わりに捨ててくれてたよ(^▽^)/</p> -->
 
 	</div>
 <div class="scroll-prompt">
